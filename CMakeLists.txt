@@ -9,7 +9,10 @@ set(CMAKE_CXX_COMPILER ccac)
 set(CMAKE_CROSSCOMPILING 1)
 
 # add the sources
-file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp")
+file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
+				 "ingestion-sdk-platform/himax/*.cpp"
+				 "ingestion-sdk-platform/himax/*.cpp"
+				 "repl/*.cpp")
 
 file(GLOB TF "edge-impulse-sdk/tensorflow/lite/micro/*.cc"
 			"edge-impulse-sdk/tensorflow/lite/micro/memory_planner/*.cc"
@@ -38,6 +41,9 @@ include_directories(edge-impulse-sdk/third_party/flatbuffers/include/)
 include_directories(edge-impulse-sdk/third_party/gemmlowp)
 include_directories(edge-impulse-sdk/third_party/ruy)
 include_directories(arc_mli_package/include)
+include_directories(ingestion-sdk-platform/himax)
+include_directories(repl)
+include_directories(ingestion-sdk-c)
 
 # add the executable
 add_executable(${PROJECT_NAME}.elf main.cc ${SOURCE_FILES})
