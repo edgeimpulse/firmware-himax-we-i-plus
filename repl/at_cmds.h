@@ -27,6 +27,7 @@
 #include "at_base64.h"
 #include "ei_config.h"
 
+#include "ei_classifier_porting.h"
 #include "ei_device_himax.h"
 
 

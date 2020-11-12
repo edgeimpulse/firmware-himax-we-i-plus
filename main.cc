@@ -22,8 +22,9 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
-#include "ei_run_classifier.h"
-
+// #include "ei_run_classifier.h"
+#include "ei_inertialsensor.h"
+#include "ei_run_impulse.h"
 
 #include "at_cmds.h"
 
@@ -41,10 +42,10 @@ int main(void)
         "Hello from Edge Impulse Device SDK.\r\n"
         "Compiled on %s %s\r\n", __DATE__, __TIME__);
 
-    // /* Setup the inertial sensor */
-    // // if (ei_inertial_init() == false) {
-    // //     ei_printf("Inertial sensor communication error occured\r\n");
-    // // }
+    /* Setup the inertial sensor */
+    if (ei_inertial_init() == false) {
+        ei_printf("Inertial sensor communication error occured\r\n");
+    }
 
     /* Intialize configuration */
     static ei_config_ctx_t config_ctx = {0};
@@ -68,9 +69,21 @@ int main(void)
 
     /* Setup the command line commands */
     ei_at_register_generic_cmds();
-    // ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
-    // ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
+    ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
+    ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
+
+
+    // while(1) {
+
+    // 	if(hx_drv_accelerometer_available_count() > 0) {
+    // 		float x, y, z;
+
+    // 		hx_drv_accelerometer_receive(&x, &y, &z);
+
+    // 		ei_printf("Acc: %f %f %f\r\n", x, y, z);
+    // 	}
+    // }
 
 
     ei_command_line_handle(0);

@@ -19,13 +19,18 @@
 * SOFTWARE.
 */
 
-#ifndef _EI_CLASSIFIER_TFLITE_RESOLVER_H_
-#define _EI_CLASSIFIER_TFLITE_RESOLVER_H_
+#ifndef _EI_CLASSIFIER_ANOMALY_TYPES_HEADER_H_
+#define _EI_CLASSIFIER_ANOMALY_TYPES_HEADER_H_
 
-#include "edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h"
+#define EI_CLASSIFIER_HAS_ANOMALY    1
 
-#define EI_TFLITE_RESOLVER static tflite::MicroMutableOpResolver<2> resolver; \
-    resolver.AddFullyConnected(); \
-    resolver.AddSoftmax();
+const uint16_t EI_CLASSIFIER_ANOM_AXIS[]  { 0, 11, 22 };
+#define EI_CLASSIFIER_ANOM_AXIS_SIZE      3
+#define EI_CLASSIFIER_ANOM_CLUSTER_COUNT  32
 
-#endif // _EI_CLASSIFIER_TFLITE_RESOLVER_H_
+typedef struct {
+float centroid[EI_CLASSIFIER_ANOM_AXIS_SIZE];
+float max_error;
+} ei_classifier_anom_cluster_t;
+
+#endif // _EI_CLASSIFIER_ANOMALY_TYPES_HEADER_H_

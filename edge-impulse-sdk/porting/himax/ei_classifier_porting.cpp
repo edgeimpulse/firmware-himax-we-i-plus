@@ -50,7 +50,7 @@ __attribute__((weak)) EI_IMPULSE_ERROR ei_sleep(int32_t time_ms) {
         cur_time = (uint64_t)(tick / 400000);
         
     }while(cur_time < end_delay);
-    
+
     return EI_IMPULSE_OK;
 }
 

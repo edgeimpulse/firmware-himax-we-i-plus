@@ -19,13 +19,4 @@
 * SOFTWARE.
 */
 
-#ifndef _EI_CLASSIFIER_TFLITE_RESOLVER_H_
-#define _EI_CLASSIFIER_TFLITE_RESOLVER_H_
-
-#include "edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h"
-
-#define EI_TFLITE_RESOLVER static tflite::MicroMutableOpResolver<2> resolver; \
-    resolver.AddFullyConnected(); \
-    resolver.AddSoftmax();
-
-#endif // _EI_CLASSIFIER_TFLITE_RESOLVER_H_
+// Empty on purpose
