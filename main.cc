@@ -22,6 +22,7 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
+#include "ei_himax_fs_commands.h"
 // #include "ei_run_classifier.h"
 #include "ei_inertialsensor.h"
 #include "ei_run_impulse.h"
@@ -53,8 +54,8 @@ int main(void)
     config_ctx.get_device_type = EiDevice.get_type_function();
     config_ctx.wifi_connection_status = EiDevice.get_wifi_connection_status_function();
     config_ctx.wifi_present = EiDevice.get_wifi_present_status_function();
-    // config_ctx.load_config = &ei_eta_fs_load_config;
-    // config_ctx.save_config = &ei_eta_fs_save_config;
+    config_ctx.load_config = &ei_himax_fs_load_config;
+    config_ctx.save_config = &ei_himax_fs_save_config;
     config_ctx.list_files = NULL;
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
 

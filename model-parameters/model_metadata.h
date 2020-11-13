@@ -43,21 +43,21 @@
 #define EI_CLASSIFIER_INPUT_HEIGHT               0
 #define EI_CLASSIFIER_INTERVAL_MS                16
 #define EI_CLASSIFIER_OUT_TENSOR_NAME            "y_pred/Softmax_1:0"
-#define EI_CLASSIFIER_LABEL_COUNT                5
+#define EI_CLASSIFIER_LABEL_COUNT                4
 #define EI_CLASSIFIER_HAS_ANOMALY                1
 #define EI_CLASSIFIER_FREQUENCY                  62.5
 
 #define EI_CLASSIFIER_TFLITE_ARENA_SIZE          3673
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
-#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.1197386384010315
+#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.11671701818704605
 #define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -128
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE     EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED     1
 #define EI_CLASSIFIER_TFLITE_OUTPUT_SCALE        0.00390625
 #define EI_CLASSIFIER_TFLITE_OUTPUT_ZEROPOINT    -128
 #define EI_CLASSIFIER_INFERENCING_ENGINE         EI_CLASSIFIER_TFLITE
-#define EI_CLASSIFIER_COMPILED                   0
+#define EI_CLASSIFIER_COMPILED                   1
 #define EI_CLASSIFIER_SENSOR                     EI_CLASSIFIER_SENSOR_ACCELEROMETER
 #define EI_CLASSIFIER_HAS_TFLITE_OPS_RESOLVER    1
 
@@ -67,7 +67,7 @@
 #define EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW    4
 #endif // EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 
-const char* ei_classifier_inferencing_categories[] = { "idle", "shake", "snake", "updown", "wave" };
+const char* ei_classifier_inferencing_categories[] = { "idle", "snake", "updown", "wave" };
 
 typedef struct {
     int axes;
@@ -99,6 +99,17 @@ typedef struct {
     float pre_cof;
     int pre_shift;
 } ei_dsp_config_mfcc_t;
+
+typedef struct {
+    int axes;
+    float frame_length;
+    float frame_stride;
+    int num_filters;
+    int fft_length;
+    int low_frequency;
+    int high_frequency;
+    int win_size;
+} ei_dsp_config_mfe_t;
 
 typedef struct {
     int axes;

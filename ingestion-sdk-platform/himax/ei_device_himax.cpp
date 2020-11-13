@@ -22,9 +22,9 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
-
+#include "ei_himax_fs_commands.h"
 #include "ei_classifier_porting.h"
-// #include "ei_inertialsensor.h"
+#include "ei_inertialsensor.h"
 // #include "ei_microphone.h"
 //#include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 
@@ -196,11 +196,11 @@ bool EiDeviceHimax::get_wifi_present_status(void)
 bool EiDeviceHimax::get_sensor_list(const ei_device_sensor_t **sensor_list, size_t *sensor_list_size)
 {
     /* Calculate number of bytes available on flash for sampling, reserve 1 block for header + overhead */
-    uint32_t available_bytes = 0;//(ei_eta_fs_get_n_available_sample_blocks()-1) * ei_eta_fs_get_block_size();
+    uint32_t available_bytes = (ei_himax_fs_get_n_available_sample_blocks()-1) * ei_himax_fs_get_block_size();
 
     sensors[ACCELEROMETER].name = "Built-in accelerometer";
-    // sensors[ACCELEROMETER].start_sampling_cb = &ei_inertial_setup_data_sampling;
-    sensors[ACCELEROMETER].max_sample_length_s = available_bytes / (100 * 3);//SIZEOF_N_AXIS_SAMPLED);
+    sensors[ACCELEROMETER].start_sampling_cb = &ei_inertial_setup_data_sampling;
+    sensors[ACCELEROMETER].max_sample_length_s = available_bytes / (100 * SIZEOF_N_AXIS_SAMPLED);
     sensors[ACCELEROMETER].frequencies[0] = 62.5f;
     sensors[ACCELEROMETER].frequencies[1] = 104.0f;
     sensors[ACCELEROMETER].frequencies[2] = 250.0f;
