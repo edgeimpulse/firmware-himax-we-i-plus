@@ -25,7 +25,7 @@
 #include "ei_himax_fs_commands.h"
 #include "ei_classifier_porting.h"
 #include "ei_inertialsensor.h"
-// #include "ei_microphone.h"
+#include "ei_microphone.h"
 //#include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 
 #include "repl.h"
@@ -207,7 +207,7 @@ bool EiDeviceHimax::get_sensor_list(const ei_device_sensor_t **sensor_list, size
     sensors[ACCELEROMETER].frequencies[3] = 500.0f;
 
     sensors[MICROPHONE].name = "Built-in microphone";
-    // sensors[MICROPHONE].start_sampling_cb = &ei_microphone_sample_start;
+    sensors[MICROPHONE].start_sampling_cb = &ei_microphone_sample_start;
     sensors[MICROPHONE].max_sample_length_s = available_bytes / (16000 * 2);
     sensors[MICROPHONE].frequencies[0] = 16000.0f;
 

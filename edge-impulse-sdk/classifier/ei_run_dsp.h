@@ -73,24 +73,9 @@ __attribute__((unused)) int extract_spectral_analysis_features(signal_t *signal,
         EIDSP_ERR(ret);
     }
 
-    // the spectral edges that we want to calculate
-    matrix_t edges_matrix_in(64, 1);
-    size_t edge_matrix_ix = 0;
-
-    char spectral_str[128] = { 0 };
-    if (strlen(config.spectral_power_edges) > sizeof(spectral_str) - 1) {
-        EIDSP_ERR(EIDSP_PARAMETER_INVALID);
-    }
-    memcpy(spectral_str, config.spectral_power_edges, strlen(config.spectral_power_edges));
-
-	char spectral_delim[] = ",";
-	char *spectral_ptr = strtok(spectral_str, spectral_delim);
-	while (spectral_ptr != NULL) {
-        edges_matrix_in.buffer[edge_matrix_ix] = atof(spectral_ptr);
-        edge_matrix_ix++;
-		spectral_ptr = strtok(NULL, spectral_delim);
-	}
-    edges_matrix_in.rows = edge_matrix_ix;
+    // the spectral edges that we want to calculate (@todo, take this from the config)
+    float edges[] = { 0.1, 0.5, 1.0, 2.0, 5.0 };
+    matrix_t edges_matrix_in(sizeof(edges) / sizeof(edges[0]), 1, edges);
 
     // calculate how much room we need for the output matrix
     size_t output_matrix_cols = spectral::feature::calculate_spectral_buffer_size(
