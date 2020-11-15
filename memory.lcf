@@ -58,7 +58,7 @@ SECTIONS {
 
 			_e_rodata = .;
 		}
-
+	.tensor_arena? ALIGN(16): {}
 	} > SYSTEM0
 
 
@@ -82,8 +82,7 @@ SECTIONS {
 			*(TYPE bss)
 			_e_bss = .;
 		}
-		
-  .tensor_arena? ALIGN(16): {}
+
   .Zdata?: {}
             
 	} > DCCM

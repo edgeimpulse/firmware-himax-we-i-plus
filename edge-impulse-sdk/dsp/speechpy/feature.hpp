@@ -28,7 +28,7 @@
 #include "functions.hpp"
 #include "processing.hpp"
 #include "../memory.hpp"
-#include "ei_classifier_porting.h"
+
 namespace ei {
 namespace speechpy {
 
@@ -250,7 +250,6 @@ public:
         if (ret != 0) {
             EIDSP_ERR(ret);
         }
-
         for (size_t ix = 0; ix < stack_frame_info.frame_ixs->size(); ix++) {
             size_t power_spectrum_frame_size = (fft_length / 2 + 1);
 
