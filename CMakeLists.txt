@@ -12,8 +12,11 @@ set(CMAKE_CROSSCOMPILING 1)
 file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
 				 "ingestion-sdk-platform/himax/*.cpp"
 				 "ingestion-sdk-platform/himax/*.cpp"
+				 "ingestion-sdk-c/*.cpp"
 				 "repl/*.cpp"
-				 "sensors/*.cpp")
+				 "sensors/*.cpp"
+				 "QCBOR/src/*.c"
+				 "mbedtls_hmac_sha256_sw/mbedtls/src/*.c")
 
 file(GLOB TF "edge-impulse-sdk/tensorflow/lite/micro/*.cc"
 			"edge-impulse-sdk/tensorflow/lite/micro/memory_planner/*.cc"
@@ -41,11 +44,15 @@ include_directories(edge-impulse-sdk/dsp/dct)
 include_directories(edge-impulse-sdk/third_party/flatbuffers/include/)
 include_directories(edge-impulse-sdk/third_party/gemmlowp)
 include_directories(edge-impulse-sdk/third_party/ruy)
+include_directories(ingestion-sdk-c)
 include_directories(arc_mli_package/include)
 include_directories(ingestion-sdk-platform/himax)
 include_directories(repl)
 include_directories(ingestion-sdk-c)
 include_directories(sensors)
+include_directories(QCBOR/inc)
+include_directories(mbedtls_hmac_sha256_sw)
+
 
 # add the executable
 add_executable(${PROJECT_NAME}.elf main.cc ei_run_impulse.cpp ${SOURCE_FILES})
@@ -97,7 +104,8 @@ set(CMAKE_CXX_FLAGS "\
 -ffunction-sections \
 -fdata-sections \
 -tcf_core_config \
--DEIDSP_QUANTIZE_FILTERBANK=0")
+-DEIDSP_QUANTIZE_FILTERBANK=0 \
+-DEI_SENSOR_AQ_STREAM=FILE")
 
 
 set(CMAKE_EXE_LINKER_FLAGS_INIT "${LINKER_FLAGS}")

@@ -487,7 +487,7 @@ static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8
             break;
         }
 
-        int r = 1;//ei_eta_fs_read_sample_data(buffer, pos, bytes_to_read);
+        int r = ei_himax_fs_read_sample_data(buffer, pos, bytes_to_read);
         if (r != 0) {
             retVal = false;
             break;

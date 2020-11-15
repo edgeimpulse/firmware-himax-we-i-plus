@@ -26,8 +26,8 @@
 
 #include "ei_sampler.h"
 #include "ei_config_types.h"
-#include "ei_eta_fs_commands.h"
-#include "ei_device_eta_ecm3532.h"
+#include "ei_himax_fs_commands.h"
+#include "ei_device_himax.h"
 
 #include "sensor_aq_mbedtls_hs256.h"
 
@@ -65,7 +65,7 @@ static size_t ei_write(const void *buffer, size_t size, size_t count, EI_SENSOR_
         write_word_buf[write_addr&0x3] = *((char *)buffer+i);
 
        if((++write_addr & 0x03) == 0x00) {
-           ei_eta_fs_write_samples(write_word_buf, (write_addr - 4) + headerOffset, 4);
+           ei_himax_fs_write_samples(write_word_buf, (write_addr - 4) + headerOffset, 4);
        }
 
     }
@@ -107,7 +107,7 @@ static void ei_write_last_data(void)
             write_word_buf[i] = 0xFF;
         }
 
-        ei_eta_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset, 4);
+        ei_himax_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset, 4);
         insert_end_address = 4;
     }
 
@@ -115,7 +115,7 @@ static void ei_write_last_data(void)
     for(uint8_t i=0; i<4; i++) {
         write_word_buf[i] = 0xFF;
     }
-    ei_eta_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset + insert_end_address, 4);    
+    ei_himax_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset + insert_end_address, 4);    
 }
 
 EI_SENSOR_AQ_STREAM stream;
@@ -161,16 +161,16 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
     ei_printf("Samples req: %d\r\n", samples_required);
 
     // Minimum delay of 2000 ms for daemon
-    if(((sample_buffer_size / ei_eta_fs_get_block_size())+1) * ETA_FS_BLOCK_ERASE_TIME_MS < 2000) {
+    if(((sample_buffer_size / ei_himax_fs_get_block_size())+1) * HIMAX_FS_BLOCK_ERASE_TIME_MS < 2000) {
         ei_printf("Starting in %lu ms... (or until all flash was erased)\n", 2000);
         EiDevice.delay_ms(2000);
     }
     else {
         ei_printf("Starting in %lu ms... (or until all flash was erased)\n",
-        ((sample_buffer_size / ei_eta_fs_get_block_size())+1) * ETA_FS_BLOCK_ERASE_TIME_MS);
+        ((sample_buffer_size / ei_himax_fs_get_block_size())+1) * HIMAX_FS_BLOCK_ERASE_TIME_MS);
     }
 
-	if(ei_eta_fs_erase_sampledata(0, sample_buffer_size + ei_eta_fs_get_block_size()) != ETA_FS_CMD_OK)
+	if(ei_himax_fs_erase_sampledata(0, sample_buffer_size + ei_himax_fs_get_block_size()) != HIMAX_FS_CMD_OK)
 		return false;
 
     if(create_header(payload) == false)
@@ -199,13 +199,13 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
     ctx_err = ei_mic_ctx.signature_ctx->finish(ei_mic_ctx.signature_ctx, ei_mic_ctx.hash_buffer.buffer);
 
     // load the first page in flash...
-    uint8_t *page_buffer = (uint8_t*)malloc(ei_eta_fs_get_block_size());
+    uint8_t *page_buffer = (uint8_t*)malloc(ei_himax_fs_get_block_size());
     if (!page_buffer) {
         ei_printf("Failed to allocate a page buffer to write the hash\n");
         return false;
     }
 
-    int j = ei_eta_fs_read_sample_data(page_buffer, 0, ei_eta_fs_get_block_size());
+    int j = ei_himax_fs_read_sample_data(page_buffer, 0, ei_himax_fs_get_block_size());
     if (j != 0) {
         ei_printf("Failed to read first page (%d)\n", j);
         free(page_buffer);
@@ -231,14 +231,14 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
         page_buffer[ei_mic_ctx.signature_index + (hash_ix * 2) + 1] = second_c;
     }
 
-    j = ei_eta_fs_erase_sampledata(0, ei_eta_fs_get_block_size());
+    j = ei_himax_fs_erase_sampledata(0, ei_himax_fs_get_block_size());
     if (j != 0) {
         ei_printf("Failed to erase first page (%d)\n", j);
         free(page_buffer);
         return false;
     }
 
-    j = ei_eta_fs_write_samples(page_buffer, 0, ei_eta_fs_get_block_size());
+    j = ei_himax_fs_write_samples(page_buffer, 0, ei_himax_fs_get_block_size());
 
     free(page_buffer);
 
@@ -280,7 +280,7 @@ static bool create_header(sensor_aq_payload_info *payload)
     }
 
     // Write to blockdevice
-    tr = ei_eta_fs_write_samples(ei_mic_ctx.cbor_buffer.ptr, 0, end_of_header_ix);
+    tr = ei_himax_fs_write_samples(ei_mic_ctx.cbor_buffer.ptr, 0, end_of_header_ix);
     ei_printf("Try to write %d bytes\r\n", end_of_header_ix);
     if (tr != 0) {
         ei_printf("Failed to write to header blockdevice (%d)\n", tr);

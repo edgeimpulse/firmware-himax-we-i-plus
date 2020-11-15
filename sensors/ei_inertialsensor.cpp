@@ -27,7 +27,7 @@
 #include "ei_config_types.h"
 #include "ei_inertialsensor.h"
 #include "ei_device_himax.h"
-// #include "sensor_aq.h"
+#include "sensor_aq.h"
 
 #include "hx_drv_tflm.h"
 
@@ -124,32 +124,32 @@ bool ei_inertial_sample_start(sampler_callback callsampler, float sample_interva
 /**
  * @brief      Setup payload header
  *
- * @return     false
+ * @return     true
  */
 bool ei_inertial_setup_data_sampling(void)
 {
 
-    // if (ei_config_get_config()->sample_interval_ms < 0.001f) {
-    //     ei_config_set_sample_interval(1.f/62.5f);
-    // }
+    if (ei_config_get_config()->sample_interval_ms < 0.001f) {
+        ei_config_set_sample_interval(1.f/62.5f);
+    }
 
-    // sensor_aq_payload_info payload = {
-    //     // Unique device ID (optional), set this to e.g. MAC address or device EUI **if** your device has one
-    //     EiDevice.get_id_pointer(),
-    //     // Device type (required), use the same device type for similar devices
-    //     EiDevice.get_type_pointer(),
-    //     // How often new data is sampled in ms. (100Hz = every 10 ms.)
-    //     ei_config_get_config()->sample_interval_ms,
-    //     // The axes which you'll use. The units field needs to comply to SenML units (see https://www.iana.org/assignments/senml/senml.xhtml)
-    //     { { "accX", "m/s2" }, { "accY", "m/s2" }, { "accZ", "m/s2" }, 
-    //     /*{ "gyrX", "dps" }, { "gyrY", "dps" }, { "gyrZ", "dps" } */},        
-    // };	
+    sensor_aq_payload_info payload = {
+        // Unique device ID (optional), set this to e.g. MAC address or device EUI **if** your device has one
+        EiDevice.get_id_pointer(),
+        // Device type (required), use the same device type for similar devices
+        EiDevice.get_type_pointer(),
+        // How often new data is sampled in ms. (100Hz = every 10 ms.)
+        ei_config_get_config()->sample_interval_ms,
+        // The axes which you'll use. The units field needs to comply to SenML units (see https://www.iana.org/assignments/senml/senml.xhtml)
+        { { "accX", "m/s2" }, { "accY", "m/s2" }, { "accZ", "m/s2" }, 
+        /*{ "gyrX", "dps" }, { "gyrY", "dps" }, { "gyrZ", "dps" } */},        
+    };	
     
-    // EiDevice.set_state(eiStateErasingFlash);
-    // ei_sampler_start_sampling(&payload, SIZEOF_N_AXIS_SAMPLED);
-    // EiDevice.set_state(eiStateIdle);
+    EiDevice.set_state(eiStateErasingFlash);
+    ei_sampler_start_sampling(&payload, SIZEOF_N_AXIS_SAMPLED);
+    EiDevice.set_state(eiStateIdle);
 
-    return false;
+    return true;
 }
 
 /* Static functions -------------------------------------------------------- */

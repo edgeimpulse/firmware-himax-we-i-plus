@@ -4,7 +4,7 @@
 /* Include ----------------------------------------------------------------- */
 #include <stdint.h>
 
-#define ETA_FS_BLOCK_ERASE_TIME_MS		90
+#define HIMAX_FS_BLOCK_ERASE_TIME_MS		90
 
 /** Eta fs return values */
 typedef enum

@@ -27,6 +27,7 @@
 /* Include ----------------------------------------------------------------- */
 #include "qcbor.h"
 #include <stdio.h>
+#include "time.h"
 #ifdef __MBED__
 #include "mbed.h"
 
