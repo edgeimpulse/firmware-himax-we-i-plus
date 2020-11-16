@@ -200,10 +200,67 @@ void run_nn(bool debug) {
 
     ei_microphone_inference_end();
 }
+
+#elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
+
+static int get_image_data(size_t offset, size_t length, float *out_ptr) {
+    
+    //copy image data here to out_ptr
+    for(size_t i = 0; i < length; i++) {
+        *(out_ptr + i) = 0.f;
+    }
+
+    return 0;
+}
+
+void run_nn(bool debug) {
+
+    // summary of inferencing settings (from model_metadata.h)
+    ei_printf("Inferencing settings:\n");
+    ei_printf("\tInterval: %.4f ms.\n", (float)EI_CLASSIFIER_INTERVAL_MS);
+    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
+    ei_printf("\tSample length: %d ms.\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT / 16);
+    ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
+
+
+    while(1) {
+
+
+
+        ei::signal_t signal;
+        signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
+        signal.get_data = &get_image_data;
+
+        // run the impulse: DSP, neural network and the Anomaly algorithm
+        ei_impulse_result_t result = { 0 };
+        EI_IMPULSE_ERROR ei_error = run_classifier(&signal, &result, debug);
+        if (ei_error != EI_IMPULSE_OK) {
+            ei_printf("Failed to run impulse (%d)\n", ei_error);
+            break;
+        }
+
+        // print the predictions
+        ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
+                  result.timing.dsp, result.timing.classification, result.timing.anomaly);
+        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
+            ei_printf("    %s: \t%f\r\n", result.classification[ix].label, result.classification[ix].value);
+        }
+#if EI_CLASSIFIER_HAS_ANOMALY == 1
+        ei_printf("    anomaly score: %f\r\n", result.anomaly);
+#endif
+
+
+    }
+
+}
 #endif
 
 void run_nn_normal(void) {
     run_nn(false);
+
+
+
+
 }
 
 void run_nn_debug(void) {

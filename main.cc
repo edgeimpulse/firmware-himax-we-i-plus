@@ -43,51 +43,41 @@ int main(void)
         "Hello from Edge Impulse Device SDK.\r\n"
         "Compiled on %s %s\r\n", __DATE__, __TIME__);
 
-    /* Setup the inertial sensor */
-    if (ei_inertial_init() == false) {
-        ei_printf("Inertial sensor communication error occured\r\n");
-    }
-
-    /* Intialize configuration */
-    static ei_config_ctx_t config_ctx = {0};
-    config_ctx.get_device_id = EiDevice.get_id_function();
-    config_ctx.get_device_type = EiDevice.get_type_function();
-    config_ctx.wifi_connection_status = EiDevice.get_wifi_connection_status_function();
-    config_ctx.wifi_present = EiDevice.get_wifi_present_status_function();
-    config_ctx.load_config = &ei_himax_fs_load_config;
-    config_ctx.save_config = &ei_himax_fs_save_config;
-    config_ctx.list_files = NULL;
-    config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
-
-    EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
-
-    if (cr != EI_CONFIG_OK) {
-        ei_printf("Failed to initialize configuration (%d)\n", cr);
-    } 
-    else {
-        ei_printf("Loaded configuration\n");
-    }
-
-    /* Setup the command line commands */
-    ei_at_register_generic_cmds();
-    // ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
-    // ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
-    ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
-
-
-    // while(1) {
-
-    // 	if(hx_drv_accelerometer_available_count() > 0) {
-    // 		float x, y, z;
-
-    // 		hx_drv_accelerometer_receive(&x, &y, &z);
-
-    // 		ei_printf("%f\t%f\t%f\r\n", x, y, z);
-    // 	}
+    // /* Setup the inertial sensor */
+    // if (ei_inertial_init() == false) {
+    //     ei_printf("Inertial sensor communication error occured\r\n");
     // }
 
+    // /* Intialize configuration */
+    // static ei_config_ctx_t config_ctx = {0};
+    // config_ctx.get_device_id = EiDevice.get_id_function();
+    // config_ctx.get_device_type = EiDevice.get_type_function();
+    // config_ctx.wifi_connection_status = EiDevice.get_wifi_connection_status_function();
+    // config_ctx.wifi_present = EiDevice.get_wifi_present_status_function();
+    // config_ctx.load_config = &ei_himax_fs_load_config;
+    // config_ctx.save_config = &ei_himax_fs_save_config;
+    // config_ctx.list_files = NULL;
+    // config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
 
-    ei_command_line_handle(0);
+    // EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
+
+    // if (cr != EI_CONFIG_OK) {
+    //     ei_printf("Failed to initialize configuration (%d)\n", cr);
+    // } 
+    // else {
+    //     ei_printf("Loaded configuration\n");
+    // }
+
+    // /* Setup the command line commands */
+    // ei_at_register_generic_cmds();
+    // // ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
+    // // ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
+    // ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
+
+
+	run_nn_debug();
+
+    // ei_command_line_handle(0);
 
 	return 0;
 }
