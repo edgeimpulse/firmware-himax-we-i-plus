@@ -307,7 +307,7 @@ c_callback_read_sample_buffer EiDeviceHimax::get_read_sample_buffer_function(voi
  */
 void ei_command_line_handle(void *args)
 {
-    // ei_microphone_init();
+    ei_microphone_init();
     uint8_t character;
     while (1) {
         hx_drv_uart_getchar(&character);

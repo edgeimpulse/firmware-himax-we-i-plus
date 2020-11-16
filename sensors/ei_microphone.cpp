@@ -134,6 +134,8 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
     }
 }
 
+static int32_t time_prev = 0, time_cur = 0;
+
 /**
  * @brief      Check DSP semaphores, when ready get sample buffer that belongs
  *             to the semaphore.
@@ -141,19 +143,19 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
  */
 static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
 {
-    // struct frameEvarg evArg;
-
-    // xQueueReceive(frameEv, &evArg, portMAX_DELAY);
-    
-    /* Copy data in local buf and gain 6dB */
-    // for(int i = 0; i < evArg.flen; i++) {
-    //     audio_buffer[i] = *((int16_t *)evArg.fptr + i) << 1;
-    // }
 
     hx_drv_mic_data_config_t mic_config;
-    hx_drv_mic_capture(&mic_config);
 
-    callback((void *)&mic_config.data_address, mic_config.data_size << 1);
+    while(time_cur == time_prev) {
+        if(hx_drv_mic_timestamp_get(&time_cur) != HX_DRV_LIB_PASS)
+            return ;
+    }
+    ei_printf("timestamps: %d %d\r\n", time_prev, time_cur);
+    time_prev = time_cur;
+   
+    hx_drv_mic_capture(&mic_config);
+    ei_printf("mic: %X %d\r\n", mic_config.data_address, mic_config.data_size);
+    callback((void *)mic_config.data_address, mic_config.data_size);
 }
 
 
@@ -413,6 +415,11 @@ bool ei_microphone_sample_start(void)
     }
     record_ready = true;
     EiDevice.set_state(eiStateSampling);
+
+   if(hx_drv_mic_timestamp_get(&time_prev) != HX_DRV_LIB_PASS)
+       return false;
+   else
+       time_cur = time_prev;
 
     while(record_ready == true) {
         get_dsp_data(audio_buffer_callback);

@@ -82,7 +82,7 @@ int main(void)
 
     // 		hx_drv_accelerometer_receive(&x, &y, &z);
 
-    // 		ei_printf("Acc: %f %f %f\r\n", x, y, z);
+    // 		ei_printf("%f\t%f\t%f\r\n", x, y, z);
     // 	}
     // }
 
