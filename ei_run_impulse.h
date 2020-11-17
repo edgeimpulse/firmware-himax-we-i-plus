@@ -26,5 +26,6 @@
 /* Prototypes -------------------------------------------------------------- */
 void run_nn_normal(void);
 void run_nn_debug(void);
+void run_nn_continuous_normal(void);
 
 #endif

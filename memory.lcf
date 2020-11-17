@@ -88,7 +88,7 @@ SECTIONS {
 	} > DCCM
   
   GROUP : {
-    .heap? ALIGN(8) SIZE(65536): {}
+    .heap? ALIGN(8) SIZE(65536 << 1): {}
     .stack ALIGN(8) SIZE(8192): {}
   } >DCCM
   

@@ -314,9 +314,14 @@ static EI_IMPULSE_ERROR inference_tflite_setup(uint64_t *ctx_start_ms, TfLiteTen
         ei_printf("Failed to allocate TFLite arena (error code %d)\n", init_status);
         return EI_IMPULSE_TFLITE_ARENA_ALLOC_FAILED;
     }
-#else
+#else    
     // Create an area of memory to use for input, output, and intermediate arrays.
-    uint8_t *tensor_arena = (uint8_t*)ei_aligned_malloc(16, EI_CLASSIFIER_TFLITE_ARENA_SIZE);
+    //uint8_t *tensor_arena = (uint8_t*)ei_aligned_malloc(16, EI_CLASSIFIER_TFLITE_ARENA_SIZE);
+    
+    #pragma Bss(".tensor_arena")
+    uint8_t tensor_arena[EI_CLASSIFIER_TFLITE_ARENA_SIZE];
+    #pragma Bss()
+
     if (tensor_arena == NULL) {
         ei_printf("Failed to allocate TFLite arena (%d bytes)\n", EI_CLASSIFIER_TFLITE_ARENA_SIZE);
         return EI_IMPULSE_TFLITE_ARENA_ALLOC_FAILED;
@@ -347,7 +352,7 @@ static EI_IMPULSE_ERROR inference_tflite_setup(uint64_t *ctx_start_ms, TfLiteTen
                 "Model provided is schema version %d not equal "
                 "to supported version %d.",
                 model->version(), TFLITE_SCHEMA_VERSION);
-            ei_aligned_free(tensor_arena);
+            // ei_aligned_free(tensor_arena);
             return EI_IMPULSE_TFLITE_ERROR;
         }
     }
@@ -375,7 +380,7 @@ static EI_IMPULSE_ERROR inference_tflite_setup(uint64_t *ctx_start_ms, TfLiteTen
     TfLiteStatus allocate_status = interpreter->AllocateTensors();
     if (allocate_status != kTfLiteOk) {
         error_reporter->Report("AllocateTensors() failed");
-        ei_aligned_free(tensor_arena);
+        // ei_aligned_free(tensor_arena);
         return EI_IMPULSE_TFLITE_ERROR;
     }
 
@@ -430,7 +435,7 @@ static EI_IMPULSE_ERROR inference_tflite_run(uint64_t ctx_start_ms,
     TfLiteStatus invoke_status = interpreter->Invoke();
     if (invoke_status != kTfLiteOk) {
         error_reporter->Report("Invoke failed (%d)\n", invoke_status);
-        ei_aligned_free(tensor_arena);
+        // ei_aligned_free(tensor_arena);
         return EI_IMPULSE_TFLITE_ERROR;
     }
     free(interpreter);
@@ -465,7 +470,7 @@ static EI_IMPULSE_ERROR inference_tflite_run(uint64_t ctx_start_ms,
 #if (EI_CLASSIFIER_COMPILED == 1)
     trained_model_reset(ei_aligned_free);
 #else
-    ei_aligned_free(tensor_arena);
+    // ei_aligned_free(tensor_arena);
 #endif
 
     if (ei_run_impulse_check_canceled() == EI_IMPULSE_CANCELED) {

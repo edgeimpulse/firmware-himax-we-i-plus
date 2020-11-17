@@ -50,12 +50,6 @@ typedef struct {
 } inference_t;
 
 
-/* Extern prototypes declerations ------------------------------------------ */
-// typedef void (*tPCMFrameCb)(void *ptr, void *buf, uint16_t blen);
-// extern "C" int ecm3532_pdm_init(tPdmcfg *sPdm, tPCMFrameCb fPcmCb, void *vCbptr);
-// extern "C" int ecm3532_start_pdm_stream(uint8_t u8Chan);
-// extern "C" int ecm3532_stop_pdm_stream(uint8_t u8Chan);
-
 extern ei_config_t *ei_config_get_config();
 
 /* Dummy functions for sensor_aq_ctx type */
@@ -76,6 +70,7 @@ static uint32_t samples_required;
 static uint32_t current_sample;
 
 static inference_t inference;
+static int32_t hx_timestamp_prev = 0, hx_timestamp_cur = 0;
 
 static unsigned char ei_mic_ctx_buffer[1024];
 static sensor_aq_signing_ctx_t ei_mic_signing_ctx;
@@ -134,7 +129,7 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
     }
 }
 
-static int32_t time_prev = 0, time_cur = 0;
+
 
 /**
  * @brief      Check DSP semaphores, when ready get sample buffer that belongs
@@ -145,17 +140,25 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
 {
 
     hx_drv_mic_data_config_t mic_config;
+    int16_t *buffer;
 
-    while(time_cur == time_prev) {
-        if(hx_drv_mic_timestamp_get(&time_cur) != HX_DRV_LIB_PASS)
+    while(hx_timestamp_cur == hx_timestamp_prev) {
+        if(hx_drv_mic_timestamp_get(&hx_timestamp_cur) != HX_DRV_LIB_PASS)
             return ;
-    }
-    ei_printf("timestamps: %d %d\r\n", time_prev, time_cur);
-    time_prev = time_cur;
+    }    
+    hx_timestamp_prev = hx_timestamp_cur;
    
-    hx_drv_mic_capture(&mic_config);
-    ei_printf("mic: %X %d\r\n", mic_config.data_address, mic_config.data_size);
-    callback((void *)mic_config.data_address, mic_config.data_size);
+    hx_drv_mic_capture_dual(&mic_config);
+
+    buffer = (int16_t *)mic_config.data_address;
+
+    /* Only use 1 channel of audio */
+    for(int i = 0; i < mic_config.data_size >> 2; i++) {
+   
+        buffer[i] = buffer[i << 1];
+    }
+
+    callback((void *)mic_config.data_address, mic_config.data_size >> 1);
 }
 
 
@@ -301,7 +304,6 @@ bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bo
 
 bool ei_microphone_inference_start(uint32_t n_samples)
 {
-
     inference.buffers[0] = (int16_t *)malloc(n_samples * sizeof(int16_t));
 
     if(inference.buffers[0] == NULL) {
@@ -381,11 +383,7 @@ bool ei_microphone_inference_end(void)
  * Sample raw data
  */
 bool ei_microphone_sample_start(void)
-{
-    // this sensor does not have settable interval...
-    // ei_config_set_sample_interval(static_cast<float>(1000) / static_cast<float>(AUDIO_SAMPLING_FREQUENCY));
-    int sample_length_blocks;
-
+{    
     ei_printf("Sampling settings:\n");
     ei_printf("\tInterval: "); (ei_printf_float((float)ei_config_get_config()->sample_interval_ms));ei_printf(" ms.\n");
     ei_printf("\tLength: %lu ms.\n", ei_config_get_config()->sample_length_ms);
@@ -416,16 +414,16 @@ bool ei_microphone_sample_start(void)
     record_ready = true;
     EiDevice.set_state(eiStateSampling);
 
-   if(hx_drv_mic_timestamp_get(&time_prev) != HX_DRV_LIB_PASS)
+   if(hx_drv_mic_timestamp_get(&hx_timestamp_prev) != HX_DRV_LIB_PASS)
        return false;
    else
-       time_cur = time_prev;
+       hx_timestamp_cur = hx_timestamp_prev;
 
     while(record_ready == true) {
         get_dsp_data(audio_buffer_callback);
     };
 
-    // ecm3532_stop_pdm_stream(sPdmcfg.pdmNum);
+    hx_drv_mic_off();
 
     int ctx_err = ei_mic_ctx.signature_ctx->finish(ei_mic_ctx.signature_ctx, ei_mic_ctx.hash_buffer.buffer);
     if (ctx_err != 0) {

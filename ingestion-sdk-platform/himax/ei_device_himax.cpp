@@ -307,12 +307,12 @@ c_callback_read_sample_buffer EiDeviceHimax::get_read_sample_buffer_function(voi
  */
 void ei_command_line_handle(void *args)
 {
-    ei_microphone_init();
     uint8_t character;
+
+    ei_microphone_init();
+
     while (1) {
-        hx_drv_uart_getchar(&character);
-        
-        if(character) {
+        if (hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
             rx_callback(character);
         }
     }
@@ -329,16 +329,24 @@ bool ei_user_invoke_stop(void)
     bool stop_found = false;
     uint8_t character;
 
-    do {
-        hx_drv_uart_getchar(&character);
-        
+    while(hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
         if(character == 'b') {
         
             stop_found = true;
             break;
-        }
+        }        
     }
-    while(character);
+
+    // do {
+    //     hx_drv_uart_getchar(&character);
+        
+    //     if(character == 'b') {
+        
+    //         stop_found = true;
+    //         break;
+    //     }
+    // }
+    // while(character);
 
     return stop_found;
 }
