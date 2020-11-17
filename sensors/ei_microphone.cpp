@@ -83,11 +83,6 @@ static sensor_aq_ctx ei_mic_ctx = {
     NULL,
 };
 
-// static QueueHandle_t frameEv = NULL;
-// static int16_t audio_buffer[AUDIO_DSP_SAMPLE_BUFFER_SIZE];
-// static tPdmcfg sPdmcfg;
-
-
 /* Private functions ------------------------------------------------------- */
 
 /**
@@ -130,10 +125,10 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
 }
 
 
-
 /**
- * @brief      Check DSP semaphores, when ready get sample buffer that belongs
- *             to the semaphore.
+ * @brief      Capture 2 channel pdm data every 100 ms. 
+ *             Waits for new data to be ready.
+ *             Creates a 1 channel pdm array and calls callback function
  * @param[in]  callback  Callback needs to handle the audio samples
  */
 static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
@@ -153,14 +148,12 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
     buffer = (int16_t *)mic_config.data_address;
 
     /* Only use 1 channel of audio */
-    for(int i = 0; i < mic_config.data_size >> 2; i++) {
-   
+    for (int i = 0; i < mic_config.data_size >> 2; i++) {
         buffer[i] = buffer[i << 1];
     }
 
     callback((void *)mic_config.data_address, mic_config.data_size >> 1);
 }
-
 
 static void finish_and_upload(char *filename, uint32_t sample_length_ms) {    
 
@@ -257,15 +250,6 @@ static bool create_header(void)
     return true;
 }
 
-// static void FrameCb(void *ptr, void *buf, uint16_t blen)
-// {
-//     if(record_ready == true) {
-//         struct frameEvarg evArg;
-//         evArg.fptr = (int)buf;
-//         evArg.flen = blen;
-//         xQueueSendToFront(frameEv, &evArg, portMAX_DELAY);
-//     }
-// }
 
 /* Public functions -------------------------------------------------------- */
 
@@ -362,8 +346,6 @@ int ei_microphone_audio_signal_get_data(size_t offset, size_t length, float *out
         *(out_ptr + i) = (float)inference.buffers[inference.buf_select ^ 1][offset + i]
         / ((float)(1 << 15));
     }
-
-    // arm_q15_to_float(&inference.buffers[inference.buf_select ^ 1][offset], out_ptr, length);
 
     return 0;
 }

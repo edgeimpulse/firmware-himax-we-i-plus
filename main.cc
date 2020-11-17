@@ -23,24 +23,18 @@
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
 #include "ei_himax_fs_commands.h"
-// #include "ei_run_classifier.h"
 #include "ei_inertialsensor.h"
 #include "ei_run_impulse.h"
-
 #include "at_cmds.h"
 
 #include "hx_drv_tflm.h"
-
-
 
 int main(void)
 {
 	hx_drv_uart_initial(UART_BR_115200);
 	hx_drv_tick_start();
 
-
-    ei_printf(
-        "Hello from Edge Impulse Device SDK.\r\n"
+    ei_printf("Hello from Edge Impulse Device SDK.\r\n"
         "Compiled on %s %s\r\n", __DATE__, __TIME__);
 
     /* Setup the inertial sensor */
@@ -63,8 +57,7 @@ int main(void)
 
     if (cr != EI_CONFIG_OK) {
         ei_printf("Failed to initialize configuration (%d)\n", cr);
-    } 
-    else {
+    } else {
         ei_printf("Loaded configuration\n");
     }
 
@@ -75,20 +68,7 @@ int main(void)
     ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
 
-
-    // while(1) {
-
-    // 	if(hx_drv_accelerometer_available_count() > 0) {
-    // 		float x, y, z;
-
-    // 		hx_drv_accelerometer_receive(&x, &y, &z);
-
-    // 		ei_printf("%f\t%f\t%f\r\n", x, y, z);
-    // 	}
-    // }
-
-
     ei_command_line_handle(0);
 
-	return 0;
+    return 0;
 }

@@ -59,7 +59,7 @@ static bool acc_data_callback(const void *sample_buf, uint32_t byteLength)
  */
 void run_nn(bool debug) {
     uint64_t s_time;
-    bool stop_inferencing = false;
+
     // summary of inferencing settings (from model_metadata.h)
     ei_printf("Inferencing settings:\n");
     ei_printf("\tInterval: %.4f ms\n", (float)EI_CLASSIFIER_INTERVAL_MS);
@@ -129,8 +129,6 @@ void run_nn(bool debug) {
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_MICROPHONE
 void run_nn(bool debug) {
 
-    //extern signal_t ei_microphone_get_signal();
-    bool stop_inferencing = false;
     // summary of inferencing settings (from model_metadata.h)
     ei_printf("Inferencing settings:\n");
     ei_printf("\tInterval: %.4f ms.\n", (float)EI_CLASSIFIER_INTERVAL_MS);
