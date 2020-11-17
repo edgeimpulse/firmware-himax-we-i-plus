@@ -70,8 +70,9 @@ int main(void)
 
     /* Setup the command line commands */
     ei_at_register_generic_cmds();
-    // ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
-    // ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
+    ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
+    ei_at_cmd_register("RUNIMPULSECONT", "Run the impulse", run_nn_continuous_normal);
+    ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
 
 

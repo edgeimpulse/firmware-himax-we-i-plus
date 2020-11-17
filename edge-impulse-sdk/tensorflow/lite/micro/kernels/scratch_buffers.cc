@@ -46,7 +46,7 @@ namespace micro {
 
 #ifndef SCRATCH_MEM_Z_SIZE
 #ifdef core_config_dccm_size
-#define SCRATCH_MEM_Z_SIZE ((core_config_dccm_size) / 4)
+#define SCRATCH_MEM_Z_SIZE ((core_config_dccm_size) / 10)
 #else
 #define SCRATCH_MEM_Z_SIZE (0)
 #endif

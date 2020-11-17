@@ -304,7 +304,7 @@ static void at_read_raw(char *start_s, char *length_s) {
     int count = 0;
 
     for(; start < length; start += 32) {
-        // ei_eta_fs_read_sample_data(buffer, start, 32);
+        ei_himax_fs_read_sample_data(buffer, start, 32);
 
         int n_display_bytes = (length - start) < 32 ? (length - start) : 32;
         for(int i=0; i<n_display_bytes; i++) {
