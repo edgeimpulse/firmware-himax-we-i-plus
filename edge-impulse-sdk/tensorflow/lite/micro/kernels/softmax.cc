@@ -1,8 +1,7 @@
-// Patched by Edge Impulse to include reference, CMSIS-NN and ARC kernels
+// Patched by Edge Impulse to include both reference and CMSIS-NN kernels
 #include "../../../../classifier/ei_classifier_config.h"
-#if 0 == 1
-/* noop */
-#elif EI_CLASSIFIER_TFLITE_ENABLE_CMSIS_NN == 1
+#if EI_CLASSIFIER_TFLITE_ENABLE_CMSIS_NN == 1
+
 /* Copyright 2020 The TensorFlow Authors. All Rights Reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
