@@ -80,11 +80,11 @@ void run_nn(bool debug) {
             break;
         }
 
-        // if(ei_user_invoke_stop()) {
-        //     ei_printf("Inferencing stopped by user\r\n");
-        //     EiDevice.set_state(eiStateIdle);
-        //     break;
-        // }
+        if(ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
 
         ei_printf("Sampling...\n");
         s_time = ei_read_timer_ms();
@@ -119,11 +119,11 @@ void run_nn(bool debug) {
 #if EI_CLASSIFIER_HAS_ANOMALY == 1
         ei_printf("    anomaly score: %f\r\n", result.anomaly);
 #endif
-        // if(ei_user_invoke_stop()) {
-        //     ei_printf("Inferencing stopped by user\r\n");
-        //     EiDevice.set_state(eiStateIdle);
-        //     break;
-        // }
+        if(ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
     }
 }
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_MICROPHONE
@@ -153,11 +153,11 @@ void run_nn(bool debug) {
             break;
         }
         
-        // if(ei_user_invoke_stop()) {
-        //     ei_printf("Inferencing stopped by user\r\n");
-        //     EiDevice.set_state(eiStateIdle);
-        //     break;
-        // }
+        if(ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
         
         ei_printf("Recording...\n");
 
@@ -191,11 +191,11 @@ void run_nn(bool debug) {
         ei_printf("    anomaly score: %f\r\n", result.anomaly);
 #endif
 
-        // if(ei_user_invoke_stop()) {
-        //     ei_printf("Inferencing stopped by user\r\n");
-        //     EiDevice.set_state(eiStateIdle);
-        //     break;
-        // }
+        if(ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
     }
 
     ei_microphone_inference_end();
@@ -258,10 +258,10 @@ void run_nn_continuous(bool debug)
             print_results = 0;
         }
 
-        // if(ei_user_invoke_stop()) {
-        //     ei_printf("Inferencing stopped by user\r\n");
-        //     break;
-        // }
+        if(ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            break;
+        }
     }
 
     ei_microphone_inference_end();

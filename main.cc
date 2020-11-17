@@ -35,7 +35,7 @@
 
 int main(void)
 {
-	hx_drv_uart_initial();
+	hx_drv_uart_initial(UART_BR_115200);
 	hx_drv_tick_start();
 
 
