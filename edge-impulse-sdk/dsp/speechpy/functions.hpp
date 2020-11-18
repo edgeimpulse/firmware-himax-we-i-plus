@@ -86,7 +86,7 @@ public:
      * @param middle
      * @param right
      */
-    static int triangle(float *x, size_t x_size, int left, int middle, int right) {
+    static void triangle(float *x, size_t x_size, int left, int middle, int right) {
         EI_DSP_MATRIX(out, 1, x_size);
 
         for (size_t ix = 0; ix < x_size; ix++) {
@@ -100,8 +100,6 @@ public:
         }
 
         memcpy(x, out.buffer, x_size * sizeof(float));
-
-        return EIDSP_OK;
     }
 };
 
