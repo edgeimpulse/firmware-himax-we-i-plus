@@ -271,11 +271,11 @@ bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bo
                   start_delay_ms < 2000 ? 2000 : start_delay_ms);
     }
 
+    hx_drv_mic_on();
+
     if (start_delay_ms < 2000) {
         EiDevice.delay_ms(2000 - start_delay_ms);
     }
-
-    hx_drv_mic_on();
 
     create_header();
 

@@ -9,7 +9,7 @@
 #define RAM				2
 
 #define SAMPLE_MEMORY			RAM
-#define SIZE_RAM_BUFFER			(4096*10)
+#define SIZE_RAM_BUFFER			(0x0001C800)
 
 
 /* Private function prototypes --------------------------------------------- */
@@ -24,7 +24,9 @@ static void flash_program_page(uint32_t byteAddress, uint8_t *page, uint32_t pag
 static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t readBytes);
 
 #if(SAMPLE_MEMORY == RAM)
-static uint8_t ram_memory[SIZE_RAM_BUFFER];
+#pragma Bss(".ram_memory")
+uint8_t ram_memory[SIZE_RAM_BUFFER];
+#pragma Bss()
 #endif
 
 /** 32-bit align write buffer size */
@@ -47,7 +49,7 @@ int ei_himax_fs_load_config(uint32_t *config, uint32_t config_size)
 	}
 
 	#if(SAMPLE_MEMORY == RAM)
-	
+
 	return retVal;
 
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
@@ -138,7 +140,6 @@ int ei_himax_fs_write_samples(const void *sample_buffer, uint32_t address_offset
 	else if(sample_buffer == 0) {
 		return HIMAX_FS_CMD_NULL_POINTER;
 	}
-	
 
 	for(int i=0;  i<n_word_samples; i++) {
 		ram_memory[address_offset + i] = *((char *)sample_buffer + i);
@@ -202,7 +203,7 @@ int ei_himax_fs_read_sample_data(void *sample_buffer, uint32_t address_offset, u
 uint32_t ei_himax_fs_get_block_size(void)
 {
 	#if(SAMPLE_MEMORY == RAM)
-	return 4096;
+	return SIZE_RAM_BUFFER;
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
 	return MX25R_SECTOR_SIZE;
 	#endif
@@ -216,7 +217,7 @@ uint32_t ei_himax_fs_get_block_size(void)
 uint32_t ei_himax_fs_get_n_available_sample_blocks(void)
 {
 	#if(SAMPLE_MEMORY == RAM)
-	return 10;
+	return 2;
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
 	return (MX25R_CHIP_SIZE - MX25R_BLOCK64_SIZE) / MX25R_SECTOR_SIZE;
 	#endif
