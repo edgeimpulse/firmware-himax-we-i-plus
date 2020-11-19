@@ -26,7 +26,7 @@
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 // #include "ei_microphone.h"
 #include "ei_inertialsensor.h"
-#include "hx_drv_tflm.h"
+#include "ei_camera.h"
 
 
 #if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_ACCELEROMETER
@@ -205,14 +205,14 @@ void run_nn(bool debug) {
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
 
 static int8_t image_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT];
-static hx_drv_sensor_image_config_t g_pimg_config;
 
 static int get_image_data(size_t offset, size_t length, float *out_ptr) {
 
     for(size_t i = 0; i < length; i++) {
         uint8_t mono_data = (uint8_t)image_data[offset + i];
-        *(out_ptr + i) = (float)((mono_data << 16) | (mono_data << 8) | (mono_data));
+        out_ptr[i] = (float)((mono_data << 16) | (mono_data << 8) | (mono_data));
     }
+
     return 0;
 }
 
@@ -225,12 +225,9 @@ void run_nn(bool debug) {
     ei_printf("\tSample length: %d ms.\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT / 16);
     ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
 
-    if (hx_drv_sensor_initial(&g_pimg_config) != HX_DRV_LIB_PASS) {
+    if (ei_camera_init() == false) {
         ei_printf("Failed to initialize image sensor\r\n");
     }
-
-    if(hx_drv_spim_init() != HX_DRV_LIB_PASS)
-        return;
 
     while(1) {
 
@@ -238,14 +235,8 @@ void run_nn(bool debug) {
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
         signal.get_data = &get_image_data;
 
-        if (hx_drv_sensor_capture(&g_pimg_config) != HX_DRV_LIB_PASS) {
-            ei_printf("Failed to capture image data\r\n");
-        }
-
-        if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
-                            g_pimg_config.img_width, g_pimg_config.img_height,
-                                 image_data, EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT) != HX_DRV_LIB_PASS) {
-            ei_printf("Failed to rescale image data\r\n");
+        if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
+            ei_printf("Failed to capture image\r\n");
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm
