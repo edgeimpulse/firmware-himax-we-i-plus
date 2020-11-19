@@ -204,12 +204,14 @@ void run_nn(bool debug) {
 
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
 
-int8_t image_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT * 4];
-hx_drv_sensor_image_config_t g_pimg_config;
+static int8_t image_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT];
+static hx_drv_sensor_image_config_t g_pimg_config;
 
 static int get_image_data(size_t offset, size_t length, float *out_ptr) {
+
     for(size_t i = 0; i < length; i++) {
-        *(out_ptr + i) = (float)*(image_data + (offset + i)*4);
+        uint8_t mono_data = (uint8_t)image_data[offset + i];
+        *(out_ptr + i) = (float)((mono_data << 16) | (mono_data << 8) | (mono_data));
     }
     return 0;
 }
