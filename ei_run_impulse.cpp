@@ -284,9 +284,8 @@ void run_nn(bool debug) {
 
     // summary of inferencing settings (from model_metadata.h)
     ei_printf("Inferencing settings:\n");
-    ei_printf("\tInterval: %.4f ms.\n", (float)EI_CLASSIFIER_INTERVAL_MS);
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-    ei_printf("\tSample length: %d ms.\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT / 16);
+    ei_printf("\tImage resolution: %dx%d\n", EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
+    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);    
     ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
 
     if (ei_camera_init() == false) {
@@ -295,6 +294,11 @@ void run_nn(bool debug) {
     }
 
     while(1) {
+
+        // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
+        if (ei_sleep(2000) != EI_IMPULSE_OK) {
+            break;
+        }
 
         ei::signal_t signal;
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
@@ -324,11 +328,12 @@ void run_nn(bool debug) {
         ei_printf("    anomaly score: %f\r\n", result.anomaly);
 #endif
 
-
+        if (ei_user_invoke_stop()) {
+            ei_printf("Inferencing stopped by user\r\n");
+            break;
+        }
     }
-
 }
-
 #endif
 
 void run_nn_normal(void) {

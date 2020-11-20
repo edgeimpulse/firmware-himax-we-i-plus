@@ -35,39 +35,39 @@
 #define EI_CLASSIFIER_DATATYPE_FLOAT32           1
 #define EI_CLASSIFIER_DATATYPE_INT8              9
 
-#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        637
-#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           16000
+#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        1024
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           1024
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
-#define EI_CLASSIFIER_INPUT_WIDTH                0
-#define EI_CLASSIFIER_INPUT_HEIGHT               0
-#define EI_CLASSIFIER_INTERVAL_MS                0.0625
-#define EI_CLASSIFIER_OUT_TENSOR_NAME            "y_pred/Softmax_1:0"
+#define EI_CLASSIFIER_INPUT_WIDTH                32
+#define EI_CLASSIFIER_INPUT_HEIGHT               32
+#define EI_CLASSIFIER_INTERVAL_MS                0
+#define EI_CLASSIFIER_OUT_TENSOR_NAME            "dense_1/Softmax_2:0"
 #define EI_CLASSIFIER_LABEL_COUNT                3
 #define EI_CLASSIFIER_HAS_ANOMALY                0
-#define EI_CLASSIFIER_FREQUENCY                  16000
+#define EI_CLASSIFIER_FREQUENCY                  0
 
-#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          10316
+#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          145196
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
-#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.04788624495267868
-#define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     13
+#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.003921568859368563
+#define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -128
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE     EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED     1
 #define EI_CLASSIFIER_TFLITE_OUTPUT_SCALE        0.00390625
 #define EI_CLASSIFIER_TFLITE_OUTPUT_ZEROPOINT    -128
 #define EI_CLASSIFIER_INFERENCING_ENGINE         EI_CLASSIFIER_TFLITE
 #define EI_CLASSIFIER_COMPILED                   1
-#define EI_CLASSIFIER_SENSOR                     EI_CLASSIFIER_SENSOR_MICROPHONE
+#define EI_CLASSIFIER_SENSOR                     EI_CLASSIFIER_SENSOR_CAMERA
 #define EI_CLASSIFIER_HAS_TFLITE_OPS_RESOLVER    1
 
-#define EI_CLASSIFIER_SENSOR                     EI_CLASSIFIER_SENSOR_MICROPHONE
+#define EI_CLASSIFIER_SENSOR                     EI_CLASSIFIER_SENSOR_CAMERA
 #define EI_CLASSIFIER_SLICE_SIZE                 (EI_CLASSIFIER_RAW_SAMPLE_COUNT / EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW)
 #ifndef EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 #define EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW    4
 #endif // EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 
-const char* ei_classifier_inferencing_categories[] = { "no", "noise", "yes" };
+const char* ei_classifier_inferencing_categories[] = { "lamp", "plant", "unknown" };
 
 typedef struct {
     int axes;
@@ -128,18 +128,9 @@ typedef struct {
     const char * spectral_power_edges;
 } ei_dsp_config_spectral_analysis_t;
 
-ei_dsp_config_mfcc_t ei_dsp_config_17 = {
+ei_dsp_config_image_t ei_dsp_config_3 = {
     1,
-    13,
-    0.02000f,
-    0.02000f,
-    32,
-    256,
-    101,
-    300,
-    0,
-    0.98000f,
-    1
+    "Grayscale"
 };
 
 #endif // _EI_CLASSIFIER_MODEL_METADATA_H_
