@@ -24,7 +24,7 @@
 #include "ei_device_himax.h"
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
-// #include "ei_microphone.h"
+#include "ei_microphone.h"
 #include "ei_inertialsensor.h"
 #include "ei_camera.h"
 
@@ -227,6 +227,7 @@ void run_nn(bool debug) {
 
     if (ei_camera_init() == false) {
         ei_printf("Failed to initialize image sensor\r\n");
+        return;
     }
 
     while(1) {
@@ -237,6 +238,7 @@ void run_nn(bool debug) {
 
         if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
             ei_printf("Failed to capture image\r\n");
+            break;
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm
