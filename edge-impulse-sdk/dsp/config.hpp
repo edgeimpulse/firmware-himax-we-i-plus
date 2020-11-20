@@ -64,7 +64,8 @@
 
 #if EIDSP_USE_ASSERTS == 1
 #include <assert.h>
-#define EIDSP_ERR(err_code) printf("ERR: %d (%s)\n", err_code, #err_code); assert(false)
+#include "ei_classifier_porting.h"
+#define EIDSP_ERR(err_code) ei_printf("ERR: %d (%s)\n", err_code, #err_code); assert(false)
 #else // EIDSP_USE_ASSERTS == 0
 #define EIDSP_ERR(err_code) return(err_code)
 #endif
@@ -80,12 +81,6 @@
 #ifndef EIDSP_TRACK_ALLOCATIONS
 #define EIDSP_TRACK_ALLOCATIONS      0
 #endif // EIDSP_TRACK_ALLOCATIONS
-
-// set EIDSP_TRACK_ALLOCATIONS=1 and EIDSP_PRINT_ALLOCATIONS=0
-// to track but not print allocations
-#ifndef EIDSP_PRINT_ALLOCATIONS
-#define EIDSP_PRINT_ALLOCATIONS      1
-#endif
 
 #ifndef EIDSP_SIGNAL_C_FN_POINTER
 #define EIDSP_SIGNAL_C_FN_POINTER    0

@@ -20,10 +20,8 @@
  * SOFTWARE.
  */
 
-#include "../ei_classifier_porting.h"
-#if EI_PORTING_HIMAX == 1
-
 #include "tensorflow/lite/micro/debug_log.h"
+#include "../ei_classifier_porting.h"
 #include <stdio.h>
 #include <stdarg.h>
 
@@ -34,5 +32,3 @@ extern "C"
 void DebugLog(const char* s) {
     ei_printf("%s", s);
 }
-
-#endif // EI_PORTING_HIMAX == 1
