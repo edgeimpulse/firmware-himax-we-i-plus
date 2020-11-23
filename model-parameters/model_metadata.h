@@ -35,19 +35,19 @@
 #define EI_CLASSIFIER_DATATYPE_FLOAT32           1
 #define EI_CLASSIFIER_DATATYPE_INT8              9
 
-#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        1024
-#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           1024
+#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        9216
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           9216
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
-#define EI_CLASSIFIER_INPUT_WIDTH                32
-#define EI_CLASSIFIER_INPUT_HEIGHT               32
+#define EI_CLASSIFIER_INPUT_WIDTH                96
+#define EI_CLASSIFIER_INPUT_HEIGHT               96
 #define EI_CLASSIFIER_INTERVAL_MS                0
 #define EI_CLASSIFIER_OUT_TENSOR_NAME            "dense_1/Softmax_2:0"
-#define EI_CLASSIFIER_LABEL_COUNT                3
+#define EI_CLASSIFIER_LABEL_COUNT                2
 #define EI_CLASSIFIER_HAS_ANOMALY                0
 #define EI_CLASSIFIER_FREQUENCY                  0
 
-#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          145196
+#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          450726
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
 #define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.003921568859368563
@@ -67,7 +67,7 @@
 #define EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW    4
 #endif // EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 
-const char* ei_classifier_inferencing_categories[] = { "lamp", "plant", "unknown" };
+const char* ei_classifier_inferencing_categories[] = { "pen", "unknown" };
 
 typedef struct {
     int axes;
@@ -127,6 +127,14 @@ typedef struct {
     float spectral_peaks_threshold;
     const char * spectral_power_edges;
 } ei_dsp_config_spectral_analysis_t;
+
+typedef struct {
+    int axes;
+    float frame_length;
+    float frame_stride;
+    int fft_length;
+    bool show_axes;
+} ei_dsp_config_spectrogram_t;
 
 ei_dsp_config_image_t ei_dsp_config_3 = {
     1,
