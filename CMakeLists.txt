@@ -73,7 +73,7 @@ set(CMAKE_C_FLAGS "\
 -DNDEBUG \
 -O3 \
 -fno-rtti \
--DSCRATCH_MEM_Z_SIZE=0x10000 \
+-DSCRATCH_MEM_Z_SIZE=0 \
 -DNDEBUG \
 -g \
 -DCPU_ARC \
@@ -87,7 +87,9 @@ set(CMAKE_C_FLAGS "\
 -ffunction-sections \
 -fdata-sections \
 -tcf_core_config \
--DEIDSP_QUANTIZE_FILTERBANK=0")
+-DEIDSP_QUANTIZE_FILTERBANK=0 \
+-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX \
+-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024")
 
 set(CMAKE_CXX_FLAGS "\
 -DTF_LITE_STATIC_MEMORY \
@@ -107,7 +109,9 @@ set(CMAKE_CXX_FLAGS "\
 -fdata-sections \
 -tcf_core_config \
 -DEIDSP_QUANTIZE_FILTERBANK=0 \
--DEI_SENSOR_AQ_STREAM=FILE")
+-DEI_SENSOR_AQ_STREAM=FILE \
+-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX \
+-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024")
 
 
 set(CMAKE_EXE_LINKER_FLAGS_INIT "${LINKER_FLAGS}")
@@ -125,7 +129,7 @@ set(CMAKE_EXE_LINKER_FLAGS "${LINKER_FLAGS} \
 
 
 add_custom_target(image DEPENDS ${PROJECT_NAME}.elf)
-add_custom_command(TARGET image USES_TERMINAL 
+add_custom_command(TARGET image USES_TERMINAL
 	COMMAND cp ${PROJECT_NAME}.elf ../image_gen_linux_v3
 	COMMAND cp ${PROJECT_NAME}.map ../image_gen_linux_v3
 	COMMAND ${CMAKE_COMMAND} ARGS -E chdir ../image_gen_linux_v3 image_gen -e ${PROJECT_NAME}.elf -m ${PROJECT_NAME}.map -o out.img
