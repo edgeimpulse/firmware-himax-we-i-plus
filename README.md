@@ -49,3 +49,42 @@ You'll need the Edge Impulse CLI v1.9.2 or higher. Then flash the binary with:
 ```
 $ himax-flash-tool --firmware-path image_gen_linux_v3/out.img
 ```
+
+## Capturing a 96x96 raw snapshot (locally)
+
+### Requirements
+You'll need:
+
+- **libft4222**
+- `humax-bmp-dump`: grabs the snapshot via FTDI
+- a utility for sending serial commands, e.g. `minicom`
+
+### Instructions
+
+1. Start the `himax-bmp-dump` utility on the host
+
+    ```
+    $ himax-bmp-dump
+    ```
+
+    If a compatible device is found then `himax-bmp-dump` will output the
+    received image to `image_dump.bmp` and also a hexdump to `stdout`.
+
+    NOTE: `himax-bmp-dump` **will not wait indefinitely** and thus may require re-running.
+
+1. Issue the `AT+SNAPSHOT` command via the serial interface, e.g. in `minicom`:
+
+    Output e.g:
+
+    ```
+    > AT+SNAPSHOT
+
+
+            Image resolution: 96x96
+
+            Frame size: 9216
+
+            Created snapshot: Yes
+
+            Transfered snapshot: Yes
+    ```
