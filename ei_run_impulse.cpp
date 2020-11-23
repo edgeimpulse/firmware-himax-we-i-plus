@@ -29,6 +29,18 @@
 #include "ei_camera.h"
 #include "hx_drv_tflm.h"
 #include "bitmap_helpers.h"
+#include "at_base64.h"
+
+static int8_t *snapshot_image_data = NULL;
+static int get_snapshot_image_data(size_t offset, size_t length, float *out_ptr) {
+    for(size_t i = 0; i < length; i++) {
+        int8_t mono_data = (int8_t)snapshot_image_data[offset + i];
+        uint8_t v = (uint8_t)mono_data + 128;
+        out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
+    }
+
+    return 0;
+}
 
 
 #if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_ACCELEROMETER
@@ -51,7 +63,7 @@ static bool acc_data_callback(const void *sample_buf, uint32_t byteLength)
     for(uint32_t i = 0; i < (byteLength / sizeof(float)); i++) {
         acc_buf[acc_sample_count + i] = buffer[i];
     }
-    
+
     return true;
 }
 
@@ -102,7 +114,7 @@ void run_nn(bool debug) {
         signal_t signal;
         int err = numpy::signal_from_buffer(acc_buf, EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, &signal);
         if (err != 0) {
-            ei_printf("ERR: signal_from_buffer failed (%d)\n", err); 
+            ei_printf("ERR: signal_from_buffer failed (%d)\n", err);
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm
@@ -153,13 +165,13 @@ void run_nn(bool debug) {
         if (ei_sleep(2000) != EI_IMPULSE_OK) {
             break;
         }
-        
+
         if(ei_user_invoke_stop()) {
             ei_printf("Inferencing stopped by user\r\n");
             EiDevice.set_state(eiStateIdle);
             break;
         }
-        
+
         ei_printf("Recording...\n");
 
         ei_microphone_inference_reset_buffers();
@@ -245,7 +257,7 @@ void run_nn_continuous(bool debug)
             // print the predictions
             ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
                 result.timing.dsp, result.timing.classification, result.timing.anomaly);
-            for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {            
+            for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
                 ei_printf("    %s: \t", result.classification[ix].label);
                 ei_printf_float(result.classification[ix].value);
                 ei_printf("\r\n");
@@ -270,45 +282,12 @@ void run_nn_continuous(bool debug)
 
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
 
-static int8_t image_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT];
-static uint8_t bmp_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT * 3 + 40 + 14];
-static float aux_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT * 3];
-
-void run_nn_snapshot() {
-
-    ei_printf("\tImage resolution: %dx%d\n", EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-
-    if (ei_camera_init() == false) {
-        ei_printf("Failed to initialize image sensor\r\n");
-        return;
-    }
-
-    if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
-        ei_printf("Failed to capture image\r\n");
-        return;
-    }
-
-    uint32_t ix;
-    for (ix = 0; ix <  EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT; ix++) {
-        uint8_t mono_data = (uint8_t)image_data[ix];
-        aux_data[ix] = (float)(mono_data * 0x010101);
-    }
-
-    int b = create_bitmap_file(bmp_data, aux_data, EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
-    ei_printf("\tCreated snapshot: %s\n", (b==0)? "Yes" : "No");
-
-    b = hx_drv_spim_send((uint32_t)&bmp_data, sizeof(bmp_data), SPI_TYPE_RAW);
-    ei_printf("\tTransfered snapshot: %s\n", (b==0)? "Yes" : "No");
-
-}
-
-
+static int8_t *image_data = NULL;
 static int get_image_data(size_t offset, size_t length, float *out_ptr) {
-
     for(size_t i = 0; i < length; i++) {
-        uint8_t mono_data = (uint8_t)image_data[offset + i];
-        out_ptr[i] = (float)((mono_data << 16) | (mono_data << 8) | (mono_data));
+        int8_t mono_data = (int8_t)image_data[offset + i];
+        uint8_t v = (uint8_t)mono_data + 128;
+        out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
     }
 
     return 0;
@@ -319,11 +298,17 @@ void run_nn(bool debug) {
     // summary of inferencing settings (from model_metadata.h)
     ei_printf("Inferencing settings:\n");
     ei_printf("\tImage resolution: %dx%d\n", EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);    
+    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
     ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
 
     if (ei_camera_init() == false) {
-        ei_printf("Failed to initialize image sensor\r\n");
+        ei_printf("ERR: Failed to initialize image sensor\r\n");
+        return;
+    }
+
+    image_data = (int8_t*)malloc(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
+    if (!image_data) {
+        ei_printf("ERR: Failed to allocate image buffer\r\n");
         return;
     }
 
@@ -367,6 +352,9 @@ void run_nn(bool debug) {
             break;
         }
     }
+
+    free(image_data);
+    image_data = NULL;
 }
 #endif
 
@@ -385,4 +373,116 @@ void run_nn_continuous_normal()
 #else
     ei_printf("Error no continuous classification available for current model\r\n");
 #endif
+}
+
+void run_nn_snapshot(char *width_s, char *height_s) {
+    size_t width = (size_t)atoi(width_s);
+    size_t height = (size_t)atoi(height_s);
+    snapshot_image_data = (int8_t*)calloc(width * height, 1);
+    if (!snapshot_image_data) {
+        ei_printf("ERR: Failed to allocate image buffer\n");
+        return;
+    }
+
+    ei_printf("\tImage resolution: %dx%d\n", width, height);
+
+    if (ei_camera_init() == false) {
+        free(snapshot_image_data);
+        ei_printf("ERR: Failed to initialize image sensor\r\n");
+        return;
+    }
+
+    if (ei_camera_capture(width, height, snapshot_image_data) == false) {
+        free(snapshot_image_data);
+        ei_printf("ERR: Failed to capture image\r\n");
+        return;
+    }
+
+    ei::signal_t signal;
+    signal.total_length = width * height;
+    signal.get_data = &get_snapshot_image_data;
+
+    size_t signal_chunk_size = 1024;
+
+    // loop through the signal
+    float *signal_buf = (float*)malloc(signal_chunk_size * sizeof(float));
+    if (!signal_buf) {
+        free(snapshot_image_data);
+        ei_printf("ERR: Failed to allocate signal buffer\n");
+        return;
+    }
+
+    uint8_t *per_pixel_buffer = (uint8_t*)malloc(513); // 171 x 3 pixels
+    if (!per_pixel_buffer) {
+        free(signal_buf);
+        free(snapshot_image_data);
+        ei_printf("ERR: Failed to allocate per_pixel buffer\n");
+        return;
+    }
+
+    size_t per_pixel_buffer_ix = 0;
+
+    for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
+        size_t items_to_read = signal_chunk_size;
+        if (items_to_read > signal.total_length - ix) {
+            items_to_read = signal.total_length - ix;
+        }
+
+        int r = signal.get_data(ix, items_to_read, signal_buf);
+        if (r != 0) {
+            ei_printf("ERR: Failed to get data from signal (%d)\n", r);
+            break;
+        }
+
+        for (size_t px = 0; px < items_to_read; px++) {
+            uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);
+
+            // grab rgb
+            uint8_t r = static_cast<float>(pixel >> 16 & 0xff);
+            uint8_t g = static_cast<float>(pixel >> 8 & 0xff);
+            uint8_t b = static_cast<float>(pixel & 0xff);
+
+            per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
+            per_pixel_buffer[per_pixel_buffer_ix + 1] = g;
+            per_pixel_buffer[per_pixel_buffer_ix + 2] = b;
+            per_pixel_buffer_ix += 3;
+            if (per_pixel_buffer_ix >= 513) {
+                char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
+                if (!base64_buffer) {
+                    ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (per_pixel_buffer_ix / 3 * 4) + 4);
+                    break;
+                }
+
+                int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+                free(base64_buffer);
+                if (r < 0) {
+                    ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+                    break;
+                }
+
+                ei_write_string(base64_buffer, r);
+                per_pixel_buffer_ix = 0;
+            }
+        }
+    }
+
+    char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
+    if (!base64_buffer) {
+        ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (per_pixel_buffer_ix / 3 * 4) + 4);
+        return;
+    }
+
+    int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+    free(base64_buffer);
+    if (r < 0) {
+        ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+        return;
+    }
+
+    ei_write_string(base64_buffer, r);
+    ei_printf("\r\n");
+
+    free(signal_buf);
+    free(snapshot_image_data);
+    snapshot_image_data = NULL;
 }

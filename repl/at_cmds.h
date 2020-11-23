@@ -203,7 +203,7 @@ static void at_list_sensors() {
 
     const ei_sensor_t *list;
     size_t list_size;
-    
+
     int r = EiDevice.get_sensor_list((const ei_device_sensor_t **)&list, &list_size);
     if (r != 0) {
         ei_printf("Failed to get sensor list (%d)\n", r);
@@ -267,7 +267,7 @@ static void at_read_file_data(uint8_t *buffer, size_t size) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
         return;
     }
-    
+
     ei_write_string(base64_buffer, r);
 
     //free(base64_buffer);
@@ -429,7 +429,7 @@ static void at_reset() {
 //    NVIC_SystemReset();
 }
 
-static void at_boot_mode() 
+static void at_boot_mode()
 {
     #define _BOOTLOADER_MAGIC_ADDR 0x10000000 + 0x20000
     #define _BOOTLOADER_MAGIC_VAL  0xBADC0DE
