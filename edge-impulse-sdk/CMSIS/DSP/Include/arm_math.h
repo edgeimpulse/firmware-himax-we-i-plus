@@ -389,8 +389,6 @@ extern "C"
 #include <float.h>
 #include <limits.h>
 
-#define ARM_MATH_LOOPUNROLL
-
 /* evaluate ARM DSP feature */
 #if (defined (__ARM_FEATURE_DSP) && (__ARM_FEATURE_DSP == 1))
   #define ARM_MATH_DSP                   1

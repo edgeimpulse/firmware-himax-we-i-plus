@@ -101,6 +101,7 @@ set(CMAKE_CXX_FLAGS "\
 -Hnosdata \
 -DTF_LITE_STATIC_MEMORY \
 -tcf=../arcem9d_wei_r16.tcf \
+-DSCRATCH_MEM_Z_SIZE=0 \
 -Hnocopyr \
 -Hpurge \
 -Hcl \
@@ -116,7 +117,7 @@ set(CMAKE_CXX_FLAGS "\
 
 set(CMAKE_EXE_LINKER_FLAGS_INIT "${LINKER_FLAGS}")
 set(CMAKE_EXE_LINKER_FLAGS "${LINKER_FLAGS} \
--Hheap=8192 \
+-Hheap=65536 \
 -tcf=../arcem9d_wei_r16.tcf \
 -Hnocopyr \
 -m \

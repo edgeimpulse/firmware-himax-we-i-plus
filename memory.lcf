@@ -1,19 +1,18 @@
-    # SYSTEM memory regions indicate where external memory might be located.
-    #   The TCF has no specific knowledge of whether SYSTEM regions contain 
-    #   external memory or not.
-    # CCMWRAP memory regions indicate unusable portions of the address space
-    #   due to CCM memory wrapping into upper addresses beyond its size
+# SYSTEM memory regions indicate where external memory might be located.
+#   The TCF has no specific knowledge of whether SYSTEM regions contain
+#   external memory or not.
+# CCMWRAP memory regions indicate unusable portions of the address space
+#   due to CCM memory wrapping into upper addresses beyond its size
+MEMORY {
+	ICCM0   : ORIGIN = 0x00000000, LENGTH = 0x00010000
+	ICCM1   : ORIGIN = 0x10000000, LENGTH = 0x00050000
+	BOOT	: ORIGIN = 0x20004000, LENGTH = 0x0001C800
+	SYSTEM0 : ORIGIN = 0x20020800, LENGTH = 0x0015f800
+	DCCM    : ORIGIN = 0x80000000, LENGTH = 0x00040000
+	XCCM    : ORIGIN = 0x90000000, LENGTH = 0x00008000
+	YCCM    : ORIGIN = 0xa0000000, LENGTH = 0x00008000
+}
 
-    MEMORY {
-        ICCM0   : ORIGIN = 0x00000000, LENGTH = 0x00010000
-        ICCM1   : ORIGIN = 0x10000000, LENGTH = 0x00050000
-        BOOT	: ORIGIN = 0x20004000, LENGTH = 0x0001C800
-        SYSTEM0 : ORIGIN = 0x20020800, LENGTH = 0x0015f800
-        DCCM    : ORIGIN = 0x80000000, LENGTH = 0x00040000
-        XCCM    : ORIGIN = 0x90000000, LENGTH = 0x00008000
-        YCCM    : ORIGIN = 0xa0000000, LENGTH = 0x00008000
-
-    }
 ENTRY(_arc_reset)
 
 SECTIONS {
@@ -37,14 +36,14 @@ SECTIONS {
 			*(TYPE text)
 			_e_text = .;
 		}
-		
+
  	} > ICCM1
 
  	GROUP : {
 
  		.ram_memory? ALIGN(8): {}
  	} > BOOT
-    
+
  	GROUP : {
 		.rodata  ALIGN(4): {
 			_f_rodata = .;
@@ -63,7 +62,9 @@ SECTIONS {
 
 			_e_rodata = .;
 		}
-	.tensor_arena? ALIGN(16): {}
+
+		.tensor_arena? ALIGN(16): {}
+
 	} > SYSTEM0
 
 
@@ -79,7 +80,7 @@ SECTIONS {
 			*(.tls*)
 			_e_data = .;
 		}
-	} > SYSTEM0 
+	} > SYSTEM0
 
 	GROUP (NOLOAD) : {
 		.bss ALIGN(16): {
@@ -88,21 +89,21 @@ SECTIONS {
 			_e_bss = .;
 		}
 
-  .Zdata?: {}
-            
+  	.Zdata?: {}
+
 	} > DCCM
-  
-  GROUP : {
-    .heap? ALIGN(8) SIZE(196608): {}
-    .stack ALIGN(8) SIZE(8192): {}
-  } >DCCM
-  
-  GROUP BLOCK(4): {
-    .Xdata? : {}
-  } > XCCM
-  GROUP BLOCK(4): {
-    .Ydata? : {}
-  } > YCCM
+
+  	GROUP : {
+		.heap? ALIGN(8) SIZE(65536): {}
+		.stack ALIGN(8) SIZE(8192): {}
+  	} > DCCM
+
+  	GROUP BLOCK(4): {
+    	.Xdata? : {}
+  	} > XCCM
+  	GROUP BLOCK(4): {
+    	.Ydata? : {}
+  	} > YCCM
 
 	_f_stack = ADDR(.stack);
 	_e_stack = ADDR(.stack) + SIZEOF(.stack);
@@ -113,5 +114,3 @@ SECTIONS {
 	_load_addr_rodata = LOADADDR(.rodata);
 	_load_addr_data = LOADADDR(.data);
 }
-
-

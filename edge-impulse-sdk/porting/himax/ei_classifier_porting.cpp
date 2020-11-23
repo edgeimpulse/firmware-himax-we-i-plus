@@ -20,10 +20,12 @@
  * SOFTWARE.
  */
 
+#include "../ei_classifier_porting.h"
+#if EI_PORTING_HIMAX == 1
+
 /* Include ----------------------------------------------------------------- */
 #include <stdarg.h>
 #include <stdio.h>
-#include "../ei_classifier_porting.h"
 #include "hx_drv_tflm.h"
 #include <math.h>
 
@@ -48,9 +50,9 @@ __attribute__((weak)) EI_IMPULSE_ERROR ei_sleep(int32_t time_ms) {
         tick = 0;
         hx_drv_tick_get(&tick);
         cur_time = (uint64_t)(tick / 400000);
-        
+
     }while(cur_time < end_delay);
-    
+
     return EI_IMPULSE_OK;
 }
 
@@ -122,3 +124,5 @@ extern "C"
 __attribute__((weak)) void DebugLog(const char* s) {
     ei_printf("%s", s);
 }
+
+#endif // #if EI_PORTING_HIMAX == 1
