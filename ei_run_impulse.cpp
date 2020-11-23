@@ -27,6 +27,8 @@
 #include "ei_microphone.h"
 #include "ei_inertialsensor.h"
 #include "ei_camera.h"
+#include "hx_drv_tflm.h"
+#include "bitmap_helpers.h"
 
 
 #if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_ACCELEROMETER
@@ -269,6 +271,38 @@ void run_nn_continuous(bool debug)
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
 
 static int8_t image_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT];
+static uint8_t bmp_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT * 3 + 40 + 14];
+static float aux_data [EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT * 3];
+
+void run_nn_snapshot() {
+
+    ei_printf("\tImage resolution: %dx%d\n", EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
+    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
+
+    if (ei_camera_init() == false) {
+        ei_printf("Failed to initialize image sensor\r\n");
+        return;
+    }
+
+    if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
+        ei_printf("Failed to capture image\r\n");
+        return;
+    }
+
+    uint32_t ix;
+    for (ix = 0; ix <  EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT; ix++) {
+        uint8_t mono_data = (uint8_t)image_data[ix];
+        aux_data[ix] = (float)(mono_data * 0x010101);
+    }
+
+    int b = create_bitmap_file(bmp_data, aux_data, EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
+    ei_printf("\tCreated snapshot: %s\n", (b==0)? "Yes" : "No");
+
+    b = hx_drv_spim_send((uint32_t)&bmp_data, sizeof(bmp_data), SPI_TYPE_RAW);
+    ei_printf("\tTransfered snapshot: %s\n", (b==0)? "Yes" : "No");
+
+}
+
 
 static int get_image_data(size_t offset, size_t length, float *out_ptr) {
 
