@@ -66,6 +66,7 @@ int main(void)
     ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
     ei_at_cmd_register("RUNIMPULSECONT", "Run the impulse", run_nn_continuous_normal);
     ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
+    ei_at_cmd_register("SNAPSHOT", "Take a raw snapshot", run_nn_snapshot);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
 
     ei_command_line_handle(0);
