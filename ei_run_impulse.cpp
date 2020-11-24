@@ -375,13 +375,32 @@ void run_nn_continuous_normal()
 #endif
 }
 
-void run_nn_snapshot(char *width_s, char *height_s) {
-    size_t width = (size_t)atoi(width_s);
-    size_t height = (size_t)atoi(height_s);
+bool ei_himax_take_snapshot(size_t width, size_t height) {
+    const ei_device_snapshot_resolutions_t *list;
+    size_t list_size;
+
+    int r = EiDevice.get_snapshot_list((const ei_device_snapshot_resolutions_t **)&list, &list_size);
+    if (r) { /* apparently false is OK here?! */
+        ei_printf("ERR: Device has no snapshot feature\n");
+        return false;
+    }
+
+    bool found_res = false;
+    for (size_t ix = 0; ix < list_size; ix++) {
+        if (list[ix].width == width && list[ix].height == height) {
+            found_res = true;
+        }
+    }
+
+    if (!found_res) {
+        ei_printf("ERR: Invalid resolution %lux%lu\n", width, height);
+        return false;
+    }
+
     snapshot_image_data = (int8_t*)calloc(width * height, 1);
     if (!snapshot_image_data) {
         ei_printf("ERR: Failed to allocate image buffer\n");
-        return;
+        return false;
     }
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
@@ -389,13 +408,13 @@ void run_nn_snapshot(char *width_s, char *height_s) {
     if (ei_camera_init() == false) {
         free(snapshot_image_data);
         ei_printf("ERR: Failed to initialize image sensor\r\n");
-        return;
+        return false;
     }
 
     if (ei_camera_capture(width, height, snapshot_image_data) == false) {
         free(snapshot_image_data);
         ei_printf("ERR: Failed to capture image\r\n");
-        return;
+        return false;
     }
 
     ei::signal_t signal;
@@ -409,7 +428,7 @@ void run_nn_snapshot(char *width_s, char *height_s) {
     if (!signal_buf) {
         free(snapshot_image_data);
         ei_printf("ERR: Failed to allocate signal buffer\n");
-        return;
+        return false;
     }
 
     uint8_t *per_pixel_buffer = (uint8_t*)malloc(513); // 171 x 3 pixels
@@ -417,7 +436,7 @@ void run_nn_snapshot(char *width_s, char *height_s) {
         free(signal_buf);
         free(snapshot_image_data);
         ei_printf("ERR: Failed to allocate per_pixel buffer\n");
-        return;
+        return false;
     }
 
     size_t per_pixel_buffer_ix = 0;
@@ -428,7 +447,7 @@ void run_nn_snapshot(char *width_s, char *height_s) {
             items_to_read = signal.total_length - ix;
         }
 
-        int r = signal.get_data(ix, items_to_read, signal_buf);
+        r = signal.get_data(ix, items_to_read, signal_buf);
         if (r != 0) {
             ei_printf("ERR: Failed to get data from signal (%d)\n", r);
             break;
@@ -442,10 +461,20 @@ void run_nn_snapshot(char *width_s, char *height_s) {
             uint8_t g = static_cast<float>(pixel >> 8 & 0xff);
             uint8_t b = static_cast<float>(pixel & 0xff);
 
-            per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
-            per_pixel_buffer[per_pixel_buffer_ix + 1] = g;
-            per_pixel_buffer[per_pixel_buffer_ix + 2] = b;
-            per_pixel_buffer_ix += 3;
+            // is monochrome anyway now, so just print 1 pixel at a time
+            const bool print_rgb = false;
+
+            if (print_rgb) {
+                per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
+                per_pixel_buffer[per_pixel_buffer_ix + 1] = g;
+                per_pixel_buffer[per_pixel_buffer_ix + 2] = b;
+                per_pixel_buffer_ix += 3;
+            }
+            else {
+                per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
+                per_pixel_buffer_ix++;
+            }
+
             if (per_pixel_buffer_ix >= 513) {
                 char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
                 if (!base64_buffer) {
@@ -453,7 +482,7 @@ void run_nn_snapshot(char *width_s, char *height_s) {
                     break;
                 }
 
-                int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+                r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
                 free(base64_buffer);
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
@@ -469,14 +498,14 @@ void run_nn_snapshot(char *width_s, char *height_s) {
     char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
     if (!base64_buffer) {
         ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (per_pixel_buffer_ix / 3 * 4) + 4);
-        return;
+        return false;
     }
 
-    int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+    r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
     free(base64_buffer);
     if (r < 0) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-        return;
+        return false;
     }
 
     ei_write_string(base64_buffer, r);
@@ -485,4 +514,6 @@ void run_nn_snapshot(char *width_s, char *height_s) {
     free(signal_buf);
     free(snapshot_image_data);
     snapshot_image_data = NULL;
+
+    return true;
 }

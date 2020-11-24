@@ -52,6 +52,7 @@ int main(void)
     config_ctx.save_config = &ei_himax_fs_save_config;
     config_ctx.list_files = NULL;
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
+    config_ctx.take_snapshot = &ei_himax_take_snapshot;
 
     EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
 
@@ -66,7 +67,6 @@ int main(void)
     ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
     ei_at_cmd_register("RUNIMPULSECONT", "Run the impulse", run_nn_continuous_normal);
     ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
-    ei_at_cmd_register("SNAPSHOT=", "Take a raw snapshot (two parameters: width, height)", run_nn_snapshot);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
 
     ei_command_line_handle(0);

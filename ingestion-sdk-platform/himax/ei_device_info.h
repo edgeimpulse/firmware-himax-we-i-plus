@@ -23,6 +23,12 @@ typedef struct {
 //#endif
 } ei_device_sensor_t;
 
+typedef struct {
+	size_t width;
+	size_t height;
+	uint8_t color_depth;
+} ei_device_snapshot_resolutions_t;
+
 
 /**
  * @brief      Default class for device characteristics
@@ -52,7 +58,7 @@ public:
 		int length = strlen(ei_dev_default_id) + 1;
 		memcpy(out_buffer, ei_dev_default_id, length);
 		*(out_size) = length;
-		return 0;		
+		return 0;
 	};
 
 	/**
@@ -72,9 +78,9 @@ public:
 	 * @param      out_size    Length of type string in bytes
 	 *
 	 * @return     Zero if ok, non-zero to signal an error
-	 */	
+	 */
 	virtual int get_type(uint8_t out_buffer[32], size_t *out_size)
-	{	
+	{
 		int length = strlen(ei_dev_default_type) + 1;
 		memcpy(out_buffer, ei_dev_default_type, length);
 		*(out_size) = length;
@@ -135,7 +141,7 @@ public:
 	{
 
 	}
-	
+
 };
 
 

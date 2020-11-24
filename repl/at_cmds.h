@@ -31,7 +31,7 @@
 #include "ei_device_himax.h"
 
 
-#define EDGE_IMPULSE_AT_COMMAND_VERSION        "1.3.0"
+#define EDGE_IMPULSE_AT_COMMAND_VERSION        "1.3.1"
 
 static void at_clear_config() {
     ei_printf("Clearing config and restarting system...\n");
@@ -196,6 +196,40 @@ static void at_set_mgmt_settings(char *mgmt_url) {
     }
     else {
         ei_printf("OK\n");
+    }
+}
+
+static void at_get_snapshot(void) {
+    const ei_device_snapshot_resolutions_t *list;
+    size_t list_size;
+
+    int r = EiDevice.get_snapshot_list((const ei_device_snapshot_resolutions_t **)&list, &list_size);
+    if (r) { /* apparently false is OK here?! */
+        ei_printf("Has snapshot:    0\n");
+        return;
+    }
+
+    ei_printf("Has snapshot:    1\n");
+    ei_printf("Resolutions:     [ ");
+    for (size_t ix = 0; ix < list_size; ix++) {
+        ei_printf("%lux%lu", list[ix].width, list[ix].height);
+        if (ix != list_size - 1) {
+            ei_printf(", ");
+        }
+        else {
+            ei_printf(" ");
+        }
+    }
+    ei_printf("]\n");
+}
+
+static void at_take_snapshot(char *width_s, char *height_s) {
+    size_t width = (size_t)atoi(width_s);
+    size_t height = (size_t)atoi(height_s);
+
+    if (!ei_config_get_context()->take_snapshot(width, height)) {
+        ei_printf("ERR: Snapshot failed\n");
+        return;
     }
 }
 
@@ -481,11 +515,12 @@ void ei_at_register_generic_cmds() {
     ei_at_cmd_register("UPLOADHOST=", "Sets upload host (HOST)", &at_set_upload_host);
     ei_at_cmd_register("MGMTSETTINGS?", "Lists current management settings", &at_get_mgmt_settings);
     ei_at_cmd_register("MGMTSETTINGS=", "Sets current management settings (URL)", &at_set_mgmt_settings);
+    ei_at_cmd_register("SNAPSHOT?", "Lists snapshot settings", &at_get_snapshot);
+    ei_at_cmd_register("SNAPSHOT=", "Take a snapshot (WIDTH,HEIGHT)", &at_take_snapshot);
     ei_at_cmd_register("LISTFILES", "Lists all files on the device", &at_list_files);
     ei_at_cmd_register("READFILE=", "Read a specific file (as base64)", &at_read_file);
     ei_at_cmd_register("READBUFFER=", "Read from the temporary buffer (as base64) (START,LENGTH)", &at_read_buffer);
     ei_at_cmd_register("UNLINKFILE=", "Unlink a specific file", &at_unlink_file);
-//    ei_at_cmd_register("UPLOADFILE=", "Upload a specific file", &at_upload_file);
     ei_at_cmd_register("SAMPLESTART=", "Start sampling", &at_sample_start);
     ei_at_cmd_register("READRAW=", "Read raw from flash (START,LENGTH)", &at_read_raw);
     ei_at_cmd_register("BOOTMODE", "Jump to bootloader", &at_boot_mode);

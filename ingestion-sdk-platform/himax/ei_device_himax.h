@@ -30,7 +30,8 @@
 #include <cstdint>
 
 /** Number of sensors used */
-#define EI_DEVICE_N_SENSORS		2
+#define EI_DEVICE_N_SENSORS			2
+#define EI_DEVICE_N_RESOLUTIONS		3
 
 typedef enum
 {
@@ -49,16 +50,17 @@ typedef bool (*c_callback_status)(void);
 typedef bool (*c_callback_read_sample_buffer)(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
 
 /**
- * @brief      Class description and implementation of device specific 
+ * @brief      Class description and implementation of device specific
  * 			   characteristics
- */	
+ */
 class EiDeviceHimax : public EiDeviceInfo
 {
 private:
 	ei_device_sensor_t sensors[EI_DEVICE_N_SENSORS];
-public:	
+	ei_device_snapshot_resolutions_t snapshot_resolutions[EI_DEVICE_N_RESOLUTIONS];
+public:
 	EiDeviceHimax(void);
-	
+
 	int get_id(uint8_t out_buffer[32], size_t *out_size);
 	const char *get_id_pointer(void);
 	int get_type(uint8_t out_buffer[32], size_t *out_size);
@@ -66,6 +68,7 @@ public:
 	bool get_wifi_connection_status(void);
 	bool get_wifi_present_status();
 	bool get_sensor_list(const ei_device_sensor_t **sensor_list, size_t *sensor_list_size);
+	bool get_snapshot_list(const ei_device_snapshot_resolutions_t **resolution_list, size_t *resolution_list_size);
 	void delay_ms(uint32_t milliseconds);
 	void setup_led_control(void);
 	void set_state(tEiState state);
@@ -75,7 +78,7 @@ public:
 	c_callback_status get_wifi_connection_status_function(void);
 	c_callback_status get_wifi_present_status_function(void);
 	c_callback_read_sample_buffer get_read_sample_buffer_function(void);
-	
+
 };
 
 /* Function prototypes ----------------------------------------------------- */

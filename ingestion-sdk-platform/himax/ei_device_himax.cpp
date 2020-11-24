@@ -218,6 +218,31 @@ bool EiDeviceHimax::get_sensor_list(const ei_device_sensor_t **sensor_list, size
 }
 
 /**
+ * @brief      Create resolution list for snapshot setting
+ *             The studio and daemon require this list
+ * @param      snapshot_list       Place pointer to resolution list
+ * @param      snapshot_list_size  Write number of resolutions here
+ *
+ * @return     False if all went ok
+ */
+bool EiDeviceHimax::get_snapshot_list(const ei_device_snapshot_resolutions_t **snapshot_list, size_t *snapshot_list_size)
+{
+    snapshot_resolutions[0].width = 128;
+    snapshot_resolutions[0].height = 96;
+
+    snapshot_resolutions[1].width = 320;
+    snapshot_resolutions[1].height = 240;
+
+    snapshot_resolutions[2].width = 640;
+    snapshot_resolutions[2].height = 480;
+
+    *snapshot_list      = snapshot_resolutions;
+    *snapshot_list_size = EI_DEVICE_N_RESOLUTIONS;
+
+    return false;
+}
+
+/**
  * @brief      Device specific delay ms implementation
  *
  * @param[in]  milliseconds  The milliseconds
@@ -319,7 +344,7 @@ void ei_command_line_handle(void *args)
 }
 
 /**
- * @brief      Call this function periocally during inference to 
+ * @brief      Call this function periocally during inference to
  *             detect a user stop command
  *
  * @return     true if user requested stop
@@ -331,17 +356,17 @@ bool ei_user_invoke_stop(void)
 
     while(hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
         if(character == 'b') {
-        
+
             stop_found = true;
             break;
-        }        
+        }
     }
 
     // do {
     //     hx_drv_uart_getchar(&character);
-        
+
     //     if(character == 'b') {
-        
+
     //         stop_found = true;
     //         break;
     //     }

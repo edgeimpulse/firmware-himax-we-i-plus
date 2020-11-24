@@ -27,6 +27,6 @@
 void run_nn_normal(void);
 void run_nn_debug(void);
 void run_nn_continuous_normal(void);
-void run_nn_snapshot(char*, char*);
+bool ei_himax_take_snapshot(size_t width, size_t height);
 
 #endif
