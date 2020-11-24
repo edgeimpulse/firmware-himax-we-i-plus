@@ -439,8 +439,6 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
         return false;
     }
 
-    ei_printf("total length is %lu\n", signal.total_length);
-
     size_t per_pixel_buffer_ix = 0;
 
     for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
