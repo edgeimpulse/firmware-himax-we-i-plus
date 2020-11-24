@@ -31,7 +31,7 @@
 #include "ei_device_himax.h"
 
 
-#define EDGE_IMPULSE_AT_COMMAND_VERSION        "1.3.1"
+#define EDGE_IMPULSE_AT_COMMAND_VERSION        "1.4.0"
 
 static void at_clear_config() {
     ei_printf("Clearing config and restarting system...\n");
