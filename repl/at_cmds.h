@@ -177,7 +177,7 @@ static void at_set_upload_settings(char *api_key, char *url) {
 static void at_get_mgmt_settings() {
     char *mgmt_url;
     bool is_connected;
-    char last_error[128];
+    char last_error[128] = { '\0' };
 
     EI_CONFIG_ERROR r = ei_config_get_mgmt_settings(&mgmt_url, &is_connected, last_error, 128);
     if (r != EI_CONFIG_OK) {
