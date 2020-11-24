@@ -301,6 +301,11 @@ void run_nn(bool debug) {
     ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
     ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
 
+    int16_t channel_count = strcmp(ei_dsp_config_3.channels, "Grayscale") == 0 ? 1 : 3;
+    if (channel_count == 3) {
+        ei_printf("WARN: You've deployed a color model, but the Himax WE-I only has a monochrome image sensor. Set your DSP block to 'Grayscale' for best performance.\r\n");
+    }
+
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return;
@@ -404,11 +409,6 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
     }
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
-
-    int16_t channel_count = strcmp(ei_dsp_config_3.channels, "Grayscale") == 0 ? 1 : 3;
-    if (channel_count == 3) {
-        ei_printf("WARN: You've deployed a color model, but the Himax WE-I only has a monochrome image sensor. Set your DSP block to 'Grayscale' for best performance.\r\n");
-    }
 
     if (ei_camera_init() == false) {
         free(snapshot_image_data);
