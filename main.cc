@@ -25,6 +25,7 @@
 #include "ei_himax_fs_commands.h"
 #include "ei_inertialsensor.h"
 #include "ei_run_impulse.h"
+#include "ei_camera.h"
 #include "at_cmds.h"
 
 #include "hx_drv_tflm.h"
@@ -52,7 +53,7 @@ int main(void)
     config_ctx.save_config = &ei_himax_fs_save_config;
     config_ctx.list_files = NULL;
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
-    config_ctx.take_snapshot = &ei_himax_take_snapshot;
+    config_ctx.take_snapshot = &ei_camera_take_snapshot;
 
     EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
 

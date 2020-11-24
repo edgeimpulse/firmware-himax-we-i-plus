@@ -338,8 +338,6 @@ static void at_read_raw(char *start_s, char *length_s) {
     size_t length = (size_t)atoi(length_s);
     unsigned char buffer[32];
 
-    int count = 0;
-
     for(; start < length; start += 32) {
         ei_himax_fs_read_sample_data(buffer, start, 32);
 
