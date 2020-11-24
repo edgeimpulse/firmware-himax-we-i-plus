@@ -26,6 +26,7 @@
 /* Include ----------------------------------------------------------------- */
 #include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "hx_drv_tflm.h"
 #include <math.h>
 

@@ -137,19 +137,19 @@ void ei_free(void *ptr);
 #endif
 #endif
 
-#ifndef EI_PORTING_STM32_CUBEAI
-#if defined(USE_HAL_DRIVER) && !defined(__MBED__)
-#define EI_PORTING_STM32_CUBEAI      1
-#else
-#define EI_PORTING_STM32_CUBEAI      0
-#endif
-#endif
-
 #ifndef EI_PORTING_ZEPHYR
 #if defined(__ZEPHYR__)
 #define EI_PORTING_ZEPHYR      1
 #else
 #define EI_PORTING_ZEPHYR      0
+#endif
+#endif
+
+#ifndef EI_PORTING_STM32_CUBEAI
+#if defined(USE_HAL_DRIVER) && !defined(__MBED__) && EI_PORTING_ZEPHYR == 0
+#define EI_PORTING_STM32_CUBEAI      1
+#else
+#define EI_PORTING_STM32_CUBEAI      0
 #endif
 #endif
 
