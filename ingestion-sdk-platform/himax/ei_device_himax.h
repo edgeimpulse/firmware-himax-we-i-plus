@@ -31,7 +31,12 @@
 
 /** Number of sensors used */
 #define EI_DEVICE_N_SENSORS			2
+
+#if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
+#define EI_DEVICE_N_RESOLUTIONS		4
+#else
 #define EI_DEVICE_N_RESOLUTIONS		3
+#endif
 
 typedef enum
 {

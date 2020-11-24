@@ -266,6 +266,9 @@ static void at_list_config() {
     ei_printf("===== Sensors ======\n");
     at_list_sensors();
     ei_printf("\n");
+    ei_printf("===== Snapshot ======\n");
+    at_get_snapshot();
+    ei_printf("\n");
     ei_printf("===== WIFI =====\n");
     at_get_wifi();
     ei_printf("\n");

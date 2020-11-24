@@ -1,5 +1,7 @@
 #include "at_base64.h"
 
+extern void ei_printf(const char *format, ...);
+
 static const char *base64_chars =
              "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
              "abcdefghijklmnopqrstuvwxyz"

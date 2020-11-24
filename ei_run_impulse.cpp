@@ -379,8 +379,8 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
     const ei_device_snapshot_resolutions_t *list;
     size_t list_size;
 
-    int r = EiDevice.get_snapshot_list((const ei_device_snapshot_resolutions_t **)&list, &list_size);
-    if (r) { /* apparently false is OK here?! */
+    int dl = EiDevice.get_snapshot_list((const ei_device_snapshot_resolutions_t **)&list, &list_size);
+    if (dl) { /* apparently false is OK here?! */
         ei_printf("ERR: Device has no snapshot feature\n");
         return false;
     }
@@ -439,6 +439,8 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
         return false;
     }
 
+    ei_printf("total length is %lu\n", signal.total_length);
+
     size_t per_pixel_buffer_ix = 0;
 
     for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
@@ -447,7 +449,7 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
             items_to_read = signal.total_length - ix;
         }
 
-        r = signal.get_data(ix, items_to_read, signal_buf);
+        int r = signal.get_data(ix, items_to_read, signal_buf);
         if (r != 0) {
             ei_printf("ERR: Failed to get data from signal (%d)\n", r);
             break;
@@ -476,17 +478,24 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
             }
 
             if (per_pixel_buffer_ix >= 513) {
-                char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
+                const size_t base64_output_size = 684;
+
+                char *base64_buffer = (char*)malloc(base64_output_size);
                 if (!base64_buffer) {
-                    ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (per_pixel_buffer_ix / 3 * 4) + 4);
-                    break;
+                    ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
+                    free(signal_buf);
+                    free(snapshot_image_data);
+                    return false;
                 }
 
-                r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+                int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, base64_output_size);
                 free(base64_buffer);
+
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-                    break;
+                    free(signal_buf);
+                    free(snapshot_image_data);
+                    return false;
                 }
 
                 ei_write_string(base64_buffer, r);
@@ -495,13 +504,14 @@ bool ei_himax_take_snapshot(size_t width, size_t height) {
         }
     }
 
-    char *base64_buffer = (char*)malloc((per_pixel_buffer_ix / 3 * 4) + 4);
+    const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
+    char *base64_buffer = (char*)malloc(new_base64_buffer_output_size);
     if (!base64_buffer) {
-        ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (per_pixel_buffer_ix / 3 * 4) + 4);
+        ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
         return false;
     }
 
-    r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, (per_pixel_buffer_ix / 3 * 4) + 4);
+    int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, new_base64_buffer_output_size);
     free(base64_buffer);
     if (r < 0) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
