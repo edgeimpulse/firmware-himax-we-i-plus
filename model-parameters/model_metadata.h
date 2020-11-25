@@ -43,14 +43,14 @@
 #define EI_CLASSIFIER_INPUT_HEIGHT               0
 #define EI_CLASSIFIER_INTERVAL_MS                16
 #define EI_CLASSIFIER_OUT_TENSOR_NAME            "y_pred/Softmax_1:0"
-#define EI_CLASSIFIER_LABEL_COUNT                4
+#define EI_CLASSIFIER_LABEL_COUNT                6
 #define EI_CLASSIFIER_HAS_ANOMALY                1
 #define EI_CLASSIFIER_FREQUENCY                  62.5
 
 #define EI_CLASSIFIER_TFLITE_ARENA_SIZE          3673
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
-#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.0828620195388794
+#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.12491211295127869
 #define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -128
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE     EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED     1
@@ -67,7 +67,7 @@
 #define EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW    4
 #endif // EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW
 
-const char* ei_classifier_inferencing_categories[] = { "idle", "snake", "updown", "wave" };
+const char* ei_classifier_inferencing_categories[] = { "drink", "fistbump", "idle", "snake", "updown", "wave" };
 
 typedef struct {
     int axes;
@@ -136,13 +136,13 @@ typedef struct {
     bool show_axes;
 } ei_dsp_config_spectrogram_t;
 
-ei_dsp_config_spectral_analysis_t ei_dsp_config_279 = {
+ei_dsp_config_spectral_analysis_t ei_dsp_config_83 = {
     3,
     1.00000f,
     "low",
-    3.00000f,
+    4.00000f,
     6,
-    512,
+    128,
     3,
     0.10000f,
     "0.1, 0.5, 1.0, 2.0, 5.0"
