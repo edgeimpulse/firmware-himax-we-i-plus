@@ -351,6 +351,7 @@ void run_nn(bool debug) {
 
         if (ei_user_invoke_stop()) {
             ei_printf("Inferencing stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
             break;
         }
     }

@@ -143,7 +143,7 @@ bool ei_inertial_setup_data_sampling(void)
         // The axes which you'll use. The units field needs to comply to SenML units (see https://www.iana.org/assignments/senml/senml.xhtml)
         { { "accX", "m/s2" }, { "accY", "m/s2" }, { "accZ", "m/s2" }, 
         /*{ "gyrX", "dps" }, { "gyrY", "dps" }, { "gyrZ", "dps" } */},        
-    };	
+    };
     
     EiDevice.set_state(eiStateErasingFlash);
     ei_sampler_start_sampling(&payload, SIZEOF_N_AXIS_SAMPLED);

@@ -169,7 +169,7 @@ static void finish_and_upload(char *filename, uint32_t sample_length_ms) {
 
     ei_printf("OK\n");
 
-    EiDevice.set_state(eiStateIdle);    
+    EiDevice.set_state(eiStateIdle);
 }
 
 static int insert_ref(char *buffer, int hdrLength)
