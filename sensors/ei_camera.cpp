@@ -24,6 +24,7 @@
 /* Include ----------------------------------------------------------------- */
 #include "ei_camera.h"
 #include "ei_device_himax.h"
+#include "ei_classifier_porting.h"
 #include "at_base64.h"
 #include "numpy_types.h"
 
@@ -119,7 +120,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
         return false;
     }
 
-    snapshot_image_data = (int8_t*)calloc(width * height, 1);
+    snapshot_image_data = (int8_t*)ei_calloc(width * height, 1);
     if (!snapshot_image_data) {
         ei_printf("ERR: Failed to allocate image buffer\n");
         return false;
@@ -146,14 +147,14 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     size_t signal_chunk_size = 1024;
 
     // loop through the signal
-    float *signal_buf = (float*)malloc(signal_chunk_size * sizeof(float));
+    float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
     if (!signal_buf) {
         free(snapshot_image_data);
         ei_printf("ERR: Failed to allocate signal buffer\n");
         return false;
     }
 
-    uint8_t *per_pixel_buffer = (uint8_t*)malloc(513); // 171 x 3 pixels
+    uint8_t *per_pixel_buffer = (uint8_t*)ei_malloc(513); // 171 x 3 pixels
     if (!per_pixel_buffer) {
         free(signal_buf);
         free(snapshot_image_data);
@@ -200,7 +201,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
             if (per_pixel_buffer_ix >= 513) {
                 const size_t base64_output_size = 684;
 
-                char *base64_buffer = (char*)malloc(base64_output_size);
+                char *base64_buffer = (char*)ei_malloc(base64_output_size);
                 if (!base64_buffer) {
                     ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
                     free(signal_buf);
@@ -225,7 +226,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     }
 
     const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
-    char *base64_buffer = (char*)malloc(new_base64_buffer_output_size);
+    char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
     if (!base64_buffer) {
         ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
         return false;

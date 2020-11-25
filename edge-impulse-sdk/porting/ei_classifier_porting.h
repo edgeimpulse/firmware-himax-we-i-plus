@@ -24,6 +24,7 @@
 #define _EI_CLASSIFIER_PORTING_H_
 
 #include <stdint.h>
+#include <stdlib.h>
 #include "tensorflow/lite/micro/debug_log.h"
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1
@@ -75,6 +76,21 @@ void ei_printf(const char *format, ...);
  * If not overriden, this will be sent through `ei_printf()`.
  */
 void ei_printf_float(float f);
+
+/**
+ * Wrapper around malloc
+ */
+void *ei_malloc(size_t size);
+
+/**
+ * Wrapper around calloc
+ */
+void *ei_calloc(size_t nitems, size_t size);
+
+/**
+ * Wrapper around free
+ */
+void ei_free(void *ptr);
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1
 }
