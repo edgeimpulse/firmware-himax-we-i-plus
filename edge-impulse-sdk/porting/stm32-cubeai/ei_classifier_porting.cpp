@@ -26,7 +26,6 @@
 #include "main.h"
 #include <stdarg.h>
 #include <stdio.h>
-#include <stdlib.h>
 
 __attribute__((weak)) EI_IMPULSE_ERROR ei_run_impulse_check_canceled() {
     return EI_IMPULSE_OK;
@@ -54,18 +53,6 @@ __attribute__((weak)) void ei_printf(const char *format, ...) {
 
 __attribute__((weak)) void ei_printf_float(float f) {
     ei_printf("%f", f);
-}
-
-__attribute__((weak)) void *ei_malloc(size_t size) {
-    return malloc(size);
-}
-
-__attribute__((weak)) void *ei_calloc(size_t nitems, size_t size) {
-    return calloc(nitems, size);
-}
-
-__attribute__((weak)) void ei_free(void *ptr) {
-    free(ptr);
 }
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1

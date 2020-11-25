@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-#include "../../porting/ei_classifier_porting.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -38,8 +37,8 @@ extern "C" {
 #define KISS_FFT_MALLOC(nbytes) _mm_malloc(nbytes,16)
 #define KISS_FFT_FREE _mm_free
 #else
-#define KISS_FFT_MALLOC ei_malloc
-#define KISS_FFT_FREE ei_free
+#define KISS_FFT_MALLOC malloc
+#define KISS_FFT_FREE free
 #endif
 
 

@@ -25,7 +25,6 @@
 
 #include "mbed.h"
 #include <stdarg.h>
-#include <stdlib.h>
 #include "us_ticker_api.h"
 
 #define EI_WEAK_FN __attribute__((weak))
@@ -77,18 +76,6 @@ __attribute__((weak)) void ei_printf(const char *format, ...) {
 
 __attribute__((weak)) void ei_printf_float(float f) {
     ei_printf("%f", f);
-}
-
-__attribute__((weak)) void *ei_malloc(size_t size) {
-    return malloc(size);
-}
-
-__attribute__((weak)) void *ei_calloc(size_t nitems, size_t size) {
-    return calloc(nitems, size);
-}
-
-__attribute__((weak)) void ei_free(void *ptr) {
-    free(ptr);
 }
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1
