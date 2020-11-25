@@ -77,19 +77,31 @@ __attribute__((unused)) int extract_spectral_analysis_features(signal_t *signal,
     matrix_t edges_matrix_in(64, 1);
     size_t edge_matrix_ix = 0;
 
-    char spectral_str[128] = { 0 };
+    char spectral_str[128] = { '\0' };
     if (strlen(config.spectral_power_edges) > sizeof(spectral_str) - 1) {
         EIDSP_ERR(EIDSP_PARAMETER_INVALID);
     }
     memcpy(spectral_str, config.spectral_power_edges, strlen(config.spectral_power_edges));
 
-	char spectral_delim[] = ",";
-	char *spectral_ptr = strtok(spectral_str, spectral_delim);
-	while (spectral_ptr != NULL) {
-        edges_matrix_in.buffer[edge_matrix_ix] = atof(spectral_ptr);
-        edge_matrix_ix++;
-		spectral_ptr = strtok(NULL, spectral_delim);
-	}
+
+    // convert spectral_power_edges (string) into float array
+    char *spectral_ptr = spectral_str;
+    while (spectral_ptr != NULL) {
+
+        edges_matrix_in.buffer[edge_matrix_ix++] = atof(spectral_ptr);
+
+        // find next (spectral) delimiter (or '\0' character)
+        while((*spectral_ptr != ',')) {
+            spectral_ptr++;
+            if (*spectral_ptr == '\0') break;
+        }
+
+        if (*spectral_ptr == '\0') {
+            spectral_ptr = NULL;
+        } else  {
+            spectral_ptr++;
+        }
+    }
     edges_matrix_in.rows = edge_matrix_ix;
 
     // calculate how much room we need for the output matrix
