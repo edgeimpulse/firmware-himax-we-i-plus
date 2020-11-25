@@ -3,6 +3,7 @@
 
 /* Include ----------------------------------------------------------------- */
 #include <stdint.h>
+#include <stdlib.h>
 
 #define HIMAX_FS_BLOCK_ERASE_TIME_MS		90
 
@@ -59,5 +60,5 @@ int ei_himax_fs_write_samples(const void *sample_buffer, uint32_t address_offset
 int ei_himax_fs_read_sample_data(void *sample_buffer, uint32_t address_offset, uint32_t n_read_bytes);
 uint32_t ei_himax_fs_get_block_size(void);
 uint32_t ei_himax_fs_get_n_available_sample_blocks(void);
-
+uint8_t *ei_himax_fs_allocate_sampledata(size_t n_bytes);
 #endif

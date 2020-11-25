@@ -225,3 +225,17 @@ uint32_t ei_himax_fs_get_n_available_sample_blocks(void)
 	return (MX25R_CHIP_SIZE - MX25R_BLOCK64_SIZE) / MX25R_SECTOR_SIZE;
 	#endif
 }
+
+uint8_t *ei_himax_fs_allocate_sampledata(size_t n_bytes)
+{
+	#if(SAMPLE_MEMORY == RAM)
+	if(n_bytes >= SIZE_RAM_BUFFER) {
+		return 0;
+	}
+	else {
+		return ram_memory;
+	}
+	#else
+	return 0;
+	#endif
+}

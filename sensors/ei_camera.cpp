@@ -24,6 +24,7 @@
 /* Include ----------------------------------------------------------------- */
 #include "ei_camera.h"
 #include "ei_device_himax.h"
+#include "ei_himax_fs_commands.h"
 #include "ei_classifier_porting.h"
 #include "at_base64.h"
 #include "numpy_types.h"
@@ -120,7 +121,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
         return false;
     }
 
-    snapshot_image_data = (int8_t*)ei_calloc(width * height, 1);
+    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
     if (!snapshot_image_data) {
         ei_printf("ERR: Failed to allocate image buffer\n");
         return false;
@@ -129,13 +130,11 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
     if (ei_camera_init() == false) {
-        free(snapshot_image_data);
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return false;
     }
 
     if (ei_camera_capture(width, height, snapshot_image_data) == false) {
-        free(snapshot_image_data);
         ei_printf("ERR: Failed to capture image\r\n");
         return false;
     }
@@ -149,7 +148,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     // loop through the signal
     float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
     if (!signal_buf) {
-        free(snapshot_image_data);
         ei_printf("ERR: Failed to allocate signal buffer\n");
         return false;
     }
@@ -157,7 +155,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     uint8_t *per_pixel_buffer = (uint8_t*)ei_malloc(513); // 171 x 3 pixels
     if (!per_pixel_buffer) {
         free(signal_buf);
-        free(snapshot_image_data);
         ei_printf("ERR: Failed to allocate per_pixel buffer\n");
         return false;
     }
@@ -205,7 +202,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
                 if (!base64_buffer) {
                     ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
                     free(signal_buf);
-                    free(snapshot_image_data);
                     return false;
                 }
 
@@ -215,7 +211,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
                     free(signal_buf);
-                    free(snapshot_image_data);
                     return false;
                 }
 
@@ -243,7 +238,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     ei_printf("\r\n");
 
     free(signal_buf);
-    free(snapshot_image_data);
     snapshot_image_data = NULL;
 
     return true;

@@ -22,6 +22,7 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
+#include "ei_himax_fs_commands.h"
 #include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 #include "ei_microphone.h"
@@ -300,7 +301,7 @@ void run_nn(bool debug) {
         return;
     }
 
-    image_data = (int8_t*)malloc(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
+    image_data = (int8_t*)ei_himax_fs_allocate_sampledata(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
     if (!image_data) {
         ei_printf("ERR: Failed to allocate image buffer\r\n");
         return;
@@ -347,7 +348,6 @@ void run_nn(bool debug) {
         }
     }
 
-    free(image_data);
     image_data = NULL;
 }
 #endif
