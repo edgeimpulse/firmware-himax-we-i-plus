@@ -9,7 +9,10 @@
 #define RAM				2
 
 #define SAMPLE_MEMORY			RAM
-#define SIZE_RAM_BUFFER			(0x0001C800)
+
+#define SIZE_RAM_BUFFER			0x20800
+#define RAM_BLOCK_SIZE			1024
+#define RAM_N_BLOCKS			(SIZE_RAM_BUFFER / RAM_BLOCK_SIZE)
 
 
 /* Private function prototypes --------------------------------------------- */
@@ -147,7 +150,7 @@ int ei_himax_fs_write_samples(const void *sample_buffer, uint32_t address_offset
 	return HIMAX_FS_CMD_OK;	
 	
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
-	
+
 	return flash_write(MX25R_BLOCK64_SIZE + address_offset, (const uint8_t *)sample_buffer, n_word_samples);	
 
 	#endif
@@ -203,7 +206,7 @@ int ei_himax_fs_read_sample_data(void *sample_buffer, uint32_t address_offset, u
 uint32_t ei_himax_fs_get_block_size(void)
 {
 	#if(SAMPLE_MEMORY == RAM)
-	return SIZE_RAM_BUFFER;
+	return RAM_BLOCK_SIZE;
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
 	return MX25R_SECTOR_SIZE;
 	#endif
@@ -217,257 +220,8 @@ uint32_t ei_himax_fs_get_block_size(void)
 uint32_t ei_himax_fs_get_n_available_sample_blocks(void)
 {
 	#if(SAMPLE_MEMORY == RAM)
-	return 2;
+	return RAM_N_BLOCKS;
 	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
 	return (MX25R_CHIP_SIZE - MX25R_BLOCK64_SIZE) / MX25R_SECTOR_SIZE;
 	#endif
 }
-
-
-#if(SAMPLE_MEMORY == SERIAL_FLASH)
-/**
- * @brief      Write a buffer to memory @ address
- *
- * @param[in]  address     The address
- * @param[in]  buffer      The buffer
- * @param[in]  bufferSize  The buffer size in bytes
- *
- * @return     ei_himax_ret_t
- */
-static uint32_t flash_write(uint32_t address, const uint8_t *buffer, uint32_t bufferSize)
-{
-	int stat;
-	int retry = MX25R_RETRY;
-	int offset = 0;
-
-	if(flash_wait_while_busy() == 0)
-		return HIMAX_FS_CMD_WRITE_ERROR;
-
-	do {
-		uint32_t n_bytes;
-
-		retry = MX25R_RETRY;
-		do {
-			flash_write_enable();
-			stat = flash_status_register();
-		}while(!(stat & MX25R_STAT_WEL) && --retry);
-
-		if(!retry) {
-			return HIMAX_FS_CMD_WRITE_ERROR;
-		}
-
-		if(bufferSize > MX25R_PAGE_SIZE) {
-			n_bytes = MX25R_PAGE_SIZE;
-			bufferSize -= MX25R_PAGE_SIZE;
-		}
-		else {
-			n_bytes = bufferSize;
-			bufferSize = 0;
-		}
-
-		/* If write overflows page, split up in 2 writes */
-		if((((address+offset) & 0xFF) + n_bytes) > MX25R_PAGE_SIZE) {
-
-			int diff = MX25R_PAGE_SIZE - ((address+offset) & 0xFF);
-
-			flash_program_page(address + offset, ((uint8_t *)buffer + offset), diff);
-
-			if(flash_wait_while_busy() == 0)
-				return HIMAX_FS_CMD_WRITE_ERROR;
-
-			// retry = MX25R_RETRY;
-			// do {
-			// 	flash_write_enable();
-			// 	stat = flash_status_register();
-			// }while(!(stat & MX25R_STAT_WEL) && --retry);
-
-			// if(!retry) {
-			// 	return HIMAX_FS_CMD_WRITE_ERROR;
-			// }
-
-			/* Update index pointers */
-			n_bytes -= diff;
-			offset += diff;
-
-			bufferSize += n_bytes;
-		}
-
-		else {
-			flash_program_page(address + offset, ((uint8_t *)buffer + offset), n_bytes);
-
-			offset += n_bytes;
-		}
-
-		// flash_program_page(address + offset, ((uint8_t *)buffer + offset), n_bytes);
-
-		if(flash_wait_while_busy() == 0)
-			return HIMAX_FS_CMD_WRITE_ERROR;
-
-		// offset += MX25R_PAGE_SIZE;
-	
-	}while(bufferSize);
-
-	return HIMAX_FS_CMD_OK;
-}
-
-/**
- * @brief      Erase mulitple flash sectors
- *
- * @param[in]  startAddress  The start address
- * @param[in]  nSectors      The sectors
- *
- * @return     ei_himax_ret_t
- */
-static uint32_t flash_erase_sectors(uint32_t startAddress, uint32_t nSectors)
-{
-	int stat;
-	int retry = MX25R_RETRY;
-	uint32_t curSector = 0;
-
-	do {
-		if(flash_wait_while_busy() == 0) {
-			return HIMAX_FS_CMD_ERASE_ERROR;
-		}
-
-		do {
-			flash_write_enable();
-			stat = flash_status_register();
-		}while(!(stat & MX25R_STAT_WEL) && --retry);
-
-		flash_erase_sector(startAddress + (MX25R_SECTOR_SIZE * curSector));	
-	
-	}while(++curSector < nSectors);
-
-	return HIMAX_FS_CMD_OK;
-}
-
-/**
- * @brief      Read status register and check WIP (write in progress)
- * @return     n retries, if 0 device is hanging
- */
-static uint32_t flash_wait_while_busy(void)
-{
-	uint32_t stat;
-	uint32_t retry = MX25R_RETRY;
-
-	stat = flash_status_register();
-
-	while((stat & MX25R_STAT_WIP) && --retry) {
-		
-		stat = flash_status_register();
-	}
-
-	return retry;
-}
-
-/**
- * @brief      Send the write enable command over SPI
- */
-static void flash_write_enable(void)
-{    
-    uint8_t spiTransfer[1];
-
-    spiTransfer[0] = MX25R_WREN;    
-    EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 1, &spiTransfer[0], 0,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstLast);	
-}
-
-/**
- * @brief      Send a read status register frame over SPI
- *
- * @return     Chip status register
- */
-static uint8_t flash_status_register(void)
-{    
-    uint8_t spiTransfer[2];
-
-    spiTransfer[0] = MX25R_RDSR;
-    spiTransfer[1] = 0x00;    
-
-    EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 1, &spiTransfer[0], 1,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstLast);
-
-    return spiTransfer[0];
-}
-
-/**
- * @brief      Send a sector erase frame with start address
- *
- * @param[in]  byteAddress  The byte address
- */
-static void flash_erase_sector(uint32_t byteAddress)
-{    
-    uint8_t spiTransfer[4];
-
-    spiTransfer[0] = MX25R_SE;
-    spiTransfer[1] = (byteAddress >> 16) & 0xff;
-    spiTransfer[2] = (byteAddress >> 8)  & 0xff;
-    spiTransfer[3] = (byteAddress >> 0)  & 0xff;
-
-    EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 4, &spiTransfer[0], 0,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstLast);
-}
-
-/**
- * @brief      Send a block erase frame with start address
- *
- * @param[in]  byteAddress  The byte address
- */
-static void flash_erase_block(uint32_t byteAddress)
-{    
-    uint8_t spiTransfer[4];
-
-    spiTransfer[0] = MX25R_BE;
-    spiTransfer[1] = (byteAddress >> 16) & 0xff;
-    spiTransfer[2] = (byteAddress >> 8)  & 0xff;
-    spiTransfer[3] = (byteAddress >> 0)  & 0xff;
-
-    EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 4, &spiTransfer[0], 0,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstLast);
-}
-
-/**
- * @brief      Send program page command and send data over SPI
- *
- * @param[in]  byteAddress  The byte address
- * @param      page         The page
- * @param[in]  pageBytes    The page bytes
- */
-static void flash_program_page(uint32_t byteAddress, uint8_t *page, uint32_t pageBytes)
-{
-	uint8_t spiTransfer[4];
-
-    spiTransfer[0] = MX25R_PP;
-    spiTransfer[1] = (byteAddress >> 16) & 0xff;
-    spiTransfer[2] = (byteAddress >> 8)  & 0xff;
-    spiTransfer[3] = (byteAddress >> 0)  & 0xff;
-
-    EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 4, &spiTransfer[0], 0,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstOnly);
-
-    EtaCspSpiTransferPoll(eSpi1, page, pageBytes, &spiTransfer[0], 0,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceLastOnly);
-}
-
-/**
- * @brief      Send read command and get data over SPI
- *
- * @param[in]  byteAddress  The byte address
- * @param      buffer       The buffer
- * @param[in]  readBytes    The read bytes
- *
- * @return     Eta status
- */
-static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t readBytes)
-{
-	uint8_t spiTransfer[4];
-
-    spiTransfer[0] = MX25R_READ;
-    spiTransfer[1] = (byteAddress >> 16) & 0xff;
-    spiTransfer[2] = (byteAddress >> 8)  & 0xff;
-    spiTransfer[3] = (byteAddress >> 0)  & 0xff;
-
-    return (uint32_t)EtaCspSpiTransferPoll(eSpi1, &spiTransfer[0], 4, buffer, readBytes,
-                                   ETA_BSP_SPIFLASH_CS_NUM, eSpiSequenceFirstLast);
-}
-#endif
