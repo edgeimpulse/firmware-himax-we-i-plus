@@ -11,9 +11,9 @@
 #define SAMPLE_MEMORY			RAM
 
 #define SIZE_RAM_BUFFER			0x20800
+#define SIZE_RAM2_BUFFER	    (640*480)
 #define RAM_BLOCK_SIZE			1024
 #define RAM_N_BLOCKS			(SIZE_RAM_BUFFER / RAM_BLOCK_SIZE)
-
 
 /* Private function prototypes --------------------------------------------- */
 static uint32_t flash_write(uint32_t address, const uint8_t *buffer, uint32_t bufferSize);
@@ -27,6 +27,7 @@ static void flash_program_page(uint32_t byteAddress, uint8_t *page, uint32_t pag
 static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t readBytes);
 
 #if(SAMPLE_MEMORY == RAM)
+volatile uint8_t * const raw_memory_2 = (uint8_t *) (0x20124e70); // pointer to g_pimg_config.raw_address
 #pragma Bss(".ram_memory")
 uint8_t ram_memory[SIZE_RAM_BUFFER];
 #pragma Bss()
@@ -229,7 +230,16 @@ uint32_t ei_himax_fs_get_n_available_sample_blocks(void)
 uint8_t *ei_himax_fs_allocate_sampledata(size_t n_bytes)
 {
 	#if(SAMPLE_MEMORY == RAM)
-	if(n_bytes >= SIZE_RAM_BUFFER) {
+    // only if resolution is not 640x480 then we try to allocate from the fixed RAM location
+    // otherwise we use the alreadly Himax allocated space for raw image.
+	if(n_bytes > SIZE_RAM2_BUFFER) {
+		return 0;
+	}
+	// explicitly used for image data for now
+	else if (n_bytes == SIZE_RAM2_BUFFER) {
+		return (uint8_t *)raw_memory_2;
+	}
+	else if (n_bytes >= SIZE_RAM_BUFFER) {
 		return 0;
 	}
 	else {

@@ -91,6 +91,9 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
         return false;
     }
 
+    // skip scaling if width and height matches the original resolution
+    if ((img_width == 640) && (img_height == 480)) return true;
+
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
                              buf, img_width, img_height) != HX_DRV_LIB_PASS) {
