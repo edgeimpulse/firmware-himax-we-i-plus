@@ -315,6 +315,7 @@ void run_nn(bool debug) {
     }
 
     while(1) {
+        ei_printf("Starting inferencing in 2 seconds...\n");
 
         // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
         if (ei_sleep(2000) != EI_IMPULSE_OK) {
