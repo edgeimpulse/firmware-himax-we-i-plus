@@ -288,12 +288,17 @@ static void at_list_files_data(char *name) {
 }
 
 static void at_list_files() {
-    ei_config_get_context()->list_files(at_list_files_data);
+    if(ei_config_get_context()->list_files == NULL){
+        ei_printf("AT+NACK\n");
+    }
+    else {
+        ei_config_get_context()->list_files(at_list_files_data);
+    }
 }
 
 static void at_read_file_data(uint8_t *buffer, size_t size) {
-    //char *base64_buffer = (char*)calloc((size / 3 * 4) + 4, 1);
-    static char base64_buffer[(513 / 3 * 4) + 4];
+    char *base64_buffer = (char*)ei_calloc((size / 3 * 4) + 4, 1);
+    // static char base64_buffer[(513 / 3 * 4) + 4];
     if (!base64_buffer) {
         ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", (size / 3 * 4) + 4);
         return;
@@ -307,7 +312,7 @@ static void at_read_file_data(uint8_t *buffer, size_t size) {
 
     ei_write_string(base64_buffer, r);
 
-    //free(base64_buffer);
+    free(base64_buffer);
 }
 
 static void at_read_file(char *filename) {
