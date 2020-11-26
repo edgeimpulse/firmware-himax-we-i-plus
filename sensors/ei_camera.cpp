@@ -85,6 +85,8 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
 {
     if (is_initialised == false) return false;
 
+    EiDevice.set_state(eiStateSampling);
+
     if (hx_drv_sensor_capture(&g_pimg_config) != HX_DRV_LIB_PASS) {
         return false;
     }
@@ -128,6 +130,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     }
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
+
 
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
@@ -239,6 +242,8 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     free(signal_buf);
     snapshot_image_data = NULL;
+
+    EiDevice.set_state(eiStateIdle);
 
     return true;
 }

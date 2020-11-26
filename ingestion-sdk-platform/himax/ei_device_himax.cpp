@@ -273,10 +273,12 @@ void EiDeviceHimax::set_state(tEiState state)
 {
     ei_program_state = state;
 
-    if(state == eiStateFinished) {
-
-
+    if((state == eiStateFinished) || (state == eiStateIdle)) {
         ei_program_state = eiStateIdle;
+
+        hx_drv_led_off(HX_DRV_LED_GREEN);
+    } else if (state == eiStateSampling) {
+        hx_drv_led_on(HX_DRV_LED_GREEN);
     }
 
 
