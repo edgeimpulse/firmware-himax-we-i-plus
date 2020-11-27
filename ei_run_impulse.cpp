@@ -359,6 +359,7 @@ void run_nn(bool debug) {
         }
     }
 
+    ei_camera_deinit();
     image_data = NULL;
 }
 #endif

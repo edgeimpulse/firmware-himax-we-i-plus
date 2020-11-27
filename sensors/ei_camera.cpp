@@ -77,6 +77,19 @@ bool ei_camera_init(void)
     return true;
 }
 
+
+/**
+ * @brief      Stop streaming of sensor data
+ */
+void ei_camera_deinit(void)
+{
+    if(is_initialised) {
+
+        hx_drv_sensor_stop_capture();
+        is_initialised = false;
+    }
+}
+
 /**
  * @brief      Capture and rescale image
  *
@@ -256,6 +269,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     snapshot_image_data = NULL;
 
     EiDevice.set_state(eiStateIdle);
+    ei_camera_deinit();
 
     return true;
 }
