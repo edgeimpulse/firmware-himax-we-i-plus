@@ -11,9 +11,9 @@
 #define SAMPLE_MEMORY			RAM
 
 #define SIZE_RAM_BUFFER			0x20800
+#define SIZE_RAM2_BUFFER	    (640*480)
 #define RAM_BLOCK_SIZE			1024
 #define RAM_N_BLOCKS			(SIZE_RAM_BUFFER / RAM_BLOCK_SIZE)
-
 
 /* Private function prototypes --------------------------------------------- */
 static uint32_t flash_write(uint32_t address, const uint8_t *buffer, uint32_t bufferSize);
@@ -27,6 +27,7 @@ static void flash_program_page(uint32_t byteAddress, uint8_t *page, uint32_t pag
 static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t readBytes);
 
 #if(SAMPLE_MEMORY == RAM)
+volatile uint8_t * const raw_memory_2 = (uint8_t *) (0x20124e70); // pointer to g_pimg_config.raw_address
 #pragma Bss(".ram_memory")
 uint8_t ram_memory[SIZE_RAM_BUFFER];
 #pragma Bss()
@@ -45,30 +46,30 @@ uint8_t ram_memory[SIZE_RAM_BUFFER];
  */
 int ei_himax_fs_load_config(uint32_t *config, uint32_t config_size)
 {
-	int retVal = HIMAX_FS_CMD_OK;
+    int retVal = HIMAX_FS_CMD_OK;
 
-	if(config == NULL) {
-		return HIMAX_FS_CMD_NULL_POINTER;
-	}
+    if(config == NULL) {
+        return HIMAX_FS_CMD_NULL_POINTER;
+    }
 
-	#if(SAMPLE_MEMORY == RAM)
+    #if(SAMPLE_MEMORY == RAM)
 
-	return retVal;
+    return retVal;
 
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
 
-	if(flash_wait_while_busy() == 0) {
-		retVal = HIMAX_FS_CMD_READ_ERROR;
-	}
-	else {
-		if(flash_read_data(0, (uint8_t *)config, config_size) != 0) {
-			retVal = HIMAX_FS_CMD_READ_ERROR;
-		}
-	}
+    if(flash_wait_while_busy() == 0) {
+        retVal = HIMAX_FS_CMD_READ_ERROR;
+    }
+    else {
+        if(flash_read_data(0, (uint8_t *)config, config_size) != 0) {
+            retVal = HIMAX_FS_CMD_READ_ERROR;
+        }
+    }
 
-	return retVal;
+    return retVal;
 
-	#endif
+    #endif
 }
 
 
@@ -82,27 +83,27 @@ int ei_himax_fs_load_config(uint32_t *config, uint32_t config_size)
  */
 int ei_himax_fs_save_config(const uint32_t *config, uint32_t config_size)
 {
-	int retVal = HIMAX_FS_CMD_OK;
+    int retVal = HIMAX_FS_CMD_OK;
 
-	if(config == NULL) {
-		return HIMAX_FS_CMD_NULL_POINTER;
-	}
+    if(config == NULL) {
+        return HIMAX_FS_CMD_NULL_POINTER;
+    }
 
-	#if(SAMPLE_MEMORY == RAM)
-	
-	return retVal;
+    #if(SAMPLE_MEMORY == RAM)
 
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    return retVal;
 
-	retVal = flash_erase_sectors(0, 1);
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
 
-	return (retVal == HIMAX_FS_CMD_OK) ?
-		flash_write(0, (const uint8_t *)config, config_size) :
-		retVal;
+    retVal = flash_erase_sectors(0, 1);
 
-	#endif
+    return (retVal == HIMAX_FS_CMD_OK) ?
+        flash_write(0, (const uint8_t *)config, config_size) :
+        retVal;
 
-	
+    #endif
+
+
 }
 
 /**
@@ -115,12 +116,12 @@ int ei_himax_fs_save_config(const uint32_t *config, uint32_t config_size)
  */
 int ei_himax_fs_erase_sampledata(uint32_t start_block, uint32_t end_address)
 {
-	#if(SAMPLE_MEMORY == RAM)
-	return HIMAX_FS_CMD_OK;
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
-	return flash_erase_sectors(MX25R_BLOCK64_SIZE, end_address / MX25R_SECTOR_SIZE);
+    #if(SAMPLE_MEMORY == RAM)
+    return HIMAX_FS_CMD_OK;
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    return flash_erase_sectors(MX25R_BLOCK64_SIZE, end_address / MX25R_SECTOR_SIZE);
 
-	#endif
+    #endif
 }
 
 /**
@@ -134,26 +135,26 @@ int ei_himax_fs_erase_sampledata(uint32_t start_block, uint32_t end_address)
  */
 int ei_himax_fs_write_samples(const void *sample_buffer, uint32_t address_offset, uint32_t n_samples)
 {
-	uint32_t n_word_samples = WORD_ALIGN(n_samples);
-	
-	#if(SAMPLE_MEMORY == RAM)
-	if((address_offset + n_word_samples) > SIZE_RAM_BUFFER) {
-		return HIMAX_FS_CMD_WRITE_ERROR;
-	}
-	else if(sample_buffer == 0) {
-		return HIMAX_FS_CMD_NULL_POINTER;
-	}
+    uint32_t n_word_samples = WORD_ALIGN(n_samples);
 
-	for(int i=0;  i<n_word_samples; i++) {
-		ram_memory[address_offset + i] = *((char *)sample_buffer + i);
-	}
-	return HIMAX_FS_CMD_OK;	
-	
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    #if(SAMPLE_MEMORY == RAM)
+    if((address_offset + n_word_samples) > SIZE_RAM_BUFFER) {
+        return HIMAX_FS_CMD_WRITE_ERROR;
+    }
+    else if(sample_buffer == 0) {
+        return HIMAX_FS_CMD_NULL_POINTER;
+    }
 
-	return flash_write(MX25R_BLOCK64_SIZE + address_offset, (const uint8_t *)sample_buffer, n_word_samples);	
+    for(int i=0;  i<n_word_samples; i++) {
+        ram_memory[address_offset + i] = *((char *)sample_buffer + i);
+    }
+    return HIMAX_FS_CMD_OK;
 
-	#endif
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
+
+    return flash_write(MX25R_BLOCK64_SIZE + address_offset, (const uint8_t *)sample_buffer, n_word_samples);
+
+    #endif
 }
 
 /**
@@ -167,49 +168,49 @@ int ei_himax_fs_write_samples(const void *sample_buffer, uint32_t address_offset
  */
 int ei_himax_fs_read_sample_data(void *sample_buffer, uint32_t address_offset, uint32_t n_read_bytes)
 {
-	#if(SAMPLE_MEMORY == RAM)
-	if((address_offset + n_read_bytes) > SIZE_RAM_BUFFER) {
-		return HIMAX_FS_CMD_READ_ERROR;
-	}
-	else if(sample_buffer == 0) {
-		return HIMAX_FS_CMD_NULL_POINTER;
-	}
+    #if(SAMPLE_MEMORY == RAM)
+    if((address_offset + n_read_bytes) > SIZE_RAM_BUFFER) {
+        return HIMAX_FS_CMD_READ_ERROR;
+    }
+    else if(sample_buffer == 0) {
+        return HIMAX_FS_CMD_NULL_POINTER;
+    }
 
-	for(int i=0;  i<n_read_bytes; i++) {
-		*((char *)sample_buffer + i) = ram_memory[address_offset + i];
-	}
-	return HIMAX_FS_CMD_OK;
-	
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    for(int i=0;  i<n_read_bytes; i++) {
+        *((char *)sample_buffer + i) = ram_memory[address_offset + i];
+    }
+    return HIMAX_FS_CMD_OK;
 
-	int retVal = HIMAX_FS_CMD_OK;
-	
-	if(flash_wait_while_busy() == 0) {
-		retVal = HIMAX_FS_CMD_READ_ERROR;
-	}
-	else {
-		if(flash_read_data(MX25R_BLOCK64_SIZE + address_offset, (uint8_t *)sample_buffer, n_read_bytes) != 0) {
-			retVal = HIMAX_FS_CMD_READ_ERROR;
-		}
-	}
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
 
-	return retVal;
+    int retVal = HIMAX_FS_CMD_OK;
 
-	#endif
+    if(flash_wait_while_busy() == 0) {
+        retVal = HIMAX_FS_CMD_READ_ERROR;
+    }
+    else {
+        if(flash_read_data(MX25R_BLOCK64_SIZE + address_offset, (uint8_t *)sample_buffer, n_read_bytes) != 0) {
+            retVal = HIMAX_FS_CMD_READ_ERROR;
+        }
+    }
+
+    return retVal;
+
+    #endif
 }
 
 /**
- * @brief      Get block size (Smallest erasble block). 
+ * @brief      Get block size (Smallest erasble block).
  *
  * @return     Length of 1 block
  */
 uint32_t ei_himax_fs_get_block_size(void)
 {
-	#if(SAMPLE_MEMORY == RAM)
-	return RAM_BLOCK_SIZE;
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
-	return MX25R_SECTOR_SIZE;
-	#endif
+    #if(SAMPLE_MEMORY == RAM)
+    return RAM_BLOCK_SIZE;
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    return MX25R_SECTOR_SIZE;
+    #endif
 }
 
 /**
@@ -219,23 +220,32 @@ uint32_t ei_himax_fs_get_block_size(void)
  */
 uint32_t ei_himax_fs_get_n_available_sample_blocks(void)
 {
-	#if(SAMPLE_MEMORY == RAM)
-	return RAM_N_BLOCKS;
-	#elif(SAMPLE_MEMORY == SERIAL_FLASH)
-	return (MX25R_CHIP_SIZE - MX25R_BLOCK64_SIZE) / MX25R_SECTOR_SIZE;
-	#endif
+    #if(SAMPLE_MEMORY == RAM)
+    return RAM_N_BLOCKS;
+    #elif(SAMPLE_MEMORY == SERIAL_FLASH)
+    return (MX25R_CHIP_SIZE - MX25R_BLOCK64_SIZE) / MX25R_SECTOR_SIZE;
+    #endif
 }
 
 uint8_t *ei_himax_fs_allocate_sampledata(size_t n_bytes)
 {
-	#if(SAMPLE_MEMORY == RAM)
-	if(n_bytes >= SIZE_RAM_BUFFER) {
-		return 0;
-	}
-	else {
-		return ram_memory;
-	}
-	#else
-	return 0;
-	#endif
+    #if(SAMPLE_MEMORY == RAM)
+    // only if resolution is not 640x480 then we try to allocate from the fixed RAM location
+    // otherwise we use the alreadly Himax allocated space for raw image.
+    if(n_bytes > SIZE_RAM2_BUFFER) {
+        return 0;
+    }
+    // explicitly used for image data for now
+    else if (n_bytes == SIZE_RAM2_BUFFER) {
+        return (uint8_t *)raw_memory_2;
+    }
+    else if (n_bytes >= SIZE_RAM_BUFFER) {
+        return 0;
+    }
+    else {
+        return ram_memory;
+    }
+    #else
+    return 0;
+    #endif
 }
