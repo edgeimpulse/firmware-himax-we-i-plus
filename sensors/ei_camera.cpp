@@ -34,26 +34,8 @@
 /* Private variables ------------------------------------------------------- */
 static bool is_initialised = false;
 static hx_drv_sensor_image_config_t g_pimg_config;
-static int8_t *snapshot_image_data = NULL;
 
 /* Private functions ------------------------------------------------------- */
-
-static bool snapshot_is_resized = false;
-static int get_snapshot_image_data(size_t offset, size_t length, float *out_ptr) {
-    for(size_t i = 0; i < length; i++) {
-        int8_t mono_data = (int8_t)snapshot_image_data[offset + i];
-        uint8_t v;
-        if (snapshot_is_resized) {
-            v = (uint8_t)mono_data + 128;
-        }
-        else {
-            v = (uint8_t)mono_data;
-        }
-        out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
-    }
-
-    return 0;
-}
 
 /**
  * @brief   Setup image sensor & start streaming
@@ -91,6 +73,32 @@ void ei_camera_deinit(void)
 }
 
 /**
+ * @brief      Calculate the desired frame buffer resolution
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ * @param[out] fb_cols       pointer to frame buffer column/width value
+ * @param[out] fb_rows       pointer to frame buffer rows/height value
+ *
+* @todo Remove magic numbers
+ */
+void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, uint32_t *fb_cols, uint32_t *fb_rows)
+{
+    if ((img_width == FRAME_BUFFER_COLS) && (img_height == FRAME_BUFFER_ROWS)
+        || (img_width > 320) && (img_height > 240)
+    ) {
+        *fb_cols = FRAME_BUFFER_COLS;
+        *fb_rows = FRAME_BUFFER_ROWS;
+    } else if ((img_width > 128) && (img_height > 96)) {
+        *fb_cols = 320;
+        *fb_rows = 240;
+    } else {
+        *fb_cols = 128;
+        *fb_rows =  96;
+    }
+}
+
+/**
  * @brief      Capture and rescale image
  *
  * @param[in]  img_width     width of output image
@@ -112,14 +120,21 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
     }
 
     // skip scaling if width and height matches the original resolution
-    if ((img_width == 640) && (img_height == 480)) return true;
+    if ((img_width == FRAME_BUFFER_COLS) && (img_height == FRAME_BUFFER_ROWS)) return true;
 
+    calculate_rescaled_fb_resolution(img_width, img_height, &frame_buffer_cols, &frame_buffer_rows);
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
-                             buf, img_width, img_height) != HX_DRV_LIB_PASS) {
+                             buf, frame_buffer_cols, frame_buffer_rows) != HX_DRV_LIB_PASS) {
         return false;
     }
 
+    snapshot_is_resized = (img_width != FRAME_BUFFER_COLS) || (img_height != FRAME_BUFFER_ROWS);
+
+    cutout_row_start = (frame_buffer_rows - img_height) / 2;
+    cutout_col_start = (frame_buffer_cols - img_width) / 2;
+    cutout_cols = img_width;
+    cutout_rows = img_height;
     return true;
 }
 
@@ -154,8 +169,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
-    snapshot_is_resized = (width != 640) || (height != 480);
-
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return false;
@@ -168,7 +181,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     ei::signal_t signal;
     signal.total_length = width * height;
-    signal.get_data = &get_snapshot_image_data;
+    signal.get_data = &cutout_get_data;
 
     size_t signal_chunk_size = 1024;
 
