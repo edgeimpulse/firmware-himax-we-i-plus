@@ -34,8 +34,7 @@
 /* Constant defines -------------------------------------------------------- */
 #define CONVERT_4G_TO_MS2    4.903325f
 
-#define ACC_SAMPLE_TIME_MS  (1.f / 119.f)
-#define FLASH_WRITE_TIME_MS 0.1f
+#define ACC_SAMPLE_TIME_MS  (1)
 
 extern ei_config_t *ei_config_get_config();
 extern EI_CONFIG_ERROR ei_config_set_sample_interval(float interval);
@@ -46,9 +45,6 @@ static float convert_raw_to_ms2(float axis);
 /* Private variables ------------------------------------------------------- */
 static uint32_t samplerate_divider;
 static float imu_data[N_AXIS_SAMPLED];
-static float scale_and_ms2_convert;
-
-// static tIcm20602Cfg eiIcm20602Device;
 
 sampler_callback  cb_sampler;
 
@@ -60,40 +56,23 @@ sampler_callback  cb_sampler;
  */
 bool ei_inertial_init(void)
 {
-    // eiIcm20602Device.iSpiInstance = (tSpiNum)ETA_BSP_ICM20602_SPI_NUM;
-    // eiIcm20602Device.iSpiChipSel = ETA_BSP_ICM20602_SPI_CS_NUM;
-
     hx_drv_accelerometer_initial();
 
-    scale_and_ms2_convert = 1.f;//ei_inertial_accel_sensitivity() * CONVERT_G_TO_MS2;
-
-    if(scale_and_ms2_convert == 0.f) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return true;
 }
 
 /**
  * @brief      Get data from sensor, convert and call callback to handle
  */
 void ei_inertial_read_data(void)
-{       
+{
     float x, y, z;
-    // volatile uint32_t div_sample_count;
-    
-    // for(div_sample_count = 0; div_sample_count < samplerate_divider; div_sample_count++) {        
 
-        // while(hx_drv_accelerometer_available_count() == 0) {
-        //     EiDevice.delay_ms(1);
-        // };
-        EiDevice.delay_ms(6);
-        while(hx_drv_accelerometer_available_count() == 0) {};
-            
-        hx_drv_accelerometer_receive(&x, &y, &z);
-        //}
-    // }
+    EiDevice.delay_ms(samplerate_divider - ACC_SAMPLE_TIME_MS);
+    while (hx_drv_accelerometer_available_count() == 0) {
+    };
+
+    hx_drv_accelerometer_receive(&x, &y, &z);
 
     imu_data[0] = convert_raw_to_ms2(x);
     imu_data[1] = convert_raw_to_ms2(y);
@@ -113,9 +92,7 @@ void ei_inertial_read_data(void)
 bool ei_inertial_sample_start(sampler_callback callsampler, float sample_interval_ms)
 {
     cb_sampler = callsampler;
-    
-    samplerate_divider = (int)(sample_interval_ms / ACC_SAMPLE_TIME_MS) - (FLASH_WRITE_TIME_MS / ACC_SAMPLE_TIME_MS);
-
+    samplerate_divider = (int)sample_interval_ms;
     EiDevice.set_state(eiStateSampling);
 
     return true;

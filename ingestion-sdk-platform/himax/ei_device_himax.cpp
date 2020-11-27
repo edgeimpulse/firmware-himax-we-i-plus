@@ -201,10 +201,10 @@ bool EiDeviceHimax::get_sensor_list(const ei_device_sensor_t **sensor_list, size
     sensors[ACCELEROMETER].name = "Built-in accelerometer";
     sensors[ACCELEROMETER].start_sampling_cb = &ei_inertial_setup_data_sampling;
     sensors[ACCELEROMETER].max_sample_length_s = available_bytes / (100 * SIZEOF_N_AXIS_SAMPLED);
-    sensors[ACCELEROMETER].frequencies[0] = 62.5f;
-    sensors[ACCELEROMETER].frequencies[1] = 104.0f;
-    sensors[ACCELEROMETER].frequencies[2] = 250.0f;
-    sensors[ACCELEROMETER].frequencies[3] = 500.0f;
+    sensors[ACCELEROMETER].frequencies[0] = 25.0f;
+    sensors[ACCELEROMETER].frequencies[1] = 50.0f;
+    sensors[ACCELEROMETER].frequencies[2] = 62.5f;
+    sensors[ACCELEROMETER].frequencies[3] = 104.0f;
 
     sensors[MICROPHONE].name = "Built-in microphone";
     sensors[MICROPHONE].start_sampling_cb = &ei_microphone_sample_start;

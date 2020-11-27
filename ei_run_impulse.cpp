@@ -99,7 +99,7 @@ void run_nn(bool debug) {
             ei_inertial_read_data();
             acc_sample_count += EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME;
         }
-        ei_printf("time: %d\r\n", (uint32_t)(ei_read_timer_ms() - s_time));
+
         // Create a data structure to represent this window of data
         signal_t signal;
         int err = numpy::signal_from_buffer(acc_buf, EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, &signal);
