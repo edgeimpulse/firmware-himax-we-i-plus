@@ -220,6 +220,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
                 ei_write_string(base64_buffer, r);
                 per_pixel_buffer_ix = 0;
             }
+            EiDevice.set_state(eiStateUploading);
         }
     }
 

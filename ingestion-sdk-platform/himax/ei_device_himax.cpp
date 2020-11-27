@@ -272,13 +272,29 @@ void EiDeviceHimax::setup_led_control(void)
 void EiDeviceHimax::set_state(tEiState state)
 {
     ei_program_state = state;
+    static uint8_t upload_toggle = 0;
 
-    if((state == eiStateFinished) || (state == eiStateIdle)) {
+    if((state == eiStateFinished) || (state == eiStateIdle)){
         ei_program_state = eiStateIdle;
 
         hx_drv_led_off(HX_DRV_LED_GREEN);
-    } else if (state == eiStateSampling) {
+        hx_drv_led_off(HX_DRV_LED_RED);
+        upload_toggle = 0;
+
+    }
+    else if (state == eiStateSampling) {
         hx_drv_led_on(HX_DRV_LED_GREEN);
+    } 
+    else if (state == eiStateUploading) {        
+        
+        if(upload_toggle) {
+            hx_drv_led_on(HX_DRV_LED_RED);
+        }
+        else {
+            hx_drv_led_off(HX_DRV_LED_RED);
+            hx_drv_led_off(HX_DRV_LED_GREEN);
+        }
+        upload_toggle ^= 1;
     }
 
 
@@ -512,12 +528,13 @@ static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8
     size_t pos = begin;
     size_t bytes_left = length;
     bool retVal;
-
-    EiDevice.set_state(eiStateUploading);
-
+    
     // we're encoding as base64 in AT+READFILE, so this needs to be divisable by 3
     uint8_t buffer[513];
     while (1) {
+        
+        EiDevice.set_state(eiStateUploading);
+
         size_t bytes_to_read = sizeof(buffer);
         if (bytes_to_read > bytes_left) {
             bytes_to_read = bytes_left;
