@@ -233,15 +233,12 @@ bool EiDeviceHimax::get_snapshot_list(const ei_device_snapshot_resolutions_t **s
     snapshot_resolutions[1].width = 320;
     snapshot_resolutions[1].height = 240;
 
-    snapshot_resolutions[2].width = 384;
-    snapshot_resolutions[2].height = 288;
-
-    snapshot_resolutions[3].width = 640;
-    snapshot_resolutions[3].height = 480;
+    snapshot_resolutions[2].width = 640;
+    snapshot_resolutions[2].height = 480;
 
 #if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
-    snapshot_resolutions[4].width = EI_CLASSIFIER_INPUT_WIDTH;
-    snapshot_resolutions[4].height = EI_CLASSIFIER_INPUT_HEIGHT;
+    snapshot_resolutions[3].width = EI_CLASSIFIER_INPUT_WIDTH;
+    snapshot_resolutions[3].height = EI_CLASSIFIER_INPUT_HEIGHT;
 #endif
 
     *snapshot_list      = snapshot_resolutions;
