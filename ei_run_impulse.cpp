@@ -326,6 +326,8 @@ void run_nn(bool debug) {
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
         signal.get_data = &get_image_data;
 
+        ei_printf("Taking photo...\n");
+
         if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
             ei_printf("Failed to capture image\r\n");
             break;
