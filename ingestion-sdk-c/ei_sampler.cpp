@@ -43,8 +43,6 @@ using namespace events;
 extern bool ei_inertial_sample_start(sampler_callback callback, float sample_interval_ms);
 extern void ei_inertial_read_data(void);
 
-extern void ei_printf(const char *format, ...);
-extern void ei_printf_float(float value);
 extern ei_config_t *ei_config_get_config();
 extern EI_CONFIG_ERROR ei_config_set_sample_interval(float interval);
 

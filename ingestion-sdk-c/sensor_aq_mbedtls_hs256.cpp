@@ -35,8 +35,7 @@
 #include "ei_mbedtls_md.h"
 
 //#ifdef MBEDTLS_MD_C
-
-extern void ei_printf(const char *format, ...);
+#include "ei_classifier_porting.h"
 
 typedef struct {
     mbedtls_md_context_t md_ctx;

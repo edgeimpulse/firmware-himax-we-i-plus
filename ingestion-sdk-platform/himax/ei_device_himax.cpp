@@ -408,19 +408,6 @@ void ei_serial_setup(void)
 }
 
 /**
- * @brief      Printf function uses vsnprintf and output using Eta lib function
- *
- * @param[in]  format     Variable argument list
- */
-void ei_printf(const char *format, ...)
-{
-    va_list myargs;
-    va_start(myargs, format);
-    vprintf(format, myargs);
-    va_end(myargs);
-}
-
-/**
  * @brief      Write serial data with length to Serial output
  *
  * @param      data    The data

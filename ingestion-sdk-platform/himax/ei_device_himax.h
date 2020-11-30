@@ -25,7 +25,7 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_info.h"
-
+#include "ei_classifier_porting.h"
 #include <cstdlib>
 #include <cstdint>
 
@@ -90,9 +90,6 @@ public:
 void ei_command_line_handle(void *args);
 bool ei_user_invoke_stop(void);
 void ei_serial_setup(void);
-void ei_printf(const char *format, ...);
-// void ei_printf_float(float f);
-// void ei_printfloat(int n_decimals, int n, ...);
 
 void ei_write_string(char *data, int length);
 void ei_putc(char cChar);

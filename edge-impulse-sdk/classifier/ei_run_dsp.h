@@ -26,14 +26,7 @@
 #include "model-parameters/model_metadata.h"
 #include "edge-impulse-sdk/dsp/spectral/spectral.hpp"
 #include "edge-impulse-sdk/dsp/speechpy/speechpy.hpp"
-
-#if defined(__cplusplus) && EI_C_LINKAGE == 1
-extern "C" {
-    extern void ei_printf(const char *format, ...);
-}
-#else
-extern void ei_printf(const char *format, ...);
-#endif
+#include "ei_classifier_porting.h"
 
 #ifdef __cplusplus
 namespace {
