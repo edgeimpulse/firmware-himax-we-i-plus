@@ -363,6 +363,8 @@ void ei_command_line_handle(void *args)
         if (hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
             rx_callback(character);
         }
+        // handle at least once every ~10.7 sec
+        ei_read_timer_ms();
     }
 }
 
