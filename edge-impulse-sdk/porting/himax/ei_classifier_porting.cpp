@@ -35,7 +35,7 @@
 #define HIMAX_TIMER_TICK_1MSEC   (HIMAX_TIMER_TICK_1SEC/1000)
 
 /* Private variables -------------------------------------------------------- */
-static uint32_t system_time_ms = 0;
+static uint64_t system_time_ms = 0;
 static uint32_t prev_tick_us = 0;
 
 
@@ -47,20 +47,13 @@ __attribute__((weak)) EI_IMPULSE_ERROR ei_run_impulse_check_canceled() {
  * Cancelable sleep, can be triggered with signal from other thread
  */
 __attribute__((weak)) EI_IMPULSE_ERROR ei_sleep(int32_t time_ms) {
-    uint32_t tick;
     uint64_t end_delay, cur_time = 0;
 
-    hx_drv_tick_start();
-    hx_drv_tick_get(&tick);
-
-    end_delay = (uint64_t)time_ms + (tick / 400000);
+    end_delay = (uint64_t)time_ms + ei_read_timer_ms();
 
     do {
-        tick = 0;
-        hx_drv_tick_get(&tick);
-        cur_time = (uint64_t)(tick / 400000);
-
-    }while(cur_time < end_delay);
+        cur_time = ei_read_timer_ms();
+    } while (cur_time < end_delay);
 
     return EI_IMPULSE_OK;
 }
@@ -72,7 +65,7 @@ uint64_t ei_read_timer_ms()
 
     //  handles 32-bit overflows
     hx_drv_tick_get(&tick_us);
-    diff_tick_us = (uint32_t) (tick_us - prev_tick_us);
+    diff_tick_us = (uint32_t)(tick_us - prev_tick_us);
 
     // integer number of ms elapsed
     elapsed_time_ms = diff_tick_us / HIMAX_TIMER_TICK_1MSEC;
@@ -83,10 +76,10 @@ uint64_t ei_read_timer_ms()
 
         // use the remainder of ms elapsed
         // handles 32-bit overflows
-        prev_tick_us = (uint32_t) (tick_us - (diff_tick_us % HIMAX_TIMER_TICK_1MSEC));
+        prev_tick_us = (uint32_t)(tick_us - (diff_tick_us % HIMAX_TIMER_TICK_1MSEC));
     }
 
-    return (uint64_t)system_time_ms;
+    return system_time_ms;
 }
 
 uint64_t ei_read_timer_us()
