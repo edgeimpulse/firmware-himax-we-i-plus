@@ -26,6 +26,7 @@
 #include "ei_inertialsensor.h"
 #include "ei_run_impulse.h"
 #include "ei_camera.h"
+#include "ei_microphone.h"
 #include "at_cmds.h"
 
 #include "hx_drv_tflm.h"
@@ -42,6 +43,13 @@ int main(void)
     if (ei_inertial_init() == false) {
         ei_printf("Inertial sensor communication error occured\r\n");
     }
+
+    /* Camera should first be init to guarantee correct audio sample frequency */
+    if (ei_camera_init() == true) {
+        ei_camera_deinit();
+    }
+
+    ei_microphone_init();
 
     /* Intialize configuration */
     static ei_config_ctx_t config_ctx = {0};

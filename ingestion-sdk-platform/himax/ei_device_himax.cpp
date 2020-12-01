@@ -357,8 +357,6 @@ void ei_command_line_handle(void *args)
 {
     uint8_t character;
 
-    ei_microphone_init();
-
     while (1) {
         if (hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
             rx_callback(character);
