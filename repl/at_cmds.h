@@ -348,7 +348,7 @@ static void at_read_raw(char *start_s, char *length_s) {
 
         int n_display_bytes = (length - start) < 32 ? (length - start) : 32;
         for(int i=0; i<n_display_bytes; i++) {
-            ei_printf("%02X ", (unsigned char)buffer[i]);
+            ei_printf("%.2X ", (unsigned char)buffer[i]);
         }
         ei_printf("\b\r\n");
     }

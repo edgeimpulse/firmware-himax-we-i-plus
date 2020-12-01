@@ -87,11 +87,10 @@ uint64_t ei_read_timer_us()
     return 0;
 }
 
-__attribute__((weak)) void ei_printf(const char *format, ...) {
-    va_list myargs;
-    va_start(myargs, format);
-    vprintf(format, myargs);
-    va_end(myargs);
+void ei_print_char(char byte)
+{
+    /* Send byte to used serial output */    
+    hx_drv_uart_print("%c", byte);
 }
 
 __attribute__((weak)) void ei_printf_float(float f) {
