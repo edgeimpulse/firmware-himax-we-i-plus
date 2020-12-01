@@ -8,7 +8,8 @@ MEMORY {
 	ICCM1   : ORIGIN = 0x10000000, LENGTH = 0x00050000
 	BOOT	: ORIGIN = 0x20000000, LENGTH = 0x00020800
 	SYSTEM0 : ORIGIN = 0x20020800, LENGTH = 0x0015f800
-	DCCM    : ORIGIN = 0x80000000, LENGTH = 0x00040000
+	DCCM    : ORIGIN = 0x80000000, LENGTH = 0x0003E000
+    .stack	: ORIGIN = 0x8003E000, LENGTH = 0x00002000
 	XCCM    : ORIGIN = 0x90000000, LENGTH = 0x00008000
 	YCCM    : ORIGIN = 0xa0000000, LENGTH = 0x00008000
 }
@@ -80,7 +81,7 @@ SECTIONS {
 			*(.tls*)
 			_e_data = .;
 		}
-	} > SYSTEM0
+	} > SYSTEM0 
 
 	GROUP (NOLOAD) : {
 		.bss ALIGN(16): {
@@ -88,27 +89,25 @@ SECTIONS {
 			*(TYPE bss)
 			_e_bss = .;
 		}
-
-  	.Zdata?: {}
-
+		
+  .tensor_arena? ALIGN(16): {}
+  .Zdata?: {}
+  _s_heap = .;          
 	} > DCCM
-
-  	GROUP : {
-		.heap? ALIGN(8) SIZE(131070): {}
-		.stack ALIGN(8) SIZE(8192): {}
-  	} > DCCM
-
-  	GROUP BLOCK(4): {
-    	.Xdata? : {}
-  	} > XCCM
-  	GROUP BLOCK(4): {
-    	.Ydata? : {}
-  	} > YCCM
+	
+  
+  GROUP BLOCK(4): {
+    .Xdata? : {}
+  } > XCCM
+  GROUP BLOCK(4): {
+    .Ydata? : {}
+  } > YCCM
 
 	_f_stack = ADDR(.stack);
 	_e_stack = ADDR(.stack) + SIZEOF(.stack);
-	_f_heap = ADDR(.heap);
-	_e_heap = ADDR(.heap) + SIZEOF(.heap);
+
+	_f_heap = _s_heap;
+	_e_heap = ADDR(.stack);
 
 	_load_addr_text = LOADADDR(.text);
 	_load_addr_rodata = LOADADDR(.rodata);
