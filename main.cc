@@ -44,11 +44,7 @@ int main(void)
         ei_printf("Inertial sensor communication error occured\r\n");
     }
 
-    /* Camera should first be init to guarantee correct audio sample frequency */
-    if (ei_camera_init() == true) {
-        ei_camera_deinit();
-    }
-
+    /* Setup microphone */
     ei_microphone_init();
 
     /* Intialize configuration */

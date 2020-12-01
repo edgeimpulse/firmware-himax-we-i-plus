@@ -396,8 +396,7 @@ extern HX_DRV_ERROR_E hx_drv_mic_off();
  *					time_prev = time_cur;
  *
  *					if(hx_drv_mic_capture_dual(&slt_audio_config)==HX_DRV_LIB_PASS) {
- *						memcpy(audio_clip,(void*)slt_audio_config.data_address,slt_audio_config.data_size);
- *
+ *						memcpy((void*)audio_clip,(void*)slt_audio_config.data_address,slt_audio_config.data_size*sizeof(uint8_t));
  *						//audio left/right channel data can be found at META_AUDIO_t left/right array
  *						...
  *					}
