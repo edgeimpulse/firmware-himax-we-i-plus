@@ -313,7 +313,7 @@ void run_nn(bool debug) {
 
         ei::signal_t signal;
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
-        signal.get_data = &cutout_get_data;
+        signal.get_data = &ei_cutout_get_data;
 
         ei_printf("Taking photo...\n");
 

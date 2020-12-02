@@ -83,7 +83,7 @@ static void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
  * This function is called by the classifier to get data
  * We don't want to have a separate copy of the cutout here, so we'll read from the frame buffer dynamically
  */
-static int cutout_get_data(size_t offset, size_t length, float *out_ptr) {
+static int ei_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
     // so offset and length naturally operate on the *cutout*, so we need to cut it out from the real framebuffer
     size_t bytes_left = length;
     size_t out_ptr_ix = 0;
