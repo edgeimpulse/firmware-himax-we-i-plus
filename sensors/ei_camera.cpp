@@ -29,11 +29,12 @@
 #include "at_base64.h"
 #include "numpy_types.h"
 
-#include "hx_drv_tflm.h"
+
+/* Global variables ------------------------------------------------------- */
+hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Private variables ------------------------------------------------------- */
 static bool is_initialised = false;
-static hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Private functions ------------------------------------------------------- */
 
@@ -161,16 +162,17 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
         return false;
     }
 
-    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
-    if (!snapshot_image_data) {
-        ei_printf("ERR: Failed to allocate image buffer\n");
-        return false;
-    }
-
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
+        return false;
+    }
+
+    // must be called after ei_camera_init()
+    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
+    if (!snapshot_image_data) {
+        ei_printf("ERR: Failed to allocate image buffer for (%dx%d): 0x%x\n", width, height, snapshot_image_data);
         return false;
     }
 

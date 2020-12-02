@@ -357,12 +357,12 @@ void ei_command_line_handle(void *args)
 {
     uint8_t character;
 
-    ei_microphone_init();
-
     while (1) {
         if (hx_drv_uart_getchar(&character) == HX_DRV_LIB_PASS) {
             rx_callback(character);
         }
+        // handle at least once every ~10.7 sec
+        ei_read_timer_ms();
     }
 }
 
@@ -405,19 +405,6 @@ bool ei_user_invoke_stop(void)
 void ei_serial_setup(void)
 {
 
-}
-
-/**
- * @brief      Printf function uses vsnprintf and output using Eta lib function
- *
- * @param[in]  format     Variable argument list
- */
-void ei_printf(const char *format, ...)
-{
-    va_list myargs;
-    va_start(myargs, format);
-    vprintf(format, myargs);
-    va_end(myargs);
 }
 
 /**

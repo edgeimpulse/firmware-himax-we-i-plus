@@ -142,7 +142,7 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
             return ;
     }    
     hx_timestamp_prev = hx_timestamp_cur;
-   
+
     hx_drv_mic_capture_dual(&mic_config);
 
     buffer = (int16_t *)mic_config.data_address;
@@ -268,14 +268,12 @@ bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bo
 
     if (print_start_messages) {
         ei_printf("Starting in %lu ms... (or until all flash was erased)\n",
-                  start_delay_ms < 2000 ? 2000 : start_delay_ms);
+                  500);
     }
 
+    /* Enable microphone and wait for steady signal */
     hx_drv_mic_on();
-
-    if (start_delay_ms < 2000) {
-        EiDevice.delay_ms(2000 - start_delay_ms);
-    }
+    EiDevice.delay_ms(500);
 
     create_header();
 

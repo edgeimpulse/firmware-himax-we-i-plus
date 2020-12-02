@@ -27,7 +27,13 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
+#include "hx_drv_tflm.h"
 
+/* Global variables -------------------------------------------------------- */
+extern hx_drv_sensor_image_config_t g_pimg_config;
+
+
+/* Constants --------------------------------------------------------------- */
 // raw frame buffer from the camera
 #define FRAME_BUFFER_COLS           640
 #define FRAME_BUFFER_ROWS           480

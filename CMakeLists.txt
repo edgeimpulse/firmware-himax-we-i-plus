@@ -16,6 +16,7 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
 				 "ingestion-sdk-platform/himax/*.cpp"
 				 "ingestion-sdk-c/*.cpp"
 				 "repl/*.cpp"
+				 "repl/*.c"
 				 "sensors/*.cpp"
 				 "QCBOR/src/*.c"
 				 "mbedtls_hmac_sha256_sw/mbedtls/src/*.c")

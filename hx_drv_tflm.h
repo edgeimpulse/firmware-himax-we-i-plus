@@ -101,7 +101,7 @@ typedef struct {
  */
 typedef struct {
     uint32_t data_address;	/**< microphone data array address, assigned by Himax driver */
-    uint32_t data_size;		/**< microphone data size about samples, assigned by Himax driver */
+    uint32_t data_size;		/**< microphone data size in bytes about samples, assigned by Himax driver */
 
 } hx_drv_mic_data_config_t;
 
@@ -324,7 +324,7 @@ extern HX_DRV_ERROR_E hx_drv_mic_capture(hx_drv_mic_data_config_t *pmic_config);
 extern HX_DRV_ERROR_E hx_drv_mic_timestamp_get(int32_t *time);
 
 /**
- * \brief	Turn on microphone, it will start to record audio.
+ * \brief	Turn on microphone, it will start to record audio. Please call hx_drv_mic_initial() first to initial microphone.
  *
  * \retval	HX_DRV_LIB_PASS		Operation success
  * \retval	HX_DRV_LIB_ERROR	Operation fail
@@ -333,7 +333,7 @@ extern HX_DRV_ERROR_E hx_drv_mic_on();
 
 /**
  * \brief	Turn off microphone, it will stop receive audio data and time-stamp reset back to zero.
- * 			use hx_drv_mic_on() when need to start again.
+ * 			use hx_drv_mic_on() when need to start again. Please call hx_drv_mic_initial() first to initial microphone.
  *			Ex.
  *				if(hx_drv_mic_initial() != HX_DRV_LIB_PASS)
  *					return ;
@@ -396,8 +396,7 @@ extern HX_DRV_ERROR_E hx_drv_mic_off();
  *					time_prev = time_cur;
  *
  *					if(hx_drv_mic_capture_dual(&slt_audio_config)==HX_DRV_LIB_PASS) {
- *						memcpy(audio_clip,(void*)slt_audio_config.data_address,slt_audio_config.data_size);
- *
+ *						memcpy((void*)audio_clip,(void*)slt_audio_config.data_address,slt_audio_config.data_size*sizeof(uint8_t));
  *						//audio left/right channel data can be found at META_AUDIO_t left/right array
  *						...
  *					}
