@@ -3,7 +3,7 @@
  * @author Arjan Kamphuis
  * @copyright 2020 AUTOMATIEK - Arjan Kamphuis
  * @date 13-10-2009
- * @brief Fixedpoint arithemetic settings
+ * @brief Fixedpoint arithmetic settings
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -42,31 +42,29 @@
 * Return         : fixed multiply -> signed int
 *******************************************************************************/
 extern signed int Fixed_Multiply(signed int fixed1, signed int fixed2)
-{  	
+{
     signed int int1, int2;
     unsigned int frac1, frac2;
     signed long long fp_som_int = 0;
     signed long long fp_som_frac = 0;
     signed long long fp_total_som = 0;
-    
+
     /* Convert to bytes */
-    int1 = (fixed1 >> FP_FRACTION); 
-    int2 = (fixed2 >> FP_FRACTION);    
-    frac1 = (unsigned int) (fixed1 & FP_MASK);
-    frac2 = (unsigned int) (fixed2 & FP_MASK);
-    
-    
+    int1 = (fixed1 >> FP_FRACTION);
+    int2 = (fixed2 >> FP_FRACTION);
+    frac1 = (unsigned int)(fixed1 & FP_MASK);
+    frac2 = (unsigned int)(fixed2 & FP_MASK);
+
     /* Multiply */
     fp_som_int = (signed long long)int1 * int2;
-    
-	fp_som_frac = (signed long long)int1 * frac2 + int2 * frac1;    
-    
-    fp_total_som = (signed long long) (fp_som_int << FP_FRACTION) + (fp_som_frac);
 
-	fp_total_som += (frac1 * frac2)>> FP_FRACTION;
-    
-    return fp_total_som;           
+    fp_som_frac = (signed long long)int1 * frac2 + int2 * frac1;
+
+    fp_total_som = (signed long long)(fp_som_int << FP_FRACTION) + (fp_som_frac);
+
+    fp_total_som += (frac1 * frac2) >> FP_FRACTION;
+
+    return fp_total_som;
 }
-
 
 #endif //FIXEDPOINT_H

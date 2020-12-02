@@ -59,48 +59,44 @@ static int ExtractFixedPoint(signed long fixedVal, signed long *abspart, unsigne
  */
 void print_out(void (* output)(char byte), const char *txt, ...)
 {
-	va_list ap;
+    va_list ap;
     int i, intVal;
     int useSign;
     unsigned int leadingZero, leadingSpace;
-    
-    va_start(ap, txt);						/* Start of Variable arg list	 */
-    
-	for(i=0;txt[i]!='\0';i++)				/* Walk through text 			 */
-    {            						   	/* Clear specifiers				 */
-	   	leadingZero = leadingSpace = useSign = 0;
-		
-		if(txt[i] == '%')					/* % -> input from arg list		 */
+
+    va_start(ap, txt);
+
+    for (i = 0; txt[i] != '\0'; i++) /* Walk through text */
+    {                                /* Clear specifiers */
+        leadingZero = leadingSpace = useSign = 0;
+
+        if (txt[i] == '%') /* % -> input from arg list */
         {
-            while(txt[i+1] != '\0')			/* Walk through all args of %	 */
-            {								/* Decimal representation		 */
-            	if(txt[i+1] == 'd' || txt[i+1] == 'l' || txt[i+1] == 'h')
-            	{                	
-            							 	/* Get value from arg list		 */
-                	intVal = va_arg(ap, int);                
-					
-					DecimalConverter(output, intVal, leadingZero, leadingSpace, 0, useSign);
-                 
-                	i++;
+            while(txt[i+1] != '\0') /* Walk through all args of % */
+            {
+                /* Decimal representation */
+                if (txt[i + 1] == 'd' || txt[i + 1] == 'l' || txt[i + 1] == 'h') {
+                    intVal = va_arg(ap, int);
 
-                	if(txt[i+1] == 'u' || txt[i+1] == 'd')
-                		i++;
+                    DecimalConverter(output, intVal, leadingZero, leadingSpace, 0, useSign);
+                    i++;
 
-                 	break;                 
-            	}
-            							  	/* Hexadecimal representation	 */
-            	else if(txt[i+1] == 'X' || txt[i+1] == 'x')
-            	{					
-					intVal = va_arg(ap, signed long);
+                    if (txt[i + 1] == 'u' || txt[i + 1] == 'd') i++;
+                    break;
+                }
 
-					HexadecimalConverter(output, intVal, leadingZero, leadingSpace);
-                 
-                 	i++;
-                 	break;
-            	}
+                /* Hexadecimal representation */
+                else if (txt[i + 1] == 'X' || txt[i + 1] == 'x') {
+                    intVal = va_arg(ap, signed long);
 
-            	else if(txt[i+1] == 'f')	/* Float representation			 */
-            	{
+                    HexadecimalConverter(output, intVal, leadingZero, leadingSpace);
+
+                    i++;
+                    break;
+                }
+
+                /* Float representation */
+                else if (txt[i + 1] == 'f') {
                     unsigned long fraction;
                     signed long absolute;
                     int forceNeg;
@@ -119,8 +115,8 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                     break;
                 }
 
-                else if (txt[i + 1] == 'p') /* Fixed Point representation	 */
-                {
+                /* Fixed Point representation */
+                else if (txt[i + 1] == 'p') {
                     unsigned long fraction;
                     signed long absolute;
                     int forceNeg;
@@ -136,22 +132,22 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                     break;
                 }
 
-                else if (txt[i + 1] == 'c') /* 1 Char representation		 */
-                {
+                /* 1 Char representation */
+                else if (txt[i + 1] == 'c') {
                     output((char)va_arg(ap, int));
                     i++;
                     break;
                 }
 
-                else if (txt[i + 1] == '%') /* Print percent sign			 */
-                {
+                /* Print percent sign */
+                else if (txt[i + 1] == '%') {
                     output(txt[i + 1]);
                     i++;
                     break;
                 }
 
-                else if (txt[i + 1] == 's') /* String representation		 */
-                {
+                /* String representation */
+                else if (txt[i + 1] == 's') {
                     char *strptr = (char *)va_arg(ap, int *);
                     /* Use EOF !!!					 */
                     while (*(strptr) != '\0') output(*(strptr++));
@@ -159,12 +155,13 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                     break;
                 }
 
-                else if (txt[i + 1] == '.') /* Use Leading zeroes			 */
-                {
+                /* Use Leading zeroes */
+                else if (txt[i + 1] == '.') {
                     leadingZero = (txt[i + 2] - 0x31);
                     i += 2;
                 }
-                /* Use N leading spaces			 */
+
+                /* Use N leading spaces */
                 else if (txt[i + 1] > 0x30 && txt[i + 1] < 0x3A) {
                     leadingSpace = (txt[i + 1] - 0x30);
                     i++;
@@ -175,21 +172,25 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                     leadingSpace--;
                 }
 
-                else if (txt[i + 1] == 0x2B) /* Always display sign			 */
-                {
+                /* Always display sign */
+                else if (txt[i + 1] == 0x2B) {
                     useSign = 1;
                     i++;
                 }
 
-                else /* Unknown specifier			 */
-                    i++;  
-            }                                               
-        }        
-                
-        else								/* Normal character print		 */
-            output(txt[i]);     
+                /* Unknown specifier */
+                else {
+                    i++;
+                }
+            }
+        }
+
+        /* Normal character print */
+        else {
+            output(txt[i]);
+        }
     }
-        
+
     va_end(ap);
 }
 
@@ -209,53 +210,52 @@ void print_out(void (* output)(char byte), const char *txt, ...)
  */
 int print_buf(char *buffer, const char *txt, ...)
 {
-	va_list ap;
+    va_list ap;
     int i, intVal;
     int leadingZero, leadingSpace, useSign;
 	unsigned int startAddr = (unsigned int)buffer;
-    
+
 	if(buffer == 0)
 		return 0;
 
-    va_start(ap, txt);						/* Start of Variable arg list	 */
-    
-	for(i=0;txt[i]!='\0';i++)				/* Walk through text 			 */
-    {            						   	/* Clear specifiers				 */
-	   	leadingZero = leadingSpace = useSign = 0;
-		
-		if(txt[i] == '%')					/* % -> input from arg list		 */
-        {
-            while(txt[i+1] != '\0')			/* Walk through all args of %	 */
-            {								/* Decimal representation		 */
-            	if(txt[i+1] == 'd' || txt[i+1] == 'l' || txt[i+1] == 'h')
-            	{                	
-            							 	/* Get value from arg list		 */
-                	intVal = va_arg(ap, int);
+    va_start(ap, txt);
 
-					SetOutputBuffer(buffer);
-					buffer += DecimalConverter(&WriteOutputBuffer, intVal, leadingZero, leadingSpace, 0, useSign);
+    for (i = 0; txt[i] != '\0'; i++) /* Walk through text */
+    {
+        leadingZero = leadingSpace = useSign = 0; /* Clear specifiers */
 
-					i++;
+        /* % -> input from arg list */
+        if (txt[i] == '%') {
+           
+            while(txt[i+1] != '\0') /* Walk through all args of % */
+            {
+                /* Decimal representation */
+                if (txt[i + 1] == 'd' || txt[i + 1] == 'l' || txt[i + 1] == 'h') {
 
-                	if(txt[i+1] == 'u' || txt[i+1] == 'd')
-                		i++;
+                    intVal = va_arg(ap, int);
+                    SetOutputBuffer(buffer);
+                    buffer += DecimalConverter(&WriteOutputBuffer, intVal, leadingZero,
+                                               leadingSpace, 0, useSign);
+                    i++;
 
-                 	break;                 
-            	}
-            							  	/* Hexadecimal representation	 */
-            	else if(txt[i+1] == 'X' || txt[i+1] == 'x')
-            	{
-					intVal = va_arg(ap, signed long);
+                    if (txt[i + 1] == 'u' || txt[i + 1] == 'd') i++;
 
-					SetOutputBuffer(buffer);
-					buffer += HexadecimalConverter(&WriteOutputBuffer, intVal, leadingZero, leadingSpace);
-                 
-                 	i++;
-                 	break;
-            	}
+                    break;
+                }
+                /* Hexadecimal representation */
+                else if (txt[i + 1] == 'X' || txt[i + 1] == 'x') {
+                    intVal = va_arg(ap, signed long);
 
-            	else if(txt[i+1] == 'f')	/* Float representation			 */
-            	{
+                    SetOutputBuffer(buffer);
+                    buffer +=
+                        HexadecimalConverter(&WriteOutputBuffer, intVal, leadingZero, leadingSpace);
+
+                    i++;
+                    break;
+                }
+
+                /* Float representation */
+                else if (txt[i + 1] == 'f') {
                     unsigned long fraction;
                     signed long absolute;
                     int forceNeg;
@@ -266,97 +266,101 @@ int print_buf(char *buffer, const char *txt, ...)
 
                     forceNeg = ExtractFixedPoint(intVal, &absolute, &fraction);
 
-          			SetOutputBuffer(buffer);
-                 	buffer += DecimalConverter(&WriteOutputBuffer, absolute, 0, 3, forceNeg, useSign);
-                 	*(buffer++) = '.';
-                 	SetOutputBuffer(buffer);
-                 	buffer += DecimalConverter(&WriteOutputBuffer, fraction, 3, 0, 0, 0);
+                    SetOutputBuffer(buffer);
+                    buffer +=
+                        DecimalConverter(&WriteOutputBuffer, absolute, 0, 3, forceNeg, useSign);
+                    *(buffer++) = '.';
+                    SetOutputBuffer(buffer);
+                    buffer += DecimalConverter(&WriteOutputBuffer, fraction, 3, 0, 0, 0);
 
                     i++;
                     break;
                 }
 
-            	else if(txt[i+1] == 'p')	/* Fixed Point representation	 */
-            	{      	        
-          			unsigned long fraction;
-          			signed long absolute;
-          			int forceNeg;
-          			intVal = va_arg(ap, int);
+                /* Fixed Point representation */
+                else if (txt[i + 1] == 'p') {
+                    unsigned long fraction;
+                    signed long absolute;
+                    int forceNeg;
+                    intVal = va_arg(ap, int);
 
-          			forceNeg = ExtractFixedPoint(intVal, &absolute, &fraction);
+                    forceNeg = ExtractFixedPoint(intVal, &absolute, &fraction);
 
-          			SetOutputBuffer(buffer);
-                 	buffer += DecimalConverter(&WriteOutputBuffer, absolute, 0, 3, forceNeg, useSign);
-                 	*(buffer++) = '.';
-                 	SetOutputBuffer(buffer);
-                 	buffer += DecimalConverter(&WriteOutputBuffer, fraction, 3, 0, 0, 0);
+                    SetOutputBuffer(buffer);
+                    buffer +=
+                        DecimalConverter(&WriteOutputBuffer, absolute, 0, 3, forceNeg, useSign);
+                    *(buffer++) = '.';
+                    SetOutputBuffer(buffer);
+                    buffer += DecimalConverter(&WriteOutputBuffer, fraction, 3, 0, 0, 0);
 
-                 	i++;
-                 	break;
-            	}            
-            
-	            else if(txt[i+1] == 'c')	/* 1 Char representation		 */
-	            {
-	                 *(buffer++) = ((char)va_arg(ap, int));
-	                 i++;
-	                 break;
-	            }
+                    i++;
+                    break;
+                }
 
-				else if(txt[i+1] == '%')	/* Print percent sign			 */
-	            {
-	                 *(buffer++) = '%';
-	                 i++;
-	                 break;
-	            }
-            
-	            else if(txt[i+1] == 's')	/* String representation		 */
-	            {
-	                 char *strptr = (char *)va_arg(ap, int*);
-	                 					 	/* Use EOF !!!					 */
-	                 while(*(strptr) != '\0')
-	                    *(buffer++) = (*(strptr++));	            
-	                 i++;
-	                 break;
-	            }
+                /* 1 Char representation */
+                else if (txt[i + 1] == 'c') {
+                    *(buffer++) = ((char)va_arg(ap, int));
+                    i++;
+                    break;
+                }
 
-	            else if(txt[i+1] == '.')	/* Use Leading zeroes			 */
-	            {                 
-					leadingZero = (txt[i+2] - 0x31);
-					i+=2;
-	            }
-            								/* Use N leading spaces			 */
-	            else if(txt[i+1] > 0x30 && txt[i+1] < 0x3A)
-	            {
-					leadingSpace = (txt[i+1] - 0x30);
-					i++;
-					if(txt[i+1] >= 0x30 && txt[i+1] < 0x3A)
-					{
-					 	leadingSpace *= 10 + (txt[i+1] - 0x30);
-						i++;						
-					}					
-					leadingSpace--;						
-	            }
-            
-	            else if(txt[i+1] == 0x2B)	/* Always display sign			 */
-	            {
-	                 useSign = 1;
-	                 i++;
-	            }
-            
-            	else						/* Unknown specifier			 */
-                	i++;  
-            }                                               
+                /* Print percent sign */
+                else if (txt[i + 1] == '%') 
+                {
+                    *(buffer++) = '%';
+                    i++;
+                    break;
+                }
+
+                /* String representation */
+                else if (txt[i + 1] == 's')
+                {
+                    char *strptr = (char *)va_arg(ap, int *);
+                    /* Use EOF !!!					 */
+                    while (*(strptr) != '\0') *(buffer++) = (*(strptr++));
+                    i++;
+                    break;
+                }
+
+                /* Use Leading zeroes */
+                else if (txt[i + 1] == '.') {
+                    leadingZero = (txt[i + 2] - 0x31);
+                    i += 2;
+                }
+
+                /* Use N leading spaces */
+                else if (txt[i + 1] > 0x30 && txt[i + 1] < 0x3A) {
+                    leadingSpace = (txt[i + 1] - 0x30);
+                    i++;
+                    if (txt[i + 1] >= 0x30 && txt[i + 1] < 0x3A) {
+                        leadingSpace *= 10 + (txt[i + 1] - 0x30);
+                        i++;
+                    }
+                    leadingSpace--;
+                }
+
+                /* Always display sign */
+                else if (txt[i + 1] == 0x2B) {
+                    useSign = 1;
+                    i++;
+                }
+
+                /* Unknown specifier */
+                else {
+                    i++;
+                }
+            }
         }
-                
-        else								/* Normal character print		 */
-            *(buffer++) = (txt[i]);     
+
+        else { /* Normal character print		 */
+            *(buffer++) = (txt[i]);
+        }
     }
-        
+
     va_end(ap);
+    *(buffer) = '\0';
 
-	*(buffer) = '\0'; 						/* Place EOF marker 			 */
-
-	return (unsigned int)buffer - startAddr;
+    return (unsigned int)buffer - startAddr;
 }
 
 /**
@@ -365,7 +369,7 @@ int print_buf(char *buffer, const char *txt, ...)
  */
 static void SetOutputBuffer(char *outputbuffer)
 {
-	write_buffer = outputbuffer;
+    write_buffer = outputbuffer;
 }
 
 /**
@@ -374,7 +378,7 @@ static void SetOutputBuffer(char *outputbuffer)
  */
 static void WriteOutputBuffer(char byte)
 {
-	*(write_buffer++) = byte;	
+    *(write_buffer++) = byte;
 }
 
 /**
@@ -385,46 +389,45 @@ static void WriteOutputBuffer(char byte)
  * @param[in]  space      Number of space characters to prepend (max 8)
  * @return     Number of bytes written to the output function
  */
-static int HexadecimalConverter(void (* output)(char byte), signed long hex_value, unsigned int zero, unsigned int space)
+static int HexadecimalConverter(void (*output)(char byte), signed long hex_value, unsigned int zero,
+                                unsigned int space)
 {
-	signed int nibble_shift;
-	unsigned int bytes_written = 0;
+    signed int nibble_shift;
+    unsigned int bytes_written = 0;
 
-	zero *= 4;								/* Convert to hex standards		 */
-	space *= 4;                 	
-											/* Walk through 32 bit			 */
-	for(nibble_shift = 28; nibble_shift >= 0; nibble_shift -= 4)
-	{					 					/* Mask nibble to check value	 */
-		if(hex_value & (0xFL << nibble_shift))
-	 	{				  					/* place value					 */
-			if(((hex_value >> nibble_shift) & 0xF) < 10)
-				output(0x30 + ((hex_value >> nibble_shift) & 0xF));
-			else
-				output(0x37 + ((hex_value >> nibble_shift) & 0xF));
-			 
-			zero = space = nibble_shift-4;
-			bytes_written++;
-	 	}
-		                     
-	 	else								/* No value 					 */
-	 	{                         
-			if(zero == (unsigned int)nibble_shift)
-			{
-				output(0x30);
-				zero -= 4;
-				bytes_written++;
-			}
-			
-			else if(space == (unsigned int)nibble_shift)
-			{
-				output(0x20);
-				space -= 4;
-				bytes_written++;	
-			}                         
-	 	}
-	}
+    zero *= 4;
+    space *= 4;
+    /* Walk through 32 bit			 */
+    for (nibble_shift = 28; nibble_shift >= 0;
+         nibble_shift -= 4) {                  /* Mask nibble to check value	 */
+        if (hex_value &
+            (0xFL << nibble_shift)) { /* place value					 */
+            if (((hex_value >> nibble_shift) & 0xF) < 10)
+                output(0x30 + ((hex_value >> nibble_shift) & 0xF));
+            else
+                output(0x37 + ((hex_value >> nibble_shift) & 0xF));
 
-	return bytes_written;
+            zero = space = nibble_shift - 4;
+            bytes_written++;
+        }
+
+        else                                    /* No value 					 */
+        {
+            if (zero == (unsigned int)nibble_shift) {
+                output(0x30);
+                zero -= 4;
+                bytes_written++;
+            }
+
+            else if (space == (unsigned int)nibble_shift) {
+                output(0x20);
+                space -= 4;
+                bytes_written++;
+            }
+        }
+    }
+
+    return bytes_written;
 }
 
 /**
@@ -437,15 +440,16 @@ static int HexadecimalConverter(void (* output)(char byte), signed long hex_valu
  */
 static int SignPosition(signed int value, unsigned int zero)
 {
-	int y, pos;
+    int y, pos;
 
-    for(y=9; y!=0; y--){if(value >= (dec_maskArray[y]-1))break;};
-	pos = y+1;
-	
-	if(zero > 0)
-		pos = zero+1;	
+    for (y = 9; y != 0; y--) {
+        if (value >= (dec_maskArray[y] - 1)) break;
+    };
+    pos = y + 1;
 
-	return pos;
+    if (zero > 0) pos = zero + 1;
+
+    return pos;
 }
 
 /**
@@ -456,71 +460,66 @@ static int SignPosition(signed int value, unsigned int zero)
  * @param[in]  space      Number of space characters to prepend (max 8)
  * @return     Number of bytes written to the output function
  */
-static int DecimalConverter(void (* output)(char byte), signed long dec_value, unsigned int zero, unsigned int space, int forceNeg, int useSign)
+static int DecimalConverter(void (*output)(char byte), signed long dec_value, unsigned int zero,
+                            unsigned int space, int forceNeg, int useSign)
 {
-	unsigned int y, bytes_written = 0;
-	signed long highVal;
-	unsigned int signPos = 0;
-	unsigned char sign;
+    unsigned int y, bytes_written = 0;
+    signed long highVal;
+    unsigned int signPos = 0;
+    unsigned char sign;
 
-    if(dec_value < 0 || forceNeg)/* Check negativ				 */
+    if (dec_value < 0 || forceNeg) /* Check negativ */
     {
         dec_value = 0 - dec_value;
         signPos = SignPosition(dec_value, zero);
-		sign = 0x2D;		/* '-' character				 */	
+        sign = 0x2D; /* '-' character */
     }
-    
-    else if(useSign)		/* Display sign if set			 */                    
-	{
-		signPos = SignPosition(dec_value, zero);
-		sign = 0x2B; 		/* '+' character				 */
-	}	
 
-    for(y=9; space > y; space--)
+    else if (useSign) /* Display sign if set */
     {
-		output(0x20);
-		bytes_written++;
+        signPos = SignPosition(dec_value, zero);
+        sign = 0x2B; /* '+' character */
     }
-	
-	for(y=9; y!=0; y--)		/* Display 9 characters			 */
-    {                                                  
-		if(dec_value >= dec_maskArray[y])
-		{
-			highVal = dec_value / dec_maskArray[y];
-			output(0x30 + highVal);
-			bytes_written++;
-			dec_value -= (highVal * dec_maskArray[y]);
-			zero = space = y -1;
-		}
-			
-		else
-		{
-			if(signPos == y)
-			{
-				output(sign);
-				bytes_written++;
-			}
-											
-			else if(zero == y)
-			{
-				output(0x30);
-				bytes_written++;
-				zero--;
-			}
-			
-			else if(space == y)
-			{
-				output(0x20);
-				bytes_written++;
-				space--;							 	
-			}
-         }
-     }
-						
- 	output(0x30 + dec_value);	/* Rest value					 */	
+
+    for (y = 9; space > y; space--) { /* Write spaces */
+        output(0x20);
+        bytes_written++;
+    }
+
+    for (y = 9; y != 0; y--) /* Display 9 characters */
+    {
+        if (dec_value >= dec_maskArray[y]) {
+            highVal = dec_value / dec_maskArray[y];
+            output(0x30 + highVal);
+            bytes_written++;
+            dec_value -= (highVal * dec_maskArray[y]);
+            zero = space = y - 1;
+        }
+
+        else {
+            if (signPos == y) {
+                output(sign);
+                bytes_written++;
+            }
+
+            else if (zero == y) {
+                output(0x30);
+                bytes_written++;
+                zero--;
+            }
+
+            else if (space == y) {
+                output(0x20);
+                bytes_written++;
+                space--;
+            }
+        }
+    }
+
+    output(0x30 + dec_value); /* Rest value */
     bytes_written++;
 
-	return bytes_written;
+    return bytes_written;
 }
 
 /**
@@ -533,22 +532,20 @@ static int DecimalConverter(void (* output)(char byte), signed long dec_value, u
  */
 static int ExtractFixedPoint(signed long fixedVal, signed long *abspart, unsigned long *fractionpart)
 {
-	int isNegativ;
- 							/* Swap negativ values			 */
- 	if(fixedVal & ((unsigned int)1<<(FP_LENGTH-1)))
- 	{
-		fixedVal 		= ~(fixedVal) + 1;                    	
-		*(abspart) 		= (0-(fixedVal >> FP_FRACTION));
-		*(fractionpart) = (Fixed_Multiply(((fixedVal & FP_MASK)+1)*10000, 1));
-		isNegativ 		= 1;
-	}
+    int isNegativ;
+    /* Swap negativ values			 */
+    if (fixedVal & ((unsigned int)1 << (FP_LENGTH - 1))) {
+        fixedVal = ~(fixedVal) + 1;
+        *(abspart) = (0 - (fixedVal >> FP_FRACTION));
+        *(fractionpart) = (Fixed_Multiply(((fixedVal & FP_MASK) + 1) * 10000, 1));
+        isNegativ = 1;
+    }
 
-	else
-	{
-		*(abspart) 		= (fixedVal >> FP_FRACTION);
-		*(fractionpart) = (Fixed_Multiply(((fixedVal & FP_MASK)+1)*10000, 1));
-		isNegativ 		= 0;
-	}
+    else {
+        *(abspart) = (fixedVal >> FP_FRACTION);
+        *(fractionpart) = (Fixed_Multiply(((fixedVal & FP_MASK) + 1) * 10000, 1));
+        isNegativ = 0;
+    }
 
-	return isNegativ;
+    return isNegativ;
 }
