@@ -35,26 +35,8 @@ hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Private variables ------------------------------------------------------- */
 static bool is_initialised = false;
-static int8_t *snapshot_image_data = NULL;
 
 /* Private functions ------------------------------------------------------- */
-
-static bool snapshot_is_resized = false;
-static int get_snapshot_image_data(size_t offset, size_t length, float *out_ptr) {
-    for(size_t i = 0; i < length; i++) {
-        int8_t mono_data = (int8_t)snapshot_image_data[offset + i];
-        uint8_t v;
-        if (snapshot_is_resized) {
-            v = (uint8_t)mono_data + 128;
-        }
-        else {
-            v = (uint8_t)mono_data;
-        }
-        out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
-    }
-
-    return 0;
-}
 
 /**
  * @brief   Setup image sensor & start streaming
@@ -92,6 +74,49 @@ void ei_camera_deinit(void)
 }
 
 /**
+ * @brief      Calculate the desired frame buffer resolution
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ * @param[out] fb_cols       pointer to frame buffer's column/width value
+ * @param[out] fb_rows       pointer to frame buffer's rows/height value
+ *
+* @todo Remove magic numbers
+ */
+void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, uint32_t *fb_cols, uint32_t *fb_rows)
+{
+
+    const ei_device_snapshot_resolutions_t *list;
+    size_t list_size;
+
+    int dl = EiDevice.get_snapshot_list((const ei_device_snapshot_resolutions_t **)&list, &list_size);
+    if (dl) { /* apparently false is OK here?! */
+        ei_printf("ERR: Device has no snapshot feature\n");
+        return;
+    }
+
+    uint32_t fb_width;
+    uint32_t fb_height;
+    bool fb_resolution_found = false;
+    for (size_t ix = 0; ix < list_size; ix++) {
+        if ((img_width <= list[ix].width) || (img_height <= list[ix].height)) {
+            fb_width  = list[ix].width;
+            fb_height = list[ix].height;
+            fb_resolution_found = true;
+            break;
+        }
+    }
+
+    if (fb_resolution_found) {
+        *fb_cols = fb_width;
+        *fb_rows = fb_height;
+    } else {
+        *fb_cols = FRAME_BUFFER_COLS;
+        *fb_rows = FRAME_BUFFER_ROWS;
+    }
+}
+
+/**
  * @brief      Capture and rescale image
  *
  * @param[in]  img_width     width of output image
@@ -112,14 +137,24 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
         return false;
     }
 
-    // skip scaling if width and height matches the original resolution
-    if ((img_width == 640) && (img_height == 480)) return true;
+    // determine what the scaled output image buffer size should be
+    calculate_rescaled_fb_resolution(img_width, img_height, &frame_buffer_cols, &frame_buffer_rows);
+    cutout_row_start = (frame_buffer_rows - img_height) / 2;
+    cutout_col_start = (frame_buffer_cols - img_width) / 2;
+    cutout_cols = img_width;
+    cutout_rows = img_height;
+
+    //  skip scaling if frame buffer's width and height matches the original resolution
+    if ((frame_buffer_cols == FRAME_BUFFER_COLS) && (frame_buffer_rows == FRAME_BUFFER_ROWS)) return true;
 
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
-                             buf, img_width, img_height) != HX_DRV_LIB_PASS) {
+                             buf, frame_buffer_cols, frame_buffer_rows) != HX_DRV_LIB_PASS) {
         return false;
     }
+
+    // always assign
+    snapshot_is_resized = (frame_buffer_cols != FRAME_BUFFER_COLS) || (frame_buffer_rows != FRAME_BUFFER_ROWS);
 
     return true;
 }
@@ -149,8 +184,6 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
-    snapshot_is_resized = (width != 640) || (height != 480);
-
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return false;
@@ -170,7 +203,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     ei::signal_t signal;
     signal.total_length = width * height;
-    signal.get_data = &get_snapshot_image_data;
+    signal.get_data = &ei_cutout_get_data;
 
     size_t signal_chunk_size = 1024;
 

@@ -272,17 +272,6 @@ void run_nn_continuous(bool debug)
 
 #elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
 
-static int8_t *image_data = NULL;
-static int get_image_data(size_t offset, size_t length, float *out_ptr) {
-    for(size_t i = 0; i < length; i++) {
-        int8_t mono_data = (int8_t)image_data[offset + i];
-        uint8_t v = (uint8_t)mono_data + 128;
-        out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
-    }
-
-    return 0;
-}
-
 void run_nn(bool debug) {
 
     // summary of inferencing settings (from model_metadata.h)
@@ -308,8 +297,8 @@ void run_nn(bool debug) {
         return;
     }
 
-    image_data = (int8_t*)ei_himax_fs_allocate_sampledata(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
-    if (!image_data) {
+    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
+    if (!snapshot_image_data) {
         ei_printf("ERR: Failed to allocate image buffer\r\n");
         return;
     }
@@ -324,11 +313,11 @@ void run_nn(bool debug) {
 
         ei::signal_t signal;
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
-        signal.get_data = &get_image_data;
+        signal.get_data = &ei_cutout_get_data;
 
         ei_printf("Taking photo...\n");
 
-        if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
+        if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, snapshot_image_data) == false) {
             ei_printf("Failed to capture image\r\n");
             break;
         }
@@ -360,7 +349,7 @@ void run_nn(bool debug) {
     }
 
     ei_camera_deinit();
-    image_data = NULL;
+    snapshot_image_data = NULL;
 }
 #endif
 
