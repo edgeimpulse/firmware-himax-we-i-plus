@@ -111,8 +111,8 @@ void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, 
         *fb_cols = fb_width;
         *fb_rows = fb_height;
     } else {
-        *fb_cols = FRAME_BUFFER_COLS;
-        *fb_rows = FRAME_BUFFER_ROWS;
+        *fb_cols = EI_CAMERA_RAW_FRAME_BUFFER_COLS;
+        *fb_rows = EI_CAMERA_RAW_FRAME_BUFFER_ROWS;
     }
 }
 
@@ -121,7 +121,7 @@ void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, 
  *
  * @param[in]  img_width     width of output image
  * @param[in]  img_height    height of output image
- * @param[out] buf           pointer to store output image
+ * @param[in]  buf           pointer to store output image
  *
  * @retval     false if not initialised, image capture or rescaled failed
  *
@@ -138,23 +138,23 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
     }
 
     // determine what the scaled output image buffer size should be
-    calculate_rescaled_fb_resolution(img_width, img_height, &frame_buffer_cols, &frame_buffer_rows);
-    cutout_row_start = (frame_buffer_rows - img_height) / 2;
-    cutout_col_start = (frame_buffer_cols - img_width) / 2;
-    cutout_cols = img_width;
-    cutout_rows = img_height;
+    calculate_rescaled_fb_resolution(img_width, img_height, &ei_camera_frame_buffer_cols, &ei_camera_frame_buffer_rows);
+    ei_camera_cutout_row_start = (ei_camera_frame_buffer_rows - img_height) / 2;
+    ei_camera_cutout_col_start = (ei_camera_frame_buffer_cols - img_width) / 2;
+    ei_camera_cutout_cols = img_width;
+    ei_camera_cutout_rows = img_height;
 
     //  skip scaling if frame buffer's width and height matches the original resolution
-    if ((frame_buffer_cols == FRAME_BUFFER_COLS) && (frame_buffer_rows == FRAME_BUFFER_ROWS)) return true;
+    if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) return true;
 
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
-                             buf, frame_buffer_cols, frame_buffer_rows) != HX_DRV_LIB_PASS) {
+                             buf, ei_camera_frame_buffer_cols, ei_camera_frame_buffer_rows) != HX_DRV_LIB_PASS) {
         return false;
     }
 
     // always assign
-    snapshot_is_resized = (frame_buffer_cols != FRAME_BUFFER_COLS) || (frame_buffer_rows != FRAME_BUFFER_ROWS);
+    ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
 
     return true;
 }
@@ -190,20 +190,20 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     }
 
     // must be called after ei_camera_init()
-    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
-    if (!snapshot_image_data) {
-        ei_printf("ERR: Failed to allocate image buffer for (%dx%d): 0x%x\n", width, height, snapshot_image_data);
+    ei_camera_snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
+    if (!ei_camera_snapshot_image_data) {
+        ei_printf("ERR: Failed to allocate image buffer for (%dx%d): 0x%x\n", width, height, ei_camera_snapshot_image_data);
         return false;
     }
 
-    if (ei_camera_capture(width, height, snapshot_image_data) == false) {
+    if (ei_camera_capture(width, height, ei_camera_snapshot_image_data) == false) {
         ei_printf("ERR: Failed to capture image\r\n");
         return false;
     }
 
     ei::signal_t signal;
     signal.total_length = width * height;
-    signal.get_data = &ei_cutout_get_data;
+    signal.get_data = &ei_camera_cutout_get_data;
 
     size_t signal_chunk_size = 1024;
 
@@ -301,7 +301,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     ei_printf("\r\n");
 
     free(signal_buf);
-    snapshot_image_data = NULL;
+    ei_camera_snapshot_image_data = NULL;
 
     EiDevice.set_state(eiStateIdle);
     ei_camera_deinit();

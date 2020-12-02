@@ -297,8 +297,8 @@ void run_nn(bool debug) {
         return;
     }
 
-    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
-    if (!snapshot_image_data) {
+    ei_camera_snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
+    if (!ei_camera_snapshot_image_data) {
         ei_printf("ERR: Failed to allocate image buffer\r\n");
         return;
     }
@@ -313,11 +313,11 @@ void run_nn(bool debug) {
 
         ei::signal_t signal;
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
-        signal.get_data = &ei_cutout_get_data;
+        signal.get_data = &ei_camera_cutout_get_data;
 
         ei_printf("Taking photo...\n");
 
-        if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, snapshot_image_data) == false) {
+        if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, ei_camera_snapshot_image_data) == false) {
             ei_printf("Failed to capture image\r\n");
             break;
         }
@@ -349,7 +349,7 @@ void run_nn(bool debug) {
     }
 
     ei_camera_deinit();
-    snapshot_image_data = NULL;
+    ei_camera_snapshot_image_data = NULL;
 }
 #endif
 
