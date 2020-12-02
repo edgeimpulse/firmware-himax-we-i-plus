@@ -29,11 +29,12 @@
 #include "at_base64.h"
 #include "numpy_types.h"
 
-#include "hx_drv_tflm.h"
+
+/* Global variables ------------------------------------------------------- */
+hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Private variables ------------------------------------------------------- */
 static bool is_initialised = false;
-static hx_drv_sensor_image_config_t g_pimg_config;
 static int8_t *snapshot_image_data = NULL;
 
 /* Private functions ------------------------------------------------------- */
@@ -43,9 +44,12 @@ static int get_snapshot_image_data(size_t offset, size_t length, float *out_ptr)
     for(size_t i = 0; i < length; i++) {
         int8_t mono_data = (int8_t)snapshot_image_data[offset + i];
         uint8_t v;
-
-        v = (uint8_t)mono_data + 128;
-
+        if (snapshot_is_resized) {
+            v = (uint8_t)mono_data + 128;
+        }
+        else {
+            v = (uint8_t)mono_data;
+        }
         out_ptr[i] = (float)((v << 16) | (v << 8) | (v));
     }
 
@@ -108,6 +112,9 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
         return false;
     }
 
+    // skip scaling if width and height matches the original resolution
+    if ((img_width == 640) && (img_height == 480)) return true;
+
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
                              buf, img_width, img_height) != HX_DRV_LIB_PASS) {
@@ -140,18 +147,19 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
         return false;
     }
 
-    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
-    if (!snapshot_image_data) {
-        ei_printf("ERR: Failed to allocate image buffer\n");
-        return false;
-    }
-
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
     snapshot_is_resized = (width != 640) || (height != 480);
 
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
+        return false;
+    }
+
+    // must be called after ei_camera_init()
+    snapshot_image_data = (int8_t*)ei_himax_fs_allocate_sampledata(width * height);
+    if (!snapshot_image_data) {
+        ei_printf("ERR: Failed to allocate image buffer for (%dx%d): 0x%x\n", width, height, snapshot_image_data);
         return false;
     }
 

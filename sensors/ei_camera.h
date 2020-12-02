@@ -26,6 +26,10 @@
 /* Include ----------------------------------------------------------------- */
 #include <stdint.h>
 #include <stdlib.h>
+#include "hx_drv_tflm.h"
+
+/* Global variables ------------------------------------------------------- */
+extern hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Function prototypes ----------------------------------------------------- */
 extern bool ei_camera_init(void);

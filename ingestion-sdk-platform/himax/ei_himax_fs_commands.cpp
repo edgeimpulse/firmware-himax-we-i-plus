@@ -2,6 +2,7 @@
 /* Include ----------------------------------------------------------------- */
 #include "ei_himax_fs_commands.h"
 #include "ei_device_himax.h"
+#include "ei_camera.h"
 
 
 #define SERIAL_FLASH	0
@@ -27,7 +28,12 @@ static void flash_program_page(uint32_t byteAddress, uint8_t *page, uint32_t pag
 static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t readBytes);
 
 #if(SAMPLE_MEMORY == RAM)
-volatile uint8_t * const raw_memory_2 = (uint8_t *) (0x20124e70); // pointer to g_pimg_config.raw_address
+
+/*
+ * initialised by ei_camera_init()
+ */
+extern hx_drv_sensor_image_config_t g_pimg_config;
+
 #pragma Bss(".ram_memory")
 uint8_t ram_memory[SIZE_RAM_BUFFER];
 #pragma Bss()
@@ -237,7 +243,7 @@ uint8_t *ei_himax_fs_allocate_sampledata(size_t n_bytes)
     }
     // explicitly used for image data for now
     else if (n_bytes == SIZE_RAM2_BUFFER) {
-        return (uint8_t *)raw_memory_2;
+        return (uint8_t *)g_pimg_config.raw_address;
     }
     else if (n_bytes >= SIZE_RAM_BUFFER) {
         return 0;
