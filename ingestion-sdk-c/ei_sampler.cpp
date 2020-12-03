@@ -109,11 +109,11 @@ static void ei_write_last_data(void)
         insert_end_address = 4;
     }
 
-    /* Write appending word for end character */    
+    /* Write appending word for end character */
     for(uint8_t i=0; i<4; i++) {
         write_word_buf[i] = 0xFF;
     }
-    ei_himax_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset + insert_end_address, 4);    
+    ei_himax_fs_write_samples(write_word_buf, (write_addr & ~0x03) + headerOffset + insert_end_address, 4);
 }
 
 EI_SENSOR_AQ_STREAM stream;
@@ -151,35 +151,34 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
     }
     ei_printf("\tFile name: %s\n", filename);
 
-
     samples_required = (uint32_t)(((float)ei_config_get_config()->sample_length_ms) / ei_config_get_config()->sample_interval_ms);
     sample_buffer_size = (samples_required * sample_size) * 4;
     current_sample = 0;
 
     ei_printf("Samples req: %d\r\n", samples_required);
 
-    // Minimum delay of 2000 ms for daemon
-    if(((sample_buffer_size / ei_himax_fs_get_block_size())+1) * HIMAX_FS_BLOCK_ERASE_TIME_MS < 2000) {
-        ei_printf("Starting in %lu ms... (or until all flash was erased)\n", 2000);
-        EiDevice.delay_ms(2000);
-    }
-    else {
-        ei_printf("Starting in %lu ms... (or until all flash was erased)\n",
-        ((sample_buffer_size / ei_himax_fs_get_block_size())+1) * HIMAX_FS_BLOCK_ERASE_TIME_MS);
-    }
+    ei_printf("Starting in %lu ms... (or until all flash was erased)\n", 2000);
 
-	if(ei_himax_fs_erase_sampledata(0, sample_buffer_size + ei_himax_fs_get_block_size()) != HIMAX_FS_CMD_OK)
+    // erase time
+    int32_t erase_time = ((sample_buffer_size / ei_himax_fs_get_block_size())+1) * HIMAX_FS_BLOCK_ERASE_TIME_MS;
+
+	if (ei_himax_fs_erase_sampledata(0, sample_buffer_size + ei_himax_fs_get_block_size()) != HIMAX_FS_CMD_OK) {
 		return false;
+    }
 
-    if(create_header(payload) == false)
-        return false;
-
-
-    if(ei_inertial_sample_start(&sample_data_callback, ei_config_get_config()->sample_interval_ms) == false) {
+    if (create_header(payload) == false) {
         return false;
     }
 
-	ei_printf("Sampling...\n");        
+    if (erase_time < 2000) {
+        EiDevice.delay_ms(2000 - erase_time);
+    }
+
+    if (ei_inertial_sample_start(&sample_data_callback, ei_config_get_config()->sample_interval_ms) == false) {
+        return false;
+    }
+
+	ei_printf("Sampling...\n");
     while(current_sample < samples_required) {
         ei_inertial_read_data();
         ei_printf("time: %d\r\n", (uint32_t)ei_read_timer_ms());
@@ -253,7 +252,7 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
 
 
 static bool create_header(sensor_aq_payload_info *payload)
-{    
+{
     sensor_aq_init_mbedtls_hs256_context(&ei_mic_signing_ctx, &ei_mic_hs_ctx, ei_config_get_config()->sample_hmac_key);
 
 
@@ -284,7 +283,7 @@ static bool create_header(sensor_aq_payload_info *payload)
     if (tr != 0) {
         ei_printf("Failed to write to header blockdevice (%d)\n", tr);
         return false;
-    }    
+    }
 
     ei_mic_ctx.stream = &stream;
 
@@ -321,7 +320,7 @@ static void finish_and_upload(char *filename, uint32_t sample_length_ms)
  * @return     true if all required samples are received. Caller should stop sampling,
  */
 static bool sample_data_callback(const void *sample_buf, uint32_t byteLenght)
-{    
+{
     sensor_aq_add_data(&ei_mic_ctx, (float *)sample_buf, byteLenght / sizeof(float));
 
     if(++current_sample > samples_required) {

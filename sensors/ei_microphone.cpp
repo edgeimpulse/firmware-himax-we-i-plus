@@ -54,12 +54,12 @@ extern ei_config_t *ei_config_get_config();
 
 /* Dummy functions for sensor_aq_ctx type */
 static size_t ei_write(const void*, size_t size, size_t count, EI_SENSOR_AQ_STREAM*)
-{    
+{
     return count;
 }
 
 static int ei_seek(EI_SENSOR_AQ_STREAM*, long int offset, int origin)
-{    
+{
     return 0;
 }
 
@@ -126,7 +126,7 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
 
 
 /**
- * @brief      Capture 2 channel pdm data every 100 ms. 
+ * @brief      Capture 2 channel pdm data every 100 ms.
  *             Waits for new data to be ready.
  *             Creates a 1 channel pdm array and calls callback function
  * @param[in]  callback  Callback needs to handle the audio samples
@@ -140,7 +140,7 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
     while(hx_timestamp_cur == hx_timestamp_prev) {
         if(hx_drv_mic_timestamp_get(&hx_timestamp_cur) != HX_DRV_LIB_PASS)
             return ;
-    }    
+    }
     hx_timestamp_prev = hx_timestamp_cur;
 
     hx_drv_mic_capture_dual(&mic_config);
@@ -155,7 +155,7 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
     callback((void *)mic_config.data_address, mic_config.data_size >> 1);
 }
 
-static void finish_and_upload(char *filename, uint32_t sample_length_ms) {    
+static void finish_and_upload(char *filename, uint32_t sample_length_ms) {
 
     ei_printf("Done sampling, total bytes collected: %u\n", current_sample);
 
@@ -266,14 +266,18 @@ bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bo
 {
     EiDevice.set_state(eiStateErasingFlash);
 
+    if (start_delay_ms < 500) {
+        start_delay_ms = 500;
+    }
+
     if (print_start_messages) {
         ei_printf("Starting in %lu ms... (or until all flash was erased)\n",
-                  500);
+                  start_delay_ms);
     }
 
     /* Enable microphone and wait for steady signal */
     hx_drv_mic_on();
-    EiDevice.delay_ms(500);
+    EiDevice.delay_ms(start_delay_ms);
 
     create_header();
 
@@ -363,7 +367,7 @@ bool ei_microphone_inference_end(void)
  * Sample raw data
  */
 bool ei_microphone_sample_start(void)
-{    
+{
     ei_printf("Sampling settings:\n");
     ei_printf("\tInterval: "); (ei_printf_float((float)ei_config_get_config()->sample_interval_ms));ei_printf(" ms.\n");
     ei_printf("\tLength: %lu ms.\n", ei_config_get_config()->sample_length_ms);
