@@ -139,10 +139,14 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
 
     // determine what the scaled output image buffer size should be
     calculate_rescaled_fb_resolution(img_width, img_height, &ei_camera_frame_buffer_cols, &ei_camera_frame_buffer_rows);
+
+    // The following variables should always be assigned
+    // if this routine is to return true
     ei_camera_cutout_row_start = (ei_camera_frame_buffer_rows - img_height) / 2;
     ei_camera_cutout_col_start = (ei_camera_frame_buffer_cols - img_width) / 2;
     ei_camera_cutout_cols = img_width;
     ei_camera_cutout_rows = img_height;
+    ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
 
     //  skip scaling if frame buffer's width and height matches the original resolution
     if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) return true;
@@ -152,9 +156,6 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
                              buf, ei_camera_frame_buffer_cols, ei_camera_frame_buffer_rows) != HX_DRV_LIB_PASS) {
         return false;
     }
-
-    // always assign
-    ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
 
     return true;
 }
