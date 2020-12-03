@@ -136,6 +136,9 @@ typedef struct {
     // Take a snapshot
     bool (*take_snapshot)(size_t width, size_t height);
 
+    // Start a snapshot stream
+    bool (*start_snapshot_stream)(size_t width, size_t height);
+
 } ei_config_ctx_t;
 
 // Only single context has to be active, so store this here

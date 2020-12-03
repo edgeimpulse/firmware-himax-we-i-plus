@@ -243,6 +243,17 @@ static void at_take_snapshot(char *width_s, char *height_s) {
     }
 }
 
+static void at_start_snapshot_stream(char *width_s, char *height_s) {
+    size_t width = (size_t)atoi(width_s);
+    size_t height = (size_t)atoi(height_s);
+
+    if (!ei_config_get_context()->start_snapshot_stream(width, height)) {
+        ei_printf("ERR: Snapshot Stream failed\n");
+        return;
+    }
+}
+
+
 static void at_list_sensors() {
 
     const ei_sensor_t *list;
@@ -534,6 +545,7 @@ void ei_at_register_generic_cmds() {
     ei_at_cmd_register("MGMTSETTINGS=", "Sets current management settings (URL)", &at_set_mgmt_settings);
     ei_at_cmd_register("SNAPSHOT?", "Lists snapshot settings", &at_get_snapshot);
     ei_at_cmd_register("SNAPSHOT=", "Take a snapshot (WIDTH,HEIGHT)", &at_take_snapshot);
+    ei_at_cmd_register("SNAPSHOTSTREAM=", "Take a stream of snapshot stream (WIDTH,HEIGHT)", &at_start_snapshot_stream);
     ei_at_cmd_register("LISTFILES", "Lists all files on the device", &at_list_files);
     ei_at_cmd_register("READFILE=", "Read a specific file (as base64)", &at_read_file);
     ei_at_cmd_register("READBUFFER=", "Read from the temporary buffer (as base64) (START,LENGTH)", &at_read_buffer);

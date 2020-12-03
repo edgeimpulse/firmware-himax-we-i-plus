@@ -58,7 +58,8 @@ int main(void)
     config_ctx.save_config = &ei_himax_fs_save_config;
     config_ctx.list_files = NULL;
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
-    config_ctx.take_snapshot = &ei_camera_take_snapshot;
+    config_ctx.take_snapshot = &ei_camera_take_snapshot_encode_and_output;
+    config_ctx.start_snapshot_stream = &ei_camera_start_snapshot_stream_encode_and_output;
 
     EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
 
