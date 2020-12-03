@@ -55,10 +55,10 @@ typedef enum
 }used_sensors_t;
 
 /** Device type */
-static const char *ei_device_type = "HIMAX_WE1_TARGET";/** @todo Get actual device type */
+static const char *ei_device_type = "HIMAX_WE_I_PLUS";
 
 /** Device id array */
-static char ei_device_id[DEVICE_ID_MAX_SIZE] = {"34:52:52:22:57:98"};
+static char ei_device_id[DEVICE_ID_MAX_SIZE] = {"00:00:00:00:00:00"};
 
 /** Device object, for this class only 1 object should exist */
 EiDeviceHimax EiDevice;
@@ -71,6 +71,7 @@ static tEiState ei_program_state = eiStateIdle;
 /* Private function declarations ------------------------------------------- */
 static int get_id_c(uint8_t out_buffer[32], size_t *out_size);
 static int get_type_c(uint8_t out_buffer[32], size_t *out_size);
+static int set_id_c(char *device_id);
 static bool get_wifi_connection_status_c(void);
 static bool get_wifi_present_status_c(void);
 static void timer_callback(void *arg);
@@ -163,6 +164,18 @@ int EiDeviceHimax::get_type(uint8_t out_buffer[32], size_t *out_size)
 const char *EiDeviceHimax::get_type_pointer(void)
 {
     return (const char *)ei_device_type;
+}
+
+/**
+ * @brief      Set the device ID
+ *
+ * @param      device_id   MAC address
+ *
+ * @return     0
+ */
+int EiDeviceHimax::set_id(char *device_id)
+{
+    return set_id_c(device_id);
 }
 
 /**
@@ -284,9 +297,9 @@ void EiDeviceHimax::set_state(tEiState state)
     }
     else if (state == eiStateSampling) {
         hx_drv_led_on(HX_DRV_LED_GREEN);
-    } 
-    else if (state == eiStateUploading) {        
-        
+    }
+    else if (state == eiStateUploading) {
+
         if(upload_toggle) {
             hx_drv_led_on(HX_DRV_LED_RED);
         }
@@ -318,6 +331,16 @@ c_callback EiDeviceHimax::get_id_function(void)
 c_callback EiDeviceHimax::get_type_function(void)
 {
     return &get_type_c;
+}
+
+/**
+ * @brief      Get a C callback for the set_id method
+ *
+ * @return     Pointer to c get function
+ */
+c_callback_set_id EiDeviceHimax::set_id_function(void)
+{
+    return &set_id_c;
 }
 
 /**
@@ -491,6 +514,19 @@ static int get_type_c(uint8_t out_buffer[32], size_t *out_size)
     }
 }
 
+
+static int set_id_c(char *device_id)
+{
+    size_t length = strlen(ei_device_id);
+    if (length > 31) {
+        return -1;
+    }
+
+    memcpy(ei_device_id, device_id, strlen(device_id) + 1);
+
+    return 0;
+}
+
 static bool get_wifi_connection_status_c(void)
 {
     return false;
@@ -515,11 +551,11 @@ static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8
     size_t pos = begin;
     size_t bytes_left = length;
     bool retVal;
-    
+
     // we're encoding as base64 in AT+READFILE, so this needs to be divisable by 3
     uint8_t buffer[513];
     while (1) {
-        
+
         EiDevice.set_state(eiStateUploading);
 
         size_t bytes_to_read = sizeof(buffer);

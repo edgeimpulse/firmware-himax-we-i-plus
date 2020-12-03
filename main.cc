@@ -50,6 +50,7 @@ int main(void)
     /* Intialize configuration */
     static ei_config_ctx_t config_ctx = {0};
     config_ctx.get_device_id = EiDevice.get_id_function();
+    config_ctx.set_device_id = EiDevice.set_id_function();
     config_ctx.get_device_type = EiDevice.get_type_function();
     config_ctx.wifi_connection_status = EiDevice.get_wifi_connection_status_function();
     config_ctx.wifi_present = EiDevice.get_wifi_present_status_function();

@@ -58,6 +58,16 @@ static void at_device_info() {
     ei_printf("AT Version: %s\n", EDGE_IMPULSE_AT_COMMAND_VERSION);
 }
 
+static void at_set_device_id(char *device_id) {
+    EI_CONFIG_ERROR r = ei_config_set_device_id(device_id);
+    if (r != EI_CONFIG_OK) {
+        ei_printf("Failed to persist Device ID (%d)\n", r);
+    }
+    else {
+        ei_printf("OK\n");
+    }
+}
+
 static void at_get_wifi() {
     char *ssid;
     char *password;
@@ -507,6 +517,7 @@ void ei_at_register_generic_cmds() {
     ei_at_cmd_register("CLEARFILES", "Clears all files from the file system, this does not clear config", &at_clear_fs);
     ei_at_cmd_register("CONFIG?", "Lists complete config", &at_list_config);
     ei_at_cmd_register("DEVICEINFO?", "Lists device information", &at_device_info);
+    ei_at_cmd_register("DEVICEID=", "Sets the device ID (DEVICEID)", &at_set_device_id);
     ei_at_cmd_register("SENSORS?", "Lists sensors", &at_list_sensors);
     ei_at_cmd_register("RESET", "Reset the system", &at_reset);
     ei_at_cmd_register("WIFI?", "Lists current WiFi credentials", &at_get_wifi);

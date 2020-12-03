@@ -51,6 +51,7 @@ typedef enum
 
 /** C Callback types */
 typedef int (*c_callback)(uint8_t out_buffer[32], size_t *out_size);
+typedef int (*c_callback_set_id)(char *device_id);
 typedef bool (*c_callback_status)(void);
 typedef bool (*c_callback_read_sample_buffer)(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
 
@@ -68,6 +69,7 @@ public:
 
 	int get_id(uint8_t out_buffer[32], size_t *out_size);
 	const char *get_id_pointer(void);
+	int set_id(char *device_id);
 	int get_type(uint8_t out_buffer[32], size_t *out_size);
 	const char *get_type_pointer(void);
 	bool get_wifi_connection_status(void);
@@ -80,6 +82,7 @@ public:
 
 	c_callback get_id_function(void);
 	c_callback get_type_function(void);
+	c_callback_set_id set_id_function(void);
 	c_callback_status get_wifi_connection_status_function(void);
 	c_callback_status get_wifi_present_status_function(void);
 	c_callback_read_sample_buffer get_read_sample_buffer_function(void);

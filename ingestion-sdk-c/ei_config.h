@@ -64,6 +64,10 @@ typedef struct {
     // return 0 if OK, or other value if device does not have an ID
     int (*get_device_id)(uint8_t out_buffer[32], size_t *out_size);
 
+    // Set unique device identifier
+    // return 0 if OK, or other value if device cannot set an ID
+    int (*set_device_id)(char *device_id);
+
     // Get device type
     // copy the type into the provided buffer, and set the out_size
     // return 0 if OK, or other value if device does not have an ID
@@ -259,6 +263,20 @@ EI_CONFIG_ERROR ei_config_get_device_id(uint8_t out_buffer[32], size_t *out_size
     if (ei_config_ctx == NULL) return EI_CONFIG_NO_CONTEXT;
 
     int v = ei_config_ctx->get_device_id(out_buffer, out_size);
+    if (v != 0) {
+        return EI_CONFIG_CONTEXT_ERROR;
+    }
+    return EI_CONFIG_OK;
+}
+
+/**
+ * Set unique device identifier
+ */
+EI_CONFIG_ERROR ei_config_set_device_id(char *device_id) {
+    if (ei_config_ctx == NULL) return EI_CONFIG_NO_CONTEXT;
+    if (ei_config_ctx->set_device_id == NULL) return EI_CONFIG_NOT_IMPLEMENTED;
+
+    int v = ei_config_ctx->set_device_id(device_id);
     if (v != 0) {
         return EI_CONFIG_CONTEXT_ERROR;
     }
