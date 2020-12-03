@@ -65,6 +65,8 @@ EiDeviceHimax EiDevice;
 
 static tEiState ei_program_state = eiStateIdle;
 
+/** Snapshot Output Baudrate */
+static const char *ei_snapshot_output_baudrate = "921600";
 
 
 
@@ -76,6 +78,7 @@ static bool get_wifi_connection_status_c(void);
 static bool get_wifi_present_status_c(void);
 static void timer_callback(void *arg);
 static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
+static int get_snapshot_output_baudrate_c(uint8_t out_buffer[32], size_t *out_size);
 
 /* Public functions -------------------------------------------------------- */
 
@@ -176,6 +179,18 @@ const char *EiDeviceHimax::get_type_pointer(void)
 int EiDeviceHimax::set_id(char *device_id)
 {
     return set_id_c(device_id);
+}
+
+/**
+ * @brief      Get the snapshot output baudrate
+ *
+ * @param      baudrate    Baudrate used to output snapshot image
+ *
+ * @return     0
+ */
+int EiDeviceHimax::get_snapshot_output_baudrate(uint8_t out_buffer[32], size_t *out_size)
+{
+    return get_snapshot_output_baudrate_c(out_buffer, out_size);
 }
 
 /**
@@ -374,6 +389,16 @@ c_callback_read_sample_buffer EiDeviceHimax::get_read_sample_buffer_function(voi
 }
 
 /**
+ * @brief      Get a C callback for the get_snapshot_output_buffer method
+ *
+ * @return     Pointer to c get function
+ */
+c_callback EiDeviceHimax::get_snapshot_output_baudrate_function(void)
+{
+    return &get_snapshot_output_baudrate_c;
+}
+
+/**
  * @brief      Get characters for uart pheripheral and send to repl
  */
 void ei_command_line_handle(void *args)
@@ -525,6 +550,23 @@ static int set_id_c(char *device_id)
     memcpy(ei_device_id, device_id, strlen(device_id) + 1);
 
     return 0;
+}
+
+static int get_snapshot_output_baudrate_c(uint8_t out_buffer[32], size_t *out_size)
+{
+    size_t length = strlen(ei_snapshot_output_baudrate);
+
+    if(length < 32) {
+        memcpy(out_buffer, ei_snapshot_output_baudrate, length);
+
+        *out_size = length;
+        return 0;
+    }
+
+    else {
+        *out_size = 0;
+        return -1;
+    }
 }
 
 static bool get_wifi_connection_status_c(void)

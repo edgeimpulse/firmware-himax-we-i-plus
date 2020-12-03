@@ -136,6 +136,9 @@ typedef struct {
     // Take a snapshot
     bool (*take_snapshot)(size_t width, size_t height);
 
+    // Get Snapshot's Output Baudrate
+    int (*get_snapshot_output_baudrate)(uint8_t out_buffer[32], size_t *out_size);
+
 } ei_config_ctx_t;
 
 // Only single context has to be active, so store this here
@@ -277,6 +280,20 @@ EI_CONFIG_ERROR ei_config_set_device_id(char *device_id) {
     if (ei_config_ctx->set_device_id == NULL) return EI_CONFIG_NOT_IMPLEMENTED;
 
     int v = ei_config_ctx->set_device_id(device_id);
+    if (v != 0) {
+        return EI_CONFIG_CONTEXT_ERROR;
+    }
+    return EI_CONFIG_OK;
+}
+
+/**
+ * Get Snapshot Output Baudrate
+ */
+EI_CONFIG_ERROR ei_config_get_snapshot_output_baudrate(uint8_t out_buffer[32], size_t *out_size) {
+    if (ei_config_ctx == NULL) return EI_CONFIG_NO_CONTEXT;
+    if (ei_config_ctx->get_snapshot_output_baudrate == NULL) return EI_CONFIG_NOT_IMPLEMENTED;
+
+    int v = ei_config_ctx->get_snapshot_output_baudrate(out_buffer, out_size);
     if (v != 0) {
         return EI_CONFIG_CONTEXT_ERROR;
     }

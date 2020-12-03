@@ -236,6 +236,9 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
             break;
         }
 
+        // setup high buadrate
+        hx_drv_uart_initial(UART_BR_921600);
+
         for (size_t px = 0; px < items_to_read; px++) {
             uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);
 
@@ -282,6 +285,10 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
             }
             EiDevice.set_state(eiStateUploading);
         }
+
+        // lower buadrate
+        ei_printf("\r\nOK");
+        hx_drv_uart_initial(UART_BR_115200);
     }
 
     const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
