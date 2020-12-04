@@ -75,7 +75,7 @@ void print_out(void (* output)(char byte), const char *txt, ...)
             while(txt[i+1] != '\0') /* Walk through all args of % */
             {
                 /* Decimal representation */
-                if (txt[i + 1] == 'd' || txt[i + 1] == 'l' || txt[i + 1] == 'h') {
+                if (txt[i + 1] == 'd' || txt[i + 1] == 'l' || txt[i + 1] == 'h' || txt[i + 1] == 'u' ) {
                     intVal = va_arg(ap, int);
 
                     DecimalConverter(output, intVal, leadingZero, leadingSpace, 0, useSign);
