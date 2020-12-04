@@ -1,6 +1,21 @@
-# firmware-himax-we1
+# Edge Impulse firmware for Himax WE-I Plus
 
-Ingestion & inferencing firmware for the HiMax WE 1 target.
+[Edge Impulse](https://www.edgeimpulse.com) enables developers to create the next generation of intelligent device solutions with embedded Machine Learning. This repository contains the Edge Impulse firmware for the ST B-L475E-IOT01A development board. This device supports all Edge Impulse device features, including ingestion, remote management and inferencing.
+
+## Requirements
+
+**Hardware**
+
+* [Himax WE-I Plus](https://www.sparkfun.com/products/17256) development board.
+
+**Software**
+
+You'll need:
+
+* A valid ARC MetaWare license to build the firmware. You cannot build this firmware with GCC at the moment. You can compile either by:
+    * Having a local install of [DesignWare ARC MetaWare Toolkit](https://www.synopsys.com/dw/ipdir.php?ds=sw_metaware). Make sure `ccac` is in your PATH, and that the licenses are in place.
+    * Or, building with [Docker desktop](https://www.docker.com/products/docker-desktop).
+* [Edge Impulse CLI](https://docs.edgeimpulse.com/docs/cli-installation) - to flash the firmware.
 
 ## How to build (locally)
 
@@ -39,52 +54,15 @@ Ingestion & inferencing firmware for the HiMax WE 1 target.
 1. And build and link the application:
 
     ```
-    $ docker run --rm -it -v $PWD:/app:delegated -e SNPSLMD_LICENSE_FILE=27020@10.0.58.32 himax-build /bin/bash -c "cd build && make -j && sh ../make-image.sh"
+    $ docker run --rm -it -v $PWD:/app:delegated -e SNPSLMD_LICENSE_FILE=27020@synopsys.edgeimpulse.com himax-build /bin/bash -c "cd build && make -j && sh ../make-image.sh"
     ```
+
+    Where you'll have to replace `27020@synopsys.edgeimpulse.com` with your license server or license file.
 
 ## Flashing
 
-You'll need the Edge Impulse CLI v1.9.2 or higher. Then flash the binary with:
+You'll need the Edge Impulse CLI v1.10 or higher. Then flash the binary with:
 
 ```
 $ himax-flash-tool --firmware-path image_gen_linux_v3/out.img
 ```
-
-## Capturing a 96x96 raw snapshot (locally)
-
-### Requirements
-You'll need:
-
-- **libft4222**
-- `humax-bmp-dump`: grabs the snapshot via FTDI
-- a utility for sending serial commands, e.g. `minicom`
-
-### Instructions
-
-1. Start the `himax-bmp-dump` utility on the host
-
-    ```
-    $ himax-bmp-dump
-    ```
-
-    If a compatible device is found then `himax-bmp-dump` will output the
-    received image to `image_dump.bmp` and also a hexdump to `stdout`.
-
-    NOTE: `himax-bmp-dump` **will not wait indefinitely** and thus may require re-running.
-
-1. Issue the `AT+SNAPSHOT` command via the serial interface, e.g. in `minicom`:
-
-    Output e.g:
-
-    ```
-    > AT+SNAPSHOT
-
-
-            Image resolution: 96x96
-
-            Frame size: 9216
-
-            Created snapshot: Yes
-
-            Transfered snapshot: Yes
-    ```
