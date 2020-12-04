@@ -148,8 +148,18 @@ static inline void finish_snapshot()
  */
 static bool take_snapshot(size_t width, size_t height)
 {
+    // sleep a little to let the daemon attach on the new baud rate...
+    ei_printf("OK\r\n");
+    ei_sleep(100);
+
+    // setup data output buadrate
+    ei_device_data_output_baudrate_t baudrate;
+    EiDevice.get_data_output_baudrate(&baudrate);
+    hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
+
     if (ei_camera_capture(width, height, ei_camera_snapshot_image_data) == false) {
         ei_printf("ERR: Failed to capture image\r\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -163,6 +173,7 @@ static bool take_snapshot(size_t width, size_t height)
     float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
     if (!signal_buf) {
         ei_printf("ERR: Failed to allocate signal buffer\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -170,6 +181,7 @@ static bool take_snapshot(size_t width, size_t height)
     if (!per_pixel_buffer) {
         free(signal_buf);
         ei_printf("ERR: Failed to allocate per_pixel buffer\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -186,11 +198,6 @@ static bool take_snapshot(size_t width, size_t height)
             ei_printf("ERR: Failed to get data from signal (%d)\n", r);
             break;
         }
-
-        // setup data output buadrate
-        ei_device_data_output_baudrate_t baudrate;
-        EiDevice.get_data_output_baudrate(&baudrate);
-        hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
 
         for (size_t px = 0; px < items_to_read; px++) {
             uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);
@@ -221,6 +228,7 @@ static bool take_snapshot(size_t width, size_t height)
                 if (!base64_buffer) {
                     ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
                     free(signal_buf);
+                    hx_drv_uart_initial(UART_BR_115200);
                     return false;
                 }
 
@@ -230,6 +238,7 @@ static bool take_snapshot(size_t width, size_t height)
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
                     free(signal_buf);
+                    hx_drv_uart_initial(UART_BR_115200);
                     return false;
                 }
 
@@ -238,16 +247,13 @@ static bool take_snapshot(size_t width, size_t height)
             }
             EiDevice.set_state(eiStateUploading);
         }
-
-        // lower buadrate
-        ei_printf("\r\nOK");
-        hx_drv_uart_initial(UART_BR_115200);
     }
 
     const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
     char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
     if (!base64_buffer) {
         ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -255,6 +261,7 @@ static bool take_snapshot(size_t width, size_t height)
     free(base64_buffer);
     if (r < 0) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -263,6 +270,13 @@ static bool take_snapshot(size_t width, size_t height)
 
     free(signal_buf);
     EiDevice.set_state(eiStateIdle);
+
+    // lower baud rate
+    ei_printf("OK\r\n");
+    hx_drv_uart_initial(UART_BR_115200);
+
+    // sleep a little to let the daemon attach on baud rate 115200 again...
+    ei_sleep(100);
 
     return true;
 }
@@ -408,4 +422,3 @@ bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t heig
 
     return result;
 }
-
