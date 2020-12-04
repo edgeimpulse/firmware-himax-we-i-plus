@@ -53,7 +53,8 @@ static uint32_t ei_camera_cutout_rows;
 extern bool ei_camera_init(void);
 extern void ei_camera_deinit(void);
 extern bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf);
-extern bool ei_camera_take_snapshot(size_t width, size_t height);
+extern bool ei_camera_take_snapshot_encode_and_output(size_t width, size_t height);
+extern bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t height);
 
 
 /* Public Helper functions ------------------------------------------------- */

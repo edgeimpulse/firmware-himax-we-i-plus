@@ -39,41 +39,6 @@ static bool is_initialised = false;
 /* Private functions ------------------------------------------------------- */
 
 /**
- * @brief   Setup image sensor & start streaming
- *
- * @retval  false if initialisation failed
- */
-bool ei_camera_init(void)
-{
-    if (is_initialised == true) return true;
-
-    if (hx_drv_sensor_initial(&g_pimg_config) != HX_DRV_LIB_PASS) {
-        return false;
-    }
-
-    if(hx_drv_spim_init() != HX_DRV_LIB_PASS) {
-        return false;
-    }
-
-    is_initialised = true;
-
-    return true;
-}
-
-
-/**
- * @brief      Stop streaming of sensor data
- */
-void ei_camera_deinit(void)
-{
-    if(is_initialised) {
-
-        hx_drv_sensor_stop_capture();
-        is_initialised = false;
-    }
-}
-
-/**
  * @brief      Calculate the desired frame buffer resolution
  *
  * @param[in]  img_width     width of output image
@@ -81,9 +46,8 @@ void ei_camera_deinit(void)
  * @param[out] fb_cols       pointer to frame buffer's column/width value
  * @param[out] fb_rows       pointer to frame buffer's rows/height value
  *
-* @todo Remove magic numbers
  */
-void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, uint32_t *fb_cols, uint32_t *fb_rows)
+static void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, uint32_t *fb_cols, uint32_t *fb_rows)
 {
 
     const ei_device_snapshot_resolutions_t *list;
@@ -116,51 +80,7 @@ void calculate_rescaled_fb_resolution (uint32_t img_width, uint32_t img_height, 
     }
 }
 
-/**
- * @brief      Capture and rescale image
- *
- * @param[in]  img_width     width of output image
- * @param[in]  img_height    height of output image
- * @param[in]  buf           pointer to store output image
- *
- * @retval     false if not initialised, image capture or rescaled failed
- *
- * @note       original capture is 640x480
- */
-bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
-{
-    if (is_initialised == false) return false;
-
-    EiDevice.set_state(eiStateSampling);
-
-    if (hx_drv_sensor_capture(&g_pimg_config) != HX_DRV_LIB_PASS) {
-        return false;
-    }
-
-    // determine what the scaled output image buffer size should be
-    calculate_rescaled_fb_resolution(img_width, img_height, &ei_camera_frame_buffer_cols, &ei_camera_frame_buffer_rows);
-
-    // The following variables should always be assigned
-    // if this routine is to return true
-    ei_camera_cutout_row_start = (ei_camera_frame_buffer_rows - img_height) / 2;
-    ei_camera_cutout_col_start = (ei_camera_frame_buffer_cols - img_width) / 2;
-    ei_camera_cutout_cols = img_width;
-    ei_camera_cutout_rows = img_height;
-    ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
-
-    //  skip scaling if frame buffer's width and height matches the original resolution
-    if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) return true;
-
-    if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
-                             g_pimg_config.img_width, g_pimg_config.img_height,
-                             buf, ei_camera_frame_buffer_cols, ei_camera_frame_buffer_rows) != HX_DRV_LIB_PASS) {
-        return false;
-    }
-
-    return true;
-}
-
-bool ei_camera_take_snapshot(size_t width, size_t height)
+static bool verify_inputs(size_t width, size_t height)
 {
     const ei_device_snapshot_resolutions_t *list;
     size_t list_size;
@@ -185,6 +105,14 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
 
     ei_printf("\tImage resolution: %dx%d\n", width, height);
 
+    return true;
+}
+
+
+static bool prepare_snapshot(size_t width, size_t height)
+{
+    if (!verify_inputs(width, height)) { return false; }
+
     if (ei_camera_init() == false) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return false;
@@ -197,8 +125,41 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
         return false;
     }
 
+    return true;
+}
+
+static inline void finish_snapshot()
+{
+    ei_camera_snapshot_image_data = NULL;
+    ei_camera_deinit();
+}
+
+/**
+ * @brief      Helper function: Takes a snapshot, base64 encodes and prints it to uart
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ * @param[in]  buf           pointer to store output image
+ *
+ * @retval     bool
+ *
+ * @note       Expects the camera and `ei_camera_snapshot_image_data` buffer to be
+ * initialised
+ */
+static bool take_snapshot(size_t width, size_t height)
+{
+    // sleep a little to let the daemon attach on the new baud rate...
+    ei_printf("OK\r\n");
+    ei_sleep(100);
+
+    // setup data output buadrate
+    ei_device_data_output_baudrate_t baudrate;
+    EiDevice.get_data_output_baudrate(&baudrate);
+    hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
+
     if (ei_camera_capture(width, height, ei_camera_snapshot_image_data) == false) {
         ei_printf("ERR: Failed to capture image\r\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -212,6 +173,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
     if (!signal_buf) {
         ei_printf("ERR: Failed to allocate signal buffer\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -219,6 +181,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     if (!per_pixel_buffer) {
         free(signal_buf);
         ei_printf("ERR: Failed to allocate per_pixel buffer\n");
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -265,6 +228,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
                 if (!base64_buffer) {
                     ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
                     free(signal_buf);
+                    hx_drv_uart_initial(UART_BR_115200);
                     return false;
                 }
 
@@ -274,6 +238,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
                     free(signal_buf);
+                    hx_drv_uart_initial(UART_BR_115200);
                     return false;
                 }
 
@@ -288,6 +253,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
     if (!base64_buffer) {
         ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -295,6 +261,7 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     free(base64_buffer);
     if (r < 0) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+        hx_drv_uart_initial(UART_BR_115200);
         return false;
     }
 
@@ -302,10 +269,156 @@ bool ei_camera_take_snapshot(size_t width, size_t height)
     ei_printf("\r\n");
 
     free(signal_buf);
-    ei_camera_snapshot_image_data = NULL;
-
     EiDevice.set_state(eiStateIdle);
-    ei_camera_deinit();
+
+    // lower baud rate
+    ei_printf("OK\r\n");
+    hx_drv_uart_initial(UART_BR_115200);
+
+    // sleep a little to let the daemon attach on baud rate 115200 again...
+    ei_sleep(100);
 
     return true;
+}
+
+
+
+/* Public functions -------------------------------------------------------- */
+
+/**
+ * @brief   Setup image sensor & start streaming
+ *
+ * @retval  false if initialisation failed
+ */
+bool ei_camera_init(void)
+{
+    if (is_initialised == true) return true;
+
+    if (hx_drv_sensor_initial(&g_pimg_config) != HX_DRV_LIB_PASS) {
+        return false;
+    }
+
+    if(hx_drv_spim_init() != HX_DRV_LIB_PASS) {
+        return false;
+    }
+
+    is_initialised = true;
+
+    return true;
+}
+
+/**
+ * @brief      Stop streaming of sensor data
+ */
+void ei_camera_deinit(void)
+{
+    if(is_initialised) {
+
+        hx_drv_sensor_stop_capture();
+        is_initialised = false;
+    }
+}
+
+
+/**
+ * @brief      Capture and rescale image
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ * @param[in]  buf           pointer to store output image
+ *
+ * @retval     false if not initialised, image captured or rescaled failed
+ *
+ * @note       original capture is 640x480
+ */
+bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
+{
+    if (is_initialised == false) return false;
+
+    EiDevice.set_state(eiStateSampling);
+
+    if (hx_drv_sensor_capture(&g_pimg_config) != HX_DRV_LIB_PASS) {
+        return false;
+    }
+
+    // determine what the scaled output image buffer size should be
+    calculate_rescaled_fb_resolution(img_width, img_height, &ei_camera_frame_buffer_cols, &ei_camera_frame_buffer_rows);
+
+    // The following variables should always be assigned
+    // if this routine is to return true
+    ei_camera_cutout_row_start = (ei_camera_frame_buffer_rows - img_height) / 2;
+    ei_camera_cutout_col_start = (ei_camera_frame_buffer_cols - img_width) / 2;
+    ei_camera_cutout_cols = img_width;
+    ei_camera_cutout_rows = img_height;
+    ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
+
+    //  skip scaling if frame buffer's width and height matches the original resolution
+    if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) return true;
+
+    if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
+                             g_pimg_config.img_width, g_pimg_config.img_height,
+                             buf, ei_camera_frame_buffer_cols, ei_camera_frame_buffer_rows) != HX_DRV_LIB_PASS) {
+        return false;
+    }
+
+    return true;
+}
+
+/**
+ * @brief      Takes a snapshot, base64 encodes and outputs it to uart
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ *
+ * @retval     true if snapshot was taken successfully
+ *
+ */
+bool ei_camera_take_snapshot_encode_and_output(size_t width, size_t height)
+{
+    bool result = true;
+
+    if (!prepare_snapshot(width, height)) result = false;
+
+    if (result) {
+        if (!take_snapshot(width, height)) {
+            result = false;
+        }
+    }
+
+    finish_snapshot();
+
+    return result;
+}
+
+/**
+ * @brief      Starts a snapshot stream, base64 encodes and outputs it to uart
+ *
+ * @param[in]  img_width     width of output image
+ * @param[in]  img_height    height of output image
+ *
+ * @retval     true if successful and/or terminated gracefully
+ *
+ */
+bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t height)
+{
+    bool result = true;
+
+    ei_printf("Starting snapshot stream...\n");
+
+    if (!prepare_snapshot(width, height)) result = false;
+
+    while (result) {
+        if (ei_user_invoke_stop()) {
+            ei_printf("Snapshot streaming stopped by user\r\n");
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
+        if (!take_snapshot(width, height)) {
+            result = false;
+        }
+    }
+
+    finish_snapshot();
+
+    return result;
 }
