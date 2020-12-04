@@ -187,8 +187,10 @@ static bool take_snapshot(size_t width, size_t height)
             break;
         }
 
-        // setup high buadrate
-        hx_drv_uart_initial(UART_BR_921600);
+        // setup data output buadrate
+        ei_device_data_output_baudrate_t baudrate;
+        EiDevice.get_data_output_baudrate(&baudrate);
+        hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
 
         for (size_t px = 0; px < items_to_read; px++) {
             uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);

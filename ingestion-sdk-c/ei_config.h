@@ -139,8 +139,8 @@ typedef struct {
     // Start a snapshot stream
     bool (*start_snapshot_stream)(size_t width, size_t height);
 
-    // Get Snapshot's Output Baudrate
-    int (*get_snapshot_output_baudrate)(uint8_t out_buffer[32], size_t *out_size);
+    // Get Data Output Baudrate
+    int (*get_data_output_baudrate)(ei_device_data_output_baudrate_t *baudrate);
 
 } ei_config_ctx_t;
 
@@ -290,13 +290,13 @@ EI_CONFIG_ERROR ei_config_set_device_id(char *device_id) {
 }
 
 /**
- * Get Snapshot Output Baudrate
+ * Get Data Output Baudrate
  */
-EI_CONFIG_ERROR ei_config_get_snapshot_output_baudrate(uint8_t out_buffer[32], size_t *out_size) {
+EI_CONFIG_ERROR ei_config_get_data_output_baudrate(ei_device_data_output_baudrate_t *baudrate) {
     if (ei_config_ctx == NULL) return EI_CONFIG_NO_CONTEXT;
-    if (ei_config_ctx->get_snapshot_output_baudrate == NULL) return EI_CONFIG_NOT_IMPLEMENTED;
+    if (ei_config_ctx->get_data_output_baudrate == NULL) return EI_CONFIG_NOT_IMPLEMENTED;
 
-    int v = ei_config_ctx->get_snapshot_output_baudrate(out_buffer, out_size);
+    int v = ei_config_ctx->get_data_output_baudrate(baudrate);
     if (v != 0) {
         return EI_CONFIG_CONTEXT_ERROR;
     }

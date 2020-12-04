@@ -57,11 +57,10 @@ static void at_device_info() {
     }
     ei_printf("AT Version: %s\n", EDGE_IMPULSE_AT_COMMAND_VERSION);
 
-    uint8_t baudrate_s[32] = {'\0'};
-    size_t out_len;
-    r = EiDevice.get_snapshot_output_baudrate(baudrate_s, &out_len);
+    ei_device_data_output_baudrate_t baudrate;
+    r = EiDevice.get_data_output_baudrate(&baudrate);
     if (r == 0) {
-        ei_printf("Data Transfer Baudrate: %s\r\n", baudrate_s);
+        ei_printf("Data Transfer Baudrate: %s\r\n", baudrate.str);
     } else {
         ei_printf("Data Transfer Baudrate: UNKNOWN\r\n");
     }

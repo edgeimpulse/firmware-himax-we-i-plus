@@ -60,7 +60,7 @@ int main(void)
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
     config_ctx.take_snapshot = &ei_camera_take_snapshot_encode_and_output;
     config_ctx.start_snapshot_stream = &ei_camera_start_snapshot_stream_encode_and_output;
-    config_ctx.get_snapshot_output_baudrate = EiDevice.get_snapshot_output_baudrate_function();
+    config_ctx.get_data_output_baudrate = EiDevice.get_data_output_baudrate_function();
 
     EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
 

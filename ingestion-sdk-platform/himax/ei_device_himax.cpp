@@ -65,10 +65,11 @@ EiDeviceHimax EiDevice;
 
 static tEiState ei_program_state = eiStateIdle;
 
-/** Snapshot Output Baudrate */
-static const char *ei_snapshot_output_baudrate = "921600";
-
-
+/** Data Output Baudrate */
+const ei_device_data_output_baudrate_t ei_dev_data_output_baudrate = {
+    .str = "921600",
+    .val = UART_BR_921600,
+};
 
 /* Private function declarations ------------------------------------------- */
 static int get_id_c(uint8_t out_buffer[32], size_t *out_size);
@@ -78,7 +79,7 @@ static bool get_wifi_connection_status_c(void);
 static bool get_wifi_present_status_c(void);
 static void timer_callback(void *arg);
 static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
-static int get_snapshot_output_baudrate_c(uint8_t out_buffer[32], size_t *out_size);
+static int get_data_output_baudrate_c(ei_device_data_output_baudrate_t *baudrate);
 
 /* Public functions -------------------------------------------------------- */
 
@@ -182,15 +183,15 @@ int EiDeviceHimax::set_id(char *device_id)
 }
 
 /**
- * @brief      Get the snapshot output baudrate
+ * @brief      Get the data output baudrate
  *
- * @param      baudrate    Baudrate used to output snapshot image
+ * @param      baudrate    Baudrate used to output data
  *
  * @return     0
  */
-int EiDeviceHimax::get_snapshot_output_baudrate(uint8_t out_buffer[32], size_t *out_size)
+int EiDeviceHimax::get_data_output_baudrate(ei_device_data_output_baudrate_t *baudrate)
 {
-    return get_snapshot_output_baudrate_c(out_buffer, out_size);
+    return get_data_output_baudrate_c(baudrate);
 }
 
 /**
@@ -393,9 +394,9 @@ c_callback_read_sample_buffer EiDeviceHimax::get_read_sample_buffer_function(voi
  *
  * @return     Pointer to c get function
  */
-c_callback EiDeviceHimax::get_snapshot_output_baudrate_function(void)
+c_callback_get_data_output_baudrate EiDeviceHimax::get_data_output_baudrate_function(void)
 {
-    return &get_snapshot_output_baudrate_c;
+    return &get_data_output_baudrate_c;
 }
 
 /**
@@ -552,19 +553,15 @@ static int set_id_c(char *device_id)
     return 0;
 }
 
-static int get_snapshot_output_baudrate_c(uint8_t out_buffer[32], size_t *out_size)
+static int get_data_output_baudrate_c(ei_device_data_output_baudrate_t *baudrate)
 {
-    size_t length = strlen(ei_snapshot_output_baudrate);
+    size_t length = strlen(ei_dev_data_output_baudrate.str);
 
     if(length < 32) {
-        memcpy(out_buffer, ei_snapshot_output_baudrate, length);
-
-        *out_size = length;
+        memcpy(baudrate, &ei_dev_data_output_baudrate, sizeof(ei_device_data_output_baudrate_t));
         return 0;
     }
-
     else {
-        *out_size = 0;
         return -1;
     }
 }

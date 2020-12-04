@@ -46,7 +46,7 @@ typedef enum
 	eiStateUploading,
 	eiStateFinished
 
-}tEiState;
+} tEiState;
 
 
 /** C Callback types */
@@ -54,7 +54,7 @@ typedef int (*c_callback)(uint8_t out_buffer[32], size_t *out_size);
 typedef int (*c_callback_set_id)(char *device_id);
 typedef bool (*c_callback_status)(void);
 typedef bool (*c_callback_read_sample_buffer)(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
-typedef int (*c_callback_get_snapshot_output_baudrate)(uint8_t out_buffer[32], size_t *out_size);
+typedef int (*c_callback_get_data_output_baudrate)(ei_device_data_output_baudrate_t *baudrate);
 
 /**
  * @brief      Class description and implementation of device specific
@@ -80,7 +80,7 @@ public:
 	void delay_ms(uint32_t milliseconds);
 	void setup_led_control(void);
 	void set_state(tEiState state);
-	int get_snapshot_output_baudrate(uint8_t out_buffer[32], size_t *out_size);
+	int get_data_output_baudrate(ei_device_data_output_baudrate_t *baudrate);
 
 	c_callback get_id_function(void);
 	c_callback get_type_function(void);
@@ -88,7 +88,7 @@ public:
 	c_callback_status get_wifi_connection_status_function(void);
 	c_callback_status get_wifi_present_status_function(void);
 	c_callback_read_sample_buffer get_read_sample_buffer_function(void);
-	c_callback_get_snapshot_output_baudrate get_snapshot_output_baudrate_function(void);
+	c_callback_get_data_output_baudrate get_data_output_baudrate_function(void);
 
 };
 

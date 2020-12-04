@@ -30,6 +30,11 @@ typedef struct {
 } ei_device_snapshot_resolutions_t;
 
 
+typedef struct {
+    char str[32];
+    int val;
+} ei_device_data_output_baudrate_t;
+
 /**
  * @brief      Default class for device characteristics
  */
@@ -39,6 +44,12 @@ private:
 	/** Default device ID & type */
 	const char *ei_dev_default_type = "Default type";
 	const char *ei_dev_default_id = "1:2:3:4:5:6";
+
+	/** Data Output Baudrate */
+	const ei_device_data_output_baudrate_t ei_dev_data_output_baudrate = {
+		.str = "",
+		.val = 0,
+	};
 
 
 public:
@@ -141,6 +152,19 @@ public:
 	{
 
 	}
+
+	/**
+	 * @brief      Get Output Data Baudrate
+	 *
+	 * @param[in]  baudrate  pointer to store result
+	 */
+	virtual int get_data_output_baudrate(ei_device_data_output_baudrate_t *baudrate) {
+		if (memcpy(baudrate, &ei_dev_data_output_baudrate, sizeof(ei_device_data_output_baudrate_t))) {
+		 return 0;
+		}
+		return 1;
+	}
+
 
 };
 
