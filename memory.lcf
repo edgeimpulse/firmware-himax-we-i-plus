@@ -89,8 +89,7 @@ SECTIONS {
 			*(TYPE bss)
 			_e_bss = .;
 		}
-		
-  .tensor_arena? ALIGN(16): {}
+
   .Zdata?: {}
   _s_heap = .;          
 	} > DCCM
