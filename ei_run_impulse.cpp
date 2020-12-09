@@ -322,6 +322,107 @@ void run_nn(bool debug) {
             break;
         }
 
+        size_t signal_chunk_size = 1024;
+
+        // loop through the signal
+        float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
+        if (!signal_buf) {
+            ei_printf("ERR: Failed to allocate signal buffer\n");
+            hx_drv_uart_initial(UART_BR_115200);
+            return;
+        }
+
+        uint8_t *per_pixel_buffer = (uint8_t*)ei_malloc(513); // 171 x 3 pixels
+        if (!per_pixel_buffer) {
+            free(signal_buf);
+            ei_printf("ERR: Failed to allocate per_pixel buffer\n");
+            hx_drv_uart_initial(UART_BR_115200);
+            return;
+        }
+
+        size_t per_pixel_buffer_ix = 0;
+
+        for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
+            size_t items_to_read = signal_chunk_size;
+            if (items_to_read > signal.total_length - ix) {
+                items_to_read = signal.total_length - ix;
+            }
+
+            int r = signal.get_data(ix, items_to_read, signal_buf);
+            if (r != 0) {
+                ei_printf("ERR: Failed to get data from signal (%d)\n", r);
+                break;
+            }
+
+            for (size_t px = 0; px < items_to_read; px++) {
+                uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);
+
+                // grab rgb
+                uint8_t r = static_cast<float>(pixel >> 16 & 0xff);
+                uint8_t g = static_cast<float>(pixel >> 8 & 0xff);
+                uint8_t b = static_cast<float>(pixel & 0xff);
+
+                // is monochrome anyway now, so just print 1 pixel at a time
+                const bool print_rgb = false;
+
+                if (print_rgb) {
+                    per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
+                    per_pixel_buffer[per_pixel_buffer_ix + 1] = g;
+                    per_pixel_buffer[per_pixel_buffer_ix + 2] = b;
+                    per_pixel_buffer_ix += 3;
+                }
+                else {
+                    per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
+                    per_pixel_buffer_ix++;
+                }
+
+                if (per_pixel_buffer_ix >= 513) {
+                    const size_t base64_output_size = 684;
+
+                    char *base64_buffer = (char*)ei_malloc(base64_output_size);
+                    if (!base64_buffer) {
+                        ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
+                        free(signal_buf);
+                        hx_drv_uart_initial(UART_BR_115200);
+                        return;
+                    }
+
+                    int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, base64_output_size);
+                    free(base64_buffer);
+
+                    if (r < 0) {
+                        ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+                        free(signal_buf);
+                        hx_drv_uart_initial(UART_BR_115200);
+                        return;
+                    }
+
+                    ei_write_string(base64_buffer, r);
+                    per_pixel_buffer_ix = 0;
+                }
+                EiDevice.set_state(eiStateUploading);
+            }
+        }
+
+        const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
+        char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
+        if (!base64_buffer) {
+            ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
+            hx_drv_uart_initial(UART_BR_115200);
+            return;
+        }
+
+        int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, new_base64_buffer_output_size);
+        free(base64_buffer);
+        if (r < 0) {
+            ei_printf("ERR: Failed to base64 encode (%d)\n", r);
+            hx_drv_uart_initial(UART_BR_115200);
+            return;
+        }
+
+        ei_write_string(base64_buffer, r);
+        ei_printf("\r\n");
+
         // run the impulse: DSP, neural network and the Anomaly algorithm
         ei_impulse_result_t result = { 0 };
 
