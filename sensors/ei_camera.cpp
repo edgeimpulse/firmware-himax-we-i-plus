@@ -159,11 +159,10 @@ static bool take_snapshot(size_t width, size_t height)
     ei_printf("OK\r\n");
     ei_sleep(100);
 
-    // setup data output buadrate
-    // ei_device_data_output_baudrate_t baudrate;
-    // EiDevice.get_data_output_baudrate(&baudrate);
-    // hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
-    hx_drv_uart_initial(UART_BR_115200);
+    // setup data output bauddrate
+    ei_device_data_output_baudrate_t baudrate;
+    EiDevice.get_data_output_baudrate(&baudrate);
+    hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
 
     if (ei_camera_capture(width, height, ei_camera_snapshot_image_data) == false) {
         ei_printf("ERR: Failed to capture image\r\n");
@@ -361,14 +360,8 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
     ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
     ei_camera_snapshot_image_data = buf;
 
-    ei_printf("ei_camera_capture img_width=%lu, img_height=%lu, ei_camera_cutout_row_start=%lu, ei_camera_cutout_col_start=%lu, ",
-        img_width, img_height, ei_camera_cutout_row_start, ei_camera_cutout_col_start);
-    ei_printf("ei_camera_cutout_cols=%lu, ei_camera_cutout_rows=%lu, is_resized=%d\n",
-        ei_camera_cutout_cols, ei_camera_cutout_rows, ei_camera_snapshot_is_resized);
-
     //  skip scaling if frame buffer's width and height matches the original resolution
     if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) {
-        ei_printf("skipping resize\n");
         return true;
     }
 
@@ -460,16 +453,6 @@ static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_
  * @note       This function is called by the classifier to get float RGB image data
  */
 int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
-    // ei_printf("\nei_camera_cutout_get_data, offset=%lu, length=%lu, is_resized=%d, ",
-    //     offset, length, ei_camera_snapshot_is_resized);
-    // ei_printf("ei_camera_frame_buffer_cols=%lu, ei_camera_frame_buffer_rows=%lu, ei_camera_cutout_row_start=%lu, ei_camera_cutout_col_start=%lu, ei_camera_cutout_cols=%lu, ei_camera_cutout_rows=%lu\n",
-    //     ei_camera_frame_buffer_cols,
-    //     ei_camera_frame_buffer_rows,
-    //     ei_camera_cutout_row_start,
-    //     ei_camera_cutout_col_start,
-    //     ei_camera_cutout_cols,
-    //     ei_camera_cutout_rows);
-
     // so offset and length naturally operate on the *cutout*, so we need to cut it out from the real framebuffer
     size_t bytes_left = length;
     size_t out_ptr_ix = 0;
