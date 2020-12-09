@@ -46,6 +46,20 @@ static int8_t *ei_camera_snapshot_image_data = NULL;
 /* Private functions ------------------------------------------------------- */
 
 /**
+ * @brief      Convert monochrome data to rgb values
+ *
+ * @param[in]  mono_data  The mono data
+ * @param      r          red pixel value
+ * @param      g          green pixel value
+ * @param      b          blue pixel value
+ */
+static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
+    uint8_t v;
+    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
+    *r = *g = *b = v;
+}
+
+/**
  * @brief      Calculate the desired frame buffer resolution
  *
  * @param[in]  img_width     width of output image
@@ -159,7 +173,7 @@ static bool take_snapshot(size_t width, size_t height)
     ei_printf("OK\r\n");
     ei_sleep(100);
 
-    // setup data output bauddrate
+    // setup data output baudrate
     ei_device_data_output_baudrate_t baudrate;
     EiDevice.get_data_output_baudrate(&baudrate);
     hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
@@ -431,14 +445,6 @@ bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t heig
     finish_snapshot();
 
     return result;
-}
-
-
-/* Public Helper functions ------------------------------------------------- */
-static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
-    uint8_t v;
-    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
-    *r = *g = *b = v;
 }
 
 /**
