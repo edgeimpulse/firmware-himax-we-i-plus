@@ -25,12 +25,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include "tensorflow/lite/micro/debug_log.h"
-
-
-extern "C" void print_out(void (* output)(char byte), const char *txt, ...);
-
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1
 extern "C" {
@@ -71,17 +66,10 @@ uint64_t ei_read_timer_ms();
 uint64_t ei_read_timer_us();
 
 /**
- * @brief      Connect to putchar of target
- *
- * @param[in]  byte  The byte
- */
-void ei_print_char(char byte);
-
-/**
  * Print wrapper around printf()
  * This is used internally to print debug information.
  */
-#define ei_printf(...) print_out(&ei_print_char, __VA_ARGS__);
+void ei_printf(const char *format, ...);
 
 /**
  * Override this function if your target cannot properly print floating points
@@ -149,19 +137,19 @@ void ei_free(void *ptr);
 #endif
 #endif
 
-#ifndef EI_PORTING_STM32_CUBEAI
-#if defined(USE_HAL_DRIVER) && !defined(__MBED__)
-#define EI_PORTING_STM32_CUBEAI      1
-#else
-#define EI_PORTING_STM32_CUBEAI      0
-#endif
-#endif
-
 #ifndef EI_PORTING_ZEPHYR
 #if defined(__ZEPHYR__)
 #define EI_PORTING_ZEPHYR      1
 #else
 #define EI_PORTING_ZEPHYR      0
+#endif
+#endif
+
+#ifndef EI_PORTING_STM32_CUBEAI
+#if defined(USE_HAL_DRIVER) && !defined(__MBED__) && EI_PORTING_ZEPHYR == 0
+#define EI_PORTING_STM32_CUBEAI      1
+#else
+#define EI_PORTING_STM32_CUBEAI      0
 #endif
 #endif
 

@@ -26,7 +26,14 @@
 #include "model-parameters/model_metadata.h"
 #include "edge-impulse-sdk/dsp/spectral/spectral.hpp"
 #include "edge-impulse-sdk/dsp/speechpy/speechpy.hpp"
-#include "ei_classifier_porting.h"
+
+#if defined(__cplusplus) && EI_C_LINKAGE == 1
+extern "C" {
+    extern void ei_printf(const char *format, ...);
+}
+#else
+extern void ei_printf(const char *format, ...);
+#endif
 
 #ifdef __cplusplus
 namespace {
@@ -70,17 +77,15 @@ __attribute__((unused)) int extract_spectral_analysis_features(signal_t *signal,
     matrix_t edges_matrix_in(64, 1);
     size_t edge_matrix_ix = 0;
 
-    char spectral_str[128] = { '\0' };
+    char spectral_str[128] = { 0 };
     if (strlen(config.spectral_power_edges) > sizeof(spectral_str) - 1) {
         EIDSP_ERR(EIDSP_PARAMETER_INVALID);
     }
     memcpy(spectral_str, config.spectral_power_edges, strlen(config.spectral_power_edges));
 
-
     // convert spectral_power_edges (string) into float array
     char *spectral_ptr = spectral_str;
     while (spectral_ptr != NULL) {
-
         edges_matrix_in.buffer[edge_matrix_ix++] = atof(spectral_ptr);
 
         // find next (spectral) delimiter (or '\0' character)
@@ -91,7 +96,8 @@ __attribute__((unused)) int extract_spectral_analysis_features(signal_t *signal,
 
         if (*spectral_ptr == '\0') {
             spectral_ptr = NULL;
-        } else  {
+        }
+        else  {
             spectral_ptr++;
         }
     }

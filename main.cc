@@ -77,6 +77,10 @@ int main(void)
     ei_at_cmd_register("RUNIMPULSEDEBUG", "Run the impulse with extra debug output", run_nn_debug);
     ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
 
+    // you might think this is not necessary, but without this line the AT+SNAPSHOT commands first baud rate switch
+    // is ignored by the Himax HAL
+    hx_drv_uart_initial(UART_BR_115200);
+
     ei_command_line_handle(0);
 
     return 0;
