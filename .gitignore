@@ -1,5 +1,4 @@
 *.img
 build/
 bla.bmp
-edge-impulse-sdk
 node_modules/

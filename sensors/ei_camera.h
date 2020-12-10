@@ -36,38 +36,18 @@
 /* Externally linked variables --------------------------------------------- */
 extern hx_drv_sensor_image_config_t g_pimg_config;
 
-
-/* Private variables ------------------------------------------------------- */
-static int8_t *ei_camera_snapshot_image_data = NULL;
-static bool ei_camera_snapshot_is_resized = false;
-
-static uint32_t ei_camera_frame_buffer_cols;
-static uint32_t ei_camera_frame_buffer_rows;
-static uint32_t ei_camera_cutout_row_start;
-static uint32_t ei_camera_cutout_col_start;
-
-static uint32_t ei_camera_cutout_cols;
-static uint32_t ei_camera_cutout_rows;
-
 /* Public function prototypes ---------------------------------------------- */
 extern bool ei_camera_init(void);
 extern void ei_camera_deinit(void);
 extern bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf);
 extern bool ei_camera_take_snapshot_encode_and_output(size_t width, size_t height);
 extern bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t height);
-
-
-/* Public Helper functions ------------------------------------------------- */
-static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
-    uint8_t v;
-    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
-    *r = *g = *b = v;
-}
+extern void ei_printf(const char *format, ...);
 
 /**
  * @brief      Retrieves (cut-out) float RGB image data from the frame buffer
  *
- * @param[in]  offset        offset within cut-out image 
+ * @param[in]  offset        offset within cut-out image
  * @param[in]  length        number of bytes to read
  * @param[int] out_ptr       pointer to output buffre
  *
@@ -75,40 +55,6 @@ static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_
  *
  * @note       This function is called by the classifier to get float RGB image data
  */
-static int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
-    // so offset and length naturally operate on the *cutout*, so we need to cut it out from the real framebuffer
-    size_t bytes_left = length;
-    size_t out_ptr_ix = 0;
-
-    // read byte for byte
-    while (bytes_left != 0) {
-        // find location of the byte in the cutout
-        size_t cutout_row = floor(offset / ei_camera_cutout_cols);
-        size_t cutout_col = offset - (cutout_row * ei_camera_cutout_cols);
-
-        // then read the value from the real frame buffer
-        size_t frame_buffer_row = cutout_row + ei_camera_cutout_row_start;
-        size_t frame_buffer_col = cutout_col + ei_camera_cutout_col_start;
-
-        // grab the value and convert to r/g/b
-        uint8_t pixel = (uint8_t) ei_camera_snapshot_image_data[(frame_buffer_row * ei_camera_frame_buffer_cols) + frame_buffer_col];
-
-        uint8_t r, g, b;
-        mono_to_rgb(pixel, &r, &g, &b);
-
-        // then convert to out_ptr format
-        float pixel_f = (r << 16) + (g << 8) + b;
-        out_ptr[out_ptr_ix] = pixel_f;
-
-        // and go to the next pixel
-        out_ptr_ix++;
-        offset++;
-        bytes_left--;
-    }
-
-    // and done!
-    return 0;
-}
-
+int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr);
 
 #endif // EI_CAMERA

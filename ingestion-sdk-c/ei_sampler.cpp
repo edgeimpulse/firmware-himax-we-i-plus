@@ -259,7 +259,7 @@ static bool create_header(sensor_aq_payload_info *payload)
     int tr = sensor_aq_init(&ei_mic_ctx, payload, NULL, true);
 
     if (tr != AQ_OK) {
-        ei_printf("sensor_aq_init failed (%d)\n", tr);
+        ei_printf("ERR: sensor_aq_init failed (%d)\n", tr);
         return false;
     }
     // then we're gonna find the last byte that is not 0x00 in the CBOR buffer.

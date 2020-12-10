@@ -29,14 +29,35 @@
 #include "at_base64.h"
 #include "numpy_types.h"
 
-
 /* Global variables ------------------------------------------------------- */
 hx_drv_sensor_image_config_t g_pimg_config;
 
 /* Private variables ------------------------------------------------------- */
 static bool is_initialised = false;
+static bool ei_camera_snapshot_is_resized = false;
+static uint32_t ei_camera_frame_buffer_cols;
+static uint32_t ei_camera_frame_buffer_rows;
+static uint32_t ei_camera_cutout_row_start;
+static uint32_t ei_camera_cutout_col_start;
+static uint32_t ei_camera_cutout_cols;
+static uint32_t ei_camera_cutout_rows;
+static int8_t *ei_camera_snapshot_image_data = NULL;
 
 /* Private functions ------------------------------------------------------- */
+
+/**
+ * @brief      Convert monochrome data to rgb values
+ *
+ * @param[in]  mono_data  The mono data
+ * @param      r          red pixel value
+ * @param      g          green pixel value
+ * @param      b          blue pixel value
+ */
+static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
+    uint8_t v;
+    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
+    *r = *g = *b = v;
+}
 
 /**
  * @brief      Calculate the desired frame buffer resolution
@@ -152,7 +173,7 @@ static bool take_snapshot(size_t width, size_t height)
     ei_printf("OK\r\n");
     ei_sleep(100);
 
-    // setup data output buadrate
+    // setup data output baudrate
     ei_device_data_output_baudrate_t baudrate;
     EiDevice.get_data_output_baudrate(&baudrate);
     hx_drv_uart_initial((HX_DRV_UART_BAUDRATE_E)baudrate.val);
@@ -351,9 +372,12 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf)
     ei_camera_cutout_cols = img_width;
     ei_camera_cutout_rows = img_height;
     ei_camera_snapshot_is_resized = (ei_camera_frame_buffer_cols != EI_CAMERA_RAW_FRAME_BUFFER_COLS) || (ei_camera_frame_buffer_rows != EI_CAMERA_RAW_FRAME_BUFFER_ROWS);
+    ei_camera_snapshot_image_data = buf;
 
     //  skip scaling if frame buffer's width and height matches the original resolution
-    if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) return true;
+    if ((ei_camera_frame_buffer_cols == EI_CAMERA_RAW_FRAME_BUFFER_COLS) && (ei_camera_frame_buffer_rows == EI_CAMERA_RAW_FRAME_BUFFER_ROWS)) {
+        return true;
+    }
 
     if (hx_drv_image_rescale((uint8_t*)g_pimg_config.raw_address,
                              g_pimg_config.img_width, g_pimg_config.img_height,
@@ -421,4 +445,50 @@ bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t heig
     finish_snapshot();
 
     return result;
+}
+
+/**
+ * @brief      Retrieves (cut-out) float RGB image data from the frame buffer
+ *
+ * @param[in]  offset        offset within cut-out image
+ * @param[in]  length        number of bytes to read
+ * @param[int] out_ptr       pointer to output buffre
+ *
+ * @retval     0 if successful
+ *
+ * @note       This function is called by the classifier to get float RGB image data
+ */
+int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
+    // so offset and length naturally operate on the *cutout*, so we need to cut it out from the real framebuffer
+    size_t bytes_left = length;
+    size_t out_ptr_ix = 0;
+
+    // read byte for byte
+    while (bytes_left != 0) {
+        // find location of the byte in the cutout
+        size_t cutout_row = floor(offset / ei_camera_cutout_cols);
+        size_t cutout_col = offset - (cutout_row * ei_camera_cutout_cols);
+
+        // then read the value from the real frame buffer
+        size_t frame_buffer_row = cutout_row + ei_camera_cutout_row_start;
+        size_t frame_buffer_col = cutout_col + ei_camera_cutout_col_start;
+
+        // grab the value and convert to r/g/b
+        uint8_t pixel = (uint8_t) ei_camera_snapshot_image_data[(frame_buffer_row * ei_camera_frame_buffer_cols) + frame_buffer_col];
+
+        uint8_t r, g, b;
+        mono_to_rgb(pixel, &r, &g, &b);
+
+        // then convert to out_ptr format
+        float pixel_f = (r << 16) + (g << 8) + b;
+        out_ptr[out_ptr_ix] = pixel_f;
+
+        // and go to the next pixel
+        out_ptr_ix++;
+        offset++;
+        bytes_left--;
+    }
+
+    // and done!
+    return 0;
 }
