@@ -5,7 +5,8 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#define HIMAX_FS_BLOCK_ERASE_TIME_MS		90
+/* For SRAM storage this can be 0 */
+#define HIMAX_FS_BLOCK_ERASE_TIME_MS		0
 
 /** Eta fs return values */
 typedef enum
