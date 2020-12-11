@@ -134,6 +134,14 @@ extern "C" {
 extern HX_DRV_ERROR_E hx_drv_lib_version(uint32_t *major_ver, uint32_t *minor_ver);
 
 /**
+ * \brief	Check current platfrom ID.
+ *
+ * \param[out] id		return id of current platform
+ * \retval	HX_DRV_LIB_PASS		Success
+ */
+extern HX_DRV_ERROR_E hx_drv_id_get(uint32_t *id);
+
+/**
  * \brief	Image sensor initialization, it try to initial sensor and query one JPEG frame + one RAW frame to target address.
  *          Current image sensor use for himax_we1_evb is HM0360, image resolution is 640x480.
  *			If initial step is PASS, one JPEG and one RAW frame will be captured in the memory address and sensor back to standby mode.
