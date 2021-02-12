@@ -33,7 +33,7 @@
 
 int main(void)
 {
-    hx_drv_uart_initial(UART_BR_115200);
+    EiDevice.set_default_data_output_baudrate();
     hx_drv_tick_start();
 
     ei_printf("Hello from Edge Impulse Device SDK.\r\n"
@@ -60,7 +60,6 @@ int main(void)
     config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
     config_ctx.take_snapshot = &ei_camera_take_snapshot_encode_and_output;
     config_ctx.start_snapshot_stream = &ei_camera_start_snapshot_stream_encode_and_output;
-    config_ctx.get_data_output_baudrate = EiDevice.get_data_output_baudrate_function();
 
     EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
 
@@ -79,7 +78,7 @@ int main(void)
 
     // you might think this is not necessary, but without this line the AT+SNAPSHOT commands first baud rate switch
     // is ignored by the Himax HAL
-    hx_drv_uart_initial(UART_BR_115200);
+    EiDevice.set_default_data_output_baudrate();
 
     ei_command_line_handle(0);
 

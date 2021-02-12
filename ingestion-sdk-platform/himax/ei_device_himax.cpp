@@ -66,9 +66,14 @@ EiDeviceHimax EiDevice;
 static tEiState ei_program_state = eiStateIdle;
 
 /** Data Output Baudrate */
-const ei_device_data_output_baudrate_t ei_dev_data_output_baudrate = {
+const ei_device_data_output_baudrate_t ei_dev_max_data_output_baudrate = {
     .str = "921600",
     .val = UART_BR_921600,
+};
+
+const ei_device_data_output_baudrate_t ei_dev_default_data_output_baudrate = {
+    .str = "115200",
+    .val = UART_BR_115200,
 };
 
 /* Private function declarations ------------------------------------------- */
@@ -80,6 +85,8 @@ static bool get_wifi_present_status_c(void);
 static void timer_callback(void *arg);
 static bool read_sample_buffer(size_t begin, size_t length, void(*data_fn)(uint8_t*, size_t));
 static int get_data_output_baudrate_c(ei_device_data_output_baudrate_t *baudrate);
+static void set_max_data_output_baudrate_c();
+static void set_default_data_output_baudrate_c();
 
 /* Public functions -------------------------------------------------------- */
 
@@ -195,6 +202,24 @@ int EiDeviceHimax::get_data_output_baudrate(ei_device_data_output_baudrate_t *ba
 }
 
 /**
+ * @brief      Set output baudrate to max
+ *
+ */
+void EiDeviceHimax::set_max_data_output_baudrate()
+{
+    set_max_data_output_baudrate_c();
+}
+
+/**
+ * @brief      Set output baudrate to default
+ *
+ */
+void EiDeviceHimax::set_default_data_output_baudrate()
+{
+    set_default_data_output_baudrate_c();
+}
+
+/**
  * @brief      No Wifi available for device.
  *
  * @return     Always return false
@@ -272,6 +297,42 @@ bool EiDeviceHimax::get_snapshot_list(const ei_device_snapshot_resolutions_t **s
 
     *snapshot_list      = snapshot_resolutions;
     *snapshot_list_size = EI_DEVICE_N_RESOLUTIONS;
+
+    return false;
+}
+
+/**
+ * @brief      Create resolution list for resizing
+ * @param      resize_list       Place pointer to resolution list
+ * @param      resize_list_size  Write number of resolutions here
+ *
+ * @return     False if all went ok
+ */
+bool EiDeviceHimax::get_resize_list(const ei_device_resize_resolutions_t **resize_list, size_t *resize_list_size)
+{
+    resize_resolutions[0].width = 128;
+    resize_resolutions[0].height = 96;
+
+    resize_resolutions[1].width = 160;
+    resize_resolutions[1].height = 120;
+
+    resize_resolutions[2].width = 200;
+    resize_resolutions[2].height = 150;
+
+    resize_resolutions[3].width = 256;
+    resize_resolutions[3].height = 192;
+
+    resize_resolutions[4].width = 320;
+    resize_resolutions[4].height = 240;
+
+    resize_resolutions[5].width = 400;
+    resize_resolutions[5].height = 300;
+
+    resize_resolutions[6].width = 512;
+    resize_resolutions[6].height = 384;
+
+    *resize_list      = resize_resolutions;
+    *resize_list_size = EI_DEVICE_N_RESIZE_RESOLUTIONS;
 
     return false;
 }
@@ -387,16 +448,6 @@ c_callback_status EiDeviceHimax::get_wifi_present_status_function(void)
 c_callback_read_sample_buffer EiDeviceHimax::get_read_sample_buffer_function(void)
 {
     return &read_sample_buffer;
-}
-
-/**
- * @brief      Get a C callback for the get_snapshot_output_buffer method
- *
- * @return     Pointer to c get function
- */
-c_callback_get_data_output_baudrate EiDeviceHimax::get_data_output_baudrate_function(void)
-{
-    return &get_data_output_baudrate_c;
 }
 
 /**
@@ -555,16 +606,27 @@ static int set_id_c(char *device_id)
 
 static int get_data_output_baudrate_c(ei_device_data_output_baudrate_t *baudrate)
 {
-    size_t length = strlen(ei_dev_data_output_baudrate.str);
+    size_t length = strlen(ei_dev_max_data_output_baudrate.str);
 
     if(length < 32) {
-        memcpy(baudrate, &ei_dev_data_output_baudrate, sizeof(ei_device_data_output_baudrate_t));
+        memcpy(baudrate, &ei_dev_max_data_output_baudrate, sizeof(ei_device_data_output_baudrate_t));
         return 0;
     }
     else {
         return -1;
     }
 }
+
+static void set_max_data_output_baudrate_c()
+{
+    ei_serial_set_baudrate(ei_dev_max_data_output_baudrate.val);
+}
+
+static void set_default_data_output_baudrate_c()
+{
+    ei_serial_set_baudrate(ei_dev_default_data_output_baudrate.val);
+}
+
 
 static bool get_wifi_connection_status_c(void)
 {
@@ -581,6 +643,7 @@ static bool get_wifi_present_status_c(void)
  *
  * @param[in]  begin    Start address
  * @param[in]  length   Length of samples in bytes
+ * @param[in]  use_max_baudrate    whether to switch to max baudrate or not
  * @param[in]  data_fn  Callback function for sample data
  *
  * @return     false on flash read function

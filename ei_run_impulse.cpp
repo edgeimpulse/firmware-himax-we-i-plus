@@ -331,15 +331,13 @@ void run_nn(bool debug) {
             float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
             if (!signal_buf) {
                 ei_printf("ERR: Failed to allocate signal buffer\n");
-                hx_drv_uart_initial(UART_BR_115200);
                 return;
             }
 
             uint8_t *per_pixel_buffer = (uint8_t*)ei_malloc(513); // 171 x 3 pixels
             if (!per_pixel_buffer) {
-                free(signal_buf);
+                ei_free(signal_buf);
                 ei_printf("ERR: Failed to allocate per_pixel buffer\n");
-                hx_drv_uart_initial(UART_BR_115200);
                 return;
             }
 
@@ -385,18 +383,18 @@ void run_nn(bool debug) {
                         char *base64_buffer = (char*)ei_malloc(base64_output_size);
                         if (!base64_buffer) {
                             ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
-                            free(signal_buf);
-                            hx_drv_uart_initial(UART_BR_115200);
+                            ei_free(signal_buf);
+                            ei_free(per_pixel_buffer);
                             return;
                         }
 
                         int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, base64_output_size);
-                        free(base64_buffer);
+                        ei_free(base64_buffer);
 
                         if (r < 0) {
                             ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-                            free(signal_buf);
-                            hx_drv_uart_initial(UART_BR_115200);
+                            ei_free(signal_buf);
+                            ei_free(per_pixel_buffer);
                             return;
                         }
 
@@ -410,21 +408,26 @@ void run_nn(bool debug) {
             const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
             char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
             if (!base64_buffer) {
+                ei_free(signal_buf);
+                ei_free(per_pixel_buffer);
                 ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
-                hx_drv_uart_initial(UART_BR_115200);
                 return;
             }
 
             int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, new_base64_buffer_output_size);
-            free(base64_buffer);
+            ei_free(base64_buffer);
             if (r < 0) {
+                ei_free(signal_buf);
+                ei_free(per_pixel_buffer);
                 ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-                hx_drv_uart_initial(UART_BR_115200);
                 return;
             }
 
             ei_write_string(base64_buffer, r);
             ei_printf("\r\n");
+
+            ei_free(signal_buf);
+            ei_free(per_pixel_buffer);
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm

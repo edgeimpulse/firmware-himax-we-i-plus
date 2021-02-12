@@ -181,7 +181,6 @@ bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size)
 	ei_printf("Sampling...\n");
     while(current_sample < samples_required) {
         ei_inertial_read_data();
-        ei_printf("time: %d\r\n", (uint32_t)ei_read_timer_ms());
     };
 
     ei_write_last_data();

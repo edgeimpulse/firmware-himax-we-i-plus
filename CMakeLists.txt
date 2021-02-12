@@ -19,7 +19,10 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
 				 "repl/*.c"
 				 "sensors/*.cpp"
 				 "QCBOR/src/*.c"
-				 "mbedtls_hmac_sha256_sw/mbedtls/src/*.c")
+				 "mbedtls_hmac_sha256_sw/mbedtls/src/*.c"
+				 "CMSIS/DSP/Source/TransformFunctions/*fft*.c"
+				 "CMSIS/DSP/Source/CommonTables/*.c"
+				 "CMSIS/DSP/Source/TransformFunctions/*bit*.c")
 
 file(GLOB TF "edge-impulse-sdk/tensorflow/lite/micro/*.cc"
 			"edge-impulse-sdk/tensorflow/lite/micro/memory_planner/*.cc"
@@ -47,6 +50,8 @@ include_directories(edge-impulse-sdk/dsp/dct)
 include_directories(edge-impulse-sdk/third_party/flatbuffers/include/)
 include_directories(edge-impulse-sdk/third_party/gemmlowp)
 include_directories(edge-impulse-sdk/third_party/ruy)
+include_directories(edge-impulse-sdk/CMSIS/DSP/Include/)
+include_directories(edge-impulse-sdk/CMSIS/Core/Include/)
 include_directories(ingestion-sdk-c)
 include_directories(arc_mli_package/include)
 include_directories(ingestion-sdk-platform/himax)

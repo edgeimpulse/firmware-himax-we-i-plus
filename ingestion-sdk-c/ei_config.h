@@ -134,10 +134,10 @@ typedef struct {
     bool (*mgmt_get_last_error)(char *error, size_t error_size);
 
     // Take a snapshot
-    bool (*take_snapshot)(size_t width, size_t height);
+    bool (*take_snapshot)(size_t width, size_t height, bool use_max_baudrate);
 
     // Start a snapshot stream
-    bool (*start_snapshot_stream)(size_t width, size_t height);
+    bool (*start_snapshot_stream)(size_t width, size_t height, bool use_max_baudrate);
 
     // Get Data Output Baudrate
     int (*get_data_output_baudrate)(ei_device_data_output_baudrate_t *baudrate);

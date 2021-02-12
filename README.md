@@ -61,7 +61,7 @@ You'll need:
 
 ## Flashing
 
-You'll need the Edge Impulse CLI v1.10 or higher. Then flash the binary with:
+You'll need the Edge Impulse CLI v1.12 or higher. Then flash the binary with:
 
 ```
 $ himax-flash-tool --firmware-path image_gen_linux_v3/out.img
