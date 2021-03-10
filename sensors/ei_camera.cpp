@@ -282,8 +282,6 @@ static bool take_snapshot(size_t width, size_t height)
                 }
 
                 int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, base64_output_size);
-                ei_free(base64_buffer);
-
                 if (r < 0) {
                     ei_printf("ERR: Failed to base64 encode (%d)\n", r);
                     ei_free(signal_buf);
@@ -292,6 +290,7 @@ static bool take_snapshot(size_t width, size_t height)
                 }
 
                 ei_write_string(base64_buffer, r);
+                ei_free(base64_buffer);
                 per_pixel_buffer_ix = 0;
             }
             EiDevice.set_state(eiStateUploading);
@@ -308,7 +307,6 @@ static bool take_snapshot(size_t width, size_t height)
     }
 
     int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, new_base64_buffer_output_size);
-    ei_free(base64_buffer);
     if (r < 0) {
         ei_printf("ERR: Failed to base64 encode (%d)\n", r);
         ei_free(signal_buf);
@@ -319,6 +317,7 @@ static bool take_snapshot(size_t width, size_t height)
     ei_write_string(base64_buffer, r);
     ei_printf("\r\n");
 
+    ei_free(base64_buffer);
     ei_free(signal_buf);
     ei_free(per_pixel_buffer);
     EiDevice.set_state(eiStateIdle);

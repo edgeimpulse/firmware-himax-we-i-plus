@@ -19,7 +19,8 @@ RUN mkdir -p /tmp/metaware && \
 # Install Metaware
 RUN cd /tmp/metaware && \
     chmod +x mw_devkit.bin && \
-    ./mw_devkit.bin -i silent || true
+    ./mw_devkit.bin -i silent; \
+    ([ $? -eq 1 ] && true);
 
 # Clean up
 RUN rm -rf /tmp/metaware && \

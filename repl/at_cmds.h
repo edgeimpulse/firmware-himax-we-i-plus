@@ -614,29 +614,6 @@ static void at_boot_mode()
     #define _BOOTLOADER_MAGIC_VAL  0xBADC0DE
 
     ei_printf("AT+ACK\r");
-
-    //
-    // Disable interrupts.
-    //
-//    EtaCspM3IntDisable();
-
-    //
-    // Write the magic number at the magic address.
-    // This will tell the bootloader that we want to update the image.
-    //
-    // MEMIO32(_BOOTLOADER_MAGIC_ADDR) = _BOOTLOADER_MAGIC_VAL;
-
-    // //
-    // // Reset the warm start.
-    // //
-    // EtaCspRtcRestartModeSet(eRestartCold);
-
-    // //
-    // // Force a Reset.
-    // //
-    // EtaCspNvicM3Reset();
-
-
 }
 
 // AT commands related to configuration
