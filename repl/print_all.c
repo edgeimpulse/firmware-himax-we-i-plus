@@ -31,6 +31,7 @@
 #include <stdarg.h>
 #include "FixedPoint.h"
 
+extern void ei_putchar(char c);
 typedef void (* output_buffer_fptr)(char byte);
 
 /* Local globals ------------------------------------------------------------ */
@@ -44,27 +45,25 @@ static int HexadecimalConverter(void (* output)(char byte), signed long hex_valu
 static int SignPosition(signed int value, unsigned int zero);
 static int DecimalConverter(void (* output)(char byte), signed long dec_value, unsigned int zero, unsigned int space, int forceNeg, int useSign);
 static int ExtractFixedPoint(signed long fixedVal, signed long *abspart, unsigned long *fractionpart);
-  
+
 /**
  * @brief      Convert variable argument parameters to ascii characters and
- * sent to output
- * @details    Works like printf, only output is directly selectable.
- * Use %p for displaying fixed point in decimal format
+ * send to output
+ * Use %F for displaying fixed point in decimal format
  * <br>Some functions are not implemented:<br>
- * <ul><li>%i, %g, %e, %o,/li>
- * <li>number of characters (in %d) are limited to 9</li></ul>
- * @param[in]  output     ptr to void returning function
+ * <ul><li>%i, %g, %e, %o, %p/li>
+ * <li>number of characters (in %d) are limited to 9 digits</li></ul>
  * @param[in]  txt        The text string
- * @param[in]  ... 		  argument list (uses stdarg.h)
+ * @param[in]  ...            argument list (uses stdarg.h)
  */
-void print_out(void (* output)(char byte), const char *txt, ...)
+void print_out(const char *txt, va_list ap)
 {
-    va_list ap;
+    //va_list ap;
     int i, intVal;
     int useSign;
     unsigned int leadingZero, leadingSpace;
 
-    va_start(ap, txt);
+    //va_start(ap, txt);
 
     for (i = 0; txt[i] != '\0'; i++) /* Walk through text */
     {                                /* Clear specifiers */
@@ -78,7 +77,7 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                 if (txt[i + 1] == 'd' || txt[i + 1] == 'l' || txt[i + 1] == 'h' || txt[i + 1] == 'u' ) {
                     intVal = va_arg(ap, int);
 
-                    DecimalConverter(output, intVal, leadingZero, leadingSpace, 0, useSign);
+                    DecimalConverter(&ei_putchar, intVal, leadingZero, leadingSpace, 0, useSign);
                     i++;
 
                     if (txt[i + 1] == 'u' || txt[i + 1] == 'd') i++;
@@ -89,7 +88,7 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                 else if (txt[i + 1] == 'X' || txt[i + 1] == 'x') {
                     intVal = va_arg(ap, signed long);
 
-                    HexadecimalConverter(output, intVal, leadingZero, leadingSpace);
+                    HexadecimalConverter(&ei_putchar, intVal, leadingZero, leadingSpace);
 
                     i++;
                     break;
@@ -107,16 +106,16 @@ void print_out(void (* output)(char byte), const char *txt, ...)
 
                     forceNeg = ExtractFixedPoint(intVal, &absolute, &fraction);
 
-                    DecimalConverter(output, absolute, 0, 3, forceNeg, useSign);
-                    output('.');
-                    DecimalConverter(output, fraction, 3, 0, 0, 0);
+                    DecimalConverter(&ei_putchar, absolute, 0, 3, forceNeg, useSign);
+                    ei_putchar('.');
+                    DecimalConverter(&ei_putchar, fraction, 3, 0, 0, 0);
 
                     i++;
                     break;
                 }
 
                 /* Fixed Point representation */
-                else if (txt[i + 1] == 'p') {
+                else if (txt[i + 1] == 'F') {
                     unsigned long fraction;
                     signed long absolute;
                     int forceNeg;
@@ -124,9 +123,9 @@ void print_out(void (* output)(char byte), const char *txt, ...)
 
                     forceNeg = ExtractFixedPoint(intVal, &absolute, &fraction);
 
-                    DecimalConverter(output, absolute, 0, 3, forceNeg, useSign);
-                    output('.');
-                    DecimalConverter(output, fraction, 3, 0, 0, 0);
+                    DecimalConverter(&ei_putchar, absolute, 0, 3, forceNeg, useSign);
+                    ei_putchar('.');
+                    DecimalConverter(&ei_putchar, fraction, 3, 0, 0, 0);
 
                     i++;
                     break;
@@ -134,14 +133,14 @@ void print_out(void (* output)(char byte), const char *txt, ...)
 
                 /* 1 Char representation */
                 else if (txt[i + 1] == 'c') {
-                    output((char)va_arg(ap, int));
+                    ei_putchar((char)va_arg(ap, int));
                     i++;
                     break;
                 }
 
                 /* Print percent sign */
                 else if (txt[i + 1] == '%') {
-                    output(txt[i + 1]);
+                    ei_putchar(txt[i + 1]);
                     i++;
                     break;
                 }
@@ -149,8 +148,8 @@ void print_out(void (* output)(char byte), const char *txt, ...)
                 /* String representation */
                 else if (txt[i + 1] == 's') {
                     char *strptr = (char *)va_arg(ap, int *);
-                    /* Use EOF !!!					 */
-                    while (*(strptr) != '\0') output(*(strptr++));
+                    /* Use EOF !!!                   */
+                    while (*(strptr) != '\0') ei_putchar(*(strptr++));
                     i++;
                     break;
                 }
@@ -187,11 +186,11 @@ void print_out(void (* output)(char byte), const char *txt, ...)
 
         /* Normal character print */
         else {
-            output(txt[i]);
+            ei_putchar(txt[i]);
         }
     }
 
-    va_end(ap);
+    //va_end(ap);
 }
 
 
@@ -205,7 +204,7 @@ void print_out(void (* output)(char byte), const char *txt, ...)
  * <li>number of characters (in %d) are limited to 9</li></ul>
  * @param[in]  buffer     ptr to void returning function
  * @param[in]  txt        The text string
- * @param[in]  ... 		  argument list (uses stdarg.h)
+ * @param[in]  ...            argument list (uses stdarg.h)
  * @return     number of characters written
  */
 int print_buf(char *buffer, const char *txt, ...)
@@ -213,10 +212,10 @@ int print_buf(char *buffer, const char *txt, ...)
     va_list ap;
     int i, intVal;
     int leadingZero, leadingSpace, useSign;
-	unsigned int startAddr = (unsigned int)buffer;
+    unsigned int startAddr = (unsigned int)buffer;
 
-	if(buffer == 0)
-		return 0;
+    if(buffer == 0)
+        return 0;
 
     va_start(ap, txt);
 
@@ -226,7 +225,7 @@ int print_buf(char *buffer, const char *txt, ...)
 
         /* % -> input from arg list */
         if (txt[i] == '%') {
-           
+
             while(txt[i+1] != '\0') /* Walk through all args of % */
             {
                 /* Decimal representation */
@@ -305,7 +304,7 @@ int print_buf(char *buffer, const char *txt, ...)
                 }
 
                 /* Print percent sign */
-                else if (txt[i + 1] == '%') 
+                else if (txt[i + 1] == '%')
                 {
                     *(buffer++) = '%';
                     i++;
@@ -316,7 +315,7 @@ int print_buf(char *buffer, const char *txt, ...)
                 else if (txt[i + 1] == 's')
                 {
                     char *strptr = (char *)va_arg(ap, int *);
-                    /* Use EOF !!!					 */
+                    /* Use EOF !!!                   */
                     while (*(strptr) != '\0') *(buffer++) = (*(strptr++));
                     i++;
                     break;
@@ -352,7 +351,7 @@ int print_buf(char *buffer, const char *txt, ...)
             }
         }
 
-        else { /* Normal character print		 */
+        else { /* Normal character print         */
             *(buffer++) = (txt[i]);
         }
     }
@@ -397,11 +396,11 @@ static int HexadecimalConverter(void (*output)(char byte), signed long hex_value
 
     zero *= 4;
     space *= 4;
-    /* Walk through 32 bit			 */
+    /* Walk through 32 bit           */
     for (nibble_shift = 28; nibble_shift >= 0;
-         nibble_shift -= 4) {                  /* Mask nibble to check value	 */
+         nibble_shift -= 4) {                  /* Mask nibble to check value     */
         if (hex_value &
-            (0xFL << nibble_shift)) { /* place value					 */
+            (0xFL << nibble_shift)) { /* place value                     */
             if (((hex_value >> nibble_shift) & 0xF) < 10)
                 output(0x30 + ((hex_value >> nibble_shift) & 0xF));
             else
@@ -411,7 +410,7 @@ static int HexadecimalConverter(void (*output)(char byte), signed long hex_value
             bytes_written++;
         }
 
-        else                                    /* No value 					 */
+        else                                    /* No value                      */
         {
             if (zero == (unsigned int)nibble_shift) {
                 output(0x30);
@@ -533,7 +532,7 @@ static int DecimalConverter(void (*output)(char byte), signed long dec_value, un
 static int ExtractFixedPoint(signed long fixedVal, signed long *abspart, unsigned long *fractionpart)
 {
     int isNegativ;
-    /* Swap negativ values			 */
+    /* Swap negativ values           */
     if (fixedVal & ((unsigned int)1 << (FP_LENGTH - 1))) {
         fixedVal = ~(fixedVal) + 1;
         *(abspart) = (0 - (fixedVal >> FP_FRACTION));

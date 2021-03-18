@@ -67,13 +67,13 @@ static tEiState ei_program_state = eiStateIdle;
 
 /** Data Output Baudrate */
 const ei_device_data_output_baudrate_t ei_dev_max_data_output_baudrate = {
-    .str = "921600",
-    .val = UART_BR_921600,
+    "921600",
+    UART_BR_921600,
 };
 
 const ei_device_data_output_baudrate_t ei_dev_default_data_output_baudrate = {
-    .str = "115200",
-    .val = UART_BR_115200,
+    "115200",
+    UART_BR_115200,
 };
 
 /* Private function declarations ------------------------------------------- */

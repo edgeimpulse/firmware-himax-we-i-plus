@@ -67,9 +67,9 @@ static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_
     uint8_t v;
 
     // use if `ei_camera_capture_out` contains int8_t values
-    //v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
+    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
 
-    v = mono_data;
+    //v = mono_data;
     *r = *g = *b = v;
 }
 
@@ -423,6 +423,7 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
     ei_camera_snapshot_is_resized = do_resize;
     //ei_camera_snapshot_is_cropped = do_crop;
     ei_camera_capture_out = ei_camera_frame_buffer;
+    //ei_printf("frame buffer: 0x%08x\r\n", ei_camera_frame_buffer);
 
     void *resize_img_mem = NULL;
     uint8_t *resize_img_buf = NULL;
@@ -430,11 +431,14 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
     if (do_resize && do_crop) {
         resize_img_mem = ei_malloc((resize_col_sz*resize_row_sz)+4);
         if(resize_img_mem == NULL) {
-            ei_printf("failed to create resize_img_mem\r\n");
+            ei_printf("ERR: failed to create resize_img_mem\r\n");
         }
         resize_img_buf = (uint8_t *)DWORD_ALIGN_PTR((uintptr_t)resize_img_mem);
+        //ei_printf("resize img mem: 0x%08x\r\n", resize_img_mem);
+        //ei_printf("resize img buffer: 0x%08x\r\n", resize_img_buf);
     } else if (do_resize) {
         resize_img_buf = (uint8_t *) out_buf;
+        //ei_printf("resize img buffer: 0x%08x\r\n", resize_img_buf);
     }
 
     if (do_resize) {
@@ -446,11 +450,11 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
         **  g_pimg_config.img_width == EI_CAMERA_RAW_FRAME_BUFFER_COLS
         **  g_pimg_config.img_height == EI_CAMERA_RAW_FRAME_BUFFER_ROWS
          */
-        resizeImage(EI_CAMERA_RAW_FRAME_BUFFER_COLS, EI_CAMERA_RAW_FRAME_BUFFER_ROWS,
-                    ei_camera_frame_buffer,
-                    resize_col_sz, resize_row_sz,
-                    resize_img_buf,
-                    8);
+        if (0 != hx_drv_image_rescale(ei_camera_frame_buffer, EI_CAMERA_RAW_FRAME_BUFFER_COLS, EI_CAMERA_RAW_FRAME_BUFFER_ROWS,
+                                      (int8_t *)resize_img_buf, resize_col_sz, resize_row_sz)) {
+            ei_printf("ERR: failed to rescale image\r\n");
+            return false;
+        }
         ei_camera_capture_out = resize_img_buf;
     }
 
@@ -475,6 +479,7 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
         ei_camera_capture_out = (uint8_t *)out_buf;
     }
 
+    //ei_printf("camera_out buf: 0x%08x\r\n", ei_camera_capture_out);
     ei_free(resize_img_mem);
 
     EiDevice.set_state(eiStateIdle);
@@ -584,185 +589,6 @@ int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
 #ifdef __ARM_FEATURE_SIMD32
 #include <device.h>
 #endif
-// This needs to be < 16 or it won't fit. Cortex-M4 only has SIMD for signed multiplies
-#define FRAC_BITS 14
-#define FRAC_VAL (1<<FRAC_BITS)
-#define FRAC_MASK (FRAC_VAL - 1)
-//
-// Resize
-//
-// Assumes that the destination buffer is dword-aligned
-// Can be used to resize the image smaller or larger
-// This algorithm uses bilinear interpolation - averages a 2x2 region to generate each new pixel
-// If resizing smaller than or equal to 1/3, it switches to using pixel averaging for the NxN pixel block without taking
-// into account fractional pixel offsets.
-//
-// Optimized for 32-bit MCUs
-// supports 8 and 16-bit pixels
-void resizeImage(int srcWidth, int srcHeight, uint8_t *srcImage, int dstWidth, int dstHeight, uint8_t *dstImage, int iBpp)
-{
-  uint32_t src_x_accum, src_y_accum; // accumulators and fractions for scaling the image
-  uint32_t x_frac, nx_frac, y_frac, ny_frac;
-  int x, y, ty;
-
-  if (iBpp != 8 && iBpp != 16)
-     return;
-  src_y_accum = FRAC_VAL/2; // start at 1/2 pixel in to account for integer downsampling which might miss pixels
-  const uint32_t src_x_frac = (srcWidth * FRAC_VAL) / dstWidth;
-  const uint32_t src_y_frac = (srcHeight * FRAC_VAL) / dstHeight;
-  const uint32_t r_mask = 0xf800f800;
-  const uint32_t g_mask = 0x07e007e0;
-  const uint32_t b_mask = 0x001f001f;
-  uint8_t *s, *d;
-  uint16_t *s16, *d16;
-  uint32_t x_frac2, y_frac2; // for 16-bit SIMD
-
-  // Special case - scaling down by less than 1/3 needs special treatment to not look poor
-  if (src_x_frac >= 3*FRAC_VAL || src_y_frac >= 3*FRAC_VAL) {
-    int nx, ny, dx, dy;
-    uint32_t sum_recip;
-    nx = src_x_frac / FRAC_VAL;
-    ny = src_y_frac / FRAC_VAL;
-    sum_recip = 65536 / (nx * ny);
-    // fractional pixels at this level are less useful, just average the nxn blocks
-    for (y=0; y < dstHeight; y++) {
-      ty = src_y_accum >> FRAC_BITS; // src y
-      src_y_accum += src_y_frac;
-      s = &srcImage[ty * srcWidth];
-      s16 = (uint16_t *)&srcImage[ty * srcWidth * 2];
-      d = &dstImage[y * dstWidth];
-      d16 = (uint16_t *)&dstImage[y * dstWidth * 2];
-      src_x_accum = FRAC_VAL/2; // start at 1/2 pixel in to account for integer downsampling which might miss pixels
-      if (iBpp == 8) {
-        for (x=0; x < dstWidth; x++) {
-          uint32_t tx, sum;
-          tx = src_x_accum >> FRAC_BITS;
-          src_x_accum += src_x_frac;
-          sum = 0;
-          for (dy=0; dy < ny; dy++) {
-            for (dx=0; dx < nx; dx++) {
-              sum += (uint32_t)s[tx+dx+(dy*srcWidth)];
-            } // for dx
-          } // for dy
-          sum = (sum * sum_recip) >> 16;
-          *d++ = (uint8_t)sum; // store average value
-        } // for x
-      } else { // RGB565
-        for (x=0; x < dstWidth; x++) {
-          uint32_t tx, sum_r, sum_g, sum_b;
-          uint32_t pixel;
-          tx = src_x_accum >> FRAC_BITS;
-          src_x_accum += src_x_frac;
-          sum_r = sum_g = sum_b = 0;
-          for (dy=0; dy < ny; dy++) {
-            for (dx=0; dx < nx; dx++) {
-              pixel = __builtin_bswap16(s16[tx+dx+(dy*srcWidth)]);
-              sum_r += (pixel & r_mask); // no need to shift down because it fits in 32-bits
-              sum_g += (pixel & g_mask);
-              sum_b += (pixel & b_mask);
-            } // for dx
-          } // for dy
-          sum_r = ((sum_r >> 11) * sum_recip) >> 16;
-          sum_g = (sum_g * sum_recip) >> 16;
-          sum_b = (sum_b * sum_recip) >> 16;
-          sum_r = ((sum_r << 11) & r_mask);
-          sum_g &= g_mask;
-          sum_b &= b_mask;
-          *d16++ = __builtin_bswap16((uint16_t)(sum_r | sum_g | sum_b)); // store average value
-        } // for x
-      } // RGB565
-    } // for y
-  return;
-  } // scale down to < 1/3 size
-
-  // Scale up or down to no less than 1/3
-  for (y=0; y < dstHeight; y++) {
-    ty = src_y_accum >> FRAC_BITS; // src y
-    y_frac = src_y_accum & FRAC_MASK;
-    src_y_accum += src_y_frac;
-    ny_frac = FRAC_VAL - y_frac; // y fraction and 1.0 - y fraction
-    y_frac2 = ny_frac | (y_frac << 16); // for M4/M4 SIMD
-    s = &srcImage[ty * srcWidth];
-    s16 = (uint16_t *)&srcImage[ty * srcWidth * 2];
-    d = &dstImage[y * dstWidth];
-    d16 = (uint16_t *)&dstImage[y * dstWidth * 2];
-    src_x_accum = FRAC_VAL/2; // start at 1/2 pixel in to account for integer downsampling which might miss pixels
-    if (iBpp == 8) {
-      for (x=0; x < dstWidth; x++) {
-        uint32_t tx, p00,p01,p10,p11;
-        tx = src_x_accum >> FRAC_BITS;
-        x_frac = src_x_accum & FRAC_MASK;
-        nx_frac = FRAC_VAL - x_frac; // x fraction and 1.0 - x fraction
-        x_frac2 = nx_frac | (x_frac << 16);
-        src_x_accum += src_x_frac;
-        p00 = s[tx]; p10 = s[tx+1];
-        p01 = s[tx+srcWidth]; p11 = s[tx+srcWidth+1];
-#ifdef __ARM_FEATURE_SIMD32
-        p00 = __SMLAD(p00 | (p10<<16), x_frac2, FRAC_VAL/2) >> FRAC_BITS; // top line
-        p01 = __SMLAD(p01 | (p11<<16), x_frac2, FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        p00 = __SMLAD(p00 | (p01<<16), y_frac2, FRAC_VAL/2) >> FRAC_BITS; // combine
-#else // generic C code
-        p00 = ((p00 * nx_frac) + (p10 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // top line
-        p01 = ((p01 * nx_frac) + (p11 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        p00 = ((p00 * ny_frac) + (p01 * y_frac) + FRAC_VAL/2) >> FRAC_BITS; // combine top + bottom
-#endif // Cortex-M4/M7
-        *d++ = (uint8_t)p00; // store new pixel
-      } // for x
-    } // 8-bpp
-    else
-    { // RGB565
-      for (x=0; x < dstWidth; x++) {
-        uint32_t tx, p00,p01,p10,p11;
-        uint32_t r00, r01, r10, r11, g00, g01, g10, g11, b00, b01, b10, b11;
-        tx = src_x_accum >> FRAC_BITS;
-        x_frac = src_x_accum & FRAC_MASK;
-        nx_frac = FRAC_VAL - x_frac; // x fraction and 1.0 - x fraction
-        x_frac2 = nx_frac | (x_frac << 16);
-        src_x_accum += src_x_frac;
-        p00 = __builtin_bswap16(s16[tx]); p10 = __builtin_bswap16(s16[tx+1]);
-        p01 = __builtin_bswap16(s16[tx+srcWidth]); p11 = __builtin_bswap16(s16[tx+srcWidth+1]);
-#ifdef __ARM_FEATURE_SIMD32
-        {
-        p00 |= (p10 << 16);
-        p01 |= (p11 << 16);
-        r00 = (p00 & r_mask) >> 1; g00 = p00 & g_mask; b00 = p00 & b_mask;
-        r01 = (p01 & r_mask) >> 1; g01 = p01 & g_mask; b01 = p01 & b_mask;
-        r00 = __SMLAD(r00, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // top line
-        r01 = __SMLAD(r01, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        r00 = __SMLAD(r00 | (r01<<16), y_frac2, FRAC_VAL/2) >> FRAC_BITS; // combine
-        g00 = __SMLAD(g00, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // top line
-        g01 = __SMLAD(g01, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        g00 = __SMLAD(g00 | (g01<<16), y_frac2, FRAC_VAL/2) >> FRAC_BITS; // combine
-        b00 = __SMLAD(b00, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // top line
-        b01 = __SMLAD(b01, x_frac2, FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        b00 = __SMLAD(b00 | (b01<<16), y_frac2, FRAC_VAL/2) >> FRAC_BITS; // combine
-        }
-#else // generic C code
-        {
-        r00 = (p00 & r_mask) >> 1; g00 = p00 & g_mask; b00 = p00 & b_mask;
-        r10 = (p10 & r_mask) >> 1; g10 = p10 & g_mask; b10 = p10 & b_mask;
-        r01 = (p01 & r_mask) >> 1; g01 = p01 & g_mask; b01 = p01 & b_mask;
-        r11 = (p11 & r_mask) >> 1; g11 = p11 & g_mask; b11 = p11 & b_mask;
-        r00 = ((r00 * nx_frac) + (r10 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // top line
-        r01 = ((r01 * nx_frac) + (r11 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        r00 = ((r00 * ny_frac) + (r01 * y_frac) + FRAC_VAL/2) >> FRAC_BITS; // combine top + bottom
-        g00 = ((g00 * nx_frac) + (g10 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // top line
-        g01 = ((g01 * nx_frac) + (g11 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        g00 = ((g00 * ny_frac) + (g01 * y_frac) + FRAC_VAL/2) >> FRAC_BITS; // combine top + bottom
-        b00 = ((b00 * nx_frac) + (b10 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // top line
-        b01 = ((b01 * nx_frac) + (b11 * x_frac) + FRAC_VAL/2) >> FRAC_BITS; // bottom line
-        b00 = ((b00 * ny_frac) + (b01 * y_frac) + FRAC_VAL/2) >> FRAC_BITS; // combine top + bottom
-        }
-#endif // Cortex-M4/M7
-        r00 = (r00 << 1) & r_mask;
-        g00 = g00 & g_mask;
-        b00 = b00 & b_mask;
-        p00 = (r00 | g00 | b00); // re-combine color components
-        *d16++ = (uint16_t)__builtin_bswap16(p00); // store new pixel
-      } // for x
-    } // 16-bpp
-  } // for y
-} /* resizeImage() */
 //
 // Crop
 //

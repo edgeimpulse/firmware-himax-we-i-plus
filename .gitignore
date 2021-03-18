@@ -2,3 +2,5 @@
 build/
 bla.bmp
 node_modules/
+build-mw/
+build-gnu/

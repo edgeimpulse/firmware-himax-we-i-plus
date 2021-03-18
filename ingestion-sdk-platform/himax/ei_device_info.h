@@ -52,8 +52,8 @@ private:
 
 	/** Data Output Baudrate */
 	const ei_device_data_output_baudrate_t ei_dev_data_output_baudrate = {
-		.str = "",
-		.val = 0,
+		"",
+		0,
 	};
 
 

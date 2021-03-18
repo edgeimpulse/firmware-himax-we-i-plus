@@ -28,6 +28,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include "hx_drv_tflm.h"
+#include "ei_classifier_porting.h"
 
 /* Constants --------------------------------------------------------------- */
 #define EI_CAMERA_RAW_FRAME_BUFFER_COLS           640
@@ -42,7 +43,6 @@ extern void ei_camera_deinit(void);
 extern bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf);
 extern bool ei_camera_take_snapshot_encode_and_output(size_t width, size_t height, bool use_max_baudrate);
 extern bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t height, bool use_max_baudrate);
-extern void ei_printf(const char *format, ...);
 
 /**
  * @brief      Retrieves (cut-out) float RGB image data from the frame buffer

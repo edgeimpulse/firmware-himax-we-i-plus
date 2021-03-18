@@ -34,13 +34,17 @@ static uint32_t flash_read_data(uint32_t byteAddress, uint8_t *buffer, uint32_t 
  */
 extern hx_drv_sensor_image_config_t g_pimg_config;
 
+#if defined(__GNUC__)
+uint8_t ram_memory[SIZE_RAM_BUFFER]__attribute__((section (".ram_memory")));
+#else
 #pragma Bss(".ram_memory")
 uint8_t ram_memory[SIZE_RAM_BUFFER];
 #pragma Bss()
 #endif
+#endif
 
 /** 32-bit align write buffer size */
-#define WORD_ALIGN(a)	((a & 0x3) ? (a & ~0x3) + 0x4 : a)
+#define WORD_ALIGN(a)   ((a & 0x3) ? (a & ~0x3) + 0x4 : a)
 
 /**
  * @brief      Copy configuration data to config pointer

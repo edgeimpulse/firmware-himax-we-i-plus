@@ -53,7 +53,7 @@
 #define EI_CLASSIFIER_TFLITE_ARENA_SIZE          3673
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
-#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.1130843237042427
+#define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.11322642862796783
 #define EI_CLASSIFIER_TFLITE_INPUT_ZEROPOINT     -128
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATATYPE     EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED     1
@@ -158,7 +158,7 @@ typedef struct {
     float pre_cof;
 } ei_dsp_config_audio_syntiant_t;
 
-ei_dsp_config_spectral_analysis_t ei_dsp_config_352 = {
+ei_dsp_config_spectral_analysis_t ei_dsp_config_3 = {
     1,
     3,
     1.00000f,

@@ -24,6 +24,7 @@
 #define _EDGE_IMPULSE_AT_COMMANDS_H_
 
 #include "string.h"
+#include "ei_classifier_porting.h"
 
 // maximum number of commands
 #ifndef EI_AT_MAX_CMDS

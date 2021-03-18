@@ -132,7 +132,7 @@ static void at_get_sample_settings() {
     ei_printf("Label:     %s\n", label);
     ei_printf("Interval:  ");
     ei_printf_float((float)interval);
-    ei_printf("ms.\n");;
+    ei_printf(" ms.\n");;
     ei_printf("Length:    %lu ms.\n", length);
     ei_printf("HMAC key:  %s\n", hmac_key);
 }
