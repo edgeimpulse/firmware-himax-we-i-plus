@@ -108,7 +108,7 @@ void run_nn(bool debug) {
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm
-        ei_impulse_result_t result = { 0 };
+        ei_impulse_result_t result;
         EI_IMPULSE_ERROR ei_error = run_classifier(&signal, &result, debug);
         if (ei_error != EI_IMPULSE_OK) {
             ei_printf("Failed to run impulse (%d)\n", ei_error);
@@ -176,7 +176,7 @@ void run_nn(bool debug) {
         signal_t signal;
         signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
         signal.get_data = &ei_microphone_audio_signal_get_data;
-        ei_impulse_result_t result = { 0 };
+        ei_impulse_result_t result;
 
         EI_IMPULSE_ERROR r = run_classifier(&signal, &result, debug);
         if (r != EI_IMPULSE_OK) {
@@ -431,7 +431,7 @@ void run_nn(bool debug) {
         }
 
         // run the impulse: DSP, neural network and the Anomaly algorithm
-        ei_impulse_result_t result = { 0 };
+        ei_impulse_result_t result;
 
         EI_IMPULSE_ERROR ei_error = run_classifier(&signal, &result, debug);
         if (ei_error != EI_IMPULSE_OK) {
