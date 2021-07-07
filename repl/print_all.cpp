@@ -56,7 +56,7 @@ static int ExtractFixedPoint(signed long fixedVal, signed long *abspart, unsigne
  * @param[in]  txt        The text string
  * @param[in]  ...            argument list (uses stdarg.h)
  */
-void print_out(const char *txt, va_list ap)
+extern "C" void print_out(const char *txt, va_list ap)
 {
     //va_list ap;
     int i, intVal;
