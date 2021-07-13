@@ -6,3 +6,19 @@
 
 #IncludeRegexTransform: 
 
+../edge-impulse-sdk/tensorflow/lite/c/common.h
+stdbool.h
+-
+stddef.h
+-
+stdint.h
+-
+
+/app/edge-impulse-sdk/tensorflow/lite/c/common.c
+edge-impulse-sdk/tensorflow/lite/c/common.h
+/app/edge-impulse-sdk/tensorflow/lite/c/edge-impulse-sdk/tensorflow/lite/c/common.h
+stdlib.h
+-
+string.h
+-
+
