@@ -1,0 +1,4 @@
+/app/build-mw/CMakeFiles/rebuild_cache.dir
+/app/build-mw/CMakeFiles/edit_cache.dir
+/app/build-mw/CMakeFiles/image.dir
+/app/build-mw/CMakeFiles/app.elf.dir

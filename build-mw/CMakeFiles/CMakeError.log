@@ -1,0 +1,568 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -Wstrict-aliasing;-DTF_LITE_STATIC_MEMORY;-Werror;-Wsign-compare;-Wdouble-promotion;-Wshadow;-Wunused-variable;-Wmissing-field-initializers;-Wunused-function;-DNDEBUG;-O3;-fno-rtti;-DSCRATCH_MEM_Z_SIZE=0;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags:  
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -Wstrict-aliasing;-DTF_LITE_STATIC_MEMORY;-Werror;-Wsign-compare;-Wdouble-promotion;-Wshadow;-Wunused-variable;-Wmissing-field-initializers;-Wunused-function;-DNDEBUG;-O3;-fno-rtti;-DSCRATCH_MEM_Z_SIZE=0;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: -c 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -Wstrict-aliasing;-DTF_LITE_STATIC_MEMORY;-Werror;-Wsign-compare;-Wdouble-promotion;-Wshadow;-Wunused-variable;-Wmissing-field-initializers;-Wunused-function;-DNDEBUG;-O3;-fno-rtti;-DSCRATCH_MEM_Z_SIZE=0;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: -Aa 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Argument `-Aa' is deprecated.
+Aborting...
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -Wstrict-aliasing;-DTF_LITE_STATIC_MEMORY;-Werror;-Wsign-compare;-Wdouble-promotion;-Wshadow;-Wunused-variable;-Wmissing-field-initializers;-Wunused-function;-DNDEBUG;-O3;-fno-rtti;-DSCRATCH_MEM_Z_SIZE=0;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: -D__CLASSIC_C__ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -Wstrict-aliasing;-DTF_LITE_STATIC_MEMORY;-Werror;-Wsign-compare;-Wdouble-promotion;-Wshadow;-Wunused-variable;-Wmissing-field-initializers;-Wunused-function;-DNDEBUG;-O3;-fno-rtti;-DSCRATCH_MEM_Z_SIZE=0;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Argument `--target=arm-arm-none-eabi' is unrecognized and will be passed to the linker
+[/root/ARC/MetaWare/arc/bin/ccac] Argument `-mcpu=cortex-m3' is unrecognized and will be passed to the linker
+Aborting...
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) 
+****************************************************************
+* Warning: building for the ARC EM processor with no extension *
+* options may result in inferior code size and performance.    *
+*                                                              *
+* You may wish to try the -emsize or -emspeed options, or see  *
+* the MetaWare Development Toolkit Getting Started guide.      *
+*                                                              *
+* To compile for a base-case EM processor and eliminate this   *
+* warning use the -Xbasecase option.                           *
+****************************************************************
+
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: -c 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) 
+****************************************************************
+* Warning: building for the ARC EM processor with no extension *
+* options may result in inferior code size and performance.    *
+*                                                              *
+* You may wish to try the -emsize or -emspeed options, or see  *
+* the MetaWare Development Toolkit Getting Started guide.      *
+*                                                              *
+* To compile for a base-case EM processor and eliminate this   *
+* warning use the -Xbasecase option.                           *
+****************************************************************
+
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: -Aa 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `-Aa' is deprecated.
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: -D__CLASSIC_C__ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) 
+****************************************************************
+* Warning: building for the ARC EM processor with no extension *
+* options may result in inferior code size and performance.    *
+*                                                              *
+* You may wish to try the -emsize or -emspeed options, or see  *
+* the MetaWare Development Toolkit Getting Started guide.      *
+*                                                              *
+* To compile for a base-case EM processor and eliminate this   *
+* warning use the -Xbasecase option.                           *
+****************************************************************
+
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--target=arm-arm-none-eabi' is unrecognized and will be passed to the linker
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `-mcpu=cortex-m3' is unrecognized and will be passed to the linker
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+Checking whether the C compiler is IAR using "" did not match "IAR .+ Compiler":
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+No files specified. Specify -help for usage information
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -DTF_LITE_STATIC_MEMORY;-DNDEBUG;-O3;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-DSCRATCH_MEM_Z_SIZE=0;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_SENSOR_AQ_STREAM=FILE;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags:  
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -DTF_LITE_STATIC_MEMORY;-DNDEBUG;-O3;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-DSCRATCH_MEM_Z_SIZE=0;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_SENSOR_AQ_STREAM=FILE;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: -c 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -DTF_LITE_STATIC_MEMORY;-DNDEBUG;-O3;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-DSCRATCH_MEM_Z_SIZE=0;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_SENSOR_AQ_STREAM=FILE;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: --c++ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--c++' is unrecognized and will be passed to the linker
+Aborting...
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -DTF_LITE_STATIC_MEMORY;-DNDEBUG;-O3;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-DSCRATCH_MEM_Z_SIZE=0;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_SENSOR_AQ_STREAM=FILE;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: --ec++ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--ec++' is unrecognized and will be passed to the linker
+Aborting...
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: -DTF_LITE_STATIC_MEMORY;-DNDEBUG;-O3;-DNDEBUG;-g;-DCPU_ARC;-Hnosdata;-DTF_LITE_STATIC_MEMORY;-tcf=../arcem9d_wei_r16.tcf;-DSCRATCH_MEM_Z_SIZE=0;-Hnocopyr;-Hpurge;-Hcl;-fslp-vectorize-aggressive;-ffunction-sections;-fdata-sections;-tcf_core_config;-DEIDSP_QUANTIZE_FILTERBANK=0;-DEI_C_LINKAGE=1;-DEI_SENSOR_AQ_STREAM=FILE;-DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX;-DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--target=arm-arm-none-eabi' is unrecognized and will be passed to the linker
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `-mcpu=cortex-m3' is unrecognized and will be passed to the linker
+Aborting...
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags:  
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) 
+****************************************************************
+* Warning: building for the ARC EM processor with no extension *
+* options may result in inferior code size and performance.    *
+*                                                              *
+* You may wish to try the -emsize or -emspeed options, or see  *
+* the MetaWare Development Toolkit Getting Started guide.      *
+*                                                              *
+* To compile for a base-case EM processor and eliminate this   *
+* warning use the -Xbasecase option.                           *
+****************************************************************
+
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: -c 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) 
+****************************************************************
+* Warning: building for the ARC EM processor with no extension *
+* options may result in inferior code size and performance.    *
+*                                                              *
+* You may wish to try the -emsize or -emspeed options, or see  *
+* the MetaWare Development Toolkit Getting Started guide.      *
+*                                                              *
+* To compile for a base-case EM processor and eliminate this   *
+* warning use the -Xbasecase option.                           *
+****************************************************************
+
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: --c++ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--c++' is unrecognized and will be passed to the linker
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: --ec++ 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--ec++' is unrecognized and will be passed to the linker
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /root/ARC/MetaWare/arc/bin/ccac 
+Build flags: 
+Id flags: --target=arm-arm-none-eabi;-mcpu=cortex-m3 
+
+The output was:
+1
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `--target=arm-arm-none-eabi' is unrecognized and will be passed to the linker
+[/root/ARC/MetaWare/arc/bin/ccac] (Warning) Argument `-mcpu=cortex-m3' is unrecognized and will be passed to the linker
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+Licensing failure
+
+    The license manager cannot find your license file.
+
+    Make sure that your license file is in the <install_dir>/license
+    directory in your tools distribution.
+
+Contact Synopsys, Inc at email support_center@synopsys.com to purchase a
+license to use this software, to request a free evaluation, or to upgrade
+to the latest version.
+
+
+Error text from FLEXlm:
+ The license files (or license server system network addresses) attempted are 
+listed below.  Use LM_LICENSE_FILE to use a different license file,
+ or contact your software provider for a license file.
+
+The license file path is: /root/ARC/MetaWare/arc/../../license/arc.lic
+
+Licensing DLL version: SDK_12.6
+
+
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+Checking whether the CXX compiler is IAR using "" did not match "IAR .+ Compiler":
+DesignWare ARC C/C++ Compiler Q-2020.03 (build 003) (LLVM 9.0.1)
+(c) Copyright 2013-2020 Synopsys Corporation
+No files specified. Specify -help for usage information
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /app/build-mw/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_2617b/fast && /usr/bin/make  -f CMakeFiles/cmTC_2617b.dir/build.make CMakeFiles/cmTC_2617b.dir/build
+make[1]: Entering directory '/app/build-mw/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_2617b.dir/CMakeCCompilerABI.c.obj
+/root/ARC/MetaWare/arc/bin/ccac   -Wstrict-aliasing -DTF_LITE_STATIC_MEMORY -Wdouble-promotion -Wshadow -Wunused-variable -Wmissing-field-initializers -Wunused-function -DNDEBUG -O3 -fno-rtti -DSCRATCH_MEM_Z_SIZE=0 -DNDEBUG -g -DCPU_ARC -Hnosdata -DTF_LITE_STATIC_MEMORY -tcf=../arcem9d_wei_r16.tcf -Hnocopyr -Hpurge -Hcl -fslp-vectorize-aggressive -ffunction-sections -fdata-sections -tcf_core_config -DEIDSP_QUANTIZE_FILTERBANK=0 -DEI_C_LINKAGE=1 -DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX -DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024  -o CMakeFiles/cmTC_2617b.dir/CMakeCCompilerABI.c.obj -c /opt/cmake/share/cmake-3.19/Modules/CMakeCCompilerABI.c
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+make[1]: *** [CMakeFiles/cmTC_2617b.dir/build.make:85: CMakeFiles/cmTC_2617b.dir/CMakeCCompilerABI.c.obj] Error 1
+make[1]: Leaving directory '/app/build-mw/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_2617b/fast] Error 2
+
+
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /app/build-mw/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_cbcb4/fast && /usr/bin/make  -f CMakeFiles/cmTC_cbcb4.dir/build.make CMakeFiles/cmTC_cbcb4.dir/build
+make[1]: Entering directory '/app/build-mw/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_cbcb4.dir/CMakeCXXCompilerABI.cpp.obj
+/root/ARC/MetaWare/arc/bin/ccac   -DTF_LITE_STATIC_MEMORY -DNDEBUG -O3 -DNDEBUG -g -DCPU_ARC -Hnosdata -DTF_LITE_STATIC_MEMORY -tcf=../arcem9d_wei_r16.tcf -DSCRATCH_MEM_Z_SIZE=0 -Hnocopyr -Hpurge -Hcl -fslp-vectorize-aggressive -ffunction-sections -fdata-sections -tcf_core_config -DEIDSP_QUANTIZE_FILTERBANK=0 -DEI_C_LINKAGE=1 -DEI_SENSOR_AQ_STREAM=FILE -DEI_CLASSIFIER_ALLOCATION_STATIC_HIMAX -DEI_DSP_IMAGE_BUFFER_STATIC_SIZE=1024  -o CMakeFiles/cmTC_cbcb4.dir/CMakeCXXCompilerABI.cpp.obj -c /opt/cmake/share/cmake-3.19/Modules/CMakeCXXCompilerABI.cpp
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+[/root/ARC/MetaWare/arc/bin/ccac] Can't open TCF file: ../arcem9d_wei_r16.tcf
+Aborting...
+make[1]: *** [CMakeFiles/cmTC_cbcb4.dir/build.make:85: CMakeFiles/cmTC_cbcb4.dir/CMakeCXXCompilerABI.cpp.obj] Error 1
+make[1]: Leaving directory '/app/build-mw/CMakeFiles/CMakeTmp'
+make: *** [Makefile:140: cmTC_cbcb4/fast] Error 2
+
+
+
+
