@@ -668,6 +668,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.obj
@@ -694,6 +721,60 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.s: edge-impulse-sdk/t
 edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj
 
@@ -830,6 +911,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.obj
@@ -856,6 +964,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.s: edge-impulse-sd
 edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj
 
@@ -884,6 +1019,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.obj
@@ -911,6 +1073,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.obj
@@ -937,6 +1126,87 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.s: edge-impulse-sdk/tensor
 edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj
 
@@ -992,6 +1262,141 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.obj
@@ -1018,6 +1423,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.s: edge-impulse-sdk/tensor
 edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj
 
@@ -1316,6 +1748,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.obj
@@ -1478,6 +1937,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.obj
@@ -1505,6 +1991,60 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/split.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split.obj
@@ -1531,6 +2071,60 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/split.s: edge-impulse-sdk/tensorf
 edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj
 
@@ -1613,6 +2207,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.obj
@@ -1667,6 +2288,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.obj
@@ -1693,6 +2341,33 @@ edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.s: edge-impulse-sdk/tensor
 edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.obj: edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.i: edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.s: edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.obj: edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj
 
@@ -1856,33 +2531,6 @@ edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.s
 
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.obj: edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj
-
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.obj
-
-# target to build an object file
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj
-
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.i: edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i
-
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.i
-
-# target to preprocess a source file
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i
-
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.s: edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s
-
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.s
-
-# target to generate assembly for a file
-edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s
-.PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s
-
 edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.obj: edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.obj
@@ -2045,6 +2693,33 @@ edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.s
 
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.obj: edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.i: edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.s: edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s
+
 edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.obj: edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj
 
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.obj
@@ -2071,6 +2746,33 @@ edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.s: edge-impulse-s
 edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.s
 .PHONY : edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.s
+
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.obj: edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.obj
+
+# target to build an object file
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj
+
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.i: edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.i
+
+# target to preprocess a source file
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i
+
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.s: edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s
+
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.s
+
+# target to generate assembly for a file
+edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.elf.dir/build.make CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s
+.PHONY : edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s
 
 edge-impulse-sdk/tensorflow/lite/micro/test_helpers.obj: edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj
 
@@ -4380,9 +5082,18 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.s"
@@ -4398,27 +5109,66 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/div.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/div.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/div.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.s"
@@ -4452,6 +5202,9 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.s"
@@ -4470,12 +5223,27 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.s"
@@ -4485,15 +5253,24 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.s"
@@ -4512,9 +5289,6 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.s"
-	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.obj"
-	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.i"
-	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.s"
@@ -4533,9 +5307,15 @@ help:
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/schema_utils.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/schema_utils.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/schema_utils.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.s"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/system_setup.obj"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/system_setup.i"
+	@echo "... edge-impulse-sdk/tensorflow/lite/micro/system_setup.s"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/test_helpers.obj"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/test_helpers.i"
 	@echo "... edge-impulse-sdk/tensorflow/lite/micro/test_helpers.s"

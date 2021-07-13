@@ -1337,9 +1337,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.s: 
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_98) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.i: cmake_force
@@ -1350,9 +1363,35 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_ma
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_99) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.i: cmake_force
@@ -1365,7 +1404,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.s:
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_100) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.i: cmake_force
@@ -1378,7 +1417,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_b
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_101) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.i: cmake_force
@@ -1391,7 +1430,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparison
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_102) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.i: cmake_force
@@ -1404,7 +1443,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenat
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_103) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.i: cmake_force
@@ -1415,9 +1454,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.s:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_104) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.i: cmake_force
@@ -1428,9 +1480,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_105) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.i: cmake_force
@@ -1441,9 +1506,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_106) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.i: cmake_force
@@ -1454,9 +1532,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwis
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_107) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.i: cmake_force
@@ -1467,9 +1558,48 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_108) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.i: cmake_force
@@ -1482,7 +1612,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.s
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_109) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.i: cmake_force
@@ -1493,9 +1623,74 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_conn
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_110) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.i: cmake_force
@@ -1506,9 +1701,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_111) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.i: cmake_force
@@ -1521,7 +1729,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_112) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.i: cmake_force
@@ -1534,7 +1742,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.c
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_113) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.i: cmake_force
@@ -1547,7 +1755,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_mi
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_114) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.cc.i: cmake_force
@@ -1560,7 +1768,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicer
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_115) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.i: cmake_force
@@ -1573,7 +1781,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.s: 
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_116) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.i: cmake_force
@@ -1586,7 +1794,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.s: 
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_117) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.i: cmake_force
@@ -1599,7 +1807,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.s:
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_118) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.i: cmake_force
@@ -1612,7 +1820,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.s: 
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_119) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.i: cmake_force
@@ -1625,7 +1833,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_120) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.i: cmake_force
@@ -1638,7 +1846,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.s
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_121) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.i: cmake_force
@@ -1649,9 +1857,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.c
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_122) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.i: cmake_force
@@ -1664,7 +1885,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_123) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.i: cmake_force
@@ -1677,7 +1898,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_124) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.i: cmake_force
@@ -1690,7 +1911,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nea
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_125) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.i: cmake_force
@@ -1703,7 +1924,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.s
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_126) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.i: cmake_force
@@ -1716,7 +1937,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_bu
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_127) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.i: cmake_force
@@ -1727,9 +1948,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_bu
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_128) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.i: cmake_force
@@ -1740,9 +1974,35 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_129) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.i: cmake_force
@@ -1753,9 +2013,35 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.s
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_130) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.i: cmake_force
@@ -1768,7 +2054,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_sl
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_131) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.i: cmake_force
@@ -1781,7 +2067,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.s: 
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_132) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.i: cmake_force
@@ -1792,9 +2078,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.s:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_133) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_156) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.i: cmake_force
@@ -1807,7 +2106,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.s:
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_134) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_157) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.i: cmake_force
@@ -1818,9 +2117,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_det
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_158) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_135) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_159) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.i: cmake_force
@@ -1831,9 +2143,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_160) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_136) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_161) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.i: cmake_force
@@ -1846,7 +2171,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_137) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_162) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.i: cmake_force
@@ -1859,7 +2184,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/gre
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_138) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_163) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.i: cmake_force
@@ -1872,7 +2197,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/lin
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_139) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_164) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.i: cmake_force
@@ -1885,7 +2210,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_140) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_165) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.i: cmake_force
@@ -1898,7 +2223,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_report
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_141) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_166) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.i: cmake_force
@@ -1909,22 +2234,9 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: CMakeFiles/app.elf.dir/flags.make
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_142) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj"
-	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc
-
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
-
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
-
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_143) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_167) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.i: cmake_force
@@ -1937,7 +2249,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_144) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_168) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.i: cmake_force
@@ -1950,7 +2262,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.s:
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_145) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_169) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.i: cmake_force
@@ -1963,7 +2275,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.s: c
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_146) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_170) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.i: cmake_force
@@ -1976,7 +2288,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.s: 
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_147) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_171) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.i: cmake_force
@@ -1989,7 +2301,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_al
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_148) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_172) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.i: cmake_force
@@ -2000,9 +2312,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_m
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_173) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_149) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_174) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.i: cmake_force
@@ -2013,9 +2338,22 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allo
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj: CMakeFiles/app.elf.dir/flags.make
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_175) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj"
+	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_150) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_176) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj -c /app/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.i: cmake_force
@@ -2028,7 +2366,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.s:
 
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../tflite-model/trained_model_compiled.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_151) "Building CXX object CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_177) "Building CXX object CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj -c /app/tflite-model/trained_model_compiled.cpp
 
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.i: cmake_force
@@ -2041,7 +2379,7 @@ CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.s: cmake_force
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_152) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_178) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj -c /app/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.i: cmake_force
@@ -2054,7 +2392,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.s: cmake_force
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj: ../edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_153) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_179) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj -c /app/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.i: cmake_force
@@ -2067,7 +2405,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.s: cmake_force
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj: CMakeFiles/app.elf.dir/flags.make
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj: ../edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_154) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_180) "Building CXX object CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj"
 	/root/ARC/MetaWare/arc/bin/ccac $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj -c /app/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.i: cmake_force
@@ -2177,19 +2515,35 @@ app_elf_OBJECTS = \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj" \
@@ -2201,34 +2555,44 @@ app_elf_OBJECTS = \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj" \
-"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj" \
+"CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj" \
 "CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj" \
 "CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj" \
@@ -2335,19 +2699,35 @@ app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj
@@ -2359,34 +2739,44 @@ app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/p
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj
-app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj
+app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj
 app.elf: CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj
@@ -2394,7 +2784,7 @@ app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fft.cpp.obj
 app.elf: CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/kissfft/kiss_fftr.cpp.obj
 app.elf: CMakeFiles/app.elf.dir/build.make
 app.elf: CMakeFiles/app.elf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_155) "Linking CXX executable app.elf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/app/build-mw/CMakeFiles --progress-num=$(CMAKE_PROGRESS_181) "Linking CXX executable app.elf"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/app.elf.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -41,16 +41,16 @@
 #define EI_CLASSIFIER_DATATYPE_FLOAT32           1
 #define EI_CLASSIFIER_DATATYPE_INT8              9
 
-#define EI_CLASSIFIER_PROJECT_ID                 402
+#define EI_CLASSIFIER_PROJECT_ID                 706
 #define EI_CLASSIFIER_PROJECT_OWNER              "Jan Jongboom"
-#define EI_CLASSIFIER_PROJECT_NAME               "Benchmark image 32x32 0.05 grayscale"
-#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     54
-#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        1024
-#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           1024
+#define EI_CLASSIFIER_PROJECT_NAME               "Benchmark image Sony"
+#define EI_CLASSIFIER_PROJECT_DEPLOY_VERSION     27
+#define EI_CLASSIFIER_NN_INPUT_FRAME_SIZE        9216
+#define EI_CLASSIFIER_RAW_SAMPLE_COUNT           9216
 #define EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME      1
 #define EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE       (EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME)
-#define EI_CLASSIFIER_INPUT_WIDTH                32
-#define EI_CLASSIFIER_INPUT_HEIGHT               32
+#define EI_CLASSIFIER_INPUT_WIDTH                96
+#define EI_CLASSIFIER_INPUT_HEIGHT               96
 #define EI_CLASSIFIER_INTERVAL_MS                0
 #define EI_CLASSIFIER_LABEL_COUNT                3
 #define EI_CLASSIFIER_HAS_ANOMALY                0
@@ -61,7 +61,7 @@
 #define EI_CLASSIFIER_OBJECT_DETECTION           0
 
 
-#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          132928
+#define EI_CLASSIFIER_TFLITE_ARENA_SIZE          450457
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
 #define EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED     1
 #define EI_CLASSIFIER_TFLITE_INPUT_SCALE         0.003921568859368563
@@ -181,9 +181,9 @@ typedef struct {
     bool invert_features;
 } ei_dsp_config_audio_syntiant_t;
 
-uint8_t ei_dsp_config_40_axes[] = { 0 };
-const uint32_t ei_dsp_config_40_axes_size = 1;
-ei_dsp_config_image_t ei_dsp_config_40 = {
+uint8_t ei_dsp_config_36_axes[] = { 0 };
+const uint32_t ei_dsp_config_36_axes_size = 1;
+ei_dsp_config_image_t ei_dsp_config_36 = {
     1,
     1,
     "Grayscale"

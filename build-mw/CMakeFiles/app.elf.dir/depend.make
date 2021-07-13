@@ -17,6 +17,7 @@ CMakeFiles/app.elf.dir/QCBOR/src/qcbor_encode.c.obj: ../QCBOR/inc/qcbor.h
 CMakeFiles/app.elf.dir/QCBOR/src/qcbor_encode.c.obj: ../QCBOR/src/ieee754.h
 CMakeFiles/app.elf.dir/QCBOR/src/qcbor_encode.c.obj: ../QCBOR/src/qcbor_encode.c
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/c/common.c.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/c/common.c.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/c/common.c.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.c
 
@@ -914,6 +915,25 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-im
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_memory.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/bayes_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/complex_math_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/controller_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/distance_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/fast_math_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/filtering_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/interpolation_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/matrix_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/quaternion_math_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/statistics_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/support_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_defines.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/dsp/config.hpp
 CMakeFiles/app.elf.dir/edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp.obj: ../edge-impulse-sdk/dsp/dct/fast-dct-fft.cpp
@@ -952,6 +972,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
@@ -964,15 +985,18 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conv
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.cc
@@ -986,6 +1010,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/internal/quantiz
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
@@ -996,15 +1021,20 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util_lite.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_mutable_op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
@@ -1015,6 +1045,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.c
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1026,6 +1057,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activation
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/activations.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
@@ -1039,14 +1071,14 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
@@ -1060,6 +1092,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1067,7 +1105,21 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/add.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/add_n.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/add_n.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/arg_min_max.h
@@ -1076,10 +1128,39 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_ma
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/arg_min_max.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/batch_to_space_nd.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/batch_to_space_nd.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/cast.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/ceil.h
@@ -1088,29 +1169,29 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ceil.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/add.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flexbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/circular_buffer.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1123,8 +1204,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparison
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_type.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1132,20 +1212,20 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparison
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/comparisons.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/portable_tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/concatenation.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_type.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/concatenation.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1167,13 +1247,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1188,6 +1267,8 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_tf_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.h
@@ -1198,6 +1279,30 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv_common.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../arc_mli_package/include/api/mli_helpers_api.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../arc_mli_package/include/api/mli_kernels_api.h
@@ -1214,13 +1319,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1236,6 +1340,9 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_tf_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.h
@@ -1247,7 +1354,34 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/depthwiseconv_float.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/depthwiseconv_uint8.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/depthwise_conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/depthwise_conv_common.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1262,6 +1396,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1269,7 +1404,29 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/dequantize.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/div.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/div.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
@@ -1277,20 +1434,79 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwis
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/elementwise.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/elu.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/elu.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/exp.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/exp.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/expand_dims.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/fill.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fill.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/floor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/floor.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../arc_mli_package/include/api/mli_helpers_api.h
@@ -1308,13 +1524,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_conn
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1328,6 +1543,8 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_conn
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_tf_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.h
@@ -1339,29 +1556,140 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_conn
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/fully_connected.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/fully_connected.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/hard_swish.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/hard_swish.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_runner.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util_micro.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/pooling.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/l2_pool_2d.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/portable_tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/l2normalization.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/l2normalization.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_type.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/l2norm.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/leaky_relu.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/leaky_relu.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1370,9 +1698,9 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/binary_function.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1380,6 +1708,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/logical.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1393,6 +1722,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.c
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1400,6 +1730,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.c
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/logistic.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1412,6 +1743,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_mi
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/maximum_minimum.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1437,14 +1769,14 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
@@ -1458,6 +1790,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1467,38 +1805,40 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mul.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/neg.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/neg.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pack.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/portable_tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/pad.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_type.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/string_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pad.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../arc_mli_package/include/api/mli_helpers_api.h
@@ -1516,13 +1856,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1537,12 +1876,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_slicers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/mli_tf_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1551,6 +1890,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/pooling.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1563,6 +1903,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.o
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1570,28 +1911,48 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.o
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/prelu.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/quantize.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/requantize.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/quantize.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/requantize.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/quantize_common.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1607,6 +1968,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
@@ -1616,16 +1978,26 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/reduce.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/reshape.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
@@ -1635,9 +2007,11 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nea
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/resize_nearest_neighbor.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/round.h
@@ -1646,6 +2020,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.o
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/round.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../arc_mli_package/include/api/mli_helpers_api.h
@@ -1657,6 +2032,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_bu
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../arc_mli_package/include/api/mli_mov_api.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../arc_mli_package/include/mli_api.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../arc_mli_package/include/mli_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buf_mgr.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.h
@@ -1672,10 +2048,30 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_bu
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../arc_mli_package/include/api/mli_mov_api.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../arc_mli_package/include/mli_api.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../arc_mli_package/include/mli_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/scratch_buffers.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/shape.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_armcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_armclang.h
@@ -1683,13 +2079,12 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_common_tables.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_tables.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnsupportfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1702,6 +2097,8 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1709,7 +2106,49 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/softmax_common.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/space_to_batch_nd.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/space_to_batch_nd.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
@@ -1717,14 +2156,50 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.o
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/split.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/split_v.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/process_broadcast_shapes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/squeeze.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/portable_tensor.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/strided_slice.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/strided_slice_logic.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
@@ -1732,13 +2207,16 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_sl
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/strided_slice.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1752,6 +2230,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1759,7 +2238,18 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/third_party/ruy/ruy/profiler/instrumentation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/sub.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_armcc.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_armclang.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_armclang_ltm.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_compiler.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nn_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/CMSIS/NN/Include/arm_nnfunctions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1774,14 +2264,43 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/activation_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/classifier/ei_classifier_config.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/max.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/min.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/activation_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/svdf_common.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1795,6 +2314,8 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
@@ -1802,6 +2323,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/tanh.cc
 
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1824,7 +2346,31 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_det
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/tflite_detection_postprocess.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/cppmath.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/optimized/neon_check.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/quantization_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/integer_ops/transpose_conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/transpose_conv.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/padding.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_neon.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/fixedpoint/fixedpoint_sse.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/third_party/gemmlowp/internal/detect_platform.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/transpose_conv.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
@@ -1832,11 +2378,30 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/unpack.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/kernel_util.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/zeros_like.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
@@ -1844,6 +2409,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
@@ -1851,6 +2417,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/gre
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/memory_planner.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/greedy_memory_planner.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
@@ -1858,6 +2425,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/lin
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/memory_planner.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_planner/linear_memory_planner.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
@@ -1874,6 +2442,7 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
@@ -1886,11 +2455,11 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_report
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_string.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/profiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/tensor_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
@@ -1898,48 +2467,26 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/portable_type_to_tflitetype.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/type_to_tflitetype.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.cc
 
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/profiler.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/memory_helpers.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/type_to_tflitetype.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_optional_debug_tools.cc
-
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
-CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/profiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_time.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.cc
@@ -1950,12 +2497,14 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_string.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_time.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_time.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
@@ -1975,6 +2524,8 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_al
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/recording_micro_allocator.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
@@ -1984,6 +2535,17 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_m
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/recording_simple_memory_allocator.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_utils.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/schema_utils.cc
+
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
@@ -1998,7 +2560,11 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allo
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.cc
 
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/system_setup.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/system_setup.cc
+
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
@@ -2008,13 +2574,17 @@ CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.ob
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/kernel_util.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_mutable_op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_utils.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/micro/test_helpers.h
+CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/portable_type_to_tflitetype.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
 CMakeFiles/app.elf.dir/edge-impulse-sdk/tensorflow/lite/micro/test_helpers.cc.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
@@ -2028,6 +2598,25 @@ CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/Core/In
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_gcc.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/Core/Include/cmsis_iccarm.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_memory.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/arm_math_types.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/basic_math_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/bayes_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/complex_math_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/controller_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/distance_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/fast_math_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/filtering_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/interpolation_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/matrix_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/none.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/quaternion_math_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/statistics_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/support_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_defines.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/svm_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/transform_functions.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/CMSIS/DSP/Include/dsp/utils.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/classifier/ei_aligned_malloc.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/classifier/ei_model_types.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/classifier/ei_run_dsp.h
@@ -2044,12 +2633,12 @@ CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/dsp/spectral/
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/dsp/speechpy/functions.hpp
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/dsp/speechpy/speechpy.hpp
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/porting/ei_classifier_porting.h
-CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/core/public/version.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
-CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/profiler.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/tensor_ctypes.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
@@ -2057,16 +2646,18 @@ CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/li
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/all_ops_resolver.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_allocator.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_error_reporter.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_interpreter.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_mutable_op_resolver.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_profiler.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/simple_memory_allocator.h
+CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/portable_type_to_tflitetype.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
-CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/type_to_tflitetype.h
-CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/version.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
 CMakeFiles/app.elf.dir/ei_run_impulse.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
@@ -2232,8 +2823,26 @@ CMakeFiles/app.elf.dir/sensors/ei_microphone.cpp.obj: ../mbedtls_hmac_sha256_sw/
 CMakeFiles/app.elf.dir/sensors/ei_microphone.cpp.obj: ../sensors/ei_microphone.cpp
 CMakeFiles/app.elf.dir/sensors/ei_microphone.cpp.obj: ../sensors/ei_microphone.h
 
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/porting/ei_classifier_porting.h
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/builtin_op_data.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/c_api_types.h
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/c/common.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/error_reporter.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/flatbuffer_conversions.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/core/api/op_resolver.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/compatibility.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/internal/types.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/kernels/op_macros.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/compatibility.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/debug_log.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/ethosu.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/fully_connected.h
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/kernels/micro_ops.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_mutable_op_resolver.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/micro/micro_op_resolver.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/tensorflow/lite/schema/schema_generated.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/base.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/flatbuffers.h
+CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../edge-impulse-sdk/third_party/flatbuffers/include/flatbuffers/stl_emulation.h
 CMakeFiles/app.elf.dir/tflite-model/trained_model_compiled.cpp.obj: ../tflite-model/trained_model_compiled.cpp
 

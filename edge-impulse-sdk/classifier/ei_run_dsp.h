@@ -455,7 +455,7 @@ __attribute__((unused)) int extract_mfcc_features(signal_t *signal, matrix_t *ou
 }
 
 
-static int extract_mfcc_run_slice(signal_t *signal, matrix_t *output_matrix, ei_dsp_config_mfcc_t *config, const float sampling_frequency, matrix_size_t *matrix_size_out, int implementation_version) {
+static int extract_mfcc_run_slice(signal_t *signal, matrix_t *output_matrix, ei_dsp_config_mfcc_t *config, const float sampling_frequency, matrix_size_t *matrix_size_out) {
     uint32_t frequency = (uint32_t)sampling_frequency;
 
     int x;
@@ -464,7 +464,7 @@ static int extract_mfcc_run_slice(signal_t *signal, matrix_t *output_matrix, ei_
     matrix_size_t out_matrix_size =
         speechpy::feature::calculate_mfcc_buffer_size(
             signal->total_length, frequency, config->frame_length, config->frame_stride, config->num_cepstral,
-            implementation_version);
+            config->implementation_version);
 
     // we roll the output matrix back so we have room at the end...
     x = numpy::roll(output_matrix->buffer, output_matrix->rows * output_matrix->cols,
@@ -483,7 +483,7 @@ static int extract_mfcc_run_slice(signal_t *signal, matrix_t *output_matrix, ei_
     // and run the MFCC extraction
     x = speechpy::feature::mfcc(&output_matrix_slice, signal,
         frequency, config->frame_length, config->frame_stride, config->num_cepstral, config->num_filters, config->fft_length,
-        config->low_frequency, config->high_frequency, true, implementation_version);
+        config->low_frequency, config->high_frequency, true, config->implementation_version);
     if (x != EIDSP_OK) {
         ei_printf("ERR: MFCC failed (%d)\n", x);
         EIDSP_ERR(x);
@@ -523,6 +523,19 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
     class speechpy::processing::preemphasis pre(signal, config.pre_shift, config.pre_cof, false);
     preemphasis = &pre;
 
+    /* Fake an extra frame_length for stack frames calculations. There, 1 frame_length is always
+    subtracted and there for never used. But skip the first slice to fit the feature_matrix
+    buffer */
+    static bool first_run = false;
+
+    if (config.implementation_version < 2) {
+        if (first_run == true) {
+            signal->total_length += (size_t)(config.frame_length * (float)frequency);
+        }
+
+        first_run = true;
+    }
+
     signal_t preemphasized_audio_signal;
     preemphasized_audio_signal.total_length = signal->total_length;
     preemphasized_audio_signal.get_data = &preemphasized_audio_signal_get_data;
@@ -538,6 +551,12 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
         EIDSP_ERR(EIDSP_PARAMETER_INVALID);
     }
 
+    if (frame_length_values > preemphasized_audio_signal.total_length) {
+        ei_printf("ERR: frame_length (%d) cannot be larger than signal's total length (%d) for continuous classification\n",
+            (int)frame_length_values, (int)preemphasized_audio_signal.total_length);
+        EIDSP_ERR(EIDSP_PARAMETER_INVALID);
+    }
+
     int x;
 
     // have current frame, but wrong size? then free
@@ -545,11 +564,6 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
         ei_free(ei_dsp_cont_current_frame);
         ei_dsp_cont_current_frame = nullptr;
     }
-
-    int implementation_version = config.implementation_version;
-
-    // this is the offset in the signal from which we'll work
-    size_t offset_in_signal = 0;
 
     if (!ei_dsp_cont_current_frame) {
         ei_dsp_cont_current_frame = (float*)ei_calloc(frame_length_values * sizeof(float), 1);
@@ -560,24 +574,14 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
         ei_dsp_cont_current_frame_ix = 0;
     }
 
-
-    if ((frame_length_values) > preemphasized_audio_signal.total_length  + ei_dsp_cont_current_frame_ix) {
-        ei_printf("ERR: frame_length (%d) cannot be larger than signal's total length (%d) for continuous classification\n",
-            (int)frame_length_values, (int)preemphasized_audio_signal.total_length  + ei_dsp_cont_current_frame_ix);
-        EIDSP_ERR(EIDSP_PARAMETER_INVALID);
-    }
-
     matrix_size_out->rows = 0;
     matrix_size_out->cols = 0;
 
-    // for continuous use v2 stack frame calculations
-    if (implementation_version == 1) {
-        implementation_version = 2;
-    }
+    // this is the offset in the signal from which we'll work
+    size_t offset_in_signal = 0;
 
     if (ei_dsp_cont_current_frame_ix > (int)ei_dsp_cont_current_frame_size) {
-        ei_printf("ERR: ei_dsp_cont_current_frame_ix is larger than frame size (ix=%d size=%d)\n",
-            ei_dsp_cont_current_frame_ix, (int)ei_dsp_cont_current_frame_size);
+        ei_printf("ERR: ei_dsp_cont_current_frame_ix is larger than frame size\n");
         EIDSP_ERR(EIDSP_PARAMETER_INVALID);
     }
 
@@ -597,7 +601,7 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
             EIDSP_ERR(x);
         }
 
-        x = extract_mfcc_run_slice(&frame_signal, output_matrix, &config, sampling_frequency, matrix_size_out, implementation_version);
+        x = extract_mfcc_run_slice(&frame_signal, output_matrix, &config, sampling_frequency, matrix_size_out);
         if (x != EIDSP_OK) {
             EIDSP_ERR(x);
         }
@@ -627,7 +631,7 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
     size_t range_signal_orig_length = range_signal->total_length;
 
     // then we'll just go through normal processing of the signal:
-    x = extract_mfcc_run_slice(range_signal, output_matrix, &config, sampling_frequency, matrix_size_out, implementation_version);
+    x = extract_mfcc_run_slice(range_signal, output_matrix, &config, sampling_frequency, matrix_size_out);
     if (x != EIDSP_OK) {
         EIDSP_ERR(x);
     }
@@ -637,7 +641,7 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
 
     // update offset
     int length_of_signal_used = speechpy::processing::calculate_signal_used(range_signal->total_length, sampling_frequency,
-        config.frame_length, config.frame_stride, false, implementation_version);
+        config.frame_length, config.frame_stride, false, config.implementation_version);
     offset_in_signal += length_of_signal_used;
 
     // see what's left?
@@ -656,6 +660,13 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
     }
 
     ei_dsp_cont_current_frame_ix = bytes_left_end_of_frame;
+
+
+    if(config.implementation_version < 2) {
+        if (first_run == true) {
+            signal->total_length -= (size_t)(config.frame_length * (float)frequency);
+        }
+    }
 
     preemphasis = nullptr;
 
