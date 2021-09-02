@@ -89,11 +89,6 @@ typedef enum __attribute__((packed)) {
 	UART_BR_921600 = 8,		/**< UART bard rate 921600bps */
 }HX_DRV_UART_BAUDRATE_E;
 
-typedef enum __attribute__((packed)) {
-    SWUART_TRANSMITDATA_MODE = 0,
-    SWUART_RECEIVEDATA_MODE = 1,
-}HX_DRV_SWUART_TRANSFER_MODE_E;
-
 /**
  * \enum HX_DRV_QWIIC_CCS811_I2C_ADDR_E
  * \brief Himax driver CCS811 I2C address selection
@@ -466,6 +461,7 @@ extern HX_DRV_ERROR_E hx_drv_mic_capture_dual(hx_drv_mic_data_config_t *pmic_con
  *
  * 				hx_drv_uart_print("UART baud rate set to 921600 bps");
  *
+ * \param[in] baud_rate			baud rate setting, support 9600bps to 921600bps
  * \retval	HX_DRV_LIB_PASS		Initial success
  * \retval	HX_DRV_LIB_ERROR	Initial fail
  */
@@ -543,6 +539,8 @@ extern HX_DRV_ERROR_E hx_drv_led_off(HX_DRV_LED_SELECT_E led);
 
 /**
  * \brief	Timer initialization. It start to count tick after start operation.
+ * 			Please notice that if you are also using SWUART device in your program, they share
+ * 			the same timer. Using 'hx_drv_tick_get' across SWUART API should be avoided.
  *
  * \retval	HX_DRV_LIB_PASS		Operation success
  * \retval	HX_DRV_LIB_ERROR	Operation fail
@@ -554,6 +552,7 @@ extern HX_DRV_ERROR_E hx_drv_tick_start(void);
  * 			Please notice that tick count restart from zero when over UINT32_MAX
  * 			Ex.
  * 				 uint32_t tick_start = 0, tick_end = 0;
+ * 				 hx_drv_uart_initial(UART_BR_115200);
  * 				 hx_drv_tick_start();
  *
  * 				 hx_drv_tick_get(&tick_start);
@@ -561,7 +560,7 @@ extern HX_DRV_ERROR_E hx_drv_tick_start(void);
  *
  * 				 hx_drv_tick_get(&tick_end);
  *
- * 				 printf("time used :%f(sec)\n", (tick_end-tick_start)/400000000.0);
+ * 				 hx_drv_uart_print("time used :%d(msec)\n", (tick_end-tick_start)/400000);
  *
  * \param[out] tick				fill tick address in the parameter and driver will fill tick count data to the address
  * \retval	HX_DRV_LIB_PASS		Operation success
@@ -637,6 +636,7 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_ms8607_initial();
  * \brief	QWIIC MS8607 device read sensor data.
  * 			Ex.
  * 				float p=0,t=0,h=0;
+ * 				hx_drv_uart_initial(UART_BR_115200);
  * 				hx_drv_share_switch(SHARE_MODE_I2CM);
  * 				if(hx_drv_qwiic_ms8607_initial()!=HX_DRV_LIB_PASS) {
  * 					hx_drv_uart_print("hx_drv_ms8607_initial fail ");
@@ -659,6 +659,7 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_ms8607_get_data(float* t_data, float* p_data,
 /**
  * \brief	QWIIC CCS811 device initialization.
  *          Remember do 'hx_drv_share_switch(SHARE_MODE_I2CM)' first such that I2C master as the output pin.
+ *
  * \param[in] i2caddr			CCS811 I2C address selection
  * \retval	HX_DRV_LIB_PASS		Initial success
  * \retval	HX_DRV_LIB_ERROR	Initial fail
@@ -669,6 +670,7 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_ccs811_initial(HX_DRV_QWIIC_CCS811_I2C_ADDR_E
  * \brief	QWIIC CCS811 device read sensor data.
  * 			Ex.
  * 				uint16_t co2=0,tvoc=0;
+ * 				hx_drv_uart_initial(UART_BR_115200);
  * 				hx_drv_share_switch(SHARE_MODE_I2CM);
  * 				if(hx_drv_qwiic_ccs811_initial(HX_DRV_QWIIC_CCS811_I2C_0X5B)!=HX_DRV_LIB_PASS) {
  * 					hx_drv_uart_print("hx_drv_ccs811_initial fail ");
@@ -700,6 +702,7 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_ccs811_get_data(uint16_t* c_data, uint16_t* t
 /**
  * \brief	QWIIC BME280 device initialization.
  *          Remember do 'hx_drv_share_switch(SHARE_MODE_I2CM)' first such that I2C master as the output pin.
+ *
  * \param[in] i2caddr			BME280 I2C address selection
  * \retval	HX_DRV_LIB_PASS		Initial success
  * \retval	HX_DRV_LIB_ERROR	Initial fail
@@ -710,7 +713,8 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_bme280_initial(HX_DRV_QWIIC_BME280_I2C_ADDR_E
  * \brief	QWIIC BME280 device read sensor data.
  * 			Ex.
  * 				float t=0,h=0;
- * 				uint32_t p=0;
+ *	            uint32_t p=0;
+ *	            hx_drv_uart_initial(UART_BR_115200);
  * 				hx_drv_share_switch(SHARE_MODE_I2CM);
  * 				if(hx_drv_qwiic_bme280_initial(HX_DRV_QWIIC_BME280_I2C_0X77)!=HX_DRV_LIB_PASS) {
  * 					hx_drv_uart_print("hx_drv_bme280_initial fail ");
@@ -731,50 +735,60 @@ extern HX_DRV_ERROR_E hx_drv_qwiic_bme280_initial(HX_DRV_QWIIC_BME280_I2C_ADDR_E
 extern HX_DRV_ERROR_E hx_drv_qwiic_bme280_get_data(float* t_data, uint32_t* p_data, float* h_data);
 
 /**
- * \brief	SWUART device initialization with given baud rate, TX pin and RX pin.
- *          SWUART should be initial again if any change to baud rate
+ * \brief	!!Please notice that this Software UART API is an experimental function and just use for some example here:
+ * 			https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_example
+ *
+ * 			This is a Software UART function that uses GPIO as UART.
+ * 			It uses a shared timer to count the baud rate, so please use only swuart related function from
+ * 			initial to deinitial.
+ * 			To initial the function, GPIO pin number for Transmit and receive should be given.
+ * 			Software UART baud rate range is 9600bps to 460800bps.
+ *
+ * \param[in] tx_pin			GPIO pin enumeration for Transmit
+ * \param[in] rx_pin			GPIO pin enumeration for Receive
+ * \param[in] baud_rate			baud rate enumeration
  * \retval	HX_DRV_LIB_PASS		Initial success
  * \retval	HX_DRV_LIB_ERROR	Initial fail
  */
 extern HX_DRV_ERROR_E hx_drv_swuart_initial(HX_DRV_GPIO_E tx_pin, HX_DRV_GPIO_E rx_pin, HX_DRV_UART_BAUDRATE_E baud_rate);
 
 /**
- * \brief	SWUART transfer mode control. use to set transfer/receive mode.
+ * \brief	!!Please notice that this Software UART API is an experimental function and just use for some example here:
+ *			https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_example
+ *
+ *			Transfer data to Software UART port.
  * 
- * \retval	HX_DRV_LIB_PASS		Initial success
- * \retval	HX_DRV_LIB_ERROR	Initial fail
+ * \param[in] data				data array address in memory to send.
+ * \param[in] data_len		    data array size in bytes.
+ * \retval	HX_DRV_LIB_PASS		Operation success
+ * \retval	HX_DRV_LIB_ERROR	Operation fail
  */
-extern HX_DRV_ERROR_E hx_drv_swuart_control(HX_DRV_SWUART_TRANSFER_MODE_E mode);
+extern HX_DRV_ERROR_E hx_drv_swuart_write(const uint8_t *data, uint32_t data_len);
 
 /**
- * \brief   Transfer data to SWUART port. SWUART control API hx_drv_swuart_control() should be called first.
- * 
- * \param[in] data				data array address in memory to send
- * \param[in] data_len		    data array size in bytes.
- * 
- * \retval	HX_DRV_LIB_PASS		Initial success
- * \retval	HX_DRV_LIB_ERROR	Initial fail
+ * \brief	!!Please notice that this Software UART API is an experimental function and just use for some example here:
+ * 			https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_example
+ *
+ *			Receive single byte data from Software UART port(nonblocking).
+ *
+ * \param[in] data				data array address for reading data back. you will get one byte of
+ * 								data in the data array if the operation is successful.
+ * \retval	HX_DRV_LIB_PASS		Operation success
+ * \retval	HX_DRV_LIB_NODATA	nothing in FIFO
  */
-extern HX_DRV_ERROR_E hx_drv_swuart_write(const uint8_t *data, uint8_t data_len);
+extern HX_DRV_ERROR_E hx_drv_swuart_single_read(const uint8_t* data);
 
 /**
- * \brief   Recevie data from SWUART prot(blocking). SWUART control API hx_drv_swuart_control() should be called first.
- * \param[in] data				data array address in memory to send
- * \param[in] data_len		    data array size in bytes.
- * 
- * \retval	HX_DRV_LIB_PASS		Initial success
- * \retval	HX_DRV_LIB_ERROR	Initial fail
+ * \brief	!!Please notice that this Software UART API is an experimental function and just use for some example here:
+ * 			https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_example
+ *
+ *			de-initial Software UART.
+ *
+ * \retval	HX_DRV_LIB_PASS		Operation success
+ * \retval	HX_DRV_LIB_ERROR	Operation fail
  */
-extern HX_DRV_ERROR_E hx_drv_swuart_read(const uint8_t* data, uint8_t data_len);
+extern HX_DRV_ERROR_E hx_drv_swuart_deinitial();
 
-/**
- * \brief   Recevie data from SWUART prot(non-blocking). SWUART control API hx_drv_swuart_control() should be called first.
- * \param[in] data				data array address in memory to send
- * \param[in] data_len		    data array size in bytes.
- * \retval	HX_DRV_LIB_PASS		Initial success
- * \retval	HX_DRV_LIB_ERROR	Initial fail
- */
-extern HX_DRV_ERROR_E hx_drv_swuart_read_nonblocking(const uint8_t* data, uint8_t data_len);
 #ifdef __cplusplus
 }
 #endif

@@ -110,19 +110,9 @@
 You'll need the Edge Impulse CLI v1.12 or higher. Then flash the binary with:
 
 ```
-$ himax-flash-tool --firmware-path image_gen_linux_v3/out.img
+$ himax-flash-tool --firmware-path image_gen_linux/out.img
 ```
 
 ### Images larger than 1MB
 
-Images larger than 1MB will be automatically split into 1MB images (`out_0.img` and `out_1.img`). Note however that it is required that Himax's bootloader is v.1.4.4 or greater as older bootloader versions do not suppport flashing multiple images. Follow the [instructions to update the bootloader](https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_user_guide#update-bootloader-version-at-linux-environment).
-
-Then to flash the images:
-```
-$ himax-flash-tool --firmware-path image_gen_linux_v3/out_0.img
-$ # follow instructions
-$ himax-flash-tool --firmware-path image_gen_linux_v3/out_1.img
-$ # follow instructions
-```
-
-`
+Images larger than 1MB will be automatically split into 1MB images (`out_0.img` and `out_1.img`). Note however that it is required that Himax's bootloader is v.1.4.4 or greater as older bootloader versions do not suppport flashing multiple images. Follow the [instructions to update the bootloader](https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_user_guide#update-bootloader-version-at-linux-environment) then flash through minicom (as per Himax instructions).
