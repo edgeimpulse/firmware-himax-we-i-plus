@@ -134,7 +134,7 @@ int create_bitmap_file(uint8_t *out_buf, float *buffer, size_t w, size_t h) {
     return 0;
 }
 
-int bitmap_from_signal(uint8_t *img_buffer, size_t img_buffer_size, signal_t *signal, size_t w, size_t h) {
+int bitmap_from_signal(uint8_t *img_buffer, size_t img_buffer_size, ei::signal_t *signal, size_t w, size_t h) {
     int filesize = 54 + 3 * w * h;
     if (img_buffer_size != filesize) {
         return -3;

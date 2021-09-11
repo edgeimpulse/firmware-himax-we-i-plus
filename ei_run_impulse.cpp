@@ -21,9 +21,10 @@
  */
 
 /* Include ----------------------------------------------------------------- */
+#include <vector>
+#include <math.h>
 #include "ei_device_himax.h"
 #include "ei_himax_fs_commands.h"
-#include "edge-impulse-sdk/classifier/ei_run_classifier.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 #include "ei_microphone.h"
 #include "ei_inertialsensor.h"
@@ -31,246 +32,17 @@
 #include "hx_drv_tflm.h"
 #include "bitmap_helpers.h"
 #include "at_base64.h"
+#include "edge-impulse-sdk/porting/ei_classifier_porting.h"
+#include "edge-impulse-sdk/classifier/ei_aligned_malloc.h"
+#include "model-parameters/model_metadata.h"
+#include "tflite-model/20210910_134700.int8_io_int8.cpp.h"
+#include "edge-impulse-sdk/classifier/ei_run_dsp.h"
 
 
-#if defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_ACCELEROMETER
-
-/* Private variables ------------------------------------------------------- */
-static float acc_buf[EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE];
-static int acc_sample_count = 0;
-
-/**
- * @brief      Called by the inertial sensor module when a sample is received.
- *             Stores sample data in acc_buf
- * @param[in]  sample_buf  The sample buffer
- * @param[in]  byteLenght  The byte length
- *
- * @return     { description_of_the_return_value }
- */
-static bool acc_data_callback(const void *sample_buf, uint32_t byteLength)
-{
-    float *buffer = (float *)sample_buf;
-    for(uint32_t i = 0; i < (byteLength / sizeof(float)); i++) {
-        acc_buf[acc_sample_count + i] = buffer[i];
-    }
-
-    return true;
-}
-
-/**
- * @brief      Sample data and run inferencing. Prints results to terminal
- *
- * @param[in]  debug  The debug
- */
-void run_nn(bool debug) {
-    uint64_t s_time;
-
-    // summary of inferencing settings (from model_metadata.h)
-    ei_printf("Inferencing settings:\n");
-    ei_printf("\tInterval: %.4f ms\n", (float)EI_CLASSIFIER_INTERVAL_MS);
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-    ei_printf("\tSample length: %.4f ms.\n", 1000.0f * static_cast<float>(EI_CLASSIFIER_RAW_SAMPLE_COUNT) /
-                  (1000.0f / static_cast<float>(EI_CLASSIFIER_INTERVAL_MS)));
-    ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
-
-    ei_printf("Starting inferencing, press 'b' to break\n");
-
-    ei_inertial_sample_start(&acc_data_callback, EI_CLASSIFIER_INTERVAL_MS);
-
-    while (1) {
-        ei_printf("Starting inferencing in 2 seconds...\n");
-
-        // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
-        if (ei_sleep(2000) != EI_IMPULSE_OK) {
-            break;
-        }
-
-        if(ei_user_invoke_stop()) {
-            ei_printf("Inferencing stopped by user\r\n");
-            EiDevice.set_state(eiStateIdle);
-            break;
-        }
-
-        ei_printf("Sampling...\n");
-        s_time = ei_read_timer_ms();
-        /* Run sampler */
-        acc_sample_count = 0;
-        for(int i = 0; i < EI_CLASSIFIER_RAW_SAMPLE_COUNT; i++) {
-            ei_inertial_read_data();
-            acc_sample_count += EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME;
-        }
-
-        // Create a data structure to represent this window of data
-        signal_t signal;
-        int err = numpy::signal_from_buffer(acc_buf, EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE, &signal);
-        if (err != 0) {
-            ei_printf("ERR: signal_from_buffer failed (%d)\n", err);
-        }
-
-        // run the impulse: DSP, neural network and the Anomaly algorithm
-        ei_impulse_result_t result;
-        EI_IMPULSE_ERROR ei_error = run_classifier(&signal, &result, debug);
-        if (ei_error != EI_IMPULSE_OK) {
-            ei_printf("Failed to run impulse (%d)\n", ei_error);
-            break;
-        }
-
-        // print the predictions
-        ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-                  result.timing.dsp, result.timing.classification, result.timing.anomaly);
-        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-            ei_printf("    %s: \t%f\r\n", result.classification[ix].label, result.classification[ix].value);
-        }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf("    anomaly score: %f\r\n", result.anomaly);
-#endif
-        if(ei_user_invoke_stop()) {
-            ei_printf("Inferencing stopped by user\r\n");
-            EiDevice.set_state(eiStateIdle);
-            break;
-        }
-    }
-}
-#elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_MICROPHONE
-void run_nn(bool debug) {
-
-    // summary of inferencing settings (from model_metadata.h)
-    ei_printf("Inferencing settings:\n");
-    ei_printf("\tInterval: %.4f ms.\n", (float)EI_CLASSIFIER_INTERVAL_MS);
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-    ei_printf("\tSample length: %d ms.\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT / 16);
-    ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
-
-    if(ei_microphone_inference_start(EI_CLASSIFIER_RAW_SAMPLE_COUNT) == false) {
-        ei_printf("ERR: Failed to setup audio sampling\r\n");
-        return;
-    }
-
-    ei_printf("Starting inferencing, press 'b' to break\n");
-
-    while (1) {
-        ei_printf("Starting inferencing in 2 seconds...\n");
-
-        // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
-        if (ei_sleep(2000) != EI_IMPULSE_OK) {
-            break;
-        }
-
-        if(ei_user_invoke_stop()) {
-            ei_printf("Inferencing stopped by user\r\n");
-            EiDevice.set_state(eiStateIdle);
-            break;
-        }
-
-        ei_printf("Recording...\n");
-
-        ei_microphone_inference_reset_buffers();
-        bool m = ei_microphone_inference_record();
-        if (!m) {
-            ei_printf("ERR: Failed to record audio...\n");
-            break;
-        }
-
-        ei_printf("Recording done\n");
-
-        signal_t signal;
-        signal.total_length = EI_CLASSIFIER_RAW_SAMPLE_COUNT;
-        signal.get_data = &ei_microphone_audio_signal_get_data;
-        ei_impulse_result_t result;
-
-        EI_IMPULSE_ERROR r = run_classifier(&signal, &result, debug);
-        if (r != EI_IMPULSE_OK) {
-            ei_printf("ERR: Failed to run classifier (%d)\n", r);
-            break;
-        }
-
-        // print the predictions
-        ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-                  result.timing.dsp, result.timing.classification, result.timing.anomaly);
-        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-            ei_printf("    %s: \t%f\r\n", result.classification[ix].label, result.classification[ix].value);
-        }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf("    anomaly score: %f\r\n", result.anomaly);
-#endif
-
-        if(ei_user_invoke_stop()) {
-            ei_printf("Inferencing stopped by user\r\n");
-            EiDevice.set_state(eiStateIdle);
-            break;
-        }
-    }
-
-    ei_microphone_inference_end();
-}
-
-
-void run_nn_continuous(bool debug)
-{
-    bool stop_inferencing = false;
-    int print_results = -(EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW);
-    // summary of inferencing settings (from model_metadata.h)
-    ei_printf("Inferencing settings:\n");
-    ei_printf("\tInterval: ");
-    ei_printf_float((float)EI_CLASSIFIER_INTERVAL_MS);
-    ei_printf("ms.\n");
-    ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-    ei_printf("\tSample length: %d ms.\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT / 16);
-    ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) /
-                                            sizeof(ei_classifier_inferencing_categories[0]));
-
-    ei_printf("Starting inferencing, press 'b' to break\n");
-
-    run_classifier_init();
-    ei_microphone_inference_start(EI_CLASSIFIER_SLICE_SIZE);
-
-    while (stop_inferencing == false) {
-
-        bool m = ei_microphone_inference_record();
-        if (!m) {
-            ei_printf("ERR: Failed to record audio...\n");
-            break;
-        }
-
-        signal_t signal;
-        signal.total_length = EI_CLASSIFIER_SLICE_SIZE;
-        signal.get_data = &ei_microphone_audio_signal_get_data;
-        ei_impulse_result_t result = {0};
-
-        EI_IMPULSE_ERROR r = run_classifier_continuous(&signal, &result, debug);
-        if (r != EI_IMPULSE_OK) {
-            ei_printf("ERR: Failed to run classifier (%d)\n", r);
-            break;
-        }
-
-        if (++print_results >= (EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW >> 1)) {
-            // print the predictions
-            ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-                result.timing.dsp, result.timing.classification, result.timing.anomaly);
-            for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-                ei_printf("    %s: \t", result.classification[ix].label);
-                ei_printf_float(result.classification[ix].value);
-                ei_printf("\r\n");
-            }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-            ei_printf("    anomaly score: ");
-            ei_printf_float(result.anomaly);
-            ei_printf("\r\n");
-#endif
-
-            print_results = 0;
-        }
-
-        if(ei_user_invoke_stop()) {
-            ei_printf("Inferencing stopped by user\r\n");
-            break;
-        }
-    }
-
-    ei_microphone_inference_end();
-}
-
-#elif defined(EI_CLASSIFIER_SENSOR) && EI_CLASSIFIER_SENSOR == EI_CLASSIFIER_SENSOR_CAMERA
+typedef struct cube {
+    size_t col;
+    size_t row;
+} cube_t;
 
 void run_nn(bool debug) {
 
@@ -278,18 +50,51 @@ void run_nn(bool debug) {
     ei_printf("Inferencing settings:\n");
     ei_printf("\tImage resolution: %dx%d\n", EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT);
     ei_printf("\tFrame size: %d\n", EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE);
-    ei_printf("\tNo. of classes: %d\n", sizeof(ei_classifier_inferencing_categories) / sizeof(ei_classifier_inferencing_categories[0]));
 
-    for (size_t ix = 0; ix < ei_dsp_blocks_size; ix++) {
-        ei_model_dsp_t block = ei_dsp_blocks[ix];
-        if (block.extract_fn == &extract_image_features) {
-            ei_dsp_config_image_t config = *((ei_dsp_config_image_t*)block.config);
-            int16_t channel_count = strcmp(config.channels, "Grayscale") == 0 ? 1 : 3;
-            if (channel_count == 3) {
-                ei_printf("WARN: You've deployed a color model, but the Himax WE-I only has a monochrome image sensor. Set your DSP block to 'Grayscale' for best performance.\r\n");
-                break; // only print this once
-            }
-        }
+    TfLiteStatus status = model_init(ei_aligned_calloc);
+    if (status != kTfLiteOk) {
+        ei_printf("Failed to allocate TFLite arena (error code %d)\n", status);
+        return;
+    }
+
+    TfLiteTensor *input_tensor = model_input(0);
+    TfLiteTensor *output_tensor = model_output(0);
+    if (!input_tensor || !output_tensor) {
+        ei_printf("Failed to get input/output tensor\n");
+        return;
+    }
+
+    if (input_tensor->dims->size != 4) {
+        ei_printf("Invalid input_tensor dimensions, expected 4 but got %d\n", (int)input_tensor->dims->size);
+        return;
+    }
+
+    if (input_tensor->dims->data[3] != 1) {
+        ei_printf("Invalid input_tensor dimensions, expected 1 channel but got %d\n", (int)input_tensor->dims->data[3]);
+        return;
+    }
+
+    int input_img_width = input_tensor->dims->data[1];
+    int input_img_height = input_tensor->dims->data[2];
+
+    if (input_img_width * input_img_height != EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT) {
+        ei_printf("Invalid number of features, expected %d but received %d\n",
+            input_img_width * input_img_height, EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT);
+        return;
+    }
+
+    ei_printf("Input dims size %d, bytes %d\n", (int)input_tensor->dims->size, (int)input_tensor->bytes);
+    for (size_t ix = 0; ix < input_tensor->dims->size; ix++) {
+        ei_printf("    dim %d: %d\n", (int)ix, (int)input_tensor->dims->data[ix]);
+    }
+
+    // one byte per value
+    bool is_quantized = input_tensor->bytes == input_img_width * input_img_height;
+
+    ei_printf("Is quantized? %d\n", is_quantized);
+    if (!is_quantized) {
+        ei_printf("ERR: Only support quantized models\n");
+        return;
     }
 
     if (ei_camera_init() == false) {
@@ -317,10 +122,106 @@ void run_nn(bool debug) {
 
         ei_printf("Taking photo...\n");
 
+        uint64_t capture_start = ei_read_timer_ms();
+
         if (ei_camera_capture(EI_CLASSIFIER_INPUT_WIDTH, EI_CLASSIFIER_INPUT_HEIGHT, image_data) == false) {
             ei_printf("Failed to capture image\r\n");
             break;
         }
+
+        uint64_t capture_end = ei_read_timer_ms();
+
+        uint64_t dsp_start = ei_read_timer_ms();
+
+        ei::matrix_i8_t input_matrix(EI_CLASSIFIER_INPUT_HEIGHT, EI_CLASSIFIER_INPUT_WIDTH, input_tensor->data.int8);
+
+        int f = extract_image_features_quantized(&signal, &input_matrix, (void*)&ei_dsp_config_36, 0.0f);
+        if (f != ei::EIDSP_OK) {
+            ei_printf("ERR: Failed to extract features (%d)\n", f);
+            EiDevice.set_state(eiStateIdle);
+            break;
+        }
+
+        uint64_t dsp_end = ei_read_timer_ms();
+
+        uint64_t nn_start = ei_read_timer_ms();
+
+        status = model_invoke();
+        if (status != kTfLiteOk) {
+            ei_printf("Failed to invoke model (error code %d)\n", status);
+            return;
+        }
+
+        uint64_t nn_end = ei_read_timer_ms();
+
+        uint64_t post_start = ei_read_timer_ms();
+
+        std::vector<cube_t> cubes;
+
+        for (size_t row = 0; row < output_tensor->dims->data[1]; row++) {
+            // ei_printf("    [ ");
+            for (size_t col = 0; col < output_tensor->dims->data[2]; col++) {
+                size_t loc = ((row * output_tensor->dims->data[2]) + col) * 2;
+
+                float v1f, v2f;
+
+                if (is_quantized) {
+                    int8_t v1 = output_tensor->data.int8[loc+0];
+                    int8_t v2 = output_tensor->data.int8[loc+1];
+
+                    float zero_point = output_tensor->params.zero_point;
+                    float scale = output_tensor->params.scale;
+
+                    v1f = static_cast<float>(v1 - zero_point) * scale;
+                    v2f = static_cast<float>(v2 - zero_point) * scale;
+                }
+                else {
+                    v1f = output_tensor->data.f[loc+0];
+                    v2f = output_tensor->data.f[loc+1];
+                }
+
+                float v[2] = { v1f, v2f };
+                ei_printf("%f ", v[1]);
+
+                if (v[1] > 0.3f) { // cube
+                    cube_t cube = { 0 };
+                    cube.row = row;
+                    cube.col = col;
+                    bool found_overlapping_cube = false;
+                    for (auto other_cube : cubes) {
+                        if (abs((int)(cube.row - other_cube.row)) <= 1 && abs((int)(cube.col - other_cube.col)) <= 1) {
+                            // overlapping
+                            found_overlapping_cube = true;
+                        }
+                    }
+                    if (!found_overlapping_cube) {
+                        cubes.push_back(cube);
+                    }
+
+                    // ei_printf("1");
+                }
+                else {
+                    // ei_printf("0");
+                }
+
+                // ei_printf("%.2f", v[1]);
+
+                // ei_printf("[ %.2f, %.2f ]", v[0], v[1]);
+                // ei_printf("[ %f, %f ]", v1f, v2f);
+                if (col != output_tensor->dims->data[2] - 1) {
+                    // ei_printf(", ");
+                }
+            }
+            // ei_printf("]");
+            if (row != output_tensor->dims->data[1] - 1) {
+                // ei_printf(", ");
+            }
+            ei_printf("\n");
+        }
+        // ei_printf("]\n")
+
+        uint64_t post_end = ei_read_timer_ms();
+
 
         if (debug) {
             ei_printf("Framebuffer: ");
@@ -342,6 +243,8 @@ void run_nn(bool debug) {
             }
 
             size_t per_pixel_buffer_ix = 0;
+
+            size_t pixel_ix = 0;
 
             for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
                 size_t items_to_read = signal_chunk_size;
@@ -400,6 +303,7 @@ void run_nn(bool debug) {
                         per_pixel_buffer_ix = 0;
                         ei_free(base64_buffer);
                     }
+                    pixel_ix++;
                     EiDevice.set_state(eiStateUploading);
                 }
             }
@@ -429,24 +333,12 @@ void run_nn(bool debug) {
             ei_free(base64_buffer);
         }
 
-        // run the impulse: DSP, neural network and the Anomaly algorithm
-        ei_impulse_result_t result;
-
-        EI_IMPULSE_ERROR ei_error = run_classifier(&signal, &result, debug);
-        if (ei_error != EI_IMPULSE_OK) {
-            ei_printf("Failed to run impulse (%d)\n", ei_error);
-            break;
+        ei_printf("Found %lu cubes (capture=%dms., dsp=%dms., nn=%dms., post=%dms.)\n", cubes.size(),
+            (int)(capture_end - capture_start), (int)(dsp_end - dsp_start), (int)(nn_end - nn_start),
+            (int)(post_end - post_start));
+        for (auto cube : cubes) {
+            ei_printf("    At x=%lu, y=%lu\n", cube.col * 8, cube.row * 8);
         }
-
-        // print the predictions
-        ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-                  result.timing.dsp, result.timing.classification, result.timing.anomaly);
-        for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-            ei_printf("    %s: \t%f\r\n", result.classification[ix].label, result.classification[ix].value);
-        }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf("    anomaly score: %f\r\n", result.anomaly);
-#endif
 
         if (ei_user_invoke_stop()) {
             ei_printf("Inferencing stopped by user\r\n");
@@ -455,9 +347,15 @@ void run_nn(bool debug) {
         }
     }
 
+
+    status = model_reset(ei_aligned_free);
+    if (status != kTfLiteOk) {
+        ei_printf("Failed to free model (error code %d)\n", status);
+        return;
+    }
+
     ei_camera_deinit();
 }
-#endif
 
 void run_nn_normal(void) {
     run_nn(false);

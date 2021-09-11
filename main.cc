@@ -80,7 +80,10 @@ int main(void)
     // is ignored by the Himax HAL
     EiDevice.set_default_data_output_baudrate();
 
-    ei_command_line_handle(0);
+    // ei_serial_set_baudrate(921600);
+
+    // ei_command_line_handle(0);
+    run_nn_normal();
 
     return 0;
 }
