@@ -109,18 +109,9 @@ void run_nn(bool debug) {
     }
 
     while(1) {
-        ei_printf("Starting inferencing in 2 seconds...\n");
-
-        // instead of wait_ms, we'll wait on the signal, this allows threads to cancel us...
-        if (ei_sleep(2000) != EI_IMPULSE_OK) {
-            break;
-        }
-
         ei::signal_t signal;
         signal.total_length = EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT;
         signal.get_data = &ei_camera_cutout_get_data;
-
-        ei_printf("Taking photo...\n");
 
         uint64_t capture_start = ei_read_timer_ms();
 
@@ -188,12 +179,12 @@ void run_nn(bool debug) {
                     cube.row = row;
                     cube.col = col;
                     bool found_overlapping_cube = false;
-                    for (auto other_cube : cubes) {
-                        if (abs((int)(cube.row - other_cube.row)) <= 1 && abs((int)(cube.col - other_cube.col)) <= 1) {
-                            // overlapping
-                            found_overlapping_cube = true;
-                        }
-                    }
+                    // for (auto other_cube : cubes) {
+                    //     if (abs((int)(cube.row - other_cube.row)) <= 1 && abs((int)(cube.col - other_cube.col)) <= 1) {
+                    //         // overlapping
+                    //         found_overlapping_cube = true;
+                    //     }
+                    // }
                     if (!found_overlapping_cube) {
                         cubes.push_back(cube);
                     }
@@ -222,6 +213,7 @@ void run_nn(bool debug) {
 
         uint64_t post_end = ei_read_timer_ms();
 
+        ei_printf("Begin output\n");
 
         if (debug) {
             ei_printf("Framebuffer: ");
@@ -339,6 +331,8 @@ void run_nn(bool debug) {
         for (auto cube : cubes) {
             ei_printf("    At x=%lu, y=%lu\n", cube.col * 8, cube.row * 8);
         }
+
+        ei_printf("End output\n");
 
         if (ei_user_invoke_stop()) {
             ei_printf("Inferencing stopped by user\r\n");

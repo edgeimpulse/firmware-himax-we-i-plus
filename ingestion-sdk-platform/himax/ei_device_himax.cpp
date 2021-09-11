@@ -72,8 +72,8 @@ const ei_device_data_output_baudrate_t ei_dev_max_data_output_baudrate = {
 };
 
 const ei_device_data_output_baudrate_t ei_dev_default_data_output_baudrate = {
-    "115200",
-    UART_BR_115200,
+    "921600",
+    UART_BR_921600,
 };
 
 /* Private function declarations ------------------------------------------- */

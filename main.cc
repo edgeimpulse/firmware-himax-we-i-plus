@@ -83,7 +83,7 @@ int main(void)
     // ei_serial_set_baudrate(921600);
 
     // ei_command_line_handle(0);
-    run_nn_normal();
+    run_nn_debug();
 
     return 0;
 }
