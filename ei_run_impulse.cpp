@@ -37,12 +37,20 @@
 #include "model-parameters/model_metadata.h"
 #include "tflite-model/20210910_134700.int8_io_int8.cpp.h"
 #include "edge-impulse-sdk/classifier/ei_run_dsp.h"
+#include "ingestion-sdk-platform/encode_as_jpg.h"
 
 
 typedef struct cube {
     size_t col;
     size_t row;
+    float confidence;
 } cube_t;
+
+float framebuffer_f32[96*96];
+uint8_t framebuffer[96*96];
+const size_t jpeg_buffer_size = 4096;
+uint8_t jpeg_buffer[jpeg_buffer_size];
+char base64_buffer[8192];
 
 void run_nn(bool debug) {
 
@@ -107,6 +115,8 @@ void run_nn(bool debug) {
         ei_printf("ERR: Failed to allocate image buffer\r\n");
         return;
     }
+
+    hx_drv_sensor_stream_on();
 
     while(1) {
         ei::signal_t signal;
@@ -178,6 +188,7 @@ void run_nn(bool debug) {
                     cube_t cube = { 0 };
                     cube.row = row;
                     cube.col = col;
+                    cube.confidence = v[1];
                     bool found_overlapping_cube = false;
                     // for (auto other_cube : cubes) {
                     //     if (abs((int)(cube.row - other_cube.row)) <= 1 && abs((int)(cube.col - other_cube.col)) <= 1) {
@@ -218,114 +229,30 @@ void run_nn(bool debug) {
         uint64_t framebuffer_start = ei_read_timer_ms();
 
         if (debug) {
+            int x = signal.get_data(0, 96 * 96, framebuffer_f32);
+            if (x != 0) {
+                printf("Failed to get framebuffer (%d)\n", x);
+                return;
+            }
+
+            for (size_t ix = 0; ix < 96 * 96; ix++) {
+                float v = framebuffer_f32[ix];
+                framebuffer[ix] = static_cast<uint32_t>(v) & 0xff;
+            }
+
+            size_t out_size;
+            x = encode_as_jpg(framebuffer, 96*96, 96, 96, jpeg_buffer, jpeg_buffer_size, &out_size);
+            if (x != 0) {
+                printf("Failed to encode as JPG (%d)\n", x);
+                return;
+            }
+
             ei_printf("Framebuffer: ");
 
-            size_t signal_chunk_size = 1024;
+            int base64_count = base64_encode((const char*)jpeg_buffer, out_size, base64_buffer, 8192);
 
-            // loop through the signal
-            float *signal_buf = (float*)ei_malloc(signal_chunk_size * sizeof(float));
-            if (!signal_buf) {
-                ei_printf("ERR: Failed to allocate signal buffer\n");
-                return;
-            }
-
-            uint8_t *per_pixel_buffer = (uint8_t*)ei_malloc(513); // 171 x 3 pixels
-            if (!per_pixel_buffer) {
-                ei_free(signal_buf);
-                ei_printf("ERR: Failed to allocate per_pixel buffer\n");
-                return;
-            }
-
-            size_t per_pixel_buffer_ix = 0;
-
-            size_t pixel_ix = 0;
-
-            for (size_t ix = 0; ix < signal.total_length; ix += signal_chunk_size) {
-                size_t items_to_read = signal_chunk_size;
-                if (items_to_read > signal.total_length - ix) {
-                    items_to_read = signal.total_length - ix;
-                }
-
-                int r = signal.get_data(ix, items_to_read, signal_buf);
-                if (r != 0) {
-                    ei_printf("ERR: Failed to get data from signal (%d)\n", r);
-                    break;
-                }
-
-                for (size_t px = 0; px < items_to_read; px++) {
-                    uint32_t pixel = static_cast<uint32_t>(signal_buf[px]);
-
-                    // grab rgb
-                    uint8_t r = static_cast<float>(pixel >> 16 & 0xff);
-                    uint8_t g = static_cast<float>(pixel >> 8 & 0xff);
-                    uint8_t b = static_cast<float>(pixel & 0xff);
-
-                    // is monochrome anyway now, so just print 1 pixel at a time
-                    const bool print_rgb = false;
-
-                    if (print_rgb) {
-                        per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
-                        per_pixel_buffer[per_pixel_buffer_ix + 1] = g;
-                        per_pixel_buffer[per_pixel_buffer_ix + 2] = b;
-                        per_pixel_buffer_ix += 3;
-                    }
-                    else {
-                        per_pixel_buffer[per_pixel_buffer_ix + 0] = r;
-                        per_pixel_buffer_ix++;
-                    }
-
-                    if (per_pixel_buffer_ix >= 513) {
-                        const size_t base64_output_size = 684;
-
-                        char *base64_buffer = (char*)ei_malloc(base64_output_size);
-                        if (!base64_buffer) {
-                            ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", base64_output_size);
-                            ei_free(signal_buf);
-                            ei_free(per_pixel_buffer);
-                            return;
-                        }
-
-                        int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, base64_output_size);
-                        if (r < 0) {
-                            ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-                            ei_free(signal_buf);
-                            ei_free(per_pixel_buffer);
-                            return;
-                        }
-
-                        ei_write_string(base64_buffer, r);
-                        per_pixel_buffer_ix = 0;
-                        ei_free(base64_buffer);
-                    }
-                    pixel_ix++;
-                    EiDevice.set_state(eiStateUploading);
-                }
-            }
-
-            const size_t new_base64_buffer_output_size = floor(per_pixel_buffer_ix / 3 * 4) + 4;
-            char *base64_buffer = (char*)ei_malloc(new_base64_buffer_output_size);
-            if (!base64_buffer) {
-                ei_free(signal_buf);
-                ei_free(per_pixel_buffer);
-                ei_printf("ERR: Cannot allocate base64 buffer of size %lu, out of memory\n", new_base64_buffer_output_size);
-                return;
-            }
-
-            int r = base64_encode((const char*)per_pixel_buffer, per_pixel_buffer_ix, base64_buffer, new_base64_buffer_output_size);
-            if (r < 0) {
-                ei_free(signal_buf);
-                ei_free(per_pixel_buffer);
-                ei_printf("ERR: Failed to base64 encode (%d)\n", r);
-                return;
-            }
-
-            ei_write_string(base64_buffer, r);
+            ei_write_string(base64_buffer, base64_count);
             ei_printf("\r\n");
-
-            ei_free(signal_buf);
-            ei_free(per_pixel_buffer);
-            ei_free(base64_buffer);
-
         }
 
         uint64_t framebuffer_end = ei_read_timer_ms();
@@ -334,7 +261,7 @@ void run_nn(bool debug) {
             (int)(capture_end - capture_start), (int)(dsp_end - dsp_start), (int)(nn_end - nn_start),
             (int)(post_end - post_start), (int)(framebuffer_end - framebuffer_start));
         for (auto cube : cubes) {
-            ei_printf("    At x=%lu, y=%lu\n", cube.col * 8, cube.row * 8);
+            ei_printf("    At x=%lu, y=%lu = %.5f\n", cube.col * 8, cube.row * 8, cube.confidence);
         }
 
         ei_printf("End output\n");

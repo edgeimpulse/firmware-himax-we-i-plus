@@ -9,7 +9,7 @@ project(${ProjectId})
 # add the sources
 file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
                  "ingestion-sdk-platform/himax/*.cpp"
-                 "ingestion-sdk-platform/himax/*.cpp"
+                 "ingestion-sdk-platform/*.cpp"
                  "ingestion-sdk-c/*.cpp"
                  "repl/*.cpp"
                  "repl/*.c"
@@ -51,6 +51,7 @@ include_directories(edge-impulse-sdk/CMSIS/Core/Include/)
 include_directories(ingestion-sdk-c)
 include_directories(arc_mli_package/include)
 include_directories(ingestion-sdk-c)
+include_directories(ingestion-sdk-platform)
 include_directories(ingestion-sdk-platform/himax)
 include_directories(repl)
 include_directories(sensors)
