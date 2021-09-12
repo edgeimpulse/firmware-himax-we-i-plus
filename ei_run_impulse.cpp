@@ -172,7 +172,7 @@ void run_nn(bool debug) {
                 }
 
                 float v[2] = { v1f, v2f };
-                ei_printf("%f ", v[1]);
+                // ei_printf("%f ", v[1]);
 
                 if (v[1] > 0.3f) { // cube
                     cube_t cube = { 0 };
@@ -207,13 +207,15 @@ void run_nn(bool debug) {
             if (row != output_tensor->dims->data[1] - 1) {
                 // ei_printf(", ");
             }
-            ei_printf("\n");
+            // ei_printf("\n");
         }
         // ei_printf("]\n")
 
         uint64_t post_end = ei_read_timer_ms();
 
         ei_printf("Begin output\n");
+
+        uint64_t framebuffer_start = ei_read_timer_ms();
 
         if (debug) {
             ei_printf("Framebuffer: ");
@@ -323,11 +325,14 @@ void run_nn(bool debug) {
             ei_free(signal_buf);
             ei_free(per_pixel_buffer);
             ei_free(base64_buffer);
+
         }
 
-        ei_printf("Found %lu cubes (capture=%dms., dsp=%dms., nn=%dms., post=%dms.)\n", cubes.size(),
+        uint64_t framebuffer_end = ei_read_timer_ms();
+
+        ei_printf("Found %lu cubes (capture=%dms., dsp=%dms., nn=%dms., post=%dms., framebuffer=%dms.)\n", cubes.size(),
             (int)(capture_end - capture_start), (int)(dsp_end - dsp_start), (int)(nn_end - nn_start),
-            (int)(post_end - post_start));
+            (int)(post_end - post_start), (int)(framebuffer_end - framebuffer_start));
         for (auto cube : cubes) {
             ei_printf("    At x=%lu, y=%lu\n", cube.col * 8, cube.row * 8);
         }
