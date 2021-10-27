@@ -138,7 +138,14 @@ static void at_get_sample_settings() {
 }
 
 static void at_set_sample_settings(char *label, char *interval_s, char *length_s) {
+
+    // work-around to issue with floats longer than 17 chars
+    // with arc_gnu.2020.09/arc_gnu.2020.03
+    if (strlen(interval_s) > 8) {
+        interval_s[8] = 0;
+    }
     float interval = atof(interval_s);
+
     uint32_t length = (uint32_t)atoi(length_s);
     EI_CONFIG_ERROR r = ei_config_set_sample_settings(label, interval, length);
     if (r != EI_CONFIG_OK) {
@@ -150,7 +157,13 @@ static void at_set_sample_settings(char *label, char *interval_s, char *length_s
 }
 
 static void at_set_sample_settings_w_hmac(char *label, char *interval_s, char *length_s, char *hmac_key) {
+    // work-around to issue with floats longer than 17 chars
+    // with arc_gnu.2020.09/arc_gnu.2020.03.
+    if (strlen(interval_s) > 8) {
+        interval_s[8] = 0;
+    }
     float interval = atof(interval_s);
+
     uint32_t length = (uint32_t)atoi(length_s);
     EI_CONFIG_ERROR r = ei_config_set_sample_settings(label, interval, length, hmac_key);
     if (r != EI_CONFIG_OK) {
