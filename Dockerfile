@@ -7,10 +7,9 @@ RUN apt update && apt install -y wget build-essential
 # Install recent CMake
 RUN mkdir -p /opt/cmake && \
     cd /opt/cmake && \
-    wget https://github.com/Kitware/CMake/releases/download/v3.19.0-rc3/cmake-3.19.0-rc3-Linux-x86_64.sh && \
-    sh cmake-3.19.0-rc3-Linux-x86_64.sh --prefix=/opt/cmake --skip-license && \
-    ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake && \
-    rm cmake-3.19.0-rc3-Linux-x86_64.sh
+    wget https://github.com/Kitware/CMake/releases/download/v3.21.3/cmake-3.21.3-Linux-x86_64.sh && \
+    sh cmake-3.21.3-Linux-x86_64.sh --prefix=/opt/cmake --skip-license && \
+    ln -s /opt/cmake/bin/cmake /usr/local/bin/cmake
 
 # Grab Metaware toolkit and
 # Install Metaware
