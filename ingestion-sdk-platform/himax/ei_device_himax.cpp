@@ -521,6 +521,15 @@ void ei_write_string(char *data, int length)
 }
 
 /**
+ * @brief      Write serial data to Serial output
+ *
+ * @param      c    The character
+ */
+void ei_write_char(char c) {
+    hx_drv_uart_print("%c",c);
+}
+
+/**
  * @brief      Write single character to serial output
  *
  * @param[in]  cChar  The character

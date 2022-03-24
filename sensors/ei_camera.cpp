@@ -28,6 +28,7 @@
 #include "ei_classifier_porting.h"
 #include "at_base64.h"
 #include "numpy_types.h"
+#include "edge-impulse-sdk/dsp/image/image.hpp"
 
 #define DWORD_ALIGN_PTR(a)   ((a & 0x3) ?(((uintptr_t)a + 0x4) & ~(uintptr_t)0x3) : a)
 
@@ -46,32 +47,9 @@ static uint8_t *ei_camera_frame_buffer;
 */
 static uint8_t *ei_camera_capture_out = NULL;
 
-static bool ei_camera_snapshot_is_resized;
-//static bool ei_camera_snapshot_is_cropped;
-
 /* Functions Prototypes --------------------------------------------------- */
-void resizeImage(int srcWidth, int srcHeight, uint8_t *srcImage, int dstWidth, int dstHeight, uint8_t *dstImage, int iBpp);
-void cropImage(int srcWidth, int srcHeight, uint8_t *srcImage, int startX, int startY, int dstWidth, int dstHeight, uint8_t *dstImage, int iBpp);
 
 /* Private functions ------------------------------------------------------- */
-
-/**
- * @brief      Convert monochrome data to rgb values
- *
- * @param[in]  mono_data  The mono data
- * @param      r          red pixel value
- * @param      g          green pixel value
- * @param      b          blue pixel value
- */
-static inline void mono_to_rgb(uint8_t mono_data, uint8_t *r, uint8_t *g, uint8_t *b) {
-    uint8_t v;
-
-    // use if `ei_camera_capture_out` contains int8_t values
-    v = (ei_camera_snapshot_is_resized) ? mono_data + 128 : mono_data;
-
-    //v = mono_data;
-    *r = *g = *b = v;
-}
 
 /**
  * @brief      Determine whether to resize and to which dimension
@@ -189,27 +167,8 @@ static inline void finish_snapshot()
  */
 static bool take_snapshot(size_t width, size_t height)
 {
-
-    void *snapshot_mem = NULL;
-    uint8_t *snapshot_buf = NULL;
-    if ((width == EI_CAMERA_RAW_FRAME_BUFFER_COLS)
-        && (height == EI_CAMERA_RAW_FRAME_BUFFER_ROWS))
-    {
-        // use the raw frame buffer instead
-        snapshot_mem = NULL;
-        snapshot_buf = NULL;
-    } else {
-        // static allocation
-        snapshot_mem = (int8_t*)ei_himax_fs_allocate_sampledata(width*height);
-        if(snapshot_mem == NULL) {
-            ei_printf("failed to create snapshot_mem\r\n");
-            return false;
-        }
-        snapshot_buf = (uint8_t *)DWORD_ALIGN_PTR((uintptr_t)snapshot_mem);
-    }
-
-    //ei_printf("take snapshot cols: %d, rows: %d\r\n", width, height);
-    if (ei_camera_capture(width, height, (int8_t *) snapshot_buf) == false) {
+    // passing NULL means internal camera buffers will be used
+    if (ei_camera_capture(width, height, (int8_t *) NULL) == false) {
         ei_printf("ERR: Failed to capture image\r\n");
         return false;
     }
@@ -383,15 +342,8 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
     bool do_resize = false;
     bool do_crop = false;
 
-    if (!is_initialised) {
+    if (!is_initialised || (ei_camera_frame_buffer == NULL)) {
         ei_printf("ERR: Camera is not initialized\r\n");
-        return false;
-    }
-
-    if (!out_buf
-        && img_width != EI_CAMERA_RAW_FRAME_BUFFER_COLS
-        && img_height != EI_CAMERA_RAW_FRAME_BUFFER_ROWS) {
-        ei_printf("ERR: invalid parameters\r\n");
         return false;
     }
 
@@ -420,42 +372,23 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
     // The following variables should always be assigned
     // if this routine is to return true
     // cutout values
-    ei_camera_snapshot_is_resized = do_resize;
-    //ei_camera_snapshot_is_cropped = do_crop;
     ei_camera_capture_out = ei_camera_frame_buffer;
     //ei_printf("frame buffer: 0x%08x\r\n", ei_camera_frame_buffer);
 
-    void *resize_img_mem = NULL;
-    uint8_t *resize_img_buf = NULL;
-
-    if (do_resize && do_crop) {
-        resize_img_mem = ei_malloc((resize_col_sz*resize_row_sz)+4);
-        if(resize_img_mem == NULL) {
-            ei_printf("ERR: failed to create resize_img_mem\r\n");
-        }
-        resize_img_buf = (uint8_t *)DWORD_ALIGN_PTR((uintptr_t)resize_img_mem);
-        //ei_printf("resize img mem: 0x%08x\r\n", resize_img_mem);
-        //ei_printf("resize img buffer: 0x%08x\r\n", resize_img_buf);
-    } else if (do_resize) {
-        resize_img_buf = (uint8_t *) out_buf;
-        //ei_printf("resize img buffer: 0x%08x\r\n", resize_img_buf);
-    }
-
     if (do_resize) {
-        //ei_printf("resize cols: %d, rows: %d\r\n", resize_col_sz,resize_row_sz);
 
-        /*
-        ** Assumes the following:
-        **
-        **  g_pimg_config.img_width == EI_CAMERA_RAW_FRAME_BUFFER_COLS
-        **  g_pimg_config.img_height == EI_CAMERA_RAW_FRAME_BUFFER_ROWS
-         */
-        if (0 != hx_drv_image_rescale(ei_camera_frame_buffer, EI_CAMERA_RAW_FRAME_BUFFER_COLS, EI_CAMERA_RAW_FRAME_BUFFER_ROWS,
-                                      (int8_t *)resize_img_buf, resize_col_sz, resize_row_sz)) {
-            ei_printf("ERR: failed to rescale image\r\n");
-            return false;
-        }
-        ei_camera_capture_out = resize_img_buf;
+        // if only resizing then and out_buf provided then use it instead.
+        if (out_buf && !do_crop) ei_camera_capture_out = (uint8_t*) out_buf;
+
+        //ei_printf("resize cols: %d, rows: %d\r\n", resize_col_sz,resize_row_sz);
+        ei::image::processing::resize_image(
+            ei_camera_frame_buffer,
+            EI_CAMERA_RAW_FRAME_BUFFER_COLS,
+            EI_CAMERA_RAW_FRAME_BUFFER_ROWS,
+            ei_camera_capture_out,
+            resize_col_sz,
+            resize_row_sz,
+            1); // bytes per pixel
     }
 
     if (do_crop) {
@@ -468,20 +401,23 @@ bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *out_buf)
         crop_col_sz = img_width;
         crop_row_sz = img_height;
 
-        //ei_printf("crop cols: %d, rows: %d\r\n", crop_col_sz,crop_row_sz);
-        cropImage(resize_col_sz, resize_row_sz,
-                  ei_camera_capture_out,
-                  crop_col_start, crop_row_start,
-                  crop_col_sz, crop_row_sz,
-                  (uint8_t *)out_buf,
-                  8);
+        // if (also) cropping and out_buf provided then use it instead.
+        if (out_buf) ei_camera_capture_out = (uint8_t*) out_buf;
 
-        ei_camera_capture_out = (uint8_t *)out_buf;
+        //ei_printf("crop cols: %d, rows: %d\r\n", crop_col_sz,crop_row_sz);
+        ei::image::processing::cropImage(
+            ei_camera_frame_buffer,
+            resize_col_sz,
+            resize_row_sz,
+            crop_col_start,
+            crop_row_start,
+            ei_camera_capture_out,
+            crop_col_sz,
+            crop_row_sz,
+            8); // bits per pixel
     }
 
     //ei_printf("camera_out buf: 0x%08x\r\n", ei_camera_capture_out);
-    ei_free(resize_img_mem);
-
     EiDevice.set_state(eiStateIdle);
 
     return true;
@@ -568,7 +504,7 @@ int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
         uint8_t pixel = ei_camera_capture_out[offset];
 
         uint8_t r, g, b;
-        mono_to_rgb(pixel, &r, &g, &b);
+        r = g = b = pixel;
 
         // then convert to out_ptr format
         float pixel_f = (r << 16) + (g << 8) + b;
@@ -583,80 +519,3 @@ int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr) {
     // and done!
     return 0;
 }
-
-// This include file works in the Arduino environment
-// to define the Cortex-M intrinsics
-#ifdef __ARM_FEATURE_SIMD32
-#include <device.h>
-#endif
-//
-// Crop
-//
-// Assumes that the destination buffer is dword-aligned
-// optimized for 32-bit MCUs
-// Supports 8 and 16-bit pixels
-//
-void cropImage(int srcWidth, int srcHeight, uint8_t *srcImage, int startX, int startY, int dstWidth, int dstHeight, uint8_t *dstImage, int iBpp)
-{
-    uint32_t *s32, *d32;
-    int x, y;
-
-    if (startX < 0 || startX >= srcWidth || startY < 0 || startY >= srcHeight || (startX + dstWidth) > srcWidth || (startY + dstHeight) > srcHeight)
-       return; // invalid parameters
-    if (iBpp != 8 && iBpp != 16)
-       return;
-
-    if (iBpp == 8) {
-      uint8_t *s, *d;
-      for (y=0; y<dstHeight; y++) {
-        s = &srcImage[srcWidth * (y + startY) + startX];
-        d = &dstImage[(dstWidth * y)];
-        x = 0;
-        if ((intptr_t)s & 3 || (intptr_t)d & 3) { // either src or dst pointer is not aligned
-          for (; x<dstWidth; x++) {
-            *d++ = *s++; // have to do it byte-by-byte
-          }
-        } else {
-          // move 4 bytes at a time if aligned or alignment not enforced
-          s32 = (uint32_t *)s;
-          d32 = (uint32_t *)d;
-          for (; x<dstWidth-3; x+= 4) {
-            *d32++ = *s32++;
-          }
-          // any remaining stragglers?
-          s = (uint8_t *)s32;
-          d = (uint8_t *)d32;
-          for (; x<dstWidth; x++) {
-            *d++ = *s++;
-          }
-        }
-      } // for y
-    } // 8-bpp
-    else
-    {
-      uint16_t *s, *d;
-      for (y=0; y<dstHeight; y++) {
-        s = (uint16_t *)&srcImage[2 * srcWidth * (y + startY) + startX * 2];
-        d = (uint16_t *)&dstImage[(dstWidth * y * 2)];
-        x = 0;
-        if ((intptr_t)s & 2 || (intptr_t)d & 2) { // either src or dst pointer is not aligned
-          for (; x<dstWidth; x++) {
-            *d++ = *s++; // have to do it 16-bits at a time
-          }
-        } else {
-          // move 4 bytes at a time if aligned or alignment no enforced
-          s32 = (uint32_t *)s;
-          d32 = (uint32_t *)d;
-          for (; x<dstWidth-1; x+= 2) { // we can move 2 pixels at a time
-            *d32++ = *s32++;
-          }
-          // any remaining stragglers?
-          s = (uint16_t *)s32;
-          d = (uint16_t *)d32;
-          for (; x<dstWidth; x++) {
-            *d++ = *s++;
-          }
-        }
-      } // for y
-    } // 16-bpp case
-} /* cropImage() */
