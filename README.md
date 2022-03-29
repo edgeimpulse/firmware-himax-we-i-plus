@@ -116,3 +116,21 @@ $ himax-flash-tool --firmware-path image_gen_linux/out.img
 ### Images larger than 1MB
 
 Images larger than 1MB will be automatically split into 1MB images (`out_0.img` and `out_1.img`). Note however that it is required that Himax's bootloader is v.1.4.4 or greater as older bootloader versions do not suppport flashing multiple images. Follow the [instructions to update the bootloader](https://github.com/HimaxWiseEyePlus/bsp_tflu/tree/master/HIMAX_WE1_EVB_user_guide#update-bootloader-version-at-linux-environment) then flash through minicom (as per Himax instructions).
+
+
+## Troubleshooting
+
+* Failed to encode frame as JPEG (4)
+
+```
+
+Inferencing settings:
+        Image resolution: 96x96
+        Frame size: 9216
+        No. of classes: 1
+Taking photo...
+Begin output
+Failed to encode frame as JPEG (4)
+```
+
+There's not enough (contiguous) memory to allocate the jpeg buffer. Try increasing the `jpeg_buffer_size`.

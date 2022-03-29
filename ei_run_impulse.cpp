@@ -357,8 +357,8 @@ void run_nn(bool debug, int delay_ms, bool use_max_baudrate) {
         if (debug) {
 
             size_t jpeg_buffer_size = EI_CLASSIFIER_INPUT_WIDTH * EI_CLASSIFIER_INPUT_HEIGHT >= 128 * 128 ?
-                8192 :
-                4096;
+                1024 * 12:
+                1024 * 8;
 
             uint8_t *jpeg_buffer = (uint8_t*)ei_malloc(jpeg_buffer_size);
             if (!jpeg_buffer) {
