@@ -10,6 +10,7 @@
 #include "JPEGENC.h"
 #include "edge-impulse-sdk/dsp/numpy.hpp"
 #include "edge-impulse-sdk/dsp/numpy_types.h"
+#include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 
 int encode_as_jpg(uint8_t *framebuffer, size_t framebuffer_size, int width, int height, uint8_t *out_buffer, size_t out_buffer_size, size_t *out_size) {
     static JPEGClass jpg;
@@ -72,12 +73,12 @@ int encode_bw_signal_as_jpg(signal_t *signal, int width, int height, uint8_t *ou
     int last_offset = 0;
     int max_offset_diff = 0;
 
-    encode_buffer = (float*)malloc(buf_len * 4);
+    encode_buffer = (float*)ei_malloc(buf_len * 4);
     if (!encode_buffer) {
         rc = JPEG_MEM_ERROR;
         goto cleanup;
     }
-    encode_buffer_u8 = (uint8_t*)malloc(buf_len * bytePp);
+    encode_buffer_u8 = (uint8_t*)ei_malloc(buf_len * bytePp);
     if (!encode_buffer_u8) {
         rc = JPEG_MEM_ERROR;
         goto cleanup;

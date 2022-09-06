@@ -27,6 +27,7 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "at_base64_lib.h"
+#include <cmath>
 
 static const char *base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
                                   "abcdefghijklmnopqrstuvwxyz"

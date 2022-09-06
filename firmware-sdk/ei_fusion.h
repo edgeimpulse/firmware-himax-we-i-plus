@@ -1,5 +1,5 @@
-/* Edge Impulse ingestion SDK
- * Copyright (c) 2020 EdgeImpulse Inc.
+/* Edge Impulse firmware SDK
+ * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,8 @@
  * SOFTWARE.
  */
 
-#ifndef _EI_FUSION_H
-#define _EI_FUSION_H
+#ifndef EI_FUSION_H
+#define EI_FUSION_H
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_config_types.h"
@@ -62,6 +62,6 @@ void ei_built_sensor_fusion_list(void);
 bool ei_connect_fusion_list(const char *input_list, ei_fusion_list_format format);
 void ei_fusion_read_axis_data(void);
 bool ei_fusion_sample_start(sampler_callback callsampler, float sample_interval_ms);
-bool ei_fusion_setup_data_sampling();
+bool ei_fusion_setup_data_sampling(void);
 
-#endif
+#endif /* EI_FUSION_H */

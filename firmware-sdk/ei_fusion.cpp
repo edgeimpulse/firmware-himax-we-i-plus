@@ -1,4 +1,4 @@
-/* Edge Impulse ingestion SDK
+/* Edge Impulse firmware SDK
  * Copyright (c) 2020 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
-
 #include "ei_fusion.h"
 #include "ei_device_info_lib.h"
 #include "ei_sampler.h"
@@ -39,9 +38,8 @@
 /*
 ** @brief fixes CBOR header padding issue
 */
-#define CBOR_HEADER_OFFSET 0x02 // offset for unknown header size (can be 0-3)
-#define SENSORS_BYTE_OFFSET                                                                        \
-    14 // number of CBOR bytes for sensor (ie {"name": "...", "units": "..."})
+#define CBOR_HEADER_OFFSET      0x02 // offset for unknown header size (can be 0-3)
+#define SENSORS_BYTE_OFFSET     14 // number of CBOR bytes for sensor (ie {"name": "...", "units": "..."})
 
 /* Extern variables -------------------------------------------------------- */
 /** @todo Fix this when ei_config and ei_device .. modules moved to the firmware-sdk */
@@ -66,13 +64,6 @@ static ei_device_fusion_sensor_t *fusion_sensors[NUM_FUSION_SENSORS];
 int num_fusions, num_fusion_axis;
 
 /* Private function prototypes --------------------------------------------- */
-static void create_fusion_list(
-    int min_length,
-    int i,
-    int curr_length,
-    bool check[],
-    int max_length,
-    uint32_t available_bytes);
 static void print_fusion_list(int arr[], int n, int r, uint32_t ingest_memory_size);
 static void print_all_combinations(
     int arr[],
@@ -202,7 +193,7 @@ bool ei_is_fusion(const char *sensor_list)
 bool ei_connect_fusion_list(const char *input_list, ei_fusion_list_format format)
 {
     char *buff;
-    bool is_fusion, added_loc;
+    bool is_fusion;
 
     num_fusions = 0;
     num_fusion_axis = 0;
@@ -587,7 +578,7 @@ static float highest_frequency(float *frequencies, size_t size)
 {
     float highest = 0.f;
 
-    for (int i = 0; i < size; i++) {
+    for (int i = 0; i < (int)size; i++) {
         if (highest < frequencies[i]) {
             highest = frequencies[i];
         }

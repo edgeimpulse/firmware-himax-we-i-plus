@@ -1,4 +1,4 @@
-/* Edge Impulse inferencing library
+/* Edge Impulse firmware SDK
  * Copyright (c) 2020 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -115,7 +115,7 @@ void EiImageNN::run_nn(bool debug, int delay_ms, bool use_max_baudrate)
     ei_printf("\tNo. of classes: %d\n", classifier_label_count);
 
     auto camera = EiCamera::get_camera();
-    if (!camera->init()) {
+    if (!camera->init(image_width, image_height)) {
         ei_printf("ERR: Failed to initialize image sensor\r\n");
         return;
     }
@@ -135,9 +135,7 @@ void EiImageNN::run_nn(bool debug, int delay_ms, bool use_max_baudrate)
 
         if (!camera->ei_camera_capture_rgb888_packed_big_endian(
                 image,
-                image_size,
-                image_width,
-                image_height)) {
+                image_size)) {
             ei_printf("Failed to capture image\r\n");
             break;
         }
