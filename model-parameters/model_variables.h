@@ -36,10 +36,15 @@ ei_dsp_config_spectral_analysis_t ei_dsp_config_3 = {
     "low",
     3.00000f,
     6,
+    "FFT",
     128,
     3,
     0.10000f,
-    "0.1, 0.5, 1.0, 2.0, 5.0"
+    "0.1, 0.5, 1.0, 2.0, 5.0",
+    true, 
+    false,
+    4, 
+    "db4"
 };
 
 #endif // _EI_CLASSIFIER_MODEL_METADATA_H_

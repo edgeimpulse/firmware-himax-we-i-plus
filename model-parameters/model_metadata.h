@@ -62,8 +62,9 @@
 #define EI_CLASSIFIER_HAS_MODEL_VARIABLES        1
 
 
-#define EI_CLASSIFIER_OBJECT_DETECTION           0
-
+#define EI_CLASSIFIER_OBJECT_DETECTION            0
+#define EI_CLASSIFIER_TFLITE_OUTPUT_DATA_TENSOR   0
+#define EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER EI_CLASSIFIER_LAST_LAYER_UNKNOWN
 
 #define EI_CLASSIFIER_TFLITE_ARENA_SIZE          3673
 #define EI_CLASSIFIER_TFLITE_INPUT_DATATYPE      EI_CLASSIFIER_DATATYPE_INT8
@@ -165,12 +166,15 @@ typedef struct {
     const char * filter_type;
     float filter_cutoff;
     int filter_order;
+    const char * analysis_type;
     int fft_length;
     int spectral_peaks_count;
     float spectral_peaks_threshold;
     const char * spectral_power_edges;
     bool do_log;
     bool do_fft_overlap;
+    int wavelet_level;
+    const char * wavelet;
 } ei_dsp_config_spectral_analysis_t;
 
 typedef struct {

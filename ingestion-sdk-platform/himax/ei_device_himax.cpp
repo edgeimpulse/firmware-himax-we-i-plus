@@ -520,19 +520,6 @@ void ei_write_string(char *data, int length)
     }
 }
 
-/**
- * @brief      Write single character to serial output
- *
- * @param[in]  cChar  The character
- */
-void ei_putc(char cChar)
-{
-    // EtaCspUartPutc(EI_USED_UART, cChar);
-    hx_drv_uart_print("%c", cChar);
-}
-
-
-
 
 /* Private functions ------------------------------------------------------- */
 static void timer_callback(void *arg)

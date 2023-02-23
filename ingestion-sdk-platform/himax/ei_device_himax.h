@@ -102,7 +102,6 @@ bool ei_user_invoke_stop(void);
 void ei_serial_setup(void);
 
 void ei_write_string(char *data, int length);
-void ei_putc(char cChar);
 
 /* Reference to object for external usage ---------------------------------- */
 extern EiDeviceHimax EiDevice;

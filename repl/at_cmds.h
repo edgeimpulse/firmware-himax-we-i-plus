@@ -84,13 +84,15 @@ static void at_set_device_id(char *device_id) {
 static void at_get_inference() {
     ei_printf("Sensor:           %d\r\n", EI_CLASSIFIER_SENSOR);
 
-#if EI_CLASSIFIER_OBJECT_DETECTION_CONSTRAINED == 1
+#if EI_CLASSIFIER_OBJECT_DETECTION
+    #if EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_FOMO
         const char *model_type = "constrained_object_detection";
-#elif EI_CLASSIFIER_OBJECT_DETECTION
+    #else EI_CLASSIFIER_OBJECT_DETECTION
         const char *model_type = "object_detection";
+    #endif // EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER
 #else
-        const char *model_type = "classification";
-#endif
+    const char *model_type = "classification";
+#endif // EI_CLASSIFIER_OBJECT_DETECTION
     ei_printf("Model type:       %s\r\n", model_type);
 }
 

@@ -19,7 +19,8 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
                  "edge-impulse-sdk/CMSIS/DSP/Source/TransformFunctions/*fft*.c"
                  "edge-impulse-sdk/CMSIS/DSP/Source/CommonTables/*.c"
                  "edge-impulse-sdk/CMSIS/DSP/Source/TransformFunctions/*bit*.c"
-                 "edge-impulse-sdk/CMSIS/DSP/Source/StatisticsFunctions/arm_rms_f32.c")
+                 "edge-impulse-sdk/CMSIS/DSP/Source/StatisticsFunctions/arm_rms_f32.c"
+                 "edge-impulse-sdk/CMSIS/DSP/Source/StatisticsFunctions/arm_var_f32.c")
 
 file(GLOB FW_SDK "firmware-sdk/jpeg/*.cpp"
                   "firmware-sdk/at_base64_lib.cpp")

@@ -136,7 +136,7 @@ static bool ei_camera_take_snapshot_encode_and_output_no_init(size_t width, size
     base64_encode(
         reinterpret_cast<char *>(image),
         final_height * final_width * RGB888_B_SIZE,
-        ei_putc);
+        ei_putchar);
 
     return true;
 }

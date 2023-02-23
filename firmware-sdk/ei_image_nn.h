@@ -172,7 +172,7 @@ void EiImageNN::run_nn(bool debug, int delay_ms, bool use_max_baudrate)
             }
 
             ei_printf("Framebuffer: ");
-            base64_encode((char*)jpeg_buffer, out_size, ei_putc);
+            base64_encode((char*)jpeg_buffer, out_size, ei_putchar);
             ei_printf("\r\n");
 
             if (jpeg_buffer) {
