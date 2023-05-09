@@ -42,11 +42,13 @@
 #include <onnxruntime/core/providers/tidl/tidl_provider_factory.h>
 #include <onnxruntime/core/providers/cpu/cpu_provider_factory.h>
 
-//TODO: incldue onnx rt in the third party folder/ header file
 #include <cmath>
 #include "edge-impulse-sdk/classifier/ei_aligned_malloc.h"
 #include "edge-impulse-sdk/classifier/ei_fill_result_struct.h"
 #include "edge-impulse-sdk/classifier/ei_model_types.h"
+
+#include "onnx-model/tidl-model.h"
+#include "utils/model_header_utils.h"
 
 #define TI_PREPROC_DEFAULT_WIDTH 320
 #define TI_PREPROC_DEFAULT_HEIGHT 240
@@ -195,9 +197,11 @@ static EI_IMPULSE_ERROR inference_onnx_setup(
        return EI_IMPULSE_OK;
     }
 
-    std::string artefacts_path = "onnx-model/";
-    std::string model_path = "onnx-model/model.onnx";
-    /** Number of channels. */
+    std::string proj_artifacts_path = "/tmp/" + std::string(impulse->project_name) + "-" + std::to_string(impulse->project_id) + "-" + std::to_string(impulse->deploy_version);
+
+    create_project_if_not_exists(proj_artifacts_path, model_h_files, model_h_files_len);
+
+    std::string proj_model_path = proj_artifacts_path + "/model.onnx";
 
     ei_printf("test onnx tidl: %s\n", __FUNCTION__);
     #pragma message ( "test onnx tidl: run_nn_inference")
@@ -212,8 +216,8 @@ static EI_IMPULSE_ERROR inference_onnx_setup(
     ei_printf("LOG_INFO: model accelerated \n");
     c_api_tidl_options *options = (c_api_tidl_options *)malloc(sizeof(c_api_tidl_options));
     OrtStatus *def_status = OrtSessionsOptionsSetDefault_Tidl(options);
-    ei_printf("LOG_INFO: artifacts: %s \n", artefacts_path.c_str());
-    strcpy(options->artifacts_folder, artefacts_path.c_str());
+    ei_printf("LOG_INFO: artifacts: %s \n", proj_artifacts_path.c_str());
+    strcpy(options->artifacts_folder, proj_artifacts_path.c_str());
     if(NULL == options){
         ei_printf("LOG_ERROR: faild to allocate c_api_tidl_options \n");
         return EI_IMPULSE_ONNX_ERROR;
@@ -224,9 +228,9 @@ static EI_IMPULSE_ERROR inference_onnx_setup(
     Ort::AllocatorWithDefaultOptions allocator;
 
     /* ORT Session */
-    Ort::Session* session = new Ort::Session(env, model_path.c_str(), session_options);
+    Ort::Session* session = new Ort::Session(env, proj_model_path.c_str(), session_options);
     *session_ptr = session;
-    ei_printf("LOG_INFO: Loaded model %s\n", model_path.c_str());
+    ei_printf("LOG_INFO: Loaded model %s\n", proj_model_path.c_str());
 
     /* Input information */
     size_t num_input_nodes = session->GetInputCount();
@@ -472,6 +476,7 @@ EI_IMPULSE_ERROR run_nn_inference(
     const ei_impulse_t *impulse,
     ei::matrix_t *afmatrix,
     ei_impulse_result_t *result,
+    void *config_ptr,
     bool debug = false)
 {
     static std::vector<Ort::Value> input_tensors;
@@ -486,7 +491,8 @@ EI_IMPULSE_ERROR run_nn_inference(
 
     EI_IMPULSE_ERROR init_res = inference_onnx_setup(impulse,
         &ctx_start_us,
-        &input_tensors, &output_tensors,
+        &input_tensors,
+        &output_tensors,
         &session,
         &run_options,
         &binding);

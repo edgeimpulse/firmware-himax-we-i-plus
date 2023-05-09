@@ -19,14 +19,16 @@
 #if EI_PORTING_ZEPHYR == 1
 
 #include <version.h>
-#if (KERNEL_VERSION_MAJOR > 3) || ((KERNEL_VERSION_MAJOR == 3) && (KERNEL_VERSION_MINOR > 0))
+// Zpehyr 3.1.x and newer uses different include scheme
+#if (KERNEL_VERSION_MAJOR > 3) || ((KERNEL_VERSION_MAJOR == 3) && (KERNEL_VERSION_MINOR >= 1))
 #include <zephyr/kernel.h>
+#include <zephyr/drivers/uart.h>
 #else
 #include <zephyr.h>
+#include <drivers/uart.h>
 #endif
 #include <stdio.h>
 #include <stdlib.h>
-#include <drivers/uart.h>
 
 extern const struct device *uart;
 

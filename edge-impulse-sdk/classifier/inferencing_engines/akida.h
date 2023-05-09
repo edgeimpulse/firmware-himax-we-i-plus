@@ -45,10 +45,6 @@
 #endif
 
 #include "model-parameters/model_metadata.h"
-#if EI_CLASSIFIER_HAS_MODEL_VARIABLES == 1
-#include "model-parameters/model_variables.h"
-#endif
-#include <akida-model/akida_model.h>
 #include "edge-impulse-sdk/porting/ei_classifier_porting.h"
 #include "edge-impulse-sdk/classifier/ei_fill_result_struct.h"
 #include "edge-impulse-sdk/tensorflow/lite/kernels/internal/reference/softmax.h"
@@ -76,7 +72,7 @@ static std::vector<size_t> input_shape;
 static tflite::RuntimeShape softmax_shape;
 static tflite::SoftmaxParams dummy_params;
 
-bool init_akida(bool debug)
+bool init_akida(const uint8_t *model_arr, size_t model_arr_size, bool debug)
 {
     py::module_ sys;
     py::list path;
@@ -110,7 +106,7 @@ bool init_akida(bool debug)
 
     // deploy akida model file into temporary file
     std::ofstream model_file(model_file_path, std::ios::out | std::ios::binary);
-    model_file.write(reinterpret_cast<const char*>(akida_model_fbz), akida_model_fbz_len);
+    model_file.write(reinterpret_cast<const char*>(model_arr), model_arr_size);
     if(model_file.bad()) {
         ei_printf("ERR: failed to unpack model ile into %s\n", model_file_path);
         model_file.close();
@@ -213,14 +209,19 @@ EI_IMPULSE_ERROR run_nn_inference(
     const ei_impulse_t *impulse,
     ei::matrix_t *fmatrix,
     ei_impulse_result_t *result,
+    void *config_ptr,
     bool debug = false)
 {
+    ei_learning_block_config_tflite_graph_t *block_config = ((ei_learning_block_config_tflite_graph_t*)config_ptr);
+    ei_config_tflite_graph_t *graph_config = ((ei_config_tflite_graph_t*)block_config->graph_config);
+    EI_IMPULSE_ERROR fill_res = EI_IMPULSE_OK;
+
     // init Python embedded interpreter (should be called once!)
     static py::scoped_interpreter guard{};
 
     // check if we've initialized the interpreter and device?
     if (akida_initialized == false) {
-        if(init_akida(debug) == false) {
+        if(init_akida(graph_config->model, graph_config->model_size, debug) == false) {
             return EI_IMPULSE_AKIDA_ERROR;
         }
         akida_initialized = true;
@@ -311,12 +312,12 @@ EI_IMPULSE_ERROR run_nn_inference(
     if (impulse->object_detection) {
         switch (impulse->object_detection_last_layer) {
             case EI_CLASSIFIER_LAST_LAYER_FOMO: {
-                fill_result_struct_f32_fomo(
+                fill_res = fill_result_struct_f32_fomo(
                     impulse,
                     result,
                     potentials_v.data(),
-                    impulse->input_width / 8,
-                    impulse->input_height / 8);
+                    impulse->fomo_output_size,
+                    impulse->fomo_output_size);
                 break;
             }
             case EI_CLASSIFIER_LAST_LAYER_SSD: {
@@ -337,10 +338,10 @@ EI_IMPULSE_ERROR run_nn_inference(
         }
     }
     else {
-        fill_result_struct_f32(impulse, result, potentials_v.data(), debug);
+        fill_res = fill_result_struct_f32(impulse, result, potentials_v.data(), debug);
     }
 
-    return EI_IMPULSE_OK;
+    return fill_res;
 }
 
 #endif // EI_CLASSIFIER_INFERENCING_ENGINE == EI_CLASSIFIER_AKIDA

@@ -22,9 +22,7 @@
 #include "edge-impulse-sdk/dsp/spectral/spectral.hpp"
 #include "edge-impulse-sdk/dsp/speechpy/speechpy.hpp"
 #include "edge-impulse-sdk/classifier/ei_signal_with_range.h"
-#ifdef EI_CLASSIFIER_HAS_MODEL_VARIABLES
-#include "model-parameters/model_variables.h"
-#endif
+#include "model-parameters/model_metadata.h"
 
 #if defined(__cplusplus) && EI_C_LINKAGE == 1
 extern "C" {
@@ -79,6 +77,12 @@ __attribute__((unused)) int extract_spectral_analysis_features(
                 output_matrix,
                 config,
                 frequency);
+        } else if (config->implementation_version == 4) {
+            return spectral::feature::extract_spectral_analysis_features_v4(
+                &input_matrix,
+                output_matrix,
+                config,
+                frequency);
         } else {
             return spectral::feature::extract_spectral_analysis_features_v2(
                 &input_matrix,
@@ -111,19 +115,6 @@ __attribute__((unused)) int extract_spectral_analysis_features(
 __attribute__((unused)) int extract_raw_features(signal_t *signal, matrix_t *output_matrix, void *config_ptr, const float frequency) {
     ei_dsp_config_raw_t config = *((ei_dsp_config_raw_t*)config_ptr);
 
-    // input matrix from the raw signal
-    matrix_t input_matrix(signal->total_length / config.axes, config.axes);
-    if (!input_matrix.buffer) {
-        EIDSP_ERR(EIDSP_OUT_OF_MEM);
-    }
-    signal->get_data(0, signal->total_length, input_matrix.buffer);
-
-    // scale the signal
-    int ret = numpy::scale(&input_matrix, config.scale_axes);
-    if (ret != EIDSP_OK) {
-        EIDSP_ERR(ret);
-    }
-
     // Because of rounding errors during re-sampling the output size of the block might be
     // smaller than the input of the block. Make sure we don't write outside of the bounds
     // of the array:
@@ -133,7 +124,13 @@ __attribute__((unused)) int extract_raw_features(signal_t *signal, matrix_t *out
         els_to_copy = output_matrix->rows * output_matrix->cols;
     }
 
-    memcpy(output_matrix->buffer, input_matrix.buffer, els_to_copy * sizeof(float));
+    signal->get_data(0, els_to_copy, output_matrix->buffer);
+
+    // scale the signal
+    int ret = numpy::scale(output_matrix, config.scale_axes);
+    if (ret != EIDSP_OK) {
+        EIDSP_ERR(ret);
+    }
 
     return EIDSP_OK;
 }
@@ -251,7 +248,7 @@ __attribute__((unused)) int extract_mfcc_features(signal_t *signal, matrix_t *ou
         EIDSP_ERR(EIDSP_MATRIX_SIZE_MISMATCH);
     }
 
-    if((config.implementation_version == 0) || (config.implementation_version > 3)) {
+    if((config.implementation_version == 0) || (config.implementation_version > 4)) {
         EIDSP_ERR(EIDSP_BLOCK_VERSION_INCORRECT);
     }
 
@@ -283,7 +280,7 @@ __attribute__((unused)) int extract_mfcc_features(signal_t *signal, matrix_t *ou
     output_matrix->rows = out_matrix_size.rows;
     output_matrix->cols = out_matrix_size.cols;
 
-    // and run the MFCC extraction (using 32 rather than 40 filters here to optimize speed on embedded)
+    // and run the MFCC extraction
     int ret = speechpy::feature::mfcc(output_matrix, &preemphasized_audio_signal,
         frequency, config.frame_length, config.frame_stride, config.num_cepstral, config.num_filters, config.fft_length,
         config.low_frequency, config.high_frequency, true, config.implementation_version);
@@ -360,7 +357,7 @@ __attribute__((unused)) int extract_mfcc_per_slice_features(signal_t *signal, ma
         EIDSP_ERR(EIDSP_MATRIX_SIZE_MISMATCH);
     }
 
-    if((config.implementation_version == 0) || (config.implementation_version > 3)) {
+    if((config.implementation_version == 0) || (config.implementation_version > 4)) {
         EIDSP_ERR(EIDSP_BLOCK_VERSION_INCORRECT);
     }
 
@@ -544,12 +541,6 @@ __attribute__((unused)) int extract_spectrogram_features(signal_t *signal, matri
 
     output_matrix->rows = out_matrix_size.rows;
     output_matrix->cols = out_matrix_size.cols;
-
-    // and run the MFE extraction
-    EI_DSP_MATRIX(energy_matrix, output_matrix->rows, 1);
-    if (!energy_matrix.buffer) {
-        EIDSP_ERR(EIDSP_OUT_OF_MEM);
-    }
 
     int ret = speechpy::feature::spectrogram(output_matrix, signal,
         sampling_frequency, config.frame_length, config.frame_stride, config.fft_length, config.implementation_version);
@@ -841,18 +832,21 @@ __attribute__((unused)) int extract_mfe_features(signal_t *signal, matrix_t *out
     output_matrix->rows = out_matrix_size.rows;
     output_matrix->cols = out_matrix_size.cols;
 
-    // and run the MFE extraction
-    EI_DSP_MATRIX(energy_matrix, output_matrix->rows, 1);
-    if (!energy_matrix.buffer) {
-        if (preemphasis) {
-            delete preemphasis;
-        }
-        EIDSP_ERR(EIDSP_OUT_OF_MEM);
+    int ret;
+    // This probably seems incorrect, but the mfe func can actually handle all versions
+    // There's a subtle issue with cmvn and v2, not worth tracking down
+    // So for v2 and v1, we'll just use the old code
+    // (the new mfe does away with the intermediate filterbank matrix)
+    if (config.implementation_version > 2) {
+        ret = speechpy::feature::mfe(output_matrix, nullptr, &preemphasized_audio_signal,
+            frequency, config.frame_length, config.frame_stride, config.num_filters, config.fft_length,
+            config.low_frequency, config.high_frequency, config.implementation_version);
+    } else {
+        ret = speechpy::feature::mfe_v3(output_matrix, nullptr, &preemphasized_audio_signal,
+            frequency, config.frame_length, config.frame_stride, config.num_filters, config.fft_length,
+            config.low_frequency, config.high_frequency, config.implementation_version);
     }
 
-    int ret = speechpy::feature::mfe(output_matrix, &energy_matrix, &preemphasized_audio_signal,
-        frequency, config.frame_length, config.frame_stride, config.num_filters, config.fft_length,
-        config.low_frequency, config.high_frequency, config.implementation_version);
     if (preemphasis) {
         delete preemphasis;
     }
@@ -909,16 +903,20 @@ static int extract_mfe_run_slice(signal_t *signal, matrix_t *output_matrix, ei_d
 
     matrix_t output_matrix_slice(out_matrix_size.rows, out_matrix_size.cols, output_matrix->buffer + output_matrix_offset);
 
-    // energy matrix
-    EI_DSP_MATRIX(energy_matrix, out_matrix_size.rows, 1);
-    if (!energy_matrix.buffer) {
-        EIDSP_ERR(EIDSP_OUT_OF_MEM);
-    }
-
     // and run the MFE extraction
-    x = speechpy::feature::mfe(&output_matrix_slice, &energy_matrix, signal,
-        frequency, config->frame_length, config->frame_stride, config->num_filters, config->fft_length,
-        config->low_frequency, config->high_frequency, config->implementation_version);
+    // This probably seems incorrect, but the mfe func can actually handle all versions
+    // There's a subtle issue with cmvn and v2, not worth tracking down
+    // So for v2 and v1, we'll just use the old code
+    // (the new mfe does away with the intermediate filterbank matrix)
+    if (config->implementation_version > 2) {
+         x = speechpy::feature::mfe(&output_matrix_slice, nullptr, signal,
+            frequency, config->frame_length, config->frame_stride, config->num_filters, config->fft_length,
+            config->low_frequency, config->high_frequency, config->implementation_version);
+    } else {
+        x = speechpy::feature::mfe_v3(&output_matrix_slice, nullptr, signal,
+            frequency, config->frame_length, config->frame_stride, config->num_filters, config->fft_length,
+            config->low_frequency, config->high_frequency, config->implementation_version);
+    }
     if (x != EIDSP_OK) {
         ei_printf("ERR: MFE failed (%d)\n", x);
         EIDSP_ERR(x);
@@ -1263,7 +1261,8 @@ __attribute__((unused)) int extract_drpai_features_quantized(signal_t *signal, m
 #endif //(EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED == 1) && (EI_CLASSIFIER_INFERENCING_ENGINE == EI_CLASSIFIER_DRPAI)
 
 #if (EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED == 1) && (EI_CLASSIFIER_INFERENCING_ENGINE != EI_CLASSIFIER_DRPAI)
-__attribute__((unused)) int extract_image_features_quantized(const ei_impulse_t *impulse, signal_t *signal, matrix_i8_t *output_matrix, void *config_ptr, const float frequency) {
+
+__attribute__((unused)) int extract_image_features_quantized(signal_t *signal, matrix_i8_t *output_matrix, void *config_ptr, float scale, float zero_point, const float frequency) {
     ei_dsp_config_image_t config = *((ei_dsp_config_image_t*)config_ptr);
 
     int16_t channel_count = strcmp(config.channels, "Grayscale") == 0 ? 1 : 3;
@@ -1300,14 +1299,14 @@ __attribute__((unused)) int extract_image_features_quantized(const ei_impulse_t 
 
             if (channel_count == 3) {
                 // fast code path
-                if (impulse->tflite_input_scale == 0.003921568859368563f && impulse->tflite_input_zeropoint == -128) {
+                if (scale == 0.003921568859368563f && zero_point == -128) {
                     int32_t r = static_cast<int32_t>(pixel >> 16 & 0xff);
                     int32_t g = static_cast<int32_t>(pixel >> 8 & 0xff);
                     int32_t b = static_cast<int32_t>(pixel & 0xff);
 
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(r + impulse->tflite_input_zeropoint);
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(g + impulse->tflite_input_zeropoint);
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(b + impulse->tflite_input_zeropoint);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(r + zero_point);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(g + zero_point);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(b + zero_point);
                 }
                 // slow code path
                 else {
@@ -1315,14 +1314,14 @@ __attribute__((unused)) int extract_image_features_quantized(const ei_impulse_t 
                     float g = static_cast<float>(pixel >> 8 & 0xff) / 255.0f;
                     float b = static_cast<float>(pixel & 0xff) / 255.0f;
 
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(r / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(g / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(b / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(r / scale) + zero_point);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(g / scale) + zero_point);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(b / scale) + zero_point);
                 }
             }
             else {
                 // fast code path
-                if (impulse->tflite_input_scale == 0.003921568859368563f && impulse->tflite_input_zeropoint == -128) {
+                if (scale == 0.003921568859368563f && zero_point == -128) {
                     int32_t r = static_cast<int32_t>(pixel >> 16 & 0xff);
                     int32_t g = static_cast<int32_t>(pixel >> 8 & 0xff);
                     int32_t b = static_cast<int32_t>(pixel & 0xff);
@@ -1331,7 +1330,7 @@ __attribute__((unused)) int extract_image_features_quantized(const ei_impulse_t 
                     // see: https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.convert
                     int32_t gray = (iRedToGray * r) + (iGreenToGray * g) + (iBlueToGray * b);
                     gray >>= 16; // scale down to int8_t
-                    gray += impulse->tflite_input_zeropoint;
+                    gray += zero_point;
                     if (gray < - 128) gray = -128;
                     else if (gray > 127) gray = 127;
                     output_matrix->buffer[output_ix++] = static_cast<int8_t>(gray);
@@ -1345,14 +1344,14 @@ __attribute__((unused)) int extract_image_features_quantized(const ei_impulse_t 
                     // ITU-R 601-2 luma transform
                     // see: https://pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.convert
                     float v = (0.299f * r) + (0.587f * g) + (0.114f * b);
-                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(v / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
+                    output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(v / scale) + zero_point);
                 }
             }
         }
 
         bytes_left -= elements_to_read;
-    }
 
+    }
     return EIDSP_OK;
 }
 #endif // (EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED == 1) && (EI_CLASSIFIER_INFERENCING_ENGINE != EI_CLASSIFIER_DRPAI)

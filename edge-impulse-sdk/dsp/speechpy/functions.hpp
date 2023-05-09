@@ -55,12 +55,12 @@ public:
 
 
     /**
-     * Triangle, I'm not really sure what this does
+     * Triangle, linear scale from left up to middle, then down to right
      * @param x Linspace output, will be overwritten!
      * @param x_size Size of the linspace output
-     * @param left
-     * @param middle
-     * @param right
+     * @param left Starting index (assigned 0)
+     * @param middle Index where 1.0 will be placed
+     * @param right Ending index (assigned 0)
      */
     static int triangle(float *x, size_t x_size, int left, int middle, int right) {
         EI_DSP_MATRIX(out, 1, x_size);

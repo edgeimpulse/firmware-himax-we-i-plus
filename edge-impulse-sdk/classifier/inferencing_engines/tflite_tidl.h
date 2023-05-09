@@ -21,16 +21,13 @@
 #if (EI_CLASSIFIER_INFERENCING_ENGINE == EI_CLASSIFIER_TFLITE_TIDL)
 
 #include "model-parameters/model_metadata.h"
-#if EI_CLASSIFIER_HAS_MODEL_VARIABLES == 1
-#include "model-parameters/model_variables.h"
-#endif
 
 #include <thread>
-#include "tensorflow/lite/c/common.h"
-#include "tensorflow/lite/interpreter.h"
-#include "tensorflow/lite/kernels/register.h"
-#include "tensorflow/lite/model.h"
-#include "tensorflow/lite/optional_debug_tools.h"
+#include "tensorflow-lite/tensorflow/lite/c/common.h"
+#include "tensorflow-lite/tensorflow/lite/interpreter.h"
+#include "tensorflow-lite/tensorflow/lite/kernels/register.h"
+#include "tensorflow-lite/tensorflow/lite/model.h"
+#include "tensorflow-lite/tensorflow/lite/optional_debug_tools.h"
 #include "edge-impulse-sdk/classifier/ei_fill_result_struct.h"
 #include "edge-impulse-sdk/classifier/ei_model_types.h"
 
@@ -47,15 +44,20 @@
 #define EI_CLASSIFIER_TFLITE_OUTPUT_DATA_TENSOR 0
 #endif // not defined EI_CLASSIFIER_TFLITE_OUTPUT_DATA_TENSOR
 
+#include "tflite-model/tidl-model.h"
+#include "utils/model_header_utils.h"
+
 void *in_ptrs[16] = {NULL};
 void *out_ptrs[16] = {NULL};
 
-extern "C" EI_IMPULSE_ERROR run_nn_inference(
+EI_IMPULSE_ERROR run_nn_inference(
     const ei_impulse_t *impulse,
     ei::matrix_t *fmatrix,
     ei_impulse_result_t *result,
+    void *config_ptr,
     bool debug = false)
 {
+    ei_learning_block_config_tflite_graph_t *config = (ei_learning_block_config_tflite_graph_t*)config_ptr;
 
     static std::unique_ptr<tflite::FlatBufferModel> model = nullptr;
     static std::unique_ptr<tflite::Interpreter> interpreter = nullptr;
@@ -63,7 +65,14 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
     static std::vector<int> outputs;
 
     if (!model) {
-        model = tflite::FlatBufferModel::BuildFromFile("tflite-model/trained.tflite");
+
+        std::string proj_artifacts_path = "/tmp/" + std::string(impulse->project_name) + "-" + std::to_string(impulse->project_id) + "-" + std::to_string(impulse->deploy_version);
+
+        create_project_if_not_exists(proj_artifacts_path, model_h_files, model_h_files_len);
+
+        std::string proj_model_path = proj_artifacts_path + "/trained.tflite";
+
+        model = tflite::FlatBufferModel::BuildFromFile(proj_model_path.c_str());
         if (!model) {
             ei_printf("Failed to build TFLite model from buffer\n");
             return EI_IMPULSE_TFLITE_ERROR;
@@ -83,7 +92,7 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
         typedef TfLiteDelegate *(*tflite_plugin_create_delegate)(char **, char **, size_t, void (*report_error)(const char *));
         tflite_plugin_create_delegate tflite_plugin_dlg_create;
         char *keys[] = {(char *)"artifacts_folder", (char *)"num_tidl_subgraphs", (char *)"debug_level"};
-        char *values[] = {(char *)"tflite-model", (char *)"16", (char *)"0"};
+        char *values[] = {(char *)proj_artifacts_path.c_str(), (char *)"16", (char *)"0"};
         void *lib = dlopen("libtidl_tfl_delegate.so", RTLD_NOW);
         assert(lib);
         tflite_plugin_dlg_create = (tflite_plugin_create_delegate)dlsym(lib, "tflite_plugin_create_delegate");
@@ -119,7 +128,7 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
         in_ptrs[i] = TIDLRT_allocSharedMem(tflite::kDefaultTensorAlignment, tensor->bytes);
         if (in_ptrs[i] == NULL)
         {
-        ei_printf("Could not allocate Memory for input: %s\n", tensor->name);
+            ei_printf("Could not allocate Memory for input: %s\n", tensor->name);
         }
         interpreter->SetCustomAllocationForTensor(inputs[i], {in_ptrs[i], tensor->bytes});
     }
@@ -129,7 +138,7 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
         out_ptrs[i] = TIDLRT_allocSharedMem(tflite::kDefaultTensorAlignment, tensor->bytes);
         if (out_ptrs[i] == NULL)
         {
-        ei_printf("Could not allocate Memory for ouput: %s\n", tensor->name);
+            ei_printf("Could not allocate Memory for ouput: %s\n", tensor->name);
         }
         interpreter->SetCustomAllocationForTensor(outputs[i], {out_ptrs[i], tensor->bytes});
     }
@@ -149,14 +158,14 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
     if (impulse->object_detection) {
 #if EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED == 1
         float pixel = (float)fmatrix->buffer[ix];
-        input[ix] = static_cast<uint8_t>((pixel / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
+        input[ix] = static_cast<uint8_t>((pixel / input->tflite_input_scale) + input->tflite_input_zeropoint);
 #else
         input[ix] = fmatrix->buffer[ix];
 #endif
     }
     else {
 #if EI_CLASSIFIER_TFLITE_INPUT_QUANTIZED == 1
-        input[ix] = static_cast<int8_t>(round(fmatrix->buffer[ix] / impulse->tflite_input_scale) + impulse->tflite_input_zeropoint);
+        input[ix] = static_cast<int8_t>(round(fmatrix->buffer[ix] / input->tflite_input_scale) + input->tflite_input_zeropoint);
 #else
         input[ix] = fmatrix->buffer[ix];
 #endif
@@ -173,10 +182,40 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
     result->timing.classification = (int)(result->timing.classification_us / 1000);
 
 #if EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED == 1
-    int8_t* out_data = interpreter->typed_output_tensor<int8_t>(impulse->tflite_output_data_tensor);
+    int8_t* out_data = interpreter->typed_output_tensor<int8_t>(config->output_data_tensor);
 #else
-    float* out_data = interpreter->typed_output_tensor<float>(impulse->tflite_output_data_tensor);
+    float* out_data = interpreter->typed_output_tensor<float>(config->output_data_tensor);
 #endif
+
+    if (debug) {
+        ei_printf("LOG_INFO tensors size: %ld \n", interpreter->tensors_size());
+        ei_printf("LOG_INFO nodes size: %ld\n", interpreter->nodes_size());
+        ei_printf("LOG_INFO number of inputs: %ld\n", inputs.size());
+        ei_printf("LOG_INFO number of outputs: %ld\n", outputs.size());
+        ei_printf("LOG_INFO input(0) name: %s\n", interpreter->GetInputName(0));
+
+        int t_size = interpreter->tensors_size();
+        for (int i = 0; i < t_size; i++)
+        {
+            if (interpreter->tensor(i)->name) {
+                ei_printf("LOG_INFO %d: %s,%ld,%d,%f,%d,size(", i, interpreter->tensor(i)->name,
+                            interpreter->tensor(i)->bytes,
+                            interpreter->tensor(i)->type,
+                            interpreter->tensor(i)->params.scale,
+                            interpreter->tensor(i)->params.zero_point);
+
+                for (int k=0; k < interpreter->tensor(i)->dims->size; k++) {
+                    if (k == interpreter->tensor(i)->dims->size - 1) {
+                        ei_printf("%d", interpreter->tensor(i)->dims->data[k]);
+                    } else {
+                        ei_printf("%d,", interpreter->tensor(i)->dims->data[k]);
+                    }
+                }
+                ei_printf(")\n");
+            }
+
+        }
+    }
 
     if (!out_data) {
         return EI_IMPULSE_OUTPUT_TENSOR_WAS_NULL;
@@ -192,7 +231,7 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
         switch (impulse->object_detection_last_layer) {
             case EI_CLASSIFIER_LAST_LAYER_FOMO: {
                 #if EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED == 1
-                    fill_res = fill_result_struct_i8_fomo(impulse, result, out_data, impulse->tflite_output_zeropoint, impulse->tflite_output_scale,
+                    fill_res = fill_result_struct_i8_fomo(impulse, result, out_data, out_data->tflite_output_zeropoint, out_data->tflite_output_scale,
                         impulse->fomo_output_size, impulse->fomo_output_size);
                 #else
                     fill_res = fill_result_struct_f32_fomo(impulse, result, out_data,
@@ -201,8 +240,8 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
                 break;
             }
             case EI_CLASSIFIER_LAST_LAYER_SSD: {
-                float *scores_tensor = interpreter->typed_output_tensor<float>(impulse->tflite_output_score_tensor);
-                float *label_tensor = interpreter->typed_output_tensor<float>(impulse->tflite_output_labels_tensor);
+                float *scores_tensor = interpreter->typed_output_tensor<float>(config->output_score_tensor);
+                float *label_tensor = interpreter->typed_output_tensor<float>(config->output_labels_tensor);
                 if (!scores_tensor) {
                     return EI_IMPULSE_SCORE_TENSOR_WAS_NULL;
                 }
@@ -274,7 +313,7 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
     }
     else {
 #if EI_CLASSIFIER_TFLITE_OUTPUT_QUANTIZED == 1
-        fill_res = fill_result_struct_i8(impulse, result, out_data, impulse->tflite_output_zeropoint, impulse->tflite_output_scale, debug);
+        fill_res = fill_result_struct_i8(impulse, result, out_data, out_data->tflite_output_zeropoint, out_data->tflite_output_scale, debug);
 #else
         fill_res = fill_result_struct_f32(impulse, result, out_data, debug);
 #endif
@@ -284,14 +323,14 @@ extern "C" EI_IMPULSE_ERROR run_nn_inference(
     {
         if (in_ptrs[i])
         {
-        TIDLRT_freeSharedMem(in_ptrs[i]);
+            TIDLRT_freeSharedMem(in_ptrs[i]);
         }
     }
     for (uint32_t i = 0; i < outputs.size(); i++)
     {
         if (out_ptrs[i])
         {
-        TIDLRT_freeSharedMem(out_ptrs[i]);
+            TIDLRT_freeSharedMem(out_ptrs[i]);
         }
     }
 

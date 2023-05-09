@@ -419,7 +419,7 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolov5(co
 
         if (score >= impulse->object_detection_threshold && score <= 1.0f) {
             ei_impulse_result_bounding_box_t r;
-            r.label = ei_classifier_inferencing_categories[label];
+            r.label = impulse->categories[label];
 
             if (version != 5) {
                 x *= static_cast<float>(impulse->input_width);
@@ -702,7 +702,7 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolox(con
 
             if (confidence >= impulse->object_detection_threshold && confidence <= 1.0f) {
                 ei_impulse_result_bounding_box_t r;
-                r.label = ei_classifier_inferencing_categories[col];
+                r.label = impulse->categories[col];
                 r.value = confidence;
 
                 // now find the box...
@@ -773,17 +773,15 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolox_det
     results.clear();
 
     // expected format [xmin ymin xmax ymax score label]
-    const int output_rows = output_features_count / (5 + impulse->label_count);
-    matrix_t outputs(output_rows, 5 + impulse->label_count, data);
+    const int output_rows = output_features_count / 6;
+    matrix_t outputs(output_rows, 6, data);
 
     // iterate through scores to see if we have anything with confidence
     for (int row = 0; row < (int)outputs.rows; row++) {
         float confidence = outputs.buffer[(row * outputs.cols) + 4];
         int class_idx = (int)outputs.buffer[(row * outputs.cols) + 5];
 
-        //if (confidence >= impulse->object_detection_threshold && confidence <= 1.0f) {
-        //TODO: ignore confidence threshold (but still filtering '-1' returned) until we fix this
-        if (confidence >= 0.0f && confidence <= 1.0f) {
+        if (confidence >= impulse->object_detection_threshold && confidence <= 1.0f) {
             ei_impulse_result_bounding_box_t r;
             r.label = ei_classifier_inferencing_categories[class_idx];
             r.value = confidence;
