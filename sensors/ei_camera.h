@@ -1,5 +1,5 @@
 /* Edge Impulse ingestion SDK
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,11 @@
 #define EI_CAMERA
 
 /* Include ----------------------------------------------------------------- */
+#include "firmware-sdk/ei_camera_interface.h"
 #include <stdint.h>
 #include <stdlib.h>
 #include <math.h>
 #include "hx_drv_tflm.h"
-#include "ei_classifier_porting.h"
 
 /* Constants --------------------------------------------------------------- */
 #define EI_CAMERA_RAW_FRAME_BUFFER_COLS           640
@@ -37,24 +37,28 @@
 /* Externally linked variables --------------------------------------------- */
 extern hx_drv_sensor_image_config_t g_pimg_config;
 
-/* Public function prototypes ---------------------------------------------- */
-extern bool ei_camera_init(void);
-extern void ei_camera_deinit(void);
-extern bool ei_camera_capture(uint32_t img_width, uint32_t img_height, int8_t *buf);
-extern bool ei_camera_take_snapshot_encode_and_output(size_t width, size_t height, bool use_max_baudrate);
-extern bool ei_camera_start_snapshot_stream_encode_and_output(size_t width, size_t height, bool use_max_baudrate);
+class EiCameraHimax : public EiCamera {
+private:
 
-/**
- * @brief      Retrieves (cut-out) float RGB image data from the frame buffer
- *
- * @param[in]  offset        offset within cut-out image
- * @param[in]  length        number of bytes to read
- * @param[int] out_ptr       pointer to output buffre
- *
- * @retval     0 if successful
- *
- * @note       This function is called by the classifier to get float RGB image data
- */
-int ei_camera_cutout_get_data(size_t offset, size_t length, float *out_ptr);
+    static ei_device_snapshot_resolutions_t resolutions[];
 
-#endif // EI_CAMERA
+    uint32_t width;
+    uint32_t height;
+    uint32_t output_width;
+    uint32_t output_height;
+
+    bool camera_present;
+
+public:
+    EiCameraHimax();
+    bool init(uint16_t width, uint16_t height);
+    bool deinit();
+    bool ei_camera_capture_grayscale_packed_big_endian(uint8_t *image, uint32_t image_size);
+    bool set_resolution(const ei_device_snapshot_resolutions_t res);
+    ei_device_snapshot_resolutions_t get_min_resolution(void);
+    bool is_camera_present(void);
+    void get_resolutions(ei_device_snapshot_resolutions_t **res, uint8_t *res_num);
+    bool get_fb_ptr(uint8_t**);
+};
+
+#endif

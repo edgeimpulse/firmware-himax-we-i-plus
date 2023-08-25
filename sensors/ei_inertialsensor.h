@@ -1,5 +1,5 @@
 /* Edge Impulse ingestion SDK
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -20,22 +20,31 @@
  * SOFTWARE.
  */
 
-#ifndef EI_INERTIAL_SENSOR
-#define EI_INERTIAL_SENSOR
+#ifndef EI_INERTIAL_SENSOR_H
+#define EI_INERTIAL_SENSOR_H
 
 /* Include ----------------------------------------------------------------- */
-#include "ei_sampler.h"
+#include "firmware-sdk/ei_fusion.h"
 
 /** Number of axis used and sample data format */
-typedef float sample_format_t;
-#define N_AXIS_SAMPLED			3
-#define SIZEOF_N_AXIS_SAMPLED	(sizeof(sample_format_t) * N_AXIS_SAMPLED)
-
+#define INERTIAL_AXIS_SAMPLED       3
 
 /* Function prototypes ----------------------------------------------------- */
 bool ei_inertial_init(void);
-void ei_inertial_read_data(void);
-bool ei_inertial_sample_start(sampler_callback callback, float sample_interval_ms);
-bool ei_inertial_setup_data_sampling(void);
+float *ei_fusion_inertial_read_data(int n_samples);
 
-#endif
+static const ei_device_fusion_sensor_t inertial_sensor = {
+    // name of sensor module to be displayed in fusion list
+    "Inertial",
+    // number of sensor module axis
+    INERTIAL_AXIS_SAMPLED,
+    // sampling frequencies
+    { 20.0f, 62.5f, 100.0f },
+    // axis name and units payload (must be same order as read in)
+    { {"accX", "m/s2"}, {"accY", "m/s2"}, {"accZ", "m/s2"} },
+    // reference to read data function
+    &ei_fusion_inertial_read_data,
+    0
+};
+
+#endif /* EI_INERTIAL_SENSOR_H */

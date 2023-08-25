@@ -1,4 +1,4 @@
-/* Edge Impulse firmware SDK
+/* Edge Impulse ingestion SDK
  * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,22 +20,15 @@
  * SOFTWARE.
  */
 
-#ifndef EI_DEVICE_INTERFACE_H
-#define EI_DEVICE_INTERFACE_H
+#ifndef EI_RUN_IMPULSE_H
+#define EI_RUN_IMPULSE_H
 
-/* Function prototypes ----------------------------------------------------- */
-//TODO: remove as it is device specific and wil be superseded by AT Server
-void ei_command_line_handle(void);
-//TODO: redeclared in ei_device_lib.h
-bool ei_user_invoke_stop_lib(void);
-//TODO: do we need it in the FW SDK?
-void ei_serial_setup(void);
+/* Include ----------------------------------------------------------------- */
+#include <cstdint>
 
-//TODO: remove as it is device specific
-void ei_write_string(char *data, int length);
+void ei_start_impulse(bool continuous, bool debug, bool use_max_uart_speed = false);
+void ei_run_impulse(void);
+void ei_stop_impulse(void);
+bool is_inference_running(void);
 
-//TODO: move to a one header with all method requied by FW SDK
-char ei_getchar();
-
-
-#endif /* EI_DEVICE_INTERFACE_H */
+#endif /* EI_RUN_IMPULSE_H */

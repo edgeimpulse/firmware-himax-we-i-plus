@@ -1,5 +1,5 @@
 /* Edge Impulse ingestion SDK
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,30 +24,20 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-#include "ei_config_types.h"
 #include "ei_inertialsensor.h"
-#include "ei_device_himax.h"
-#include "sensor_aq.h"
+
+#include "edge-impulse-sdk/porting/ei_logging.h"
 
 #include "hx_drv_tflm.h"
 
 /* Constant defines -------------------------------------------------------- */
 #define CONVERT_4G_TO_MS2    4.903325f
 
-#define ACC_SAMPLE_TIME_MS  (1)
-
-extern ei_config_t *ei_config_get_config();
-extern EI_CONFIG_ERROR ei_config_set_sample_interval(float interval);
-
 /* Private function prototypes --------------------------------------------- */
 static float convert_raw_to_ms2(float axis);
 
 /* Private variables ------------------------------------------------------- */
-static uint32_t samplerate_divider;
-static float imu_data[N_AXIS_SAMPLED];
-
-sampler_callback  cb_sampler;
-
+static float imu_data[INERTIAL_AXIS_SAMPLED];
 
 /**
  * @brief      Setup SPI config and accelerometer convert value
@@ -58,74 +48,24 @@ bool ei_inertial_init(void)
 {
     hx_drv_accelerometer_initial();
 
+    if(ei_add_sensor_to_fusion_list(inertial_sensor) == false) {
+        EI_LOGE("Failed to register Inertial sensor!\n");
+        return false;
+    }
+
     return true;
 }
 
-/**
- * @brief      Get data from sensor, convert and call callback to handle
- */
-void ei_inertial_read_data(void)
+float *ei_fusion_inertial_read_data(int n_samples)
 {
     float x, y, z;
-
-    EiDevice.delay_ms(samplerate_divider - ACC_SAMPLE_TIME_MS);
-    while (hx_drv_accelerometer_available_count() == 0) {
-    };
-
     hx_drv_accelerometer_receive(&x, &y, &z);
 
     imu_data[0] = convert_raw_to_ms2(x);
     imu_data[1] = convert_raw_to_ms2(y);
     imu_data[2] = convert_raw_to_ms2(z);
 
-    cb_sampler((const void *)&imu_data[0], SIZEOF_N_AXIS_SAMPLED);
-}
-
-/**
- * @brief      Setup timing and data handle callback function
- *
- * @param[in]  callsampler         Function to handle the sampled data
- * @param[in]  sample_interval_ms  The sample interval milliseconds
- *
- * @return     true
- */
-bool ei_inertial_sample_start(sampler_callback callsampler, float sample_interval_ms)
-{
-    cb_sampler = callsampler;
-    samplerate_divider = (int)sample_interval_ms;
-    EiDevice.set_state(eiStateSampling);
-
-    return true;
-}
-
-/**
- * @brief      Setup payload header
- *
- * @return     true
- */
-bool ei_inertial_setup_data_sampling(void)
-{
-
-    if (ei_config_get_config()->sample_interval_ms < 0.001f) {
-        ei_config_set_sample_interval(1.f/62.5f);
-    }
-
-    sensor_aq_payload_info payload = {
-        // Unique device ID (optional), set this to e.g. MAC address or device EUI **if** your device has one
-        EiDevice.get_id_pointer(),
-        // Device type (required), use the same device type for similar devices
-        EiDevice.get_type_pointer(),
-        // How often new data is sampled in ms. (100Hz = every 10 ms.)
-        ei_config_get_config()->sample_interval_ms,
-        // The axes which you'll use. The units field needs to comply to SenML units (see https://www.iana.org/assignments/senml/senml.xhtml)
-        { { "accX", "m/s2" }, { "accY", "m/s2" }, { "accZ", "m/s2" },},        
-    };
-    
-    EiDevice.set_state(eiStateErasingFlash);
-    ei_sampler_start_sampling(&payload, SIZEOF_N_AXIS_SAMPLED);
-    EiDevice.set_state(eiStateIdle);
-
-    return true;
+    return imu_data;
 }
 
 /* Static functions -------------------------------------------------------- */

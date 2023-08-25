@@ -22,65 +22,57 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_device_himax.h"
-#include "ei_himax_fs_commands.h"
 #include "ei_inertialsensor.h"
-#include "ei_run_impulse.h"
-#include "ei_camera.h"
 #include "ei_microphone.h"
-#include "at_cmds.h"
+#include "ei_at_handlers.h"
 
 #include "hx_drv_tflm.h"
 
+EiDeviceInfo *EiDevInfo = dynamic_cast<EiDeviceInfo *>(EiDeviceHimax::get_device());
+static ATServer *at;
+
 int main(void)
 {
-    EiDevice.set_default_data_output_baudrate();
+    hx_drv_uart_initial(UART_BR_115200);
     hx_drv_tick_start();
 
-    ei_printf("Hello from Edge Impulse Device SDK.\r\n"
-        "Compiled on %s %s\r\n", __DATE__, __TIME__);
+    /* Initialize Edge Impulse sensors and commands */
+
+    EiDeviceHimax* dev = static_cast<EiDeviceHimax*>(EiDeviceHimax::get_device());
+    dev->set_default_data_output_baudrate();
+
+    ei_printf(
+        "Hello from Edge Impulse Device SDK.\r\n"
+        "Compiled on %s %s\r\n",
+        __DATE__,
+        __TIME__);
 
     /* Setup the inertial sensor */
     if (ei_inertial_init() == false) {
-        ei_printf("Inertial sensor communication error occured\r\n");
+        ei_printf("Inertial sensor initialization failed\r\n");
     }
 
-    /* Setup microphone */
-    ei_microphone_init();
-
-    /* Intialize configuration */
-    static ei_config_ctx_t config_ctx = {0};
-    config_ctx.get_device_id = EiDevice.get_id_function();
-    config_ctx.set_device_id = EiDevice.set_id_function();
-    config_ctx.get_device_type = EiDevice.get_type_function();
-    config_ctx.wifi_connection_status = EiDevice.get_wifi_connection_status_function();
-    config_ctx.wifi_present = EiDevice.get_wifi_present_status_function();
-    config_ctx.load_config = &ei_himax_fs_load_config;
-    config_ctx.save_config = &ei_himax_fs_save_config;
-    config_ctx.list_files = NULL;
-    config_ctx.read_buffer = EiDevice.get_read_sample_buffer_function();
-    config_ctx.take_snapshot = &ei_camera_take_snapshot_encode_and_output;
-    config_ctx.start_snapshot_stream = &ei_camera_start_snapshot_stream_encode_and_output;
-
-    EI_CONFIG_ERROR cr = ei_config_init(&config_ctx);
-
-    if (cr != EI_CONFIG_OK) {
-        ei_printf("Failed to initialize configuration (%d)\n", cr);
-    } else {
-        ei_printf("Loaded configuration\n");
+    /* Setup the microphone */
+    if (ei_microphone_init() == false) {
+        ei_printf("Microphone initialization failed\r\n");
     }
 
-    /* Setup the command line commands */
-    ei_at_register_generic_cmds();
-    ei_at_cmd_register("RUNIMPULSE", "Run the impulse", run_nn_normal);
-    ei_at_cmd_register("RUNIMPULSECONT", "Run the impulse", run_nn_continuous_normal);
-    ei_at_cmd_register("RUNIMPULSEDEBUG=", "Run the impulse with extra (base64) debug output (USEMAXRATE?(y/n))", run_nn_debug);
-    ei_printf("Type AT+HELP to see a list of commands.\r\n> ");
+    at = ei_at_init(dev);
+    ei_printf("Type AT+HELP to see a list of commands.\r\n");
+    at->print_prompt();
 
     // you might think this is not necessary, but without this line the AT+SNAPSHOT commands first baud rate switch
     // is ignored by the Himax HAL
-    EiDevice.set_default_data_output_baudrate();
+    dev->set_default_data_output_baudrate();
 
-    ei_command_line_handle(0);
+    while (1) {
+        uint8_t data;
+        if (hx_drv_uart_getchar(&data) == HX_DRV_LIB_PASS) {
+            at->handle(data);
+        }
+        // handle at least once every ~10.7 sec
+        ei_read_timer_ms();
+    }
 
     return 0;
 }

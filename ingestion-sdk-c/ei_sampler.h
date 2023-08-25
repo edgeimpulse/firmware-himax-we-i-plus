@@ -1,5 +1,5 @@
 /* Edge Impulse ingestion SDK
- * Copyright (c) 2020 EdgeImpulse Inc.
+ * Copyright (c) 2022 EdgeImpulse Inc.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,11 +23,12 @@
 #ifndef _EI_SAMPLER_H
 #define _EI_SAMPLER_H
 
+#include "firmware-sdk/ei_config_types.h"
 
 /** ei sampler callback function, call with sample data */
-typedef bool (*sampler_callback)(const void *sample_buf, uint32_t byteLenght);
+typedef void (*reader_callback)();
 
 /* Function prototypes ----------------------------------------------------- */
-bool ei_sampler_start_sampling(void *v_ptr_payload, uint32_t sample_size);
+bool ei_sampler_start_sampling(void *v_ptr_payload, starter_callback ei_sample_start, uint32_t sample_size);
 
 #endif

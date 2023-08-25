@@ -22,23 +22,14 @@
 
 /* Include ----------------------------------------------------------------- */
 #include "ei_microphone.h"
-#include "ei_himax_fs_commands.h"
 #include "ei_device_himax.h"
 #include "ei_classifier_porting.h"
 
-#include "ei_config_types.h"
+#include "firmware-sdk/ei_config_types.h"
 #include "sensor_aq_mbedtls_hs256.h"
 #include "sensor_aq_none.h"
 
 #include "hx_drv_tflm.h"
-
-/* Audio sampling config */
-#define AUDIO_SAMPLING_FREQUENCY            16000
-#define AUDIO_SAMPLES_PER_MS                (AUDIO_SAMPLING_FREQUENCY / 1000)
-#define AUDIO_DSP_SAMPLE_LENGTH_MS          16
-#define AUDIO_DSP_SAMPLE_RESOLUTION         (sizeof(short))
-#define AUDIO_DSP_SAMPLE_BUFFER_SIZE        (AUDIO_SAMPLES_PER_MS * AUDIO_DSP_SAMPLE_LENGTH_MS * AUDIO_DSP_SAMPLE_RESOLUTION)
-
 
 /** Status and control struct for inferencing struct */
 typedef struct {
@@ -48,9 +39,6 @@ typedef struct {
     uint32_t buf_count;
     uint32_t n_samples;
 } inference_t;
-
-
-extern ei_config_t *ei_config_get_config();
 
 /* Dummy functions for sensor_aq_ctx type */
 static size_t ei_write(const void*, size_t size, size_t count, EI_SENSOR_AQ_STREAM*)
@@ -91,11 +79,14 @@ static sensor_aq_ctx ei_mic_ctx = {
  * @param      buffer   Pointer to source buffer
  * @param[in]  n_bytes  Number of bytes to write
  */
-static void audio_buffer_callback(void *buffer, uint32_t n_bytes)
+static void audio_buffer_callback(void *sampleBuffer, uint32_t n_bytes)
 {
-    ei_himax_fs_write_samples((const void *)buffer, headerOffset + current_sample, n_bytes);
+    EiDeviceInfo* dev = EiDeviceInfo::get_device();
+    EiDeviceMemory* mem = dev->get_memory();
 
-    ei_mic_ctx.signature_ctx->update(ei_mic_ctx.signature_ctx, (uint8_t*)buffer, n_bytes);
+    mem->write_sample_data((const uint8_t *)sampleBuffer, headerOffset + current_sample, n_bytes);
+
+    ei_mic_ctx.signature_ctx->update(ei_mic_ctx.signature_ctx, (uint8_t*)sampleBuffer, n_bytes);
 
     current_sample += n_bytes;
     if(current_sample >= (samples_required << 1)) {
@@ -133,7 +124,6 @@ static void audio_buffer_inference_callback(void *buffer, uint32_t n_bytes)
  */
 static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
 {
-
     hx_drv_mic_data_config_t mic_config;
     int16_t *buffer;
 
@@ -157,19 +147,15 @@ static void get_dsp_data(void (*callback)(void *buffer, uint32_t n_bytes))
 
 static void finish_and_upload(char *filename, uint32_t sample_length_ms) {
 
-    ei_printf("Done sampling, total bytes collected: %u\n", current_sample);
+    EiDeviceInfo* dev = EiDeviceInfo::get_device();
 
-
+    ei_printf("Done sampling, total bytes collected: %u\n", current_sample*2);
     ei_printf("[1/1] Uploading file to Edge Impulse...\n");
-
-    ei_printf("Not uploading file, not connected to WiFi. Used buffer, from=%lu, to=%lu.\n", 0, current_sample + headerOffset);
-
-
-    ei_printf("[1/1] Uploading file to Edge Impulse OK (took %d ms.)\n", 200);//upload_timer.read_ms());
-
+    ei_printf("Not uploading file, not connected to WiFi. Used buffer, from=%d, to=%u.\n", 0, current_sample + headerOffset);
+    ei_printf("[1/1] Uploading file to Edge Impulse OK (took %d ms.)\n", 200);
     ei_printf("OK\n");
 
-    EiDevice.set_state(eiStateIdle);
+    dev->set_state(eiStateIdle);
 }
 
 static int insert_ref(char *buffer, int hdrLength)
@@ -194,12 +180,15 @@ static int insert_ref(char *buffer, int hdrLength)
 
 static bool create_header(void)
 {
-    sensor_aq_init_mbedtls_hs256_context(&ei_mic_signing_ctx, &ei_mic_hs_ctx, ei_config_get_config()->sample_hmac_key);
+    EiDeviceInfo* dev = EiDeviceInfo::get_device();
+    EiDeviceMemory* mem = dev->get_memory();
+
+    sensor_aq_init_mbedtls_hs256_context(&ei_mic_signing_ctx, &ei_mic_hs_ctx, dev->get_sample_hmac_key().c_str());
 
     sensor_aq_payload_info payload = {
-        EiDevice.get_id_pointer(),
-        EiDevice.get_type_pointer(),
-        1000.0f / static_cast<float>(AUDIO_SAMPLING_FREQUENCY),
+        dev->get_id_pointer(),
+        dev->get_type_pointer(),
+        dev->get_sample_interval_ms(),
         { { "audio", "wav" } }
     };
 
@@ -225,7 +214,6 @@ static bool create_header(void)
         return false;
     }
 
-
     int ref_size = insert_ref(((char*)ei_mic_ctx.cbor_buffer.ptr + end_of_header_ix), end_of_header_ix);
 
     // and update the signature
@@ -238,10 +226,10 @@ static bool create_header(void)
     end_of_header_ix += ref_size;
 
     // Write to blockdevice
-    tr = ei_himax_fs_write_samples(ei_mic_ctx.cbor_buffer.ptr, 0, end_of_header_ix);
+    int ret = mem->write_sample_data((uint8_t*)ei_mic_ctx.cbor_buffer.ptr, 0, end_of_header_ix);
 
-    if (tr != 0) {
-        ei_printf("Failed to write to header blockdevice (%d)\n", tr);
+    if (ret != end_of_header_ix) {
+        ei_printf("Failed to write to header blockdevice (%d)\n", ret);
         return false;
     }
 
@@ -256,28 +244,31 @@ static bool create_header(void)
 /**
  * @brief      Set the PDM mic to +34dB
  */
-void ei_microphone_init(void)
+bool ei_microphone_init(void)
 {
-    if (hx_drv_mic_initial() != HX_DRV_LIB_PASS)
-        ei_printf("Mic init error\r\n");
+    if (hx_drv_mic_initial() != HX_DRV_LIB_PASS) {
+        return false;
+    }
+    return true;
 }
 
 bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bool print_start_messages)
 {
-    EiDevice.set_state(eiStateErasingFlash);
+    EiDeviceInfo* dev = EiDeviceInfo::get_device();
+    dev->set_state(eiStateErasingFlash);
 
     if (start_delay_ms < 500) {
         start_delay_ms = 500;
     }
 
     if (print_start_messages) {
-        ei_printf("Starting in %lu ms... (or until all flash was erased)\n",
+        ei_printf("Starting in %u ms... (or until all flash was erased)\n",
                   start_delay_ms);
     }
 
     /* Enable microphone and wait for steady signal */
     hx_drv_mic_on();
-    EiDevice.delay_ms(start_delay_ms);
+    ei_sleep(start_delay_ms);
 
     create_header();
 
@@ -288,18 +279,27 @@ bool ei_microphone_record(uint32_t sample_length_ms, uint32_t start_delay_ms, bo
     return true;
 }
 
-bool ei_microphone_inference_start(uint32_t n_samples)
+bool ei_microphone_inference_start(uint32_t n_samples, float interval_ms)
 {
-    inference.buffers[0] = (int16_t *)malloc(n_samples * sizeof(int16_t));
+
+    // Calculate sample rate from sample interval
+    uint32_t audio_sampling_frequency = (uint32_t)(1000.f / interval_ms);
+
+    if(audio_sampling_frequency != 16000) {
+        ei_printf("ERR: Unsupported sampling rate for mic.");
+        return false;
+    }
+
+    inference.buffers[0] = (int16_t *)ei_malloc(n_samples * sizeof(int16_t));
 
     if(inference.buffers[0] == NULL) {
         return false;
     }
 
-    inference.buffers[1] = (int16_t *)malloc(n_samples * sizeof(int16_t));
+    inference.buffers[1] = (int16_t *)ei_malloc(n_samples * sizeof(int16_t));
 
     if(inference.buffers[1] == NULL) {
-        free(inference.buffers[0]);
+        ei_free(inference.buffers[0]);
         return false;
     }
 
@@ -327,6 +327,11 @@ bool ei_microphone_inference_record(void)
     return true;
 }
 
+bool ei_microphone_inference_is_recording(void)
+{
+    return inference.buf_ready == 0;
+}
+
 /**
  * @brief      Reset buffer counters for non-continuous inferecing
  */
@@ -340,7 +345,7 @@ void ei_microphone_inference_reset_buffers(void)
 /**
  * Get raw audio signal data
  */
-int ei_microphone_audio_signal_get_data(size_t offset, size_t length, float *out_ptr)
+int ei_microphone_inference_get_data(size_t offset, size_t length, float *out_ptr)
 {
     size_t i;
 
@@ -358,8 +363,8 @@ bool ei_microphone_inference_end(void)
     record_ready = false;
     hx_drv_mic_off();
 
-    free(inference.buffers[0]);
-    free(inference.buffers[1]);
+    ei_free(inference.buffers[0]);
+    ei_free(inference.buffers[1]);
     return true;
 }
 
@@ -368,21 +373,17 @@ bool ei_microphone_inference_end(void)
  */
 bool ei_microphone_sample_start(void)
 {
+    EiDeviceInfo* dev = EiDeviceInfo::get_device();
+    EiDeviceMemory* mem = dev->get_memory();
+
     ei_printf("Sampling settings:\n");
-    ei_printf("\tInterval: "); (ei_printf_float((float)ei_config_get_config()->sample_interval_ms));ei_printf(" ms.\n");
-    ei_printf("\tLength: %lu ms.\n", ei_config_get_config()->sample_length_ms);
-    ei_printf("\tName: %s\n", ei_config_get_config()->sample_label);
-    ei_printf("\tHMAC Key: %s\n", ei_config_get_config()->sample_hmac_key);
-    char filename[256];
-    int fn_r = snprintf(filename, 256, "/fs/%s", ei_config_get_config()->sample_label);
-    if (fn_r <= 0) {
-        ei_printf("ERR: Failed to allocate file name\n");
-        return false;
-    }
-    ei_printf("\tFile name: %s\n", filename);
+    ei_printf("\tInterval: %.5f ms.\n", dev->get_sample_interval_ms());
+    ei_printf("\tLength: %u ms.\n", dev->get_sample_length_ms());
+    ei_printf("\tName: %s\n", dev->get_sample_label().c_str());
+    ei_printf("\tHMAC Key: %s\n", dev->get_sample_hmac_key().c_str());
+    ei_printf("\tFile name: %s\n", dev->get_sample_label().c_str());
 
-
-    samples_required = (uint32_t)(((float)ei_config_get_config()->sample_length_ms) / ei_config_get_config()->sample_interval_ms);
+    samples_required = (uint32_t)((dev->get_sample_length_ms()) / dev->get_sample_interval_ms());
 
     /* Round to even number of samples for word align flash write */
     if(samples_required & 1) {
@@ -391,12 +392,12 @@ bool ei_microphone_sample_start(void)
 
     current_sample = 0;
 
-    bool r = ei_microphone_record(ei_config_get_config()->sample_length_ms, (((samples_required <<1)/ ei_himax_fs_get_block_size()) * HIMAX_FS_BLOCK_ERASE_TIME_MS), true);
+    bool r = ei_microphone_record(dev->get_sample_length_ms(), (((samples_required << 1)/ mem->block_size) * mem->block_erase_time), true);
     if (!r) {
         return r;
     }
     record_ready = true;
-    EiDevice.set_state(eiStateSampling);
+    dev->set_state(eiStateSampling);
 
    if(hx_drv_mic_timestamp_get(&hx_timestamp_prev) != HX_DRV_LIB_PASS)
        return false;
@@ -416,16 +417,16 @@ bool ei_microphone_sample_start(void)
     }
 
     // load the first page in flash...
-    uint8_t *page_buffer = (uint8_t*)malloc(ei_himax_fs_get_block_size());
+    uint8_t *page_buffer = (uint8_t*)ei_malloc(mem->block_size);
     if (!page_buffer) {
         ei_printf("Failed to allocate a page buffer to write the hash\n");
         return false;
     }
 
-    int j = ei_himax_fs_read_sample_data(page_buffer, 0, ei_himax_fs_get_block_size());
-    if (j != 0) {
-        ei_printf("Failed to read first page (%d)\n", j);
-        free(page_buffer);
+    int ret = mem->read_sample_data(page_buffer, 0, mem->block_size);
+    if (ret != mem->block_size) {
+        ei_printf("Failed to read first page (read %d, requested %d)\n", ret, mem->block_size);
+        ei_free(page_buffer);
         return false;
     }
 
@@ -448,24 +449,22 @@ bool ei_microphone_sample_start(void)
         page_buffer[ei_mic_ctx.signature_index + (hash_ix * 2) + 1] = second_c;
     }
 
-    j = ei_himax_fs_erase_sampledata(0, ei_himax_fs_get_block_size());
-    if (j != 0) {
-        ei_printf("Failed to erase first page (%d)\n", j);
-        free(page_buffer);
+    ret = mem->erase_sample_data(0, mem->block_size);
+    if (ret != mem->block_size) {
+        ei_printf("Failed to erase first page (read %d, requested %d)\n", ret, mem->block_size);
+        ei_free(page_buffer);
         return false;
     }
 
-    j = ei_himax_fs_write_samples(page_buffer, 0, ei_himax_fs_get_block_size());
+    ret = mem->write_sample_data(page_buffer, 0, mem->block_size);
+    ei_free(page_buffer);
 
-    free(page_buffer);
-
-    if (j != 0) {
-        ei_printf("Failed to write first page with updated hash (%d)\n", j);
+    if (ret != mem->block_size) {
+        ei_printf("Failed to write first page with updated hash (read %d, requested %d)\n", ret, mem->block_size);
         return false;
     }
 
-
-    finish_and_upload(filename, ei_config_get_config()->sample_length_ms);
+    finish_and_upload((char*)dev->get_sample_label().c_str(), dev->get_sample_length_ms());
 
     return true;
 }

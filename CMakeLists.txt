@@ -5,14 +5,12 @@ get_filename_component(ProjectId ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 string(REPLACE " " "_" ProjectId ${ProjectId})
 project(${ProjectId})
 
-
 # add the sources
 file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
                  "ingestion-sdk-platform/himax/*.cpp"
                  "ingestion-sdk-platform/himax/*.cpp"
                  "ingestion-sdk-c/*.cpp"
-                 "repl/*.cpp"
-                 "repl/*.c"
+                 "inference/*.cpp"
                  "sensors/*.cpp"
                  "QCBOR/src/*.c"
                  "mbedtls_hmac_sha256_sw/mbedtls/src/*.c"
@@ -22,8 +20,9 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
                  "edge-impulse-sdk/CMSIS/DSP/Source/StatisticsFunctions/arm_rms_f32.c"
                  "edge-impulse-sdk/CMSIS/DSP/Source/StatisticsFunctions/arm_var_f32.c")
 
-file(GLOB FW_SDK "firmware-sdk/jpeg/*.cpp"
-                  "firmware-sdk/at_base64_lib.cpp")
+file(GLOB FW_SDK "firmware-sdk/*.cpp"
+                 "firmware-sdk/jpeg/*.cpp"
+                 "firmware-sdk/at-server/*.cpp")
 
 file(GLOB TF "edge-impulse-sdk/tensorflow/lite/micro/*.cc"
              "edge-impulse-sdk/tensorflow/lite/micro/memory_planner/*.cc"
@@ -56,8 +55,8 @@ include_directories(edge-impulse-sdk/third_party/ruy)
 include_directories(edge-impulse-sdk/CMSIS/DSP/Include/)
 include_directories(edge-impulse-sdk/CMSIS/Core/Include/)
 include_directories(ingestion-sdk-c)
+include_directories(inference)
 include_directories(arc_mli_package/include)
-include_directories(ingestion-sdk-c)
 include_directories(ingestion-sdk-platform/himax)
 include_directories(repl)
 include_directories(sensors)
@@ -66,9 +65,8 @@ include_directories(mbedtls_hmac_sha256_sw)
 include_directories(firwmare-sdk)
 include_directories(firwmare-sdk/jpeg)
 
-
 # add the executable
-add_executable(${PROJECT_NAME}.elf main.cc ei_run_impulse.cpp ${SOURCE_FILES})
+add_executable(${PROJECT_NAME}.elf main.cc ${SOURCE_FILES})
 
 target_link_libraries(${PROJECT_NAME}.elf ${MY_LINKER_FLAGS})
 
