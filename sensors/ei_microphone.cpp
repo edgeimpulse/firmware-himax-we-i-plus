@@ -27,7 +27,7 @@
 
 #include "firmware-sdk/ei_config_types.h"
 #include "sensor_aq_mbedtls_hs256.h"
-#include "sensor_aq_none.h"
+#include "firmware-sdk/sensor-aq/sensor_aq_none.h"
 
 #include "hx_drv_tflm.h"
 

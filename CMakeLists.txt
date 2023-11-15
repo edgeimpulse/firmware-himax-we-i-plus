@@ -12,7 +12,6 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
                  "ingestion-sdk-c/*.cpp"
                  "inference/*.cpp"
                  "sensors/*.cpp"
-                 "QCBOR/src/*.c"
                  "mbedtls_hmac_sha256_sw/mbedtls/src/*.c"
                  "edge-impulse-sdk/CMSIS/DSP/Source/TransformFunctions/*fft*.c"
                  "edge-impulse-sdk/CMSIS/DSP/Source/CommonTables/*.c"
@@ -22,6 +21,8 @@ file(GLOB EI_SDK "edge-impulse-sdk/porting/himax/*.cpp"
 
 file(GLOB FW_SDK "firmware-sdk/*.cpp"
                  "firmware-sdk/jpeg/*.cpp"
+                 "firmware-sdk/QCBOR/src/*.c"
+                 "firmware-sdk/sensor-aq/*.cpp"
                  "firmware-sdk/at-server/*.cpp")
 
 file(GLOB TF "edge-impulse-sdk/tensorflow/lite/micro/*.cc"
@@ -60,7 +61,6 @@ include_directories(arc_mli_package/include)
 include_directories(ingestion-sdk-platform/himax)
 include_directories(repl)
 include_directories(sensors)
-include_directories(QCBOR/inc)
 include_directories(mbedtls_hmac_sha256_sw)
 include_directories(firwmare-sdk)
 include_directories(firwmare-sdk/jpeg)
