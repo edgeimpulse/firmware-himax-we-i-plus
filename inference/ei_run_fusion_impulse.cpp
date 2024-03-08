@@ -1,23 +1,18 @@
-/* Edge Impulse ingestion SDK
- * Copyright (c) 2022 EdgeImpulse Inc.
+/*
+ * Copyright (c) 2024 EdgeImpulse Inc.
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS
+ * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* Include ----------------------------------------------------------------- */
@@ -53,41 +48,19 @@ static int samples_wr_index = 0;
  */
 bool samples_callback(const void *raw_sample, uint32_t raw_sample_size)
 {
-    if(state == INFERENCE_STOPPED) {
-        // see: sample_timer_callback in ei_inertial_sensor.cpp why we have to return true
-        return true;
-    }
-    else if(state != INFERENCE_SAMPLING) {
-        // don't collect samples if we are not in SAMPLING state
-        return false;
-    }
-
     float *sample = (float *)raw_sample;
 
     for(int i = 0; i < (int)(raw_sample_size / sizeof(float)); i++) {
         samples_circ_buff[samples_wr_index++] = sample[i];
         if(samples_wr_index >= samples_per_inference) {
+
             state = INFERENCE_DATA_READY;
-        }
-        if(samples_wr_index > EI_CLASSIFIER_DSP_INPUT_FRAME_SIZE) {
-            /* start from beginning of the circular buffer */
             samples_wr_index = 0;
+            return true;
         }
     }
 
     return false;
-}
-
-static void display_results(ei_impulse_result_t* result)
-{
-    ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-        result->timing.dsp, result->timing.classification, result->timing.anomaly);
-    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-        ei_printf("    %s: \t%f\r\n", result->classification[ix].label, result->classification[ix].value);
-    }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-    ei_printf("    anomaly score: %f\r\n", result->anomaly);
-#endif
 }
 
 void ei_run_impulse(void)
@@ -99,6 +72,7 @@ void ei_run_impulse(void)
         case INFERENCE_WAITING:
             if(ei_read_timer_ms() > (last_inference_ts + 2000)) {
                 state = INFERENCE_SAMPLING;
+                ei_printf("Sampling....\r\n");
                 return;
             }
             else {
@@ -206,15 +180,13 @@ void ei_start_impulse(bool continuous, bool debug, bool use_max_uart_speed)
         last_inference_ts = ei_read_timer_ms();
     }
 
-    state = INFERENCE_SAMPLING;
-    ei_fusion_sample_start(&samples_callback, EI_CLASSIFIER_INTERVAL_MS);
-
     while(!ei_user_invoke_stop_lib()) {
-        if (state == INFERENCE_SAMPLING) {
-            //dev->set_state(eiStateSampling);
-            ei_sleep(5);
+
+        if(state == INFERENCE_WAITING) {
+            ei_run_impulse();
         }
         else {
+            ei_fusion_sample_start(&samples_callback, EI_CLASSIFIER_INTERVAL_MS);
             ei_run_impulse();
         }
     }

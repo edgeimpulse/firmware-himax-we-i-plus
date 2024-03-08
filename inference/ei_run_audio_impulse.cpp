@@ -1,23 +1,18 @@
-/* Edge Impulse ingestion SDK
- * Copyright (c) 2022 EdgeImpulse Inc.
+/*
+ * Copyright (c) 2024 EdgeImpulse Inc.
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS
+ * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
  *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
+ * SPDX-License-Identifier: Apache-2.0
  */
 
 /* Include ----------------------------------------------------------------- */
@@ -45,22 +40,6 @@ uint64_t last_inference_ts = 0;
 static bool continuous_mode = false;
 static bool debug_mode = false;
 
-static void display_results(ei_impulse_result_t* result)
-{
-    ei_printf("Predictions (DSP: %d ms., Classification: %d ms., Anomaly: %d ms.): \n",
-        result->timing.dsp, result->timing.classification, result->timing.anomaly);
-    for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {
-        ei_printf("    %s: \t", result->classification[ix].label);
-        ei_printf_float(result->classification[ix].value);
-        ei_printf("\r\n");
-    }
-#if EI_CLASSIFIER_HAS_ANOMALY == 1
-        ei_printf("    anomaly score: ");
-        ei_printf_float(result->anomaly);
-        ei_printf("\r\n");
-#endif
-}
-
 void ei_run_impulse(void)
 {
     bool m = 0;
@@ -72,6 +51,7 @@ void ei_run_impulse(void)
             if(ei_read_timer_ms() < (last_inference_ts + 2000)) {
                 return;
             }
+            ei_printf("Sampling...\r\n");
             state = INFERENCE_SAMPLING;
             ei_microphone_inference_reset_buffers();
         case INFERENCE_SAMPLING:
@@ -152,15 +132,15 @@ void ei_start_impulse(bool continuous, bool debug, bool use_max_uart_speed)
         // only print when we run the complete maf buffer to prevent printing the same classification multiple times.
         print_results = -(EI_CLASSIFIER_SLICES_PER_MODEL_WINDOW);
         run_classifier_init();
-        state = INFERENCE_SAMPLING;
     }
     else {
         samples_per_inference = EI_CLASSIFIER_RAW_SAMPLE_COUNT * EI_CLASSIFIER_RAW_SAMPLES_PER_FRAME;
-        // it's time to prepare for sampling
-        ei_printf("Starting inferencing in 2 seconds...\n");
-        last_inference_ts = ei_read_timer_ms();
-        state = INFERENCE_WAITING;
     }
+
+    // it's time to prepare for sampling
+    ei_printf("Starting inferencing in 2 seconds...\n");
+    last_inference_ts = ei_read_timer_ms();
+    state = INFERENCE_WAITING;
 
     if (ei_microphone_inference_start(continuous_mode ? EI_CLASSIFIER_SLICE_SIZE : EI_CLASSIFIER_RAW_SAMPLE_COUNT, EI_CLASSIFIER_INTERVAL_MS) == false) {
         ei_printf("ERR: Could not allocate audio buffer (size %d), this could be due to the window length of your model\r\n", EI_CLASSIFIER_RAW_SAMPLE_COUNT);

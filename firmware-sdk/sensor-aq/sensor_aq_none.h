@@ -15,19 +15,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#include "../ei_classifier_porting.h"
-#if EI_PORTING_RENESASRA65 == 1
+#ifndef _EDGE_IMPULSE_SIGNING_NONE_H_
+#define _EDGE_IMPULSE_SIGNING_NONE_H_
 
-#include "edge-impulse-sdk/tensorflow/lite/micro/debug_log.h"
-#include <stdio.h>
-#include <stdarg.h>
+/**
+ * None signing context
+ * This is implemented here as it's a required part of JWT, and perhaps some people that don't have Mbed TLS might find it useful
+ */
 
-// Redirect TFLite DebugLog to ei_printf
-#if defined(__cplusplus) && EI_C_LINKAGE == 1
-extern "C"
-#endif // defined(__cplusplus) && EI_C_LINKAGE == 1
-void DebugLog(const char* s) {
-    ei_printf("%s", s);
-}
+#include <string.h>
+#include "sensor_aq.h"
 
-#endif // EI_PORTING_RENESASRA65 == 1
+/**
+ * Construct a new signing context for none security
+ * **NOTE:** This will provide zero verification for your data and data might be rejected by your provider
+ *
+ * @param aq_ctx An empty signing context (can declare it without arguments)
+ */
+void sensor_aq_init_none_context(sensor_aq_signing_ctx_t *aq_ctx);
+
+#endif // _EDGE_IMPULSE_SIGNING_NONE_H_
