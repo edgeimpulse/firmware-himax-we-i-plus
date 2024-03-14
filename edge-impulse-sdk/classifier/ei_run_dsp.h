@@ -1247,6 +1247,11 @@ __attribute__((unused)) int extract_image_features_quantized(signal_t *signal, m
                         g = (g - torch_mean[1]) / torch_std[1];
                         b = (b - torch_mean[2]) / torch_std[2];
                     }
+                    else if (image_scaling == EI_CLASSIFIER_IMAGE_SCALING_MIN128_127) {
+                        r -= 128.0f;
+                        g -= 128.0f;
+                        b -= 128.0f;
+                    }
 
                     output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(r / scale) + zero_point);
                     output_matrix->buffer[output_ix++] = static_cast<int8_t>(round(g / scale) + zero_point);
@@ -1288,6 +1293,11 @@ __attribute__((unused)) int extract_image_features_quantized(signal_t *signal, m
                         r = (r - torch_mean[0]) / torch_std[0];
                         g = (g - torch_mean[1]) / torch_std[1];
                         b = (b - torch_mean[2]) / torch_std[2];
+                    }
+                    else if (image_scaling == EI_CLASSIFIER_IMAGE_SCALING_MIN128_127) {
+                        r -= 128.0f;
+                        g -= 128.0f;
+                        b -= 128.0f;
                     }
 
                     // ITU-R 601-2 luma transform

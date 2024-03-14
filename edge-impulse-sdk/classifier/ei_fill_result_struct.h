@@ -449,7 +449,8 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolov5(co
                                                                               ei_impulse_result_t *result,
                                                                               int version,
                                                                               float *data,
-                                                                              size_t output_features_count) {
+                                                                              size_t output_features_count,
+                                                                              bool debug = false) {
 #ifdef EI_HAS_YOLOV5
     static std::vector<ei_impulse_result_bounding_box_t> results;
     results.clear();
@@ -513,7 +514,7 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolov5(co
         }
     }
 
-    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results);
+    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results, debug);
     if (nms_res != EI_IMPULSE_OK) {
         return nms_res;
     }
@@ -547,7 +548,8 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_yol
                                                                                     T *data,
                                                                                     float zero_point,
                                                                                     float scale,
-                                                                                    size_t output_features_count) {
+                                                                                    size_t output_features_count,
+                                                                                    bool debug = false) {
 #ifdef EI_HAS_YOLOV5
     static std::vector<ei_impulse_result_bounding_box_t> results;
     results.clear();
@@ -611,7 +613,7 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_yol
         }
     }
 
-    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results);
+    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results, debug);
     if (nms_res != EI_IMPULSE_OK) {
         return nms_res;
     }
@@ -641,7 +643,8 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_yol
   */
 __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolox(const ei_impulse_t *impulse, ei_impulse_result_t *result,
                                                                              float *data,
-                                                                             size_t output_features_count) {
+                                                                             size_t output_features_count,
+                                                                             bool debug = false) {
 #ifdef EI_HAS_YOLOX
     static std::vector<ei_impulse_result_bounding_box_t> results;
     results.clear();
@@ -813,7 +816,7 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolox(con
         }
     }
 
-    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results);
+    EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &results, debug);
     if (nms_res != EI_IMPULSE_OK) {
         return nms_res;
     }
@@ -964,6 +967,42 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_yolov7(co
 
 #if (EI_HAS_TAO_DECODE_DETECTIONS == 1) || (EI_HAS_TAO_YOLO == 1)
 
+__attribute__((unused)) static void prepare_tao_results_common(const ei_impulse_t *impulse,
+                                                               ei_impulse_result_t *result,
+                                                               std::vector<ei_impulse_result_bounding_box_t> *results) {
+    #define EI_CLASSIFIER_OBJECT_DETECTION_KEEP_TOPK 200
+
+    // if we didn't detect min required objects, fill the rest with fixed value
+    size_t added_boxes_count = results->size();
+    size_t object_detection_count = impulse->object_detection_count;
+    if (added_boxes_count < object_detection_count) {
+        results->resize(object_detection_count);
+        for (size_t ix = added_boxes_count; ix < object_detection_count; ix++) {
+            (*results)[ix].value = 0.0f;
+        }
+    }
+
+    // we sort in reverse order accross all classes,
+    // since results for each class are pushed to the end.
+    std::sort(results->begin(), results->end(), [ ]( const ei_impulse_result_bounding_box_t& lhs, const ei_impulse_result_bounding_box_t& rhs )
+    {
+        return lhs.value > rhs.value;
+    });
+
+    // keep topK
+    if (results->size() > EI_CLASSIFIER_OBJECT_DETECTION_KEEP_TOPK) {
+        results->erase(results->begin() + EI_CLASSIFIER_OBJECT_DETECTION_KEEP_TOPK, results->end());
+    }
+
+    result->bounding_boxes = results->data();
+    result->bounding_boxes_count = results->size();
+}
+
+
+#endif
+
+#if (EI_HAS_TAO_DECODE_DETECTIONS == 1) || (EI_HAS_TAO_YOLO == 1)
+
 template<typename T>
 __attribute__((unused)) static T clip_val(T val, T min_val, T max_val) {
     return std::min(std::max(val, min_val), max_val);
@@ -980,27 +1019,27 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_tao_decode_de
                                                                                                 T *data,
                                                                                                 float zero_point,
                                                                                                 float scale,
-                                                                                                size_t output_features_count) {
+                                                                                                size_t output_features_count,
+                                                                                                bool debug = false) {
 
     static std::vector<ei_impulse_result_bounding_box_t> results;
-    static std::vector<ei_impulse_result_bounding_box_t> dec_results;
     results.clear();
-    dec_results.clear();
+    static std::vector<ei_impulse_result_bounding_box_t> class_results;
 
     size_t col_size = 12 + impulse->label_count + 1;
     size_t row_count = output_features_count / col_size;
 
     for (size_t cls_idx = 1; cls_idx < (size_t)(impulse->label_count + 1); cls_idx++)  {
 
-        // create boxes, scores and labels structures for nms
-        matrix_t boxes(row_count, 4);
-        matrix_t scores(row_count, 1);
-        matrix_i32_t classes(row_count, 1);
-
+        class_results.clear();
         for (size_t ix = 0; ix < row_count; ix++) {
 
             float score = (static_cast<float>(data[ix * col_size + cls_idx]) - zero_point) * scale;
             score = clip_val(score, 0.0f, 1.0f);
+
+            if (score < impulse->object_detection_threshold) {
+                continue;
+            }
 
             // # 1. calculate boxes location
             size_t base_ix = ix * col_size + col_size; // references the end of the row
@@ -1068,58 +1107,32 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_tao_decode_de
             xmax *= impulse->input_width;
             ymax *= impulse->input_height;
 
-            // note nms requires [ymin, xmin, ymax, xmax]
-            boxes.buffer[(ix * boxes.cols) + 0] = ymin;
-            boxes.buffer[(ix * boxes.cols) + 1] = xmin;
-            boxes.buffer[(ix * boxes.cols) + 2] = ymax;
-            boxes.buffer[(ix * boxes.cols) + 3] = xmax;
+            float width = xmax - xmin;
+            float height = ymax - ymin;
 
-            classes.buffer[ix] = cls_idx-1;
-            scores.buffer[ix] = score;
+            ei_impulse_result_bounding_box_t r;
+            r.label = impulse->categories[cls_idx - 1];
+            r.x = static_cast<uint32_t>(xmin);
+            r.y = static_cast<uint32_t>(ymin);
+            r.width = static_cast<uint32_t>(width);
+            r.height = static_cast<uint32_t>(height);
+            r.value = score;
+
+            class_results.push_back(r);
         }
 
-        EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &dec_results,
-                                              boxes.buffer, scores.buffer,
-                                              classes.buffer, row_count,
-                                              false /*clip_boxes*/);
+        EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &class_results, false /*clip_boxes*/, debug);
+
         if (nms_res != EI_IMPULSE_OK) {
             return nms_res;
         }
 
-        for (size_t j = 0; j < dec_results.size(); j++) {
-            auto bb = dec_results[j];
-            if (bb.value >= impulse->object_detection_threshold) {
-                results.push_back(bb);
-            }
-        }
-
-        dec_results.clear();
-    }
-
-    // if we didn't detect min required objects, fill the rest with fixed value
-    size_t added_boxes_count = results.size();
-    size_t object_detection_count = impulse->object_detection_count;
-    if (added_boxes_count < object_detection_count) {
-        results.resize(object_detection_count);
-        for (size_t ix = added_boxes_count; ix < object_detection_count; ix++) {
-            results[ix].value = 0.0f;
+        for (auto bb: class_results) {
+            results.push_back(bb);
         }
     }
 
-    // we sort in reverse order accross all classes,
-    // since results for each class are pushed to the end.
-    std::sort(results.begin(), results.end(), [ ]( const ei_impulse_result_bounding_box_t& lhs, const ei_impulse_result_bounding_box_t& rhs )
-    {
-        return lhs.value > rhs.value;
-    });
-
-    // keep topK
-    if (results.size() > 200) {
-        results.erase(results.begin() + 200, results.end());
-    }
-
-    result->bounding_boxes = results.data();
-    result->bounding_boxes_count = results.size();
+    prepare_tao_results_common(impulse, result, &results);
 
     return EI_IMPULSE_OK;
 }
@@ -1134,9 +1147,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_tao
                                                                                                    T *data,
                                                                                                    float zero_point,
                                                                                                    float scale,
-                                                                                                   size_t output_features_count) {
+                                                                                                   size_t output_features_count,
+                                                                                                   bool debug = false) {
 #ifdef EI_HAS_TAO_DECODE_DETECTIONS
-    return fill_result_struct_tao_decode_detections_common(impulse, result, data, zero_point, scale, output_features_count);
+    return fill_result_struct_tao_decode_detections_common(impulse, result, data, zero_point, scale, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_DETECT_DETECTIONS
@@ -1149,9 +1163,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_tao
 __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_tao_decode_detections(const ei_impulse_t *impulse,
                                                                                      ei_impulse_result_t *result,
                                                                                      float *data,
-                                                                                     size_t output_features_count) {
+                                                                                     size_t output_features_count,
+                                                                                     bool debug = false) {
 #ifdef EI_HAS_TAO_DECODE_DETECTIONS
-    return fill_result_struct_tao_decode_detections_common(impulse, result, data, 0.0f, 1.0f, output_features_count);
+    return fill_result_struct_tao_decode_detections_common(impulse, result, data, 0.0f, 1.0f, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_DETECT_DETECTIONS
@@ -1168,21 +1183,25 @@ __attribute__((unused)) inline float sigmoid(float a) {
  * Fill the result structure from an output tensor
 */
 template<typename T>
-__attribute__((unused)) static void fill_result_struct_tao_yolov3_common(const ei_impulse_t *impulse,
+__attribute__((unused)) static EI_IMPULSE_ERROR  fill_result_struct_tao_yolov3_common(const ei_impulse_t *impulse,
                                                                          ei_impulse_result_t *result,
                                                                          T *data,
-                                                                         matrix_t *boxes,
-                                                                         matrix_t *scores,
-                                                                         matrix_i32_t *classes,
                                                                          float zero_point,
                                                                          float scale,
-                                                                         size_t output_features_count) {
+                                                                         size_t output_features_count,
+                                                                         bool debug) {
     // # x: 3-D tensor. Last dimension is
     //          (cy, cx, ph, pw, step_y, step_x, pred_y, pred_x, pred_h, pred_w, object, cls...)
     size_t col_size = 11 + impulse->label_count;
     size_t row_count = output_features_count / col_size;
 
+    static std::vector<ei_impulse_result_bounding_box_t> results;
+    results.clear();
+    static std::vector<ei_impulse_result_bounding_box_t> class_results;
+
     for (size_t cls_idx = 0; cls_idx < (size_t)impulse->label_count; cls_idx++)  {
+        class_results.clear();
+
         for (size_t ix = 0; ix < row_count; ix++) {
             size_t data_ix = ix * col_size;
             float r_0  = (static_cast<float>(data[data_ix +  0]) - zero_point) * scale;
@@ -1196,16 +1215,18 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov3_common(const e
             float r_8  = (static_cast<float>(data[data_ix +  8]) - zero_point) * scale;
             float r_9  = (static_cast<float>(data[data_ix +  9]) - zero_point) * scale;
             float r_10 = (static_cast<float>(data[data_ix + 10]) - zero_point) * scale;
+
             float cls = (static_cast<float>(data[data_ix + 11 + cls_idx]) - zero_point) * scale;
+            float score = sigmoid(cls) * sigmoid(r_10);
+
+            if (score < impulse->object_detection_threshold) {
+                continue;
+            }
 
             float by = r_0 + sigmoid(r_6) * r_4;
             float bx = r_1 + sigmoid(r_7) * r_5;
             float bh = r_2 * exp(r_8);
             float bw = r_3 * exp(r_9);
-
-            size_t box_ix = boxes->cols * ((cls_idx * row_count) + ix);
-            size_t class_ix = classes->cols * ((cls_idx * row_count) + ix);
-            size_t score_ix = scores->cols * ((cls_idx * row_count) + ix);
 
             float ymin = by - 0.5 * bh;
             float xmin = bx - 0.5 * bw;
@@ -1218,16 +1239,32 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov3_common(const e
             ymax *= impulse->input_height;
             xmax *= impulse->input_width;
 
-            // [ymin, xmin, ymax, xmax]
-            boxes->buffer[box_ix + 0] = ymin;
-            boxes->buffer[box_ix + 1] = xmin;
-            boxes->buffer[box_ix + 2] = ymax;
-            boxes->buffer[box_ix + 3] = xmax;
+            float width = xmax - xmin;
+            float height = ymax - ymin;
 
-            classes->buffer[class_ix] = cls_idx;
-            scores->buffer[score_ix] = sigmoid(cls) * sigmoid(r_10);
+            ei_impulse_result_bounding_box_t r;
+            r.label = impulse->categories[cls_idx];
+            r.x = static_cast<uint32_t>(xmin);
+            r.y = static_cast<uint32_t>(ymin);
+            r.width = static_cast<uint32_t>(width);
+            r.height = static_cast<uint32_t>(height);
+            r.value = score;
+
+            class_results.push_back(r);
+        }
+
+        EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &class_results, true /*clip_boxes*/, debug);
+        if (nms_res != EI_IMPULSE_OK) {
+            return nms_res;
+        }
+
+        for (auto bb: class_results) {
+            results.push_back(bb);
         }
     }
+
+    prepare_tao_results_common(impulse, result, &results);
+    return EI_IMPULSE_OK;
 }
 #endif // #ifdef EI_HAS_TAO_YOLOV3
 
@@ -1236,22 +1273,25 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov3_common(const e
  * Fill the result structure from an output tensor
 */
 template<typename T>
-__attribute__((unused)) static void fill_result_struct_tao_yolov4_common(const ei_impulse_t *impulse,
+__attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_tao_yolov4_common(const ei_impulse_t *impulse,
                                                                          ei_impulse_result_t *result,
                                                                          T *data,
-                                                                         matrix_t *boxes,
-                                                                         matrix_t *scores,
-                                                                         matrix_i32_t *classes,
                                                                          float zero_point,
                                                                          float scale,
-                                                                         size_t output_features_count) {
+                                                                         size_t output_features_count,
+                                                                         bool debug) {
     // # x: 3-D tensor. Last dimension is
     //          (cy, cx, ph, pw, step_y, step_x, pred_y, pred_x, pred_h, pred_w, object, cls...)
     size_t col_size = 11 + impulse->label_count;
     size_t row_count = output_features_count / col_size;
     const float grid_scale_xy = 1.0f;
+    static std::vector<ei_impulse_result_bounding_box_t> results;
+    results.clear();
+    static std::vector<ei_impulse_result_bounding_box_t> class_results;
 
     for (size_t cls_idx = 0; cls_idx < (size_t)impulse->label_count; cls_idx++)  {
+        class_results.clear();
+
         for (size_t ix = 0; ix < row_count; ix++) {
 
             float r_0  = (static_cast<float>(data[ix * col_size +  0]) - zero_point) * scale;
@@ -1265,6 +1305,13 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov4_common(const e
             float r_8  = (static_cast<float>(data[ix * col_size +  8]) - zero_point) * scale;
             float r_9  = (static_cast<float>(data[ix * col_size +  9]) - zero_point) * scale;
             float r_10 = (static_cast<float>(data[ix * col_size + 10]) - zero_point) * scale;
+
+            float cls = (static_cast<float>(data[ix * col_size + 11 + cls_idx]) - zero_point) * scale;
+            float score = sigmoid(cls) * sigmoid(r_10);
+
+            if (score < impulse->object_detection_threshold) {
+                continue;
+            }
 
             float pred_y = sigmoid(r_6) * grid_scale_xy - (grid_scale_xy - 1.0f) / 2.0f;
             float pred_x = sigmoid(r_7) * grid_scale_xy - (grid_scale_xy - 1.0f) / 2.0f;
@@ -1281,10 +1328,6 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov4_common(const e
             float bh = r_2 * r_8;
             float bw = r_3 * r_9;
 
-            size_t box_ix = boxes->cols * ((cls_idx * row_count) + ix);
-            size_t class_ix = classes->cols * ((cls_idx * row_count) + ix);
-            size_t score_ix = scores->cols * ((cls_idx * row_count) + ix);
-
             float ymin = by - 0.5 * bh;
             float xmin = bx - 0.5 * bw;
             float ymax = by + 0.5 * bh;
@@ -1296,89 +1339,34 @@ __attribute__((unused)) static void fill_result_struct_tao_yolov4_common(const e
             ymax *= impulse->input_height;
             xmax *= impulse->input_width;
 
-            // [ymin, xmin, ymax, xmax]
-            boxes->buffer[box_ix + 0] = ymin;
-            boxes->buffer[box_ix + 1] = xmin;
-            boxes->buffer[box_ix + 2] = ymax;
-            boxes->buffer[box_ix + 3] = xmax;
+            float width = xmax - xmin;
+            float height = ymax - ymin;
 
-            classes->buffer[class_ix] = cls_idx;
+            ei_impulse_result_bounding_box_t r;
+            r.label = impulse->categories[cls_idx];
+            r.x = static_cast<uint32_t>(xmin);
+            r.y = static_cast<uint32_t>(ymin);
+            r.width = static_cast<uint32_t>(width);
+            r.height = static_cast<uint32_t>(height);
+            r.value = score;
 
-            float cls = (static_cast<float>(data[ix * col_size + 11 + cls_idx]) - zero_point) * scale;
-            scores->buffer[score_ix] = sigmoid(cls) * sigmoid(r_10);
+            class_results.push_back(r);
         }
-    }
-}
-#endif // #ifdef EI_HAS_TAO_YOLOV4
 
-#ifdef EI_HAS_TAO_YOLO
-/**
- * Fill the result structure from an output tensor
-*/
-__attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_tao_yolo_common(const ei_impulse_t *impulse,
-                                                                                   ei_impulse_result_t *result,
-                                                                                   matrix_t *inp_boxes,
-                                                                                   matrix_t *inp_scores,
-                                                                                   matrix_i32_t *inp_classes,
-                                                                                   size_t nboxes) {
-    static std::vector<ei_impulse_result_bounding_box_t> results;
-    static std::vector<ei_impulse_result_bounding_box_t> dec_results;
-    results.clear();
-    dec_results.clear();
-
-    for (size_t cls_idx = 0; cls_idx < impulse->label_count; cls_idx++)  {
-
-        // create boxes, scores and labels structures for nms
-        matrix_t boxes(nboxes, 4, inp_boxes->buffer + (cls_idx * nboxes * 4));
-        matrix_t scores(nboxes, 1, inp_scores->buffer + (cls_idx * nboxes * 1));
-        matrix_i32_t classes(nboxes, 1, inp_classes->buffer + (cls_idx * nboxes * 1));
-
-        EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &dec_results,
-                                              boxes.buffer, scores.buffer,
-                                              classes.buffer, nboxes,
-                                              true /*clip_boxes*/);
+        EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, &class_results, true /*clip_boxes*/, debug);
         if (nms_res != EI_IMPULSE_OK) {
             return nms_res;
         }
 
-        for (size_t j = 0; j < dec_results.size(); j++) {
-            auto bb = dec_results[j];
-            if (bb.value >= impulse->object_detection_threshold) {
-                results.push_back(bb);
-            }
-        }
-
-        dec_results.clear();
-    }
-
-    // if we didn't detect min required objects, fill the rest with fixed value
-    size_t added_boxes_count = results.size();
-    size_t object_detection_count = impulse->object_detection_count;
-    if (added_boxes_count < object_detection_count) {
-        results.resize(object_detection_count);
-        for (size_t ix = added_boxes_count; ix < object_detection_count; ix++) {
-            results[ix].value = 0.0f;
+        for (auto bb: class_results) {
+            results.push_back(bb);
         }
     }
 
-    // we sort in reverse order accross all classes,
-    // since results for each class are pushed to the end.
-    std::sort(results.begin(), results.end(), [ ]( const ei_impulse_result_bounding_box_t& lhs, const ei_impulse_result_bounding_box_t& rhs )
-    {
-        return lhs.value > rhs.value;
-    });
-
-    // keep topK
-    if (results.size() > 200) {
-        results.erase(results.begin() + 200, results.end());
-    }
-
-    result->bounding_boxes = results.data();
-    result->bounding_boxes_count = results.size();
-
+    prepare_tao_results_common(impulse, result, &results);
     return EI_IMPULSE_OK;
 }
-#endif // #ifdef EI_HAS_TAO_YOLO
+#endif // #ifdef EI_HAS_TAO_YOLOV4
 
 /**
   * Fill the result structure from an unquantized output tensor
@@ -1386,18 +1374,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_tao_yolo_comm
 __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_tao_yolov3(const ei_impulse_t *impulse,
                                                                                 ei_impulse_result_t *result,
                                                                                 float *data,
-                                                                                size_t output_features_count) {
+                                                                                size_t output_features_count,
+                                                                                bool debug = false) {
 #ifdef EI_HAS_TAO_YOLOV3
-
-    size_t col_size = 11 + impulse->label_count;
-    size_t nboxes = output_features_count / col_size;
-
-    // (classes, nboxes, ...)
-    matrix_t boxes_y(nboxes * impulse->label_count, 4);
-    matrix_t scores(nboxes * impulse->label_count, 1);
-    matrix_i32_t classes(nboxes * impulse->label_count, 1);
-    fill_result_struct_tao_yolov3_common(impulse, result, data, &boxes_y, &scores, &classes, 0.0f, 1.0f, output_features_count);
-    return fill_result_struct_tao_yolo_common(impulse, result, &boxes_y, &scores, &classes, nboxes);
+    return fill_result_struct_tao_yolov3_common(impulse, result, data, 0.0f, 1.0f, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_YOLOV3
@@ -1412,18 +1392,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_tao
                                                                                       T *data,
                                                                                       float zero_point,
                                                                                       float scale,
-                                                                                      size_t output_features_count) {
+                                                                                      size_t output_features_count,
+                                                                                      bool debug = false) {
 #ifdef EI_HAS_TAO_YOLOV3
-
-    size_t col_size = 11 + impulse->label_count;
-    size_t nboxes = output_features_count / col_size;
-
-    // (classes, nboxes, ...)
-    matrix_t boxes_y(nboxes * impulse->label_count, 4);
-    matrix_t scores(nboxes * impulse->label_count, 1);
-    matrix_i32_t classes(nboxes * impulse->label_count, 1);
-    fill_result_struct_tao_yolov3_common(impulse, result, data, &boxes_y, &scores, &classes, zero_point, scale, output_features_count);
-    return fill_result_struct_tao_yolo_common(impulse, result, &boxes_y, &scores, &classes, nboxes);
+    return fill_result_struct_tao_yolov3_common(impulse, result, data, zero_point, scale, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_YOLOV3
@@ -1435,17 +1407,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_tao
 __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_f32_tao_yolov4(const ei_impulse_t *impulse,
                                                                                 ei_impulse_result_t *result,
                                                                                 float *data,
-                                                                                size_t output_features_count) {
+                                                                                size_t output_features_count,
+                                                                                bool debug = false) {
 #ifdef EI_HAS_TAO_YOLOV4
-    size_t col_size = 11 + impulse->label_count;
-    size_t nboxes = output_features_count / col_size;
-
-    // (classes, nboxes, ...)
-    matrix_t boxes_y(nboxes * impulse->label_count, 4);
-    matrix_t scores(nboxes * impulse->label_count, 1);
-    matrix_i32_t classes(nboxes * impulse->label_count, 1);
-    fill_result_struct_tao_yolov4_common(impulse, result, data, &boxes_y, &scores, &classes, 0.0f, 1.0f, output_features_count);
-    return fill_result_struct_tao_yolo_common(impulse, result, &boxes_y, &scores, &classes, nboxes);
+    return fill_result_struct_tao_yolov4_common(impulse, result, data, 0.0f, 1.0f, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_YOLOV4
@@ -1460,18 +1425,10 @@ __attribute__((unused)) static EI_IMPULSE_ERROR fill_result_struct_quantized_tao
                                                                                       T *data,
                                                                                       float zero_point,
                                                                                       float scale,
-                                                                                      size_t output_features_count) {
+                                                                                      size_t output_features_count,
+                                                                                      bool debug = false) {
 #ifdef EI_HAS_TAO_YOLOV4
-
-    size_t col_size = 11 + impulse->label_count;
-    size_t nboxes = output_features_count / col_size;
-
-    // (classes, nboxes, ...)
-    matrix_t boxes_y(nboxes * impulse->label_count, 4);
-    matrix_t scores(nboxes * impulse->label_count, 1);
-    matrix_i32_t classes(nboxes * impulse->label_count, 1);
-    fill_result_struct_tao_yolov4_common(impulse, result, data, &boxes_y, &scores, &classes, zero_point, scale, output_features_count);
-    return fill_result_struct_tao_yolo_common(impulse, result, &boxes_y, &scores, &classes, nboxes);
+    return fill_result_struct_tao_yolov4_common(impulse, result, data, zero_point, scale, output_features_count, debug);
 #else
     return EI_IMPULSE_LAST_LAYER_NOT_AVAILABLE;
 #endif // #ifdef EI_HAS_TAO_YOLOV4

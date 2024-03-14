@@ -118,6 +118,13 @@ __attribute__((unused)) void display_results(ei_impulse_result_t* result)
     if (!bb_found) {
         ei_printf("    No objects found\n");
     }
+
+#elif (EI_CLASSIFIER_LABEL_COUNT == 1) && (!EI_CLASSIFIER_HAS_ANOMALY)// regression
+    ei_printf("#Regression results:\r\n");
+    ei_printf("    %s: ", result->classification[0].label);
+    ei_printf_float(result->classification[0].value);
+    ei_printf("\n");
+
 #elif EI_CLASSIFIER_LABEL_COUNT > 1 // if there is only one label, this is an anomaly only
     ei_printf("#Classification results:\r\n");
     for (size_t ix = 0; ix < EI_CLASSIFIER_LABEL_COUNT; ix++) {

@@ -336,7 +336,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.int8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteUInt8) {
                     fill_res = fill_result_struct_quantized_yolov5(
@@ -346,7 +347,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.uint8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteFloat32) {
                     fill_res = fill_result_struct_f32_yolov5(
@@ -354,7 +356,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         result,
                         version,
                         output->data.f,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else {
                     ei_printf("ERR: Invalid output type (%d) for YOLOv5 last layer\n", output->type);
@@ -371,7 +374,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         impulse,
                         result,
                         output->data.f,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 #endif
                 break;
             }
@@ -402,7 +406,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.int8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteUInt8) {
                     fill_res = fill_result_struct_quantized_tao_decode_detections(
@@ -411,14 +416,16 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.uint8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteFloat32) {
                     fill_res = fill_result_struct_f32_tao_decode_detections(
                         impulse,
                         result,
                         output->data.f,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else {
                     ei_printf("ERR: Invalid output type (%d) for TAO last layer\n", output->type);
@@ -435,7 +442,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.int8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteUInt8) {
                     fill_res = fill_result_struct_quantized_tao_yolov3(
@@ -444,14 +452,16 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.uint8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteFloat32) {
                     fill_res = fill_result_struct_f32_tao_yolov3(
                         impulse,
                         result,
                         output->data.f,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else {
                     ei_printf("ERR: Invalid output type (%d) for TAO YOLOv3 layer\n", output->type);
@@ -468,7 +478,8 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.int8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteUInt8) {
                     fill_res = fill_result_struct_quantized_tao_yolov4(
@@ -477,14 +488,16 @@ EI_IMPULSE_ERROR fill_result_struct_from_output_tensor_tflite(
                         output->data.uint8,
                         output->params.zero_point,
                         output->params.scale,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else if (output->type == kTfLiteFloat32) {
                     fill_res = fill_result_struct_f32_tao_yolov4(
                         impulse,
                         result,
                         output->data.f,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 }
                 else {
                     ei_printf("ERR: Invalid output type (%d) for TAO YOLOv4 layer\n", output->type);

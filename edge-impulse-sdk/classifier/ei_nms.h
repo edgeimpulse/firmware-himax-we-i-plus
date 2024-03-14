@@ -210,7 +210,12 @@ EI_IMPULSE_ERROR ei_run_nms(
     float *scores,
     int *classes,
     size_t bb_count,
-    bool clip_boxes) {
+    bool clip_boxes,
+    bool debug) {
+
+    if (bb_count < 1) {
+        return EI_IMPULSE_OK;
+    }
 
     int *selected_indices = (int*)ei_malloc(1 * bb_count * sizeof(int));
     float *selected_scores = (float*)ei_malloc(1 * bb_count * sizeof(float));
@@ -246,12 +251,11 @@ EI_IMPULSE_ERROR ei_run_nms(
     std::vector<ei_impulse_result_bounding_box_t> new_results;
 
     for (size_t ix = 0; ix < (size_t)num_selected_indices; ix++) {
-        // ei_printf("Found bb with label %s\n", bb.label);
 
         int out_ix = selected_indices[ix];
-        ei_impulse_result_bounding_box_t r;
-        r.label  = impulse->categories[classes[out_ix]];
-        r.value  = selected_scores[ix];
+        ei_impulse_result_bounding_box_t bb;
+        bb.label  = impulse->categories[classes[out_ix]];
+        bb.value  = selected_scores[ix];
 
         float ymin = boxes[(out_ix * 4) + 0];
         float xmin = boxes[(out_ix * 4) + 1];
@@ -265,11 +269,16 @@ EI_IMPULSE_ERROR ei_run_nms(
             xmax = std::min(std::max(xmax, 0.0f), (float)impulse->input_width);
         }
 
-        r.y      = static_cast<uint32_t>(ymin);
-        r.x      = static_cast<uint32_t>(xmin);
-        r.height = static_cast<uint32_t>(ymax) - r.y;
-        r.width  = static_cast<uint32_t>(xmax) - r.x;
-        new_results.push_back(r);
+        bb.y      = static_cast<uint32_t>(ymin);
+        bb.x      = static_cast<uint32_t>(xmin);
+        bb.height = static_cast<uint32_t>(ymax) - bb.y;
+        bb.width  = static_cast<uint32_t>(xmax) - bb.x;
+        new_results.push_back(bb);
+
+        if (debug) {
+          ei_printf("Found bb with label %s\n", bb.label);
+        }
+
     }
 
     results->clear();
@@ -290,7 +299,9 @@ EI_IMPULSE_ERROR ei_run_nms(
  */
 EI_IMPULSE_ERROR ei_run_nms(
     const ei_impulse_t *impulse,
-    std::vector<ei_impulse_result_bounding_box_t> *results) {
+    std::vector<ei_impulse_result_bounding_box_t> *results,
+    bool clip_boxes,
+    bool debug) {
 
     size_t bb_count = 0;
     for (size_t ix = 0; ix < results->size(); ix++) {
@@ -299,6 +310,10 @@ EI_IMPULSE_ERROR ei_run_nms(
             continue;
         }
         bb_count++;
+    }
+
+    if (bb_count < 1) {
+        return EI_IMPULSE_OK;
     }
 
     float *boxes = (float*)ei_malloc(4 * bb_count * sizeof(float));
@@ -335,7 +350,8 @@ EI_IMPULSE_ERROR ei_run_nms(
     EI_IMPULSE_ERROR nms_res = ei_run_nms(impulse, results,
                                           boxes, scores,
                                           classes, bb_count,
-                                          true /*clip_boxes*/);
+                                          clip_boxes,
+                                          debug);
 
 
     ei_free(boxes);
@@ -349,7 +365,17 @@ EI_IMPULSE_ERROR ei_run_nms(
 /**
  * Run non-max suppression over the results array (for bounding boxes)
  */
-EI_IMPULSE_ERROR ei_run_nms(std::vector<ei_impulse_result_bounding_box_t> *results) {
+EI_IMPULSE_ERROR ei_run_nms(
+    const ei_impulse_t *impulse,
+    std::vector<ei_impulse_result_bounding_box_t> *results,
+    bool debug = false) {
+  return ei_run_nms(impulse, results, true, debug);
+}
+
+/**
+ * Run non-max suppression over the results array (for bounding boxes)
+ */
+EI_IMPULSE_ERROR ei_run_nms(std::vector<ei_impulse_result_bounding_box_t> *results, bool debug = false) {
 #if EI_CLASSIFIER_HAS_MODEL_VARIABLES == 1
   auto& impulse = *ei_default_impulse.impulse;
 #else
@@ -358,7 +384,7 @@ EI_IMPULSE_ERROR ei_run_nms(std::vector<ei_impulse_result_bounding_box_t> *resul
     .object_detection_nms.iou_threshold = 0.2f
   };
 #endif
-  return ei_run_nms(&impulse, results);
+  return ei_run_nms(&impulse, results, debug);
 }
 
 #endif // #if (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_YOLOV5) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_YOLOV5_V5_DRPAI) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_YOLOX) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_TAO_RETINANET) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_TAO_SSD) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_TAO_YOLOV3) || (EI_CLASSIFIER_OBJECT_DETECTION_LAST_LAYER == EI_CLASSIFIER_LAST_LAYER_TAO_YOLOV4)

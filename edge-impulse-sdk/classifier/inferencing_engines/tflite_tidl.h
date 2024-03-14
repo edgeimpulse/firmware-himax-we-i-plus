@@ -288,7 +288,8 @@ EI_IMPULSE_ERROR run_nn_inference(
                         result,
                         version,
                         out_data,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 #endif
                 break;
             }
@@ -301,7 +302,8 @@ EI_IMPULSE_ERROR run_nn_inference(
                         impulse,
                         result,
                         out_data,
-                        impulse->tflite_output_features_count);
+                        impulse->tflite_output_features_count,
+                        debug);
                 #endif
                 break;
             }

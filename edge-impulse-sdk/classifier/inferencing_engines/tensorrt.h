@@ -253,7 +253,8 @@ EI_IMPULSE_ERROR run_nn_inference(
                     impulse,
                     result,
                     out_data,
-                    impulse->tflite_output_features_count);
+                    impulse->tflite_output_features_count,
+                    debug);
                 break;
             }
             case EI_CLASSIFIER_LAST_LAYER_TAO_YOLOV3:
@@ -261,14 +262,16 @@ EI_IMPULSE_ERROR run_nn_inference(
                     impulse,
                     result,
                     out_data,
-                    impulse->tflite_output_features_count);
+                    impulse->tflite_output_features_count,
+                    debug);
                 break;
             case EI_CLASSIFIER_LAST_LAYER_TAO_YOLOV4: {
                 fill_res = fill_result_struct_f32_tao_yolov4(
                     impulse,
                     result,
                     out_data,
-                    impulse->tflite_output_features_count);
+                    impulse->tflite_output_features_count,
+                    debug);
                 break;
             }
             default: {
