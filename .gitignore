@@ -5,3 +5,4 @@ node_modules/
 build-mw/
 build-gnu/
 copy-sdk.sh
+create-arduino-library.sh
