@@ -34,9 +34,10 @@
 3. Build and link the application:
 
     ```
-    $ make -j
+    $ make -j4
     $ sh ../make-image.sh GNU
     ```
+Replace 4 with a number of parallel build processes suitable for your system.
 
 ### How to build (Docker)
 
@@ -76,9 +77,10 @@
 3. Build and link the application:
 
     ```
-    $ make -j
+    $ make -j4
     $ sh ../make-image.sh MW
     ```
+    Replace 4 with a number of parallel build processes suitable for your system.
 
 ### How to build (Docker)
 
