@@ -6,3 +6,4 @@ build-mw/
 build-gnu/
 copy-sdk.sh
 create-arduino-library.sh
+.vscode/
